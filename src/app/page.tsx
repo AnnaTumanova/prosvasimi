@@ -408,10 +408,6 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <a href="#" className="flex items-center gap-3" aria-label="Prosvasimi home">
             <Image src={logo} alt="Prosvasimi logo" className="h-9 w-auto" height={36} />
-            <div className="leading-tight">
-              <div className="font-semibold tracking-tight text-lg">Prosvasimi</div>
-              <div className="text-xs text-slate-500">{t.brandTagline}</div>
-            </div>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm">
             <a href="#values" className="hover:text-slate-700">{t.navWhy}</a>
