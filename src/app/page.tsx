@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
+import logo from "./Prosvasimi_primary_logo.png";
 
 function FeatureCard({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
@@ -405,7 +407,7 @@ export default function Page() {
       <header className="border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <a href="#" className="flex items-center gap-3" aria-label="Prosvasimi home">
-            <div className="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">P</div>
+            <Image src={logo} alt="Prosvasimi logo" className="h-9 w-auto" height={36} />
             <div className="leading-tight">
               <div className="font-semibold tracking-tight text-lg">Prosvasimi</div>
               <div className="text-xs text-slate-500">{t.brandTagline}</div>
