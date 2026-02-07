@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import logo from "./Prosvasimi_primary_logo.png";
+import articleImage from "./5204371929274453837.jpg";
 
 function FeatureCard({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
@@ -121,6 +122,7 @@ export default function Page() {
       navFor: "For whom",
       navHow: "How it works",
       navFAQ: "FAQ",
+      navArticles: "Articles",
       ctaEarly: "Get early access",
       badgeInclusive: "Inclusive by design",
       heroTitleMain: "Work without barriers.",
@@ -202,6 +204,7 @@ export default function Page() {
       navFor: "Dla kogo",
       navHow: "Jak to działa",
       navFAQ: "Najczęstsze pytania",
+      navArticles: "Artykuły",
       ctaEarly: "Wczesny dostęp",
       badgeInclusive: "Włączająco z założenia",
       heroTitleMain: "Praca bez barier.",
@@ -296,6 +299,7 @@ export default function Page() {
       navFor: "Для кого",
       navHow: "Як це працює",
       navFAQ: "Питання",
+      navArticles: "Статті",
       ctaEarly: "Ранній доступ",
       badgeInclusive: "Інклюзивність за замовчуванням",
       heroTitleMain: "Робота без бар'єрів.",
@@ -414,6 +418,7 @@ export default function Page() {
             <a href="#for" className="hover:text-slate-700">{t.navFor}</a>
             <a href="#how" className="hover:text-slate-700">{t.navHow}</a>
             <a href="#faq" className="hover:text-slate-700">{t.navFAQ}</a>
+            <a href="#articles" className="hover:text-slate-700">{t.navArticles}</a>
           </nav>
           <div className="hidden sm:flex items-center gap-1 text-sm text-slate-600" role="group" aria-label="Language switch">
             <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "en" ? "text-slate-900" : "hover:text-slate-900"}`}>
@@ -565,6 +570,201 @@ export default function Page() {
                 <Faq q={t.faq2Q} a={t.faq2A} />
                 <Faq q={t.faq3Q} a={t.faq3A} />
               </dl>
+            </div>
+          </div>
+        </section>
+
+        <section id="articles" className="py-16 border-t border-slate-200">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl">
+              <h3 className="text-2xl font-semibold mb-6">{t.navArticles}</h3>
+              
+              <div className="mb-8">
+                <Image 
+                  src={articleImage} 
+                  alt="Employment of People with Disabilities" 
+                  className="w-full rounded-2xl shadow-lg"
+                />
+              </div>
+
+              <div className="rounded-3xl ring-1 ring-slate-200 bg-white p-6 sm:p-8 shadow">
+                <div className="flex gap-2 mb-6" role="tablist" aria-label="Article language">
+                  <button 
+                    type="button" 
+                    onClick={() => setLang("en")} 
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${lang === "en" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                    role="tab"
+                    aria-selected={lang === "en"}
+                  >
+                    English
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={() => setLang("pl")} 
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${lang === "pl" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                    role="tab"
+                    aria-selected={lang === "pl"}
+                  >
+                    Polski
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={() => setLang("uk")} 
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${lang === "uk" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                    role="tab"
+                    aria-selected={lang === "uk"}
+                  >
+                    Українська
+                  </button>
+                </div>
+
+                {lang === "en" && (
+                  <article className="prose prose-slate max-w-none">
+                    <h2 className="text-xl font-bold mb-4">Employment of People with Disabilities: Europe vs Poland vs Ukraine</h2>
+                    
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Why this matters</h3>
+                    <p className="text-slate-600 mb-4">
+                      Disability is not a niche topic. In the EU, about <strong>24% of people aged 16+</strong> have some form of disability — roughly <strong>107 million people</strong>. Yet work opportunities are still far from equal.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Europe (EU): the gap is still large</h3>
+                    <p className="text-slate-600 mb-4">
+                      Eurostat&apos;s latest EU-wide figures for <strong>2024</strong> show a <strong>24.0 percentage-point employment gap</strong> between people with and without disabilities. Unemployment is also higher: in 2024, the unemployment rate for people (15–64) with a disability was <strong>9.5%</strong>, vs <strong>5.9%</strong> for people without a disability; for people with a severe disability it reached <strong>11.6%</strong>. And staying unemployed tends to last longer: <strong>45.0%</strong> of unemployed people with a severe disability were unemployed for 12+ months (EU, 2024).
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Poland: millions of people, low employment rate</h3>
+                    <p className="text-slate-600 mb-4">
+                      Poland has a large community of people with formally recognised disability. Statistics Poland reports about <strong>4.0 million</strong> people with a valid disability certificate/decision as of December 2023. At the same time, labour market participation remains low. Based on Labour Force Survey-based reporting for 2022, the employment rate of people with disabilities of working age was about <strong>32.2%</strong> (with activity rate ~34.2%). OECD analysis also highlights how low participation is: labour force participation of people with disabilities (15–64) was about <strong>34%</strong> in 2022.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Ukraine: war increases disability — and raises urgency for jobs</h3>
+                    <p className="text-slate-600 mb-4">
+                      Ukraine&apos;s context is shaped by the full-scale invasion and its long-term consequences. A 2025 humanitarian-focused analysis estimates <strong>over 6 million</strong> people in Ukraine may have a disability, with about <strong>3 million formally recognised</strong>, and notes the war is creating new disabilities across ages. Recent Ukraine-focused research (2025) discusses a <strong>~30% employment rate</strong> for people with disabilities and the policy challenge of raising it.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">What&apos;s behind the numbers (common barriers)</h3>
+                    <ul className="list-disc pl-5 text-slate-600 mb-4 space-y-1">
+                      <li>Inaccessible recruitment (forms, interviews, tests, office requirements)</li>
+                      <li>Transport and workplace accessibility</li>
+                      <li>Benefit traps (fear of losing support when starting work)</li>
+                      <li>Skills mismatch and limited reskilling opportunities</li>
+                      <li>Employer uncertainty about accommodations and costs</li>
+                    </ul>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">What helps (practical steps for employers)</h3>
+                    <ol className="list-decimal pl-5 text-slate-600 mb-4 space-y-1">
+                      <li><strong>Accessible job posts</strong> (clear tasks, essential requirements only, multiple contact options)</li>
+                      <li><strong>Flexible formats</strong> (remote/hybrid, flexible hours, written interview options)</li>
+                      <li><strong>Accommodation budget + a simple process</strong> (one clear owner, quick decisions)</li>
+                      <li><strong>Structured hiring</strong> (reduce bias: scorecards, skills-based tasks)</li>
+                      <li><strong>Retention first</strong> (onboarding support, check-ins, manager training)</li>
+                    </ol>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Prosvasimi&apos;s goal</h3>
+                    <p className="text-slate-600">
+                      Prosvasimi exists to connect talent with employers who are ready to hire inclusively — and to make the path to employment clearer, faster, and more accessible for candidates.
+                    </p>
+                  </article>
+                )}
+
+                {lang === "pl" && (
+                  <article className="prose prose-slate max-w-none">
+                    <h2 className="text-xl font-bold mb-4">Zatrudnienie osób z niepełnosprawnościami: Europa vs Polska vs Ukraina</h2>
+                    
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Dlaczego to ważne</h3>
+                    <p className="text-slate-600 mb-4">
+                      Niepełnosprawność nie jest „marginesem". W UE ok. <strong>24% osób w wieku 16+</strong> ma jakąś formę niepełnosprawności — to ok. <strong>107 mln ludzi</strong>. Mimo to dostęp do pracy wciąż nie jest równy.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Europa (UE): luka nadal jest duża</h3>
+                    <p className="text-slate-600 mb-4">
+                      Najnowsze dane Eurostatu dla <strong>2024</strong> pokazują <strong>24,0 p.p. luki zatrudnienia</strong> między osobami z i bez niepełnosprawności. Również bezrobocie jest wyższe: w 2024 stopa bezrobocia osób (15–64) z niepełnosprawnością wyniosła <strong>9,5%</strong>, a bez niepełnosprawności <strong>5,9%</strong>; przy poważnej niepełnosprawności było to <strong>11,6%</strong>. Dodatkowo bezrobocie częściej jest długotrwałe: <strong>45,0%</strong> bezrobotnych z poważną niepełnosprawnością pozostawało bez pracy 12+ miesięcy (UE, 2024).
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Polska: duża skala, niska aktywność zawodowa</h3>
+                    <p className="text-slate-600 mb-4">
+                      W Polsce społeczność osób z formalnym orzeczeniem jest liczna. GUS podaje ok. <strong>4,0 mln</strong> osób z ważnym orzeczeniem/decyzją na grudzień 2023. Jednocześnie wskaźniki rynku pracy są niskie. Na podstawie raportowania opartego o BAEL dla 2022, wskaźnik zatrudnienia osób z niepełnosprawnościami w wieku produkcyjnym wynosił ok. <strong>32,2%</strong> (aktywność ok. 34,2%). OECD również zwraca uwagę na niską partycypację: udział osób z niepełnosprawnościami (15–64) w rynku pracy wynosił ok. <strong>34%</strong> w 2022.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Ukraina: wojna zwiększa liczbę osób z niepełnosprawnością i pilność tematu pracy</h3>
+                    <p className="text-slate-600 mb-4">
+                      W Ukrainie kontekst kształtuje wojna. Analiza z 2025 r. szacuje <strong>ponad 6 mln</strong> osób z niepełnosprawnością (ok. <strong>3 mln formalnie uznanych</strong>) i wskazuje, że wojna powoduje nowe niepełnosprawności w różnych grupach wieku. Badanie dotyczące Ukrainy (2025) omawia <strong>ok. 30% wskaźnik zatrudnienia</strong> osób z niepełnosprawnościami i potrzebę jego zwiększania.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Skąd te różnice (najczęstsze bariery)</h3>
+                    <ul className="list-disc pl-5 text-slate-600 mb-4 space-y-1">
+                      <li>Niedostępne procesy rekrutacji (formularze, rozmowy, testy)</li>
+                      <li>Bariery architektoniczne i transportowe</li>
+                      <li>Obawa przed utratą świadczeń po podjęciu pracy</li>
+                      <li>Niedopasowanie kompetencji i ograniczony dostęp do reskillingu</li>
+                      <li>Niepewność pracodawców co do kosztów i dostosowań</li>
+                    </ul>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Co działa (konkretne kroki dla pracodawców)</h3>
+                    <ol className="list-decimal pl-5 text-slate-600 mb-4 space-y-1">
+                      <li><strong>Dostępne ogłoszenia</strong> (jasny zakres zadań, tylko konieczne wymagania)</li>
+                      <li><strong>Elastyczne warunki</strong> (zdalnie/hybrydowo, elastyczne godziny)</li>
+                      <li><strong>Prosty proces dostosowań</strong> (jedna osoba odpowiedzialna, szybka decyzja)</li>
+                      <li><strong>Rekrutacja oparta o umiejętności</strong> (scorecard, zadania praktyczne)</li>
+                      <li><strong>Retencja i onboarding</strong> (wsparcie na start, szkolenia dla menedżerów)</li>
+                    </ol>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Cel Prosvasimi</h3>
+                    <p className="text-slate-600">
+                      Prosvasimi łączy talenty z pracodawcami gotowymi zatrudniać inkluzywnie — i upraszcza drogę do pracy, tak aby była realnie dostępna.
+                    </p>
+                  </article>
+                )}
+
+                {lang === "uk" && (
+                  <article className="prose prose-slate max-w-none">
+                    <h2 className="text-xl font-bold mb-4">Працевлаштування людей з інвалідністю: Європа vs Польща vs Україна</h2>
+                    
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Чому це важливо</h3>
+                    <p className="text-slate-600 mb-4">
+                      Інвалідність — це не &quot;вузька тема&quot;. В ЄС приблизно <strong>24% людей віком 16+</strong> мають певну форму інвалідності — це близько <strong>107 мільйонів</strong> людей. Але можливості працевлаштування досі нерівні.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Європа (ЄС): розрив залишається значним</h3>
+                    <p className="text-slate-600 mb-4">
+                      За найновішими даними Eurostat за <strong>2024 рік</strong>, різниця в рівні зайнятості між людьми з і без інвалідності становить <strong>24,0 в.п.</strong> Безробіття також вище: у 2024 рівень безробіття (15–64) для людей з інвалідністю — <strong>9,5%</strong>, без інвалідності — <strong>5,9%</strong>; для людей із тяжкою інвалідністю — <strong>11,6%</strong>. Крім того, безробіття частіше стає тривалим: <strong>45,0%</strong> безробітних із тяжкою інвалідністю були без роботи 12+ місяців (ЄС, 2024).
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Польща: масштаб великий, рівень зайнятості низький</h3>
+                    <p className="text-slate-600 mb-4">
+                      У Польщі багато людей мають офіційно підтверджену інвалідність. GUS повідомляє близько <strong>4,0 млн</strong> осіб із чинним посвідченням/рішенням станом на грудень 2023. Водночас участь у ринку праці є низькою. За даними, що базуються на Labour Force Survey для 2022 року, рівень зайнятості людей з інвалідністю працездатного віку становив близько <strong>32,2%</strong> (активність ~34,2%). OECD також підкреслює низьку участь: рівень участі у робочій силі людей з інвалідністю (15–64) — близько <strong>34%</strong> у 2022.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Україна: війна збільшує кількість людей з інвалідністю та робить тему роботи ще критичнішою</h3>
+                    <p className="text-slate-600 mb-4">
+                      Український контекст визначає війна. Оцінка за 2025 рік говорить про <strong>понад 6 млн</strong> людей з інвалідністю, з яких близько <strong>3 млн офіційно визнані</strong>, і зазначає, що війна спричиняє нові випадки інвалідності серед різних вікових груп. Україно-орієнтоване дослідження (2025) обговорює <strong>приблизно 30% рівень зайнятості</strong> людей з інвалідністю та необхідність його підвищення.
+                    </p>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Що стоїть за цифрами (типові бар&apos;єри)</h3>
+                    <ul className="list-disc pl-5 text-slate-600 mb-4 space-y-1">
+                      <li>Недоступні процеси рекрутингу (форми, співбесіди, тести)</li>
+                      <li>Транспорт і доступність робочого місця</li>
+                      <li>Страх втратити виплати після працевлаштування</li>
+                      <li>Невідповідність навичок і слабкий доступ до перекваліфікації</li>
+                      <li>Невпевненість роботодавців щодо адаптацій і витрат</li>
+                    </ul>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Що працює (практичні кроки для роботодавців)</h3>
+                    <ol className="list-decimal pl-5 text-slate-600 mb-4 space-y-1">
+                      <li><strong>Доступні вакансії</strong> (чіткі задачі, тільки необхідні вимоги)</li>
+                      <li><strong>Гнучкі умови</strong> (remote/гібрид, гнучкий графік)</li>
+                      <li><strong>Простий процес адаптацій</strong> (відповідальний контакт, швидкі рішення)</li>
+                      <li><strong>Skills-based найм</strong> (чек-листи оцінки, практичні завдання)</li>
+                      <li><strong>Онбординг і утримання</strong> (підтримка на старті, навчання менеджерів)</li>
+                    </ol>
+
+                    <h3 className="text-lg font-semibold mt-6 mb-2">Мета Prosvasimi</h3>
+                    <p className="text-slate-600">
+                      Prosvasimi поєднує таланти з доступними роботодавцями та робить шлях до працевлаштування простішим і реальнішим — для людей і для бізнесу.
+                    </p>
+                  </article>
+                )}
+              </div>
             </div>
           </div>
         </section>
