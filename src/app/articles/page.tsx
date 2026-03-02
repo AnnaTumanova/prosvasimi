@@ -39,6 +39,7 @@ const translations: Record<Lang, Record<string, string>> = {
     incentiveUkraine: "One-time adaptation grant",
     incentivePoland: "Monthly wage subsidy",
     footerNote: "Building an accessible job platform.",
+    readMore: "Read more",
   },
   pl: {
     brandTagline: "Dostępna praca bez barier",
@@ -63,6 +64,7 @@ const translations: Record<Lang, Record<string, string>> = {
     incentiveUkraine: "Jednorazowa dotacja na adaptację",
     incentivePoland: "Miesięczne dofinansowanie wynagrodzeń",
     footerNote: "Budujemy dostępną platformę pracy.",
+    readMore: "Czytaj więcej",
   },
   uk: {
     brandTagline: "Доступна робота без бар'єрів",
@@ -87,25 +89,31 @@ const translations: Record<Lang, Record<string, string>> = {
     incentiveUkraine: "Одноразова адаптаційна субсидія",
     incentivePoland: "Щомісячна субсидія на зарплату",
     footerNote: "Будуємо доступну платформу для працевлаштування.",
+    readMore: "Читати далі",
   },
 };
 
 function ArticleCard({
   title,
-  content,
+  excerpt,
+  slug,
   lang,
+  readMore,
 }: {
   title: string;
-  content: React.ReactNode;
+  excerpt: string;
+  slug: string;
   lang: string;
+  readMore: string;
 }) {
   return (
-    <article className="rounded-3xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-sm">
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">{title}</h2>
-      <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
-        {content}
-      </div>
-    </article>
+    <Link href={`/articles/${slug}`}>
+      <article className="rounded-3xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-sm hover:ring-slate-300 hover:shadow-md transition-all cursor-pointer">
+        <h2 className="text-2xl font-bold text-slate-900 mb-4">{title}</h2>
+        <p className="text-slate-600 mb-4 line-clamp-3">{excerpt}</p>
+        <span className="text-slate-900 font-medium hover:underline">{readMore} →</span>
+      </article>
+    </Link>
   );
 }
 
@@ -543,14 +551,26 @@ export default function ArticlesPage() {
           <div className="space-y-8">
             <ArticleCard
               title={lang === "en" ? "The Inclusivity Revolution" : lang === "uk" ? "Реформа 2026" : "Inkluzywny rynek pracy 2026"}
-              content={lang === "en" ? articleEN : lang === "uk" ? articleUK : articlePL}
+              excerpt={lang === "en" 
+                ? "As of 2026, both Ukraine and Poland have intensified their efforts to integrate persons with disabilities into the labor market. A comparison of strategies and outcomes." 
+                : lang === "uk" 
+                ? "2026 рік став поворотним для інклюзивного ринку праці України. Порівняння стратегій та результатів з Польщею." 
+                : "W 2026 roku Polska i Ukraina wdrażają kluczowe zmiany w przepisach dotyczących zatrudniania osób z niepełnosprawnościami."}
+              slug="inclusivity-revolution"
               lang={lang}
+              readMore={t.readMore}
             />
 
             <ArticleCard
               title={lang === "en" ? "How Do People with Disabilities Find Jobs?" : lang === "uk" ? "Як люди з інвалідністю знаходять роботу?" : "Jak osoby z niepełnosprawnościami znajdują pracę?"}
-              content={lang === "en" ? article2EN : lang === "uk" ? article2UK : article2PL}
+              excerpt={lang === "en" 
+                ? "Finding a job is rarely simple. For people with disabilities, it often involves additional barriers. Understanding how people typically search for work helps us design better systems." 
+                : lang === "uk" 
+                ? "Пошук роботи рідко буває простим. Для людей з інвалідністю цей процес часто пов'язаний з додатковими бар'єрами та невизначеністю." 
+                : "Znalezienie pracy rzadko bywa proste. Dla osób z niepełnosprawnościami proces ten często wiąże się z dodatkowymi barierami."}
+              slug="finding-jobs"
               lang={lang}
+              readMore={t.readMore}
             />
 
             {/* CMS Articles */}
@@ -558,14 +578,10 @@ export default function ArticlesPage() {
               <ArticleCard
                 key={article.id}
                 title={lang === "en" ? article.titleEn : lang === "uk" ? article.titleUk : article.titlePl}
-                content={
-                  <div 
-                    dangerouslySetInnerHTML={{ 
-                      __html: lang === "en" ? article.contentEn : lang === "uk" ? article.contentUk : article.contentPl 
-                    }} 
-                  />
-                }
+                excerpt={(lang === "en" ? article.contentEn : lang === "uk" ? article.contentUk : article.contentPl).substring(0, 200) + "..."}
+                slug={article.id}
                 lang={lang}
+                readMore={t.readMore}
               />
             ))}
 
