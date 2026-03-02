@@ -167,6 +167,284 @@ export default function ArticlesPage() {
     </>
   );
 
+  const article2EN = (
+    <>
+      <h3 className="text-xl font-semibold mt-0 mb-4">How Do People with Disabilities Usually Find Jobs?</h3>
+      <p className="mb-4">
+        Finding a job is rarely simple. For people with disabilities, it often involves additional barriers, extra decisions, and more uncertainty — even when skills and experience are strong.
+      </p>
+      <p className="mb-4">Understanding how people typically search for work helps us design better, more accessible systems.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">1. Through Personal Networks</h4>
+      <p className="mb-2">Many people find jobs through:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>friends and family</li>
+        <li>former colleagues</li>
+        <li>online communities</li>
+        <li>disability-focused organizations</li>
+      </ul>
+      <p className="mb-4"><strong>Why does this work?</strong> Because trust reduces bias. When someone recommends a candidate, employers focus more on skills and less on assumptions.</p>
+      <p className="mb-4 text-slate-500 italic">The challenge: not everyone has access to strong professional networks.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">2. Through NGOs and Disability Employment Programs</h4>
+      <p className="mb-2">Many candidates work with:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>foundations</li>
+        <li>career counselors</li>
+        <li>job coaches</li>
+        <li>supported employment programs</li>
+      </ul>
+      <p className="mb-4">These organizations often help with CV preparation, interview practice, and direct connections to inclusive employers.</p>
+      <p className="mb-4 text-slate-500 italic">The challenge: limited capacity and limited number of partner companies.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">3. Through Public Employment Services</h4>
+      <p className="mb-2">Public institutions may offer:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>job databases</li>
+        <li>subsidized employment schemes</li>
+        <li>internships</li>
+        <li>vocational training</li>
+      </ul>
+      <p className="mb-4">However, support is often standardized and not always adapted to individual accessibility needs.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">4. Through Online Job Platforms</h4>
+      <p className="mb-2">Many candidates apply via:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>job portals</li>
+        <li>LinkedIn</li>
+        <li>company websites</li>
+        <li>remote work platforms</li>
+      </ul>
+      <p className="mb-4">Remote roles are especially important for many people with mobility, health, or energy limitations.</p>
+      <p className="mb-4 text-slate-500 italic">The challenge: recruitment processes are often not accessible (non-accessible forms, required in-person steps, unclear accommodation policies).</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">5. Through Training and Reskilling Programs</h4>
+      <p className="mb-2">Some people enter the labor market through:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>vocational rehabilitation</li>
+        <li>IT or digital reskilling programs</li>
+        <li>internships</li>
+      </ul>
+      <p className="mb-4">These pathways can build confidence and skills. But training does not always guarantee employment if employers are not actively involved.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">6. Through Self-Employment</h4>
+      <p className="mb-2">When traditional employment feels inaccessible, many choose:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>freelancing</li>
+        <li>microbusinesses</li>
+        <li>online services</li>
+      </ul>
+      <p className="mb-4">This offers flexibility — but often comes with unstable income and lack of social protection.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">The Hidden Question: "Should I Disclose?"</h4>
+      <p className="mb-2">Many people with disabilities face an additional internal dilemma:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>Should I disclose my disability?</li>
+        <li>Will I be judged?</li>
+        <li>Will accommodations be provided?</li>
+        <li>Will I lose benefits if I start working?</li>
+      </ul>
+      <p className="mb-4">This emotional and practical uncertainty makes the job search more complex than it appears.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">What Makes the Difference?</h4>
+      <p className="mb-2">Employment becomes easier when:</p>
+      <ol className="list-decimal pl-6 mb-4 space-y-1">
+        <li>Skills are clearly identified</li>
+        <li>Workplace needs are openly discussed</li>
+        <li>Employers are genuinely prepared</li>
+      </ol>
+      <p className="mb-4"><strong>Inclusive hiring is not charity. It is structured, skills-based recruitment with practical accessibility.</strong></p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">Why Prosvasimi Exists</h4>
+      <p className="mb-4">Prosvasimi connects qualified candidates with employers who are ready for real accessibility.</p>
+      <p className="font-medium">We believe employment should be based on competence — not barriers.</p>
+    </>
+  );
+
+  const article2UK = (
+    <>
+      <h3 className="text-xl font-semibold mt-0 mb-4">Як люди з інвалідністю зазвичай знаходять роботу?</h3>
+      <p className="mb-4">
+        Пошук роботи рідко буває простим. Для людей з інвалідністю цей процес часто пов'язаний з додатковими бар'єрами та невизначеністю — навіть за наявності необхідних навичок.
+      </p>
+      <p className="mb-4">Розуміння цих шляхів допомагає створювати більш доступний ринок праці.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">1. Через особисті контакти</h4>
+      <p className="mb-2">Багато людей знаходять роботу через:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>друзів і родину</li>
+        <li>колишніх колег</li>
+        <li>онлайн-спільноти</li>
+        <li>організації підтримки</li>
+      </ul>
+      <p className="mb-4"><strong>Чому це працює?</strong> Довіра зменшує упередження та зміщує фокус на компетенції.</p>
+      <p className="mb-4 text-slate-500 italic">Проблема: не всі мають широку професійну мережу.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">2. Через громадські організації та програми підтримки</h4>
+      <p className="mb-2">Допомога включає:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>кар'єрні консультації</li>
+        <li>job-коучинг</li>
+        <li>програми підтриманого працевлаштування</li>
+      </ul>
+      <p className="mb-4">Такі програми допомагають із підготовкою резюме та встановленням контактів з інклюзивними роботодавцями.</p>
+      <p className="mb-4 text-slate-500 italic">Обмеження: ресурси часто обмежені.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">3. Через державні служби зайнятості</h4>
+      <p className="mb-2">Служби пропонують:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>бази вакансій</li>
+        <li>стажування</li>
+        <li>навчання</li>
+        <li>фінансові стимули для роботодавців</li>
+      </ul>
+      <p className="mb-4">Проте підтримка не завжди враховує індивідуальні потреби доступності.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">4. Через онлайн-платформи</h4>
+      <p className="mb-2">Кандидати подають заявки через:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>сайти вакансій</li>
+        <li>LinkedIn</li>
+        <li>кар'єрні сторінки компаній</li>
+        <li>платформи дистанційної роботи</li>
+      </ul>
+      <p className="mb-4">Дистанційна робота особливо важлива для багатьох людей.</p>
+      <p className="mb-4 text-slate-500 italic">Проблема: процеси рекрутингу часто недоступні.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">5. Через навчання та перекваліфікацію</h4>
+      <p className="mb-2">Деякі входять на ринок через:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>професійну реабілітацію</li>
+        <li>ІТ-курси</li>
+        <li>стажування</li>
+      </ul>
+      <p className="mb-4">Це підвищує впевненість і навички, але не завжди гарантує роботу.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">6. Самозайнятість</h4>
+      <p className="mb-2">Деякі обирають:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>фриланс</li>
+        <li>малий бізнес</li>
+        <li>онлайн-послуги</li>
+      </ul>
+      <p className="mb-4">Це дає гнучкість, але доходи можуть бути нестабільними.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">Приховане питання: чи розкривати інформацію?</h4>
+      <p className="mb-2">Багато людей запитують себе:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>Чи повідомляти про інвалідність?</li>
+        <li>Чи буде дискримінація?</li>
+        <li>Чи забезпечать адаптацію?</li>
+        <li>Чи не втрачу я соціальні виплати?</li>
+      </ul>
+      <p className="mb-4">Це додає психологічного навантаження до пошуку роботи.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">Що реально допомагає?</h4>
+      <ol className="list-decimal pl-6 mb-4 space-y-1">
+        <li>Чітке визначення навичок</li>
+        <li>Відкритий діалог про потреби</li>
+        <li>Підготовленість роботодавця</li>
+      </ol>
+      <p className="mb-4"><strong>Інклюзивне працевлаштування — це професійний підхід, а не благодійність.</strong></p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">Навіщо існує Prosvasimi?</h4>
+      <p className="mb-4">Prosvasimi з'єднує кваліфікованих кандидатів із роботодавцями, готовими до реальної доступності.</p>
+      <p className="font-medium">Бо робота має залежати від компетенцій — а не від бар'єрів.</p>
+    </>
+  );
+
+  const article2PL = (
+    <>
+      <h3 className="text-xl font-semibold mt-0 mb-4">Jak osoby z niepełnosprawnościami zazwyczaj znajdują pracę?</h3>
+      <p className="mb-4">
+        Znalezienie pracy rzadko bywa proste. Dla osób z niepełnosprawnościami proces ten często wiąże się z dodatkowymi barierami, decyzjami i niepewnością — nawet jeśli posiadają odpowiednie kwalifikacje.
+      </p>
+      <p className="mb-4">Zrozumienie tych ścieżek pozwala budować bardziej dostępny rynek pracy.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">1. Przez sieci kontaktów</h4>
+      <p className="mb-2">Wiele osób znajduje pracę dzięki:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>rodzinie i znajomym</li>
+        <li>byłym współpracownikom</li>
+        <li>społecznościom online</li>
+        <li>organizacjom wspierającym osoby z niepełnosprawnościami</li>
+      </ul>
+      <p className="mb-4"><strong>Dlaczego to działa?</strong> Zaufanie zmniejsza uprzedzenia. Rekomendacja pomaga skupić się na kompetencjach.</p>
+      <p className="mb-4 text-slate-500 italic">Problem: nie każdy ma rozbudowaną sieć kontaktów zawodowych.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">2. Przez fundacje i programy wspierające zatrudnienie</h4>
+      <p className="mb-2">Osoby korzystają z:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>doradztwa zawodowego</li>
+        <li>coachingu pracy</li>
+        <li>programów zatrudnienia wspieranego</li>
+      </ul>
+      <p className="mb-4">Takie organizacje pomagają przygotować CV, ćwiczyć rozmowy kwalifikacyjne i łączą kandydatów z inkluzywnymi pracodawcami.</p>
+      <p className="mb-4 text-slate-500 italic">Ograniczenie: liczba miejsc i partnerów jest często niewystarczająca.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">3. Przez publiczne służby zatrudnienia</h4>
+      <p className="mb-2">Urzędy pracy oferują:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>bazy ofert</li>
+        <li>staże</li>
+        <li>szkolenia</li>
+        <li>dofinansowania dla pracodawców</li>
+      </ul>
+      <p className="mb-4">Jednak wsparcie bywa ogólne i nie zawsze dostosowane do indywidualnych potrzeb.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">4. Przez platformy internetowe</h4>
+      <p className="mb-2">Kandydaci aplikują przez:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>portale pracy</li>
+        <li>LinkedIn</li>
+        <li>strony firmowe</li>
+        <li>platformy pracy zdalnej</li>
+      </ul>
+      <p className="mb-4">Praca zdalna ma szczególne znaczenie dla wielu osób.</p>
+      <p className="mb-4 text-slate-500 italic">Problem: procesy rekrutacyjne bywają niedostępne (formularze niedostosowane, brak informacji o dostosowaniach).</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">5. Przez szkolenia i przekwalifikowanie</h4>
+      <p className="mb-2">Część osób wchodzi na rynek pracy przez:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>rehabilitację zawodową</li>
+        <li>kursy IT</li>
+        <li>programy stażowe</li>
+      </ul>
+      <p className="mb-4">Szkolenia budują kompetencje, ale nie zawsze prowadzą bezpośrednio do zatrudnienia.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">6. Samozatrudnienie</h4>
+      <p className="mb-2">Niektórzy wybierają:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>freelancing</li>
+        <li>małą działalność</li>
+        <li>usługi online</li>
+      </ul>
+      <p className="mb-4">Daje to elastyczność, ale wiąże się z niestabilnością dochodów.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">Dodatkowe wyzwanie: ujawnienie niepełnosprawności</h4>
+      <p className="mb-2">Wielu kandydatów zastanawia się:</p>
+      <ul className="list-disc pl-6 mb-4 space-y-1">
+        <li>Czy powiedzieć o niepełnosprawności?</li>
+        <li>Czy spotkam się z uprzedzeniami?</li>
+        <li>Czy otrzymam potrzebne dostosowanie?</li>
+        <li>Czy stracę świadczenia?</li>
+      </ul>
+      <p className="mb-4">Ta niepewność zwiększa stres związany z rekrutacją.</p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">Co zmienia sytuację?</h4>
+      <ol className="list-decimal pl-6 mb-4 space-y-1">
+        <li>Jasne określenie kompetencji</li>
+        <li>Otwarte rozmowy o potrzebach</li>
+        <li>Gotowość pracodawcy</li>
+      </ol>
+      <p className="mb-4"><strong>Inkluzywne zatrudnienie to profesjonalny proces, nie działanie charytatywne.</strong></p>
+
+      <h4 className="text-lg font-semibold mt-6 mb-3">Dlaczego powstało Prosvasimi?</h4>
+      <p className="mb-4">Prosvasimi łączy kompetentnych kandydatów z pracodawcami gotowymi na realną dostępność.</p>
+      <p className="font-medium">Bo praca powinna zależeć od umiejętności — nie od barier.</p>
+    </>
+  );
+
   const articlePL = (
     <>
       <h3 className="text-xl font-semibold mt-0 mb-4">Inkluzywny rynek pracy 2026: Polska i Ukraina – analiza porównawcza</h3>
@@ -237,6 +515,12 @@ export default function ArticlesPage() {
             <ArticleCard
               title={lang === "en" ? "The Inclusivity Revolution" : lang === "uk" ? "Реформа 2026" : "Inkluzywny rynek pracy 2026"}
               content={lang === "en" ? articleEN : lang === "uk" ? articleUK : articlePL}
+              lang={lang}
+            />
+
+            <ArticleCard
+              title={lang === "en" ? "How Do People with Disabilities Find Jobs?" : lang === "uk" ? "Як люди з інвалідністю знаходять роботу?" : "Jak osoby z niepełnosprawnościami znajdują pracę?"}
+              content={lang === "en" ? article2EN : lang === "uk" ? article2UK : article2PL}
               lang={lang}
             />
 
