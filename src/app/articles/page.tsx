@@ -1,7 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+
+interface CMSArticle {
+  id: string;
+  titleEn: string;
+  titleUk: string;
+  titlePl: string;
+  contentEn: string;
+  contentUk: string;
+  contentPl: string;
+}
 
 type Lang = "en" | "pl" | "uk";
 
@@ -101,7 +111,26 @@ function ArticleCard({
 
 export default function ArticlesPage() {
   const [lang, setLang] = useState<Lang>("en");
+  const [cmsArticles, setCmsArticles] = useState<CMSArticle[]>([]);
+  const [loading, setLoading] = useState(true);
   const t = translations[lang];
+
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        const res = await fetch('/api/articles');
+        if (res.ok) {
+          const data = await res.json();
+          setCmsArticles(data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch CMS articles:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchArticles();
+  }, []);
 
   const articleEN = (
     <>
@@ -523,6 +552,22 @@ export default function ArticlesPage() {
               content={lang === "en" ? article2EN : lang === "uk" ? article2UK : article2PL}
               lang={lang}
             />
+
+            {/* CMS Articles */}
+            {cmsArticles.map((article) => (
+              <ArticleCard
+                key={article.id}
+                title={lang === "en" ? article.titleEn : lang === "uk" ? article.titleUk : article.titlePl}
+                content={
+                  <div 
+                    dangerouslySetInnerHTML={{ 
+                      __html: lang === "en" ? article.contentEn : lang === "uk" ? article.contentUk : article.contentPl 
+                    }} 
+                  />
+                }
+                lang={lang}
+              />
+            ))}
 
             {/* Comparison Table */}
             <div className="rounded-3xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-sm">
