@@ -235,21 +235,9 @@ export default function ArticlesPage() {
 
           <div className="space-y-8">
             <ArticleCard
-              title="🇬🇧 English"
-              content={articleEN}
-              lang="en"
-            />
-
-            <ArticleCard
-              title="🇺🇦 Українська"
-              content={articleUK}
-              lang="uk"
-            />
-
-            <ArticleCard
-              title="🇵🇱 Polski"
-              content={articlePL}
-              lang="pl"
+              title={lang === "en" ? "The Inclusivity Revolution" : lang === "uk" ? "Реформа 2026" : "Inkluzywny rynek pracy 2026"}
+              content={lang === "en" ? articleEN : lang === "uk" ? articleUK : articlePL}
+              lang={lang}
             />
 
             {/* Comparison Table */}
