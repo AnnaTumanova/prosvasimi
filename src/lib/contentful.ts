@@ -1,9 +1,25 @@
-import { createClient } from 'contentful';
+import { createClient, ContentfulClientApi } from 'contentful';
 
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID || '',
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
-});
+let client: ContentfulClientApi<undefined> | null = null;
+
+function getClient(): ContentfulClientApi<undefined> | null {
+  if (client) return client;
+  
+  const spaceId = process.env.CONTENTFUL_SPACE_ID;
+  const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+  
+  if (!spaceId || !accessToken) {
+    console.warn('Contentful credentials not configured');
+    return null;
+  }
+  
+  client = createClient({
+    space: spaceId,
+    accessToken: accessToken,
+  });
+  
+  return client;
+}
 
 export interface Article {
   id: string;
@@ -19,8 +35,13 @@ export interface Article {
 }
 
 export async function getArticles(): Promise<Article[]> {
+  const contentfulClient = getClient();
+  if (!contentfulClient) {
+    return [];
+  }
+  
   try {
-    const entries = await client.getEntries({
+    const entries = await contentfulClient.getEntries({
       content_type: 'article',
       order: ['-sys.createdAt'],
     });
@@ -44,8 +65,13 @@ export async function getArticles(): Promise<Article[]> {
 }
 
 export async function getArticleById(id: string): Promise<Article | null> {
+  const contentfulClient = getClient();
+  if (!contentfulClient) {
+    return null;
+  }
+  
   try {
-    const entry = await client.getEntry(id);
+    const entry = await contentfulClient.getEntry(id);
     return {
       id: entry.sys.id,
       titleEn: (entry.fields as any).titleEn || '',
