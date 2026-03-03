@@ -189,9 +189,6 @@ export default function Page() {
       footerFor: "For whom",
       footerHow: "How it works",
       footerEarly: "Early access",
-      footerLang: "Language: EN / PL / UK",
-      footerNote:
-        "This is an MVP page. Replace the mock submit with your backend endpoint or a no‑code form tool.",
       successModalTitle: "You're on the list!",
       successModalMessage: "Thank you for joining the Prosvasimi waitlist. We'll notify you when pilots open in your region.",
       successModalButton: "Got it",
@@ -284,9 +281,6 @@ export default function Page() {
       footerFor: "Dla kogo",
       footerHow: "Jak to działa",
       footerEarly: "Wczesny dostęp",
-      footerLang: "Język: EN / PL / UK",
-      footerNote:
-        "To strona MVP. Zastąp symulację wysyłki swoim backendem lub narzędziem bez‑kodowym.",
       successModalTitle: "Jesteś na liście!",
       successModalMessage: "Dziękujemy za dołączenie do listy oczekujących Prosvasimi. Powiadomimy Cię, gdy pilotaże ruszą w Twoim regionie.",
       successModalButton: "Rozumiem",
@@ -366,9 +360,6 @@ export default function Page() {
       footerFor: "Для кого",
       footerHow: "Як це працює",
       footerEarly: "Ранній доступ",
-      footerLang: "Мова: EN / PL / UK",
-      footerNote:
-        "Це MVP сторінка. Замініть тестову відправку на ваш бекенд або інструмент без коду.",
       successModalTitle: "Ви у списку!",
       successModalMessage: "Дякуємо за приєднання до списку очікування Prosvasimi. Ми повідомимо вас, коли пілотні проекти відкриються у вашому регіоні.",
       successModalButton: "Зрозуміло",
@@ -588,10 +579,6 @@ export default function Page() {
             <a href="#for" className="hover:text-slate-700">{t.footerFor}</a>
             <a href="#how" className="hover:text-slate-700">{t.footerHow}</a>
             <a href="#waitlist" className="hover:text-slate-700">{t.footerEarly}</a>
-          </div>
-          <div className="text-slate-500">
-            <p className="mb-2">{t.footerLang}</p>
-            <p className="text-xs">{t.footerNote}</p>
           </div>
         </div>
       </footer>
