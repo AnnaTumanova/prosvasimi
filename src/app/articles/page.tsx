@@ -6,14 +6,14 @@ import Link from "next/link";
 interface CMSArticle {
   id: string;
   titleEn: string;
-  titleUk: string;
+  titleUa: string;
   titlePl: string;
   contentEn: string;
-  contentUk: string;
+  contentUa: string;
   contentPl: string;
 }
 
-type Lang = "en" | "pl" | "uk";
+type Lang = "en" | "pl" | "ua";
 
 const translations: Record<Lang, Record<string, string>> = {
   en: {
@@ -66,7 +66,7 @@ const translations: Record<Lang, Record<string, string>> = {
     footerNote: "Budujemy dostępną platformę pracy.",
     readMore: "Czytaj więcej",
   },
-  uk: {
+  ua: {
     brandTagline: "Доступна робота без бар'єрів",
     navHome: "Головна",
     navArticles: "Статті",
@@ -534,8 +534,8 @@ export default function ArticlesPage() {
               PL
             </button>
             <span aria-hidden>·</span>
-            <button type="button" onClick={() => setLang("uk")} aria-pressed={lang === "uk"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "uk" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
-              UK
+            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "ua" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
+              UA
             </button>
           </div>
         </div>
@@ -550,10 +550,10 @@ export default function ArticlesPage() {
 
           <div className="space-y-8">
             <ArticleCard
-              title={lang === "en" ? "The Inclusivity Revolution" : lang === "uk" ? "Реформа 2026" : "Inkluzywny rynek pracy 2026"}
+              title={lang === "en" ? "The Inclusivity Revolution" : lang === "ua" ? "Реформа 2026" : "Inkluzywny rynek pracy 2026"}
               excerpt={lang === "en" 
                 ? "As of 2026, both Ukraine and Poland have intensified their efforts to integrate persons with disabilities into the labor market. A comparison of strategies and outcomes." 
-                : lang === "uk" 
+                : lang === "ua" 
                 ? "2026 рік став поворотним для інклюзивного ринку праці України. Порівняння стратегій та результатів з Польщею." 
                 : "W 2026 roku Polska i Ukraina wdrażają kluczowe zmiany w przepisach dotyczących zatrudniania osób z niepełnosprawnościami."}
               slug="inclusivity-revolution"
@@ -562,10 +562,10 @@ export default function ArticlesPage() {
             />
 
             <ArticleCard
-              title={lang === "en" ? "How Do People with Disabilities Find Jobs?" : lang === "uk" ? "Як люди з інвалідністю знаходять роботу?" : "Jak osoby z niepełnosprawnościami znajdują pracę?"}
+              title={lang === "en" ? "How Do People with Disabilities Find Jobs?" : lang === "ua" ? "Як люди з інвалідністю знаходять роботу?" : "Jak osoby z niepełnosprawnościami znajdują pracę?"}
               excerpt={lang === "en" 
                 ? "Finding a job is rarely simple. For people with disabilities, it often involves additional barriers. Understanding how people typically search for work helps us design better systems." 
-                : lang === "uk" 
+                : lang === "ua" 
                 ? "Пошук роботи рідко буває простим. Для людей з інвалідністю цей процес часто пов'язаний з додатковими бар'єрами та невизначеністю." 
                 : "Znalezienie pracy rzadko bywa proste. Dla osób z niepełnosprawnościami proces ten często wiąże się z dodatkowymi barierami."}
               slug="finding-jobs"
@@ -577,8 +577,8 @@ export default function ArticlesPage() {
             {cmsArticles.map((article) => (
               <ArticleCard
                 key={article.id}
-                title={lang === "en" ? article.titleEn : lang === "uk" ? article.titleUk : article.titlePl}
-                excerpt={(lang === "en" ? article.contentEn : lang === "uk" ? article.contentUk : article.contentPl).substring(0, 200) + "..."}
+                title={lang === "en" ? article.titleEn : lang === "ua" ? article.titleUa : article.titlePl}
+                excerpt={(lang === "en" ? article.contentEn : lang === "ua" ? article.contentUa : article.contentPl).substring(0, 200) + "..."}
                 slug={article.id}
                 lang={lang}
                 readMore={t.readMore}

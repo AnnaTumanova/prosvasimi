@@ -104,7 +104,7 @@ function SuccessModal({
 }
 
 export default function Page() {
-  type Lang = "en" | "pl" | "uk";
+  type Lang = "en" | "pl" | "ua";
   const [lang, setLang] = useState<Lang>("en");
   const [role, setRole] = useState<"candidate" | "employer">("candidate");
   const [email, setEmail] = useState<string>("");
@@ -285,7 +285,7 @@ export default function Page() {
       successModalMessage: "Dziękujemy za dołączenie do listy oczekujących Prosvasimi. Powiadomimy Cię, gdy pilotaże ruszą w Twoim regionie.",
       successModalButton: "Rozumiem",
     },
-    uk: {
+    ua: {
       brandTagline: "Доступна робота без бар'єрів",
       navWhy: "Чому ми",
       navFor: "Для кого",
@@ -422,8 +422,8 @@ export default function Page() {
               PL
             </button>
             <span aria-hidden>·</span>
-            <button type="button" onClick={() => setLang("uk")} aria-pressed={lang === "uk"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "uk" ? "text-slate-900" : "hover:text-slate-900"}`}>
-              UK
+            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "ua" ? "text-slate-900" : "hover:text-slate-900"}`}>
+              UA
             </button>
           </div>
           <a href="#waitlist" className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 text-white px-4 py-2 text-sm font-medium shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-slate-400">

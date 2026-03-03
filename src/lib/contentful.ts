@@ -24,10 +24,10 @@ function getClient(): ContentfulClientApi<undefined> | null {
 export interface Article {
   id: string;
   titleEn: string;
-  titleUk: string;
+  titleUa: string;
   titlePl: string;
   contentEn: string;
-  contentUk: string;
+  contentUa: string;
   contentPl: string;
   published: boolean;
   createdAt: string;
@@ -49,10 +49,10 @@ export async function getArticles(): Promise<Article[]> {
     return entries.items.map((item: any) => ({
       id: item.sys.id,
       titleEn: item.fields.titleEn || '',
-      titleUk: item.fields.titleUk || '',
+      titleUa: item.fields.titleUa || '',
       titlePl: item.fields.titlePl || '',
       contentEn: item.fields.contentEn || '',
-      contentUk: item.fields.contentUk || '',
+      contentUa: item.fields.contentUa || '',
       contentPl: item.fields.contentPl || '',
       published: item.fields.published ?? true,
       createdAt: item.sys.createdAt,
@@ -75,10 +75,10 @@ export async function getArticleById(id: string): Promise<Article | null> {
     return {
       id: entry.sys.id,
       titleEn: (entry.fields as any).titleEn || '',
-      titleUk: (entry.fields as any).titleUk || '',
+      titleUa: (entry.fields as any).titleUa || '',
       titlePl: (entry.fields as any).titlePl || '',
       contentEn: (entry.fields as any).contentEn || '',
-      contentUk: (entry.fields as any).contentUk || '',
+      contentUa: (entry.fields as any).contentUa || '',
       contentPl: (entry.fields as any).contentPl || '',
       published: (entry.fields as any).published ?? true,
       createdAt: entry.sys.createdAt,

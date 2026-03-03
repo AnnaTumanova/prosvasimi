@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-type Lang = "en" | "pl" | "uk";
+type Lang = "en" | "pl" | "ua";
 
 const translations: Record<Lang, Record<string, string>> = {
   en: {
@@ -21,7 +21,7 @@ const translations: Record<Lang, Record<string, string>> = {
     backToArticles: "← Powrót do artykułów",
     footerNote: "Budujemy dostępną platformę pracy.",
   },
-  uk: {
+  ua: {
     brandTagline: "Доступна робота без бар'єрів",
     navHome: "Головна",
     navArticles: "Статті",
@@ -31,10 +31,10 @@ const translations: Record<Lang, Record<string, string>> = {
 };
 
 // Hardcoded articles data
-const hardcodedArticles: Record<string, { titleEn: string; titleUk: string; titlePl: string; contentEn: React.ReactNode; contentUk: React.ReactNode; contentPl: React.ReactNode }> = {
+const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titlePl: string; contentEn: React.ReactNode; contentUa: React.ReactNode; contentPl: React.ReactNode }> = {
   "inclusivity-revolution": {
     titleEn: "The Inclusivity Revolution: A 2026 Comparison of Ukraine and Poland",
-    titleUk: "Реформа 2026: Нові правила працевлаштування людей з інвалідністю в Україні та Польщі",
+    titleUa: "Реформа 2026: Нові правила працевлаштування людей з інвалідністю в Україні та Польщі",
     titlePl: "Inkluzywny rynek pracy 2026: Polska i Ukraina – analiza porównawcza",
     contentEn: (
       <>
@@ -70,7 +70,7 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUk: string; titl
         </ul>
       </>
     ),
-    contentUk: (
+    contentUa: (
       <>
         <p className="mb-4">
           2026 рік став поворотним для інклюзивного ринку праці України. З 1 січня набули чинності кардинальні зміни до законодавства, що наближають українські стандарти до європейських, зокрема польських.
@@ -125,7 +125,7 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUk: string; titl
   },
   "finding-jobs": {
     titleEn: "How Do People with Disabilities Usually Find Jobs?",
-    titleUk: "Як люди з інвалідністю зазвичай знаходять роботу?",
+    titleUa: "Як люди з інвалідністю зазвичай знаходять роботу?",
     titlePl: "Jak osoby z niepełnosprawnościami zazwyczaj znajdują pracę?",
     contentEn: (
       <>
@@ -219,7 +219,7 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUk: string; titl
         <p className="font-medium">We believe employment should be based on competence — not barriers.</p>
       </>
     ),
-    contentUk: (
+    contentUa: (
       <>
         <p className="mb-4">
           Пошук роботи рідко буває простим. Для людей з інвалідністю цей процес часто пов'язаний з додатковими бар'єрами та невизначеністю — навіть за наявності необхідних навичок.
@@ -405,10 +405,10 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUk: string; titl
 interface CMSArticle {
   id: string;
   titleEn: string;
-  titleUk: string;
+  titleUa: string;
   titlePl: string;
   contentEn: string;
-  contentUk: string;
+  contentUa: string;
   contentPl: string;
 }
 
@@ -449,20 +449,20 @@ export default function ArticlePage() {
 
   const getTitle = () => {
     if (hardcodedArticle) {
-      return lang === "en" ? hardcodedArticle.titleEn : lang === "uk" ? hardcodedArticle.titleUk : hardcodedArticle.titlePl;
+      return lang === "en" ? hardcodedArticle.titleEn : lang === "ua" ? hardcodedArticle.titleUa : hardcodedArticle.titlePl;
     }
     if (cmsArticle) {
-      return lang === "en" ? cmsArticle.titleEn : lang === "uk" ? cmsArticle.titleUk : cmsArticle.titlePl;
+      return lang === "en" ? cmsArticle.titleEn : lang === "ua" ? cmsArticle.titleUa : cmsArticle.titlePl;
     }
     return "";
   };
 
   const getContent = () => {
     if (hardcodedArticle) {
-      return lang === "en" ? hardcodedArticle.contentEn : lang === "uk" ? hardcodedArticle.contentUk : hardcodedArticle.contentPl;
+      return lang === "en" ? hardcodedArticle.contentEn : lang === "ua" ? hardcodedArticle.contentUa : hardcodedArticle.contentPl;
     }
     if (cmsArticle) {
-      const content = lang === "en" ? cmsArticle.contentEn : lang === "uk" ? cmsArticle.contentUk : cmsArticle.contentPl;
+      const content = lang === "en" ? cmsArticle.contentEn : lang === "ua" ? cmsArticle.contentUa : cmsArticle.contentPl;
       return <div dangerouslySetInnerHTML={{ __html: content }} />;
     }
     return null;
@@ -513,8 +513,8 @@ export default function ArticlePage() {
               PL
             </button>
             <span aria-hidden>·</span>
-            <button type="button" onClick={() => setLang("uk")} aria-pressed={lang === "uk"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "uk" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
-              UK
+            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "ua" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
+              UA
             </button>
           </div>
         </div>
