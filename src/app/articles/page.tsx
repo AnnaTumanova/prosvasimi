@@ -22,22 +22,6 @@ const translations: Record<Lang, Record<string, string>> = {
     navArticles: "Articles",
     pageTitle: "Articles & Research",
     pageSubtitle: "Data-driven insights on disability employment in Ukraine and Poland",
-    comparisonTitle: "Quick Comparison Table",
-    featureCol: "Feature",
-    ukraineCol: "Ukraine (2026)",
-    polandCol: "Poland (2026)",
-    quotaRow: "Quota",
-    penaltyRow: "Penalty/Levy",
-    employmentRow: "Employment Rate",
-    incentiveRow: "Main Incentive",
-    quotaUkraine: "4% (Firms 25+)",
-    quotaPoland: "6% (Firms 25+)",
-    penaltyUkraine: "40% of avg. salary (Quarterly)",
-    penaltyPoland: "40.65% of avg. salary (Monthly)",
-    employmentUkraine: "~17%",
-    employmentPoland: "~31%",
-    incentiveUkraine: "One-time adaptation grant",
-    incentivePoland: "Monthly wage subsidy",
     footerNote: "Building an accessible job platform.",
     readMore: "Read more",
   },
@@ -47,22 +31,6 @@ const translations: Record<Lang, Record<string, string>> = {
     navArticles: "Artykuły",
     pageTitle: "Artykuły i badania",
     pageSubtitle: "Analiza zatrudnienia osób z niepełnosprawnościami w Ukrainie i Polsce",
-    comparisonTitle: "Tabela porównawcza",
-    featureCol: "Cecha",
-    ukraineCol: "Ukraina (2026)",
-    polandCol: "Polska (2026)",
-    quotaRow: "Kwota",
-    penaltyRow: "Kara/Składka",
-    employmentRow: "Wskaźnik zatrudnienia",
-    incentiveRow: "Główna zachęta",
-    quotaUkraine: "4% (Firmy 25+)",
-    quotaPoland: "6% (Firmy 25+)",
-    penaltyUkraine: "40% śr. wynagrodzenia (kwartalnie)",
-    penaltyPoland: "40,65% śr. wynagrodzenia (miesięcznie)",
-    employmentUkraine: "~17%",
-    employmentPoland: "~31%",
-    incentiveUkraine: "Jednorazowa dotacja na adaptację",
-    incentivePoland: "Miesięczne dofinansowanie wynagrodzeń",
     footerNote: "Budujemy dostępną platformę pracy.",
     readMore: "Czytaj więcej",
   },
@@ -72,22 +40,6 @@ const translations: Record<Lang, Record<string, string>> = {
     navArticles: "Статті",
     pageTitle: "Статті та дослідження",
     pageSubtitle: "Аналіз працевлаштування людей з інвалідністю в Україні та Польщі",
-    comparisonTitle: "Підсумкова таблиця",
-    featureCol: "Характеристика",
-    ukraineCol: "Україна (2026)",
-    polandCol: "Польща (2026)",
-    quotaRow: "Квота",
-    penaltyRow: "Штраф/Внесок",
-    employmentRow: "Рівень зайнятості",
-    incentiveRow: "Основний стимул",
-    quotaUkraine: "4% (Фірми 25+)",
-    quotaPoland: "6% (Фірми 25+)",
-    penaltyUkraine: "40% сер. зарплати (щоквартально)",
-    penaltyPoland: "40,65% сер. зарплати (щомісяця)",
-    employmentUkraine: "~17%",
-    employmentPoland: "~31%",
-    incentiveUkraine: "Одноразова адаптаційна субсидія",
-    incentivePoland: "Щомісячна субсидія на зарплату",
     footerNote: "Будуємо доступну платформу для працевлаштування.",
     readMore: "Читати далі",
   },
@@ -99,19 +51,32 @@ function ArticleCard({
   slug,
   lang,
   readMore,
+  image,
 }: {
   title: string;
   excerpt: string;
   slug: string;
   lang: string;
   readMore: string;
+  image?: string;
 }) {
   return (
     <Link href={`/articles/${slug}`}>
-      <article className="rounded-3xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-sm hover:ring-slate-300 hover:shadow-md transition-all cursor-pointer">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">{title}</h2>
-        <p className="text-slate-600 mb-4 line-clamp-3">{excerpt}</p>
-        <span className="text-slate-900 font-medium hover:underline">{readMore} →</span>
+      <article className="group rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:ring-slate-300 hover:shadow-lg transition-all cursor-pointer overflow-hidden flex flex-col sm:flex-row">
+        {image && (
+          <div className="sm:w-72 h-48 sm:h-auto flex-shrink-0 bg-slate-100">
+            <img 
+              src={image} 
+              alt={title} 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        )}
+        <div className="p-6 sm:p-8 flex flex-col justify-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">{title}</h2>
+          <p className="text-slate-600 mb-4 line-clamp-3">{excerpt}</p>
+          <span className="text-slate-900 font-medium group-hover:underline">{readMore} →</span>
+        </div>
       </article>
     </Link>
   );
@@ -559,6 +524,7 @@ export default function ArticlesPage() {
               slug="inclusivity-revolution"
               lang={lang}
               readMore={t.readMore}
+              image="/images/articles/inclusivity-revolution.svg"
             />
 
             <ArticleCard
@@ -571,6 +537,7 @@ export default function ArticlesPage() {
               slug="finding-jobs"
               lang={lang}
               readMore={t.readMore}
+              image="/images/articles/finding-jobs.svg"
             />
 
             <ArticleCard
@@ -583,6 +550,7 @@ export default function ArticlesPage() {
               slug="practical-guide"
               lang={lang}
               readMore={t.readMore}
+              image="/images/articles/practical-guide.svg"
             />
 
             {/* CMS Articles */}
@@ -596,44 +564,6 @@ export default function ArticlesPage() {
                 readMore={t.readMore}
               />
             ))}
-
-            {/* Comparison Table */}
-            <div className="rounded-3xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-sm">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">{t.comparisonTitle}</h2>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-slate-200">
-                      <th className="text-left py-3 px-4 font-semibold">{t.featureCol}</th>
-                      <th className="text-left py-3 px-4 font-semibold">{t.ukraineCol}</th>
-                      <th className="text-left py-3 px-4 font-semibold">{t.polandCol}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    <tr>
-                      <td className="py-3 px-4 font-medium">{t.quotaRow}</td>
-                      <td className="py-3 px-4">{t.quotaUkraine}</td>
-                      <td className="py-3 px-4">{t.quotaPoland}</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-medium">{t.penaltyRow}</td>
-                      <td className="py-3 px-4">{t.penaltyUkraine}</td>
-                      <td className="py-3 px-4">{t.penaltyPoland}</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-medium">{t.employmentRow}</td>
-                      <td className="py-3 px-4">{t.employmentUkraine}</td>
-                      <td className="py-3 px-4">{t.employmentPoland}</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-medium">{t.incentiveRow}</td>
-                      <td className="py-3 px-4">{t.incentiveUkraine}</td>
-                      <td className="py-3 px-4">{t.incentivePoland}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
           </div>
         </div>
       </main>
