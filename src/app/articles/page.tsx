@@ -573,6 +573,18 @@ export default function ArticlesPage() {
               readMore={t.readMore}
             />
 
+            <ArticleCard
+              title={lang === "en" ? "A Practical Guide to Inclusive Employment" : lang === "ua" ? "Практичний посібник з інклюзивного працевлаштування" : "Praca osób z niepełnosprawnościami: praktyczny poradnik"}
+              excerpt={lang === "en" 
+                ? "Work is more than income—it's independence, identity, and access to opportunity. Learn what disability-friendly jobs actually means, how to find inclusive employers, and practical steps for both jobseekers and employers." 
+                : lang === "ua" 
+                ? "Робота — це більше, ніж дохід. Це незалежність, ідентичність та доступ до можливостей. Дізнайтеся, що насправді означає «робота, дружня до інвалідності», як знайти інклюзивних роботодавців та практичні кроки для кандидатів і роботодавців." 
+                : "Rynek pracy zmienia się szybciej niż kiedykolwiek. Dowiedz się, czym są racjonalne usprawnienia, jak szukać pracy skuteczniej i jak pracodawcy mogą tworzyć miejsca pracy bez barier."}
+              slug="practical-guide"
+              lang={lang}
+              readMore={t.readMore}
+            />
+
             {/* CMS Articles */}
             {cmsArticles.map((article) => (
               <ArticleCard

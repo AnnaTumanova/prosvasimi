@@ -400,6 +400,281 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
       </>
     ),
   },
+  "practical-guide": {
+    titleEn: "Work and Careers for People with Disabilities: A Practical Guide to Inclusive Employment",
+    titleUa: "Робота та кар'єра для людей з інвалідністю: практичний посібник з інклюзивного працевлаштування",
+    titlePl: "Praca osób z niepełnosprawnościami w Polsce: jak znaleźć zatrudnienie i jak tworzyć miejsca pracy bez barier",
+    contentEn: (
+      <>
+        <img src="/images/articles/inclusive-workplace.svg" alt="Inclusive workplace illustration" className="w-full rounded-xl mb-8" />
+        
+        <h4 className="text-lg font-semibold mt-6 mb-3">Why disability-inclusive employment matters</h4>
+        <p className="mb-4">
+          Work is more than income—it's independence, identity, social connection, and access to opportunity. Yet many countries still face a persistent <strong>disability employment gap</strong>, meaning disabled people are employed at lower rates than non-disabled people.
+        </p>
+        <p className="mb-4">
+          For employers, disability inclusion isn't only a social good. Evidence-based research shows that many common employer worries (about cost, performance, or risk) are often overstated, and that better practices across the hiring lifecycle can improve outcomes.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">What "disability-friendly jobs" actually means</h4>
+        <p className="mb-4">
+          A disability-friendly job isn't a special job category—it's a role where barriers are removed so the person can do the work effectively. That usually comes down to three things:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Accessible hiring</strong> (applications, interviews, assessments, communication)</li>
+          <li><strong>Reasonable accommodations</strong> (adjustments that enable performance without undue burden)</li>
+          <li><strong>Inclusive management</strong> (clear expectations, flexibility where possible, and psychologically safe culture)</li>
+        </ul>
+        <p className="mb-4">
+          Importantly, "reasonable accommodation" is a recognized concept in employment equality frameworks (including EU contexts) and is widely used in workplace policy and law.
+        </p>
+
+        <img src="/images/articles/accommodations.svg" alt="Types of workplace accommodations" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Examples of common accommodations at work</h4>
+        <p className="mb-4">Accommodations vary by person and role. Some common examples include:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Flexible hours or modified schedules</li>
+          <li>Remote or hybrid work when the role allows</li>
+          <li>Screen readers, captions, voice input, ergonomic equipment</li>
+          <li>Clear written instructions and structured check-ins</li>
+          <li>Adjusted interview format (extra time, alternative tasks, accessibility support)</li>
+        </ul>
+
+        <img src="/images/articles/job-search.svg" alt="Job search illustration" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Where to find jobs for people with disabilities</h4>
+        <p className="mb-4">
+          Many candidates begin with mainstream platforms, but disability-focused job boards can reduce friction by prioritizing accessibility and inclusive employers.
+        </p>
+        <p className="mb-4"><strong>Search tip:</strong> Combine a role keyword with inclusion terms:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>"customer support + disability friendly"</li>
+          <li>"data analyst + accessible workplace"</li>
+          <li>"remote + jobs for people with disabilities"</li>
+          <li>"inclusive employer + [your city]"</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">What inclusive employers do differently</h4>
+        <p className="mb-4">Inclusive employers tend to be transparent and consistent. Look for signals like:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>A clear accommodations process (before and after hiring)</li>
+          <li>Interview guidance that welcomes accessibility requests</li>
+          <li>Disability employee resource groups, accessibility initiatives, or public commitments</li>
+          <li>Measurable practices that support sustainable employment, not just hiring headlines</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">For employers: how to build an inclusive hiring process</h4>
+        <p className="mb-4"><strong>1. Make job descriptions accessible and specific</strong></p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Focus on essential functions, not "nice-to-have" barriers</li>
+          <li>Avoid vague traits like "must be energetic" unless genuinely required</li>
+        </ul>
+        <p className="mb-4"><strong>2. Offer accessible interviews by default</strong></p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Provide options: video, phone, in-person, captions, alternative assessments</li>
+        </ul>
+        <p className="mb-4"><strong>3. Normalize accommodations</strong></p>
+        <p className="mb-4">
+          A simple line like: "We're happy to provide accommodations throughout the hiring process." reduces fear and increases qualified applications.
+        </p>
+        <p className="mb-4"><strong>4. Train managers on practical inclusion</strong></p>
+        <p className="mb-4">
+          Disability inclusion spans the whole employment cycle—from entry to progression to exit—and benefits from concrete, evidence-based practices.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Best jobs for people with disabilities: the right framing</h4>
+        <p className="mb-4">
+          Lists of "top jobs" can be helpful for inspiration, but the best role depends on skills, interests, support needs, and workplace flexibility.
+        </p>
+        <p className="mb-4 font-medium">
+          A better question than "What jobs fit my disability?" is: "What work environment and tasks help me perform at my best?"
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">FAQ</h4>
+        <p className="mb-2"><strong>What is a "reasonable accommodation" at work?</strong></p>
+        <p className="mb-4">A reasonable accommodation is an adjustment that enables a person with a disability to do their job or participate in hiring—commonly discussed in employment equality contexts and workplace policy.</p>
+        
+        <p className="mb-2"><strong>Do I have to disclose my disability to get accommodations?</strong></p>
+        <p className="mb-4">Often, accommodations require some form of request, but disclosure norms and legal details vary by country.</p>
+        
+        <p className="mb-2"><strong>How can employers improve disability employment outcomes?</strong></p>
+        <p className="mb-4">Evidence points to structured hiring, accessible interviews, manager capability, and ongoing workplace practices that support sustainable employment.</p>
+      </>
+    ),
+    contentUa: (
+      <>
+        <img src="/images/articles/inclusive-workplace.svg" alt="Ілюстрація інклюзивного робочого місця" className="w-full rounded-xl mb-8" />
+        
+        <h4 className="text-lg font-semibold mt-6 mb-3">Чому інклюзивне працевлаштування важливе</h4>
+        <p className="mb-4">
+          Робота — це більше, ніж дохід. Це незалежність, ідентичність, соціальні зв'язки та доступ до можливостей. Проте в багатьох країнах зберігається <strong>розрив у працевлаштуванні людей з інвалідністю</strong> — вони працевлаштовані на нижчому рівні, ніж люди без інвалідності.
+        </p>
+        <p className="mb-4">
+          Для роботодавців інклюзія — це не лише соціальне благо. Дослідження показують, що багато типових побоювань роботодавців (щодо витрат, продуктивності чи ризиків) часто перебільшені, а кращі практики найму покращують результати.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Що насправді означає «робота, дружня до людей з інвалідністю»</h4>
+        <p className="mb-4">
+          Це не окрема категорія вакансій — це роль, де усунуто бар'єри, щоб людина могла ефективно виконувати роботу. Зазвичай це зводиться до трьох речей:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Доступний найм</strong> (заявки, співбесіди, оцінювання, комунікація)</li>
+          <li><strong>Розумне пристосування</strong> (адаптації, що забезпечують продуктивність без надмірного навантаження)</li>
+          <li><strong>Інклюзивне управління</strong> (чіткі очікування, гнучкість де можливо, психологічно безпечна культура)</li>
+        </ul>
+
+        <img src="/images/articles/accommodations.svg" alt="Види пристосувань на робочому місці" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Приклади типових пристосувань на роботі</h4>
+        <p className="mb-4">Пристосування залежать від людини та ролі. Деякі поширені приклади:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Гнучкий графік або змінений розклад</li>
+          <li>Віддалена або гібридна робота, коли роль це дозволяє</li>
+          <li>Програми читання з екрану, субтитри, голосовий ввід, ергономічне обладнання</li>
+          <li>Чіткі письмові інструкції та структуровані зустрічі</li>
+          <li>Адаптований формат співбесіди (додатковий час, альтернативні завдання)</li>
+        </ul>
+
+        <img src="/images/articles/job-search.svg" alt="Ілюстрація пошуку роботи" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Де шукати роботу для людей з інвалідністю</h4>
+        <p className="mb-4">
+          Багато кандидатів починають з основних платформ, але спеціалізовані дошки вакансій можуть зменшити тертя, пріоритезуючи доступність та інклюзивних роботодавців.
+        </p>
+        <p className="mb-4"><strong>Порада для пошуку:</strong> Комбінуйте ключове слово ролі з термінами інклюзії:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>«підтримка клієнтів + дружній до інвалідності»</li>
+          <li>«аналітик даних + доступне робоче місце»</li>
+          <li>«віддалена робота + для людей з інвалідністю»</li>
+          <li>«інклюзивний роботодавець + [ваше місто]»</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Що роблять інклюзивні роботодавці по-іншому</h4>
+        <p className="mb-4">Інклюзивні роботодавці зазвичай прозорі та послідовні. Шукайте такі сигнали:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Чіткий процес пристосувань (до і після найму)</li>
+          <li>Інструкції до співбесіди, що вітають запити на доступність</li>
+          <li>Ресурсні групи працівників з інвалідністю, ініціативи доступності</li>
+          <li>Вимірювані практики, що підтримують стале працевлаштування</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Для роботодавців: як побудувати інклюзивний процес найму</h4>
+        <p className="mb-4"><strong>1. Зробіть описи вакансій доступними та конкретними</strong></p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Зосередьтеся на основних функціях, а не на «бажаних» бар'єрах</li>
+          <li>Уникайте розмитих рис на кшталт «має бути енергійним», якщо це не є справді необхідним</li>
+        </ul>
+        <p className="mb-4"><strong>2. Пропонуйте доступні співбесіди за замовчуванням</strong></p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Надавайте варіанти: відео, телефон, особисто, субтитри, альтернативні оцінювання</li>
+        </ul>
+        <p className="mb-4"><strong>3. Нормалізуйте пристосування</strong></p>
+        <p className="mb-4">
+          Просте речення: «Ми раді надати пристосування протягом процесу найму» зменшує страх і збільшує кількість кваліфікованих заявок.
+        </p>
+        <p className="mb-4"><strong>4. Навчайте менеджерів практичній інклюзії</strong></p>
+        <p className="mb-4">
+          Інклюзія охоплює весь цикл працевлаштування — від входу до просування та виходу — і виграє від конкретних, доказових практик.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">FAQ</h4>
+        <p className="mb-2"><strong>Що таке «розумне пристосування» на роботі?</strong></p>
+        <p className="mb-4">Розумне пристосування — це адаптація, що дозволяє людині з інвалідністю виконувати свою роботу або брати участь у наймі.</p>
+        
+        <p className="mb-2"><strong>Чи потрібно розкривати інвалідність, щоб отримати пристосування?</strong></p>
+        <p className="mb-4">Часто пристосування вимагають певної форми запиту, але норми розкриття та юридичні деталі відрізняються залежно від країни.</p>
+        
+        <p className="mb-2"><strong>Як роботодавці можуть покращити результати працевлаштування людей з інвалідністю?</strong></p>
+        <p className="mb-4">Докази вказують на структурований найм, доступні співбесіди, компетентність менеджерів та постійні практики на робочому місці.</p>
+      </>
+    ),
+    contentPl: (
+      <>
+        <img src="/images/articles/inclusive-workplace.svg" alt="Ilustracja inkluzywnego miejsca pracy" className="w-full rounded-xl mb-8" />
+        
+        <h4 className="text-lg font-semibold mt-6 mb-3">Co to są „racjonalne usprawnienia" w pracy?</h4>
+        <p className="mb-4">
+          To jedno z najważniejszych pojęć w obszarze zatrudniania osób z niepełnosprawnościami — i jednocześnie jedno z najbardziej mylonych.
+        </p>
+        <p className="mb-4">
+          <strong>Racjonalne usprawnienia</strong> to konieczne w konkretnej sytuacji zmiany lub dostosowania wynikające z potrzeb pracownika (lub kandydata), zgłoszone pracodawcy, które mają umożliwić wykonywanie pracy na równi z innymi — o ile nie stanowią nadmiernego obciążenia dla pracodawcy.
+        </p>
+        <p className="mb-4">
+          <strong>Ważne:</strong> usprawnienia nie muszą oznaczać kosztownych remontów. Często są to proste, tanie i bardzo skuteczne modyfikacje.
+        </p>
+
+        <img src="/images/articles/accommodations.svg" alt="Rodzaje usprawnień w miejscu pracy" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Przykłady racjonalnych usprawnień (praktycznie)</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Elastyczne godziny pracy / przesunięcie godzin startu</li>
+          <li>Praca zdalna lub hybrydowa (jeśli rola na to pozwala)</li>
+          <li>Dostosowanie stanowiska: ergonomiczne krzesło, biurko, oświetlenie</li>
+          <li>Oprogramowanie wspierające (np. czytniki ekranu, napisy)</li>
+          <li>Jasne instrukcje na piśmie, checklisty, uporządkowane wdrożenie</li>
+          <li>Zmiany w rekrutacji: dłuższy czas na zadanie, alternatywna forma spotkania</li>
+        </ul>
+
+        <img src="/images/articles/job-search.svg" alt="Ilustracja szukania pracy" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Gdzie szukać pracy dla osób z niepełnosprawnością</h4>
+        <p className="mb-4">
+          Wiele ofert trafia na duże portale, ale sporo wartościowych rekrutacji dzieje się „obok" — w społecznościach i we współpracy z fundacjami, programami stażowymi czy grupami tematycznymi.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">5 sposobów, które realnie zwiększają szanse</h4>
+        <ol className="list-decimal pl-6 mb-4 space-y-2">
+          <li><strong>Szukaj po frazach, nie tylko po stanowiskach</strong> — Wpisuj: „praca zdalna", „elastyczne godziny", „dostosowanie stanowiska", „inkluzja", „dostępność".</li>
+          <li><strong>Korzystaj z grup i społeczności</strong> — Część staży i juniorowych rekrutacji bywa publikowana właśnie tam.</li>
+          <li><strong>Upraszczaj CV</strong> — CV ma pokazać kompetencje i efekt pracy. Nie musi tłumaczyć życia.</li>
+          <li><strong>Buduj listę „firm przyjaznych"</strong> — Patrz na sygnały: polityka dostępności, jasna informacja o usprawnieniach, proces rekrutacji bez barier.</li>
+          <li><strong>Przygotuj prośbę o usprawnienie jako „brief"</strong> — Zamiast ogólnie: „potrzebuję dostosowania", lepiej: „żeby wykonywać X zadanie, potrzebuję Y rozwiązania".</li>
+        </ol>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Jak (i czy) mówić o niepełnosprawności w rekrutacji?</h4>
+        <p className="mb-4">
+          Nie ma jednej dobrej odpowiedzi. Natomiast działa zasada: <strong>mów tyle, ile jest potrzebne do działania</strong>.
+        </p>
+        <p className="mb-4">
+          Jeśli usprawnienie jest niezbędne na etapie rekrutacji (np. forma rozmowy, czas, dostępność), warto to zgłosić — krótko, rzeczowo, bez tłumaczeń medycznych.
+        </p>
+        <p className="mb-4 italic">
+          Przykładowe zdanie do rekrutera: „Żeby w pełni komfortowo przejść rozmowę/wykonać zadanie, proszę o [konkretne usprawnienie]. Dzięki temu pokażę kompetencje w równych warunkach."
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Dla pracodawców: jak zatrudniać osoby z niepełnosprawnościami bez chaosu</h4>
+        <p className="mb-4"><strong>1. Zrób rekrutację dostępną „z definicji"</strong></p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Ogłoszenie bez zbędnych wymagań</li>
+          <li>Alternatywy kontaktu (mail/telefon)</li>
+          <li>Możliwość zgłoszenia potrzeb w procesie</li>
+        </ul>
+        <p className="mb-4"><strong>2. Traktuj usprawnienia jak standard HR, nie „wyjątek"</strong></p>
+        <p className="mb-4">
+          Na poziomie UE racjonalne usprawnienia są rozumiane jako zmiany w pracy/środowisku pracy umożliwiające wykonywanie obowiązków i rozwój.
+        </p>
+        <p className="mb-4"><strong>3. Zarządzaj przez rezultaty</strong></p>
+        <p className="mb-4">
+          Dobre zespoły i tak działają na celach, jakości i terminach — a nie na „wszyscy pracują identycznie".
+        </p>
+        <p className="mb-4"><strong>4. Rozmawiaj, nie zgaduj</strong></p>
+        <p className="mb-4">
+          Częstym błędem jest zakładanie, co komu „na pewno" pomoże — a to bywa nietrafione. Działają racjonalne rozmowy i konkret.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Najczęstsze pytania (FAQ)</h4>
+        <p className="mb-2"><strong>Czym są racjonalne usprawnienia w pracy?</strong></p>
+        <p className="mb-4">To dostosowania do potrzeb osoby z niepełnosprawnością w konkretnej sytuacji, zgłoszone pracodawcy, które umożliwiają pracę na równi z innymi, o ile nie stanowią nadmiernego obciążenia.</p>
+        
+        <p className="mb-2"><strong>Czy dostosowanie stanowiska pracy musi być drogie?</strong></p>
+        <p className="mb-4">Nie. Wiele usprawnień jest prostych i niskokosztowych (organizacyjnych lub technologicznych), a ich skuteczność bywa bardzo wysoka.</p>
+        
+        <p className="mb-2"><strong>Gdzie szukać ofert pracy przyjaznych osobom z niepełnosprawnością?</strong></p>
+        <p className="mb-4">Oprócz portali rekrutacyjnych — w grupach tematycznych, programach stażowych i inicjatywach realizowanych z fundacjami; część ofert nie trafia na duże serwisy.</p>
+      </>
+    ),
+  },
 };
 
 interface CMSArticle {
