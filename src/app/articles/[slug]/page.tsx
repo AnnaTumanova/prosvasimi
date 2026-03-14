@@ -675,6 +675,162 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
       </>
     ),
   },
+  "poland-employment-stats": {
+    titleEn: "Employment of People with Disabilities in Poland: Statistics and Perspectives",
+    titleUa: "Працевлаштування людей з інвалідністю в Польщі: статистика та перспективи",
+    titlePl: "Zatrudnienie Osób z Niepełnosprawnościami w Polsce: Statystyki i Perspektywy",
+    contentEn: (
+      <>
+        <img src="/images/articles/poland-stats.svg" alt="Poland disability employment statistics" className="w-full rounded-xl mb-8" />
+        
+        <p className="mb-4">
+          Integrating people with disabilities into the labor market is a key aspect of building an inclusive and fair society. In Poland, as in many other countries, efforts are being made to increase the professional activity of this social group by offering various types of support and incentives for both employers and employees. Let's look at current statistics on the employment of people with disabilities in Poland and the challenges they face.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Population Size and Structure</h4>
+        <p className="mb-4">
+          According to data from the Central Statistical Office (GUS) from the 2021 National Census, approximately 3.1 million people with certified disabilities live in Poland, which is nearly 8% of the country's total population. Among them, a significant group are people of working age. Analyzing the structure of this population, one should notice the diversity in terms of the type and degree of disability (significant, moderate, light), which directly affects their professional opportunities. Older people predominate, although awareness of the need to support the professional activity of young people with disabilities is growing.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Level of Professional Activity and Employment Rate</h4>
+        <p className="mb-4">
+          Indicators for the professional activity and employment of people with disabilities in Poland are gradually improving, but still remain lower compared to the general population. According to 2023 data, the employment rate for people with certified disabilities was around 21-23% (depending on the source and methodology, e.g., PFRON or GUS data). While this represents an increase over previous years, a significant gap still exists. The level of professional activity (i.e., people working or looking for work) is also increasing, hovering around 25-27%. Low professional activity often results from health and architectural barriers, as well as stereotypes and a lack of proper workplace adaptation.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Employment Sectors and Popular Occupations</h4>
+        <p className="mb-4">
+          People with disabilities find employment in various sectors of the economy, but certain trends are noticeable. A significant portion works in the services sector, trade, and in public administration and national defense. Remote work is gaining popularity, especially in the IT industry (programmers, data analysts), telemarketing, and accounting services, which significantly facilitates the activation of people with mobility limitations. Creative industries such as graphics or copywriting also offer attractive opportunities. Many people are also employed in Sheltered Workshops and social enterprises that specialize in creating jobs for people with disabilities.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Challenges and Barriers in the Labor Market</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Architectural and Communication Barriers:</strong> Lack of adaptation of buildings, transport, and IT systems makes it difficult to get to work and perform duties.</li>
+          <li><strong>Stereotypes and Employer Prejudices:</strong> Concerns about additional costs, lower productivity, or frequent sick leave still exist in the minds of many employers.</li>
+          <li><strong>Low Level of Education and Qualifications:</strong> Often, people with disabilities have limited access to education and vocational training, which reduces their competitiveness in the labor market.</li>
+          <li><strong>Insufficient Workplace Adaptation:</strong> Lack of appropriate equipment, flexible working hours, or assistant support prevents the full use of the employee's potential.</li>
+          <li><strong>Complexity of the Certification and Support System:</strong> Complicated administrative procedures and fragmented support systems can discourage both people with disabilities and employers.</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Support Instruments and the Role of PFRON</h4>
+        <p className="mb-4">
+          In Poland, the State Fund for Rehabilitation of Disabled People (PFRON) plays a key role in supporting the employment of people with disabilities. The Fund offers a wide range of programs and financial instruments, including:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Wage Subsidies:</strong> Employers hiring people with disabilities can receive a monthly subsidy for their salary, the amount of which depends on the degree of disability and the type of illness.</li>
+          <li><strong>Refund of Workplace Equipment Costs:</strong> Possibility of obtaining a refund of costs incurred for adapting the workplace to the needs of an employee with a disability (e.g., specialized equipment, software).</li>
+          <li><strong>Funds for Starting a Business:</strong> People with disabilities can apply for non-refundable funds to start their own business.</li>
+          <li><strong>Training and Internships:</strong> PFRON finances training and internship programs that help in gaining new qualifications and professional experience.</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Summary and Perspectives</h4>
+        <p className="mb-4">
+          The employment of people with disabilities in Poland is an area of dynamic change. Statistics show a positive trend of increasing professional activity and employment rates, which is the result of both state actions and growing social awareness. Nevertheless, there are still many barriers that limit the full integration of people with disabilities in the labor market. The key to success is further developing and improving support instruments, eliminating prejudices, and promoting good practices among employers.
+        </p>
+      </>
+    ),
+    contentUa: (
+      <>
+        <img src="/images/articles/poland-stats.svg" alt="Статистика працевлаштування людей з інвалідністю в Польщі" className="w-full rounded-xl mb-8" />
+        
+        <p className="mb-4">
+          Інтеграція людей з інвалідністю на ринок праці є ключовим аспектом побудови інклюзивного та справедливого суспільства. У Польщі, як і в багатьох інших країнах, докладаються зусилля для підвищення професійної активності цієї соціальної групи, пропонуючи різні види підтримки та стимулів як для роботодавців, так і для працівників. Розглянемо поточну статистику працевлаштування людей з інвалідністю в Польщі та виклики, з якими вони стикаються.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Чисельність та структура населення</h4>
+        <p className="mb-4">
+          За даними Головного статистичного управління (GUS) з Національного перепису населення та житлового фонду 2021 року, у Польщі проживає близько 3,1 мільйона осіб із підтвердженою інвалідністю, що становить майже 8% від загальної чисельності населення країни. Серед них значну групу становлять особи працездатного віку. Аналізуючи структуру цього населення, слід зауважити різноманітність за типом і ступенем інвалідності (значний, помірний, легкий), що безпосередньо впливає на їхні професійні можливості. Переважають люди старшого віку, хоча усвідомлення необхідності підтримки професійної активності молодих людей з інвалідністю зростає.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Рівень професійної активності та рівень зайнятості</h4>
+        <p className="mb-4">
+          Показники професійної активності та зайнятості людей з інвалідністю в Польщі поступово покращуються, але все ще залишаються низькими порівняно з загальним населенням. За даними за 2023 рік, рівень зайнятості осіб із підтвердженою інвалідністю становив близько 21-23% (залежно від джерела та методології, наприклад, даних PFRON або GUS). Хоча це означає зростання порівняно з попередніми роками, значний розрив усе ще існує. Рівень професійної активності (тобто людей, які працюють або шукають роботу) також зростає, коливаючись у межах 25-27%. Низька професійна активність часто є наслідком бар'єрів зі здоров'ям та архітектурних бар'єрів, а також стереотипів та відсутності належної адаптації робочого місця.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Сектори зайнятості та популярні професії</h4>
+        <p className="mb-4">
+          Люди з інвалідністю знаходять роботу в різних секторах економіки, проте помітні певні тенденції. Значна частина працює у сфері послуг, торгівлі, а також у державному управлінні та національній обороні. Віддалена робота набуває популярності, особливо в ІТ-індустрії (програмісти, аналітики даних), телемаркетингу та бухгалтерських послугах, що значно полегшує активізацію людей з обмеженими можливостями пересування. Креативні індустрії, такі як графіка чи копірайтинг, також пропонують привабливі можливості. Багато людей також працюють у захищених майстернях та соціальних підприємствах, які спеціалізуються на створенні робочих місць для людей з інвалідністю.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Виклики та бар'єри на ринку праці</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Архітектурні та комунікаційні бар'єри:</strong> Відсутність адаптації будівель, транспорту та ІТ-систем ускладнює доїзд до роботи та виконання обов'язків.</li>
+          <li><strong>Стереотипи та упередження роботодавців:</strong> Побоювання щодо додаткових витрат, нижчої продуктивності або частих лікарняних усе ще існують у свідомості багатьох роботодавців.</li>
+          <li><strong>Низький рівень освіти та кваліфікації:</strong> Часто люди з інвалідністю мають обмежений доступ до освіти та професійного навчання, що знижує їхню конкурентоспроможність на ринку праці.</li>
+          <li><strong>Недостатня адаптація робочого місця:</strong> Відсутність відповідного обладнання, гнучкого робочого графіка або підтримки асистента перешкоджає повному використанню потенціалу працівника.</li>
+          <li><strong>Складність системи сертифікації та підтримки:</strong> Складні адміністративні процедури та фрагментарні системи підтримки можуть відлякувати як людей з інвалідністю, так і роботодавців.</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Інструменти підтримки та роль PFRON</h4>
+        <p className="mb-4">
+          У Польщі ключову роль у підтримці працевлаштування людей з інвалідністю відіграє Державний фонд реабілітації інвалідів (PFRON). Фонд пропонує широкий спектр програм та фінансових інструментів, зокрема:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Субсидії на заробітну плату:</strong> Роботодавці, які наймають людей з інвалідністю, можуть отримувати щомісячну субсидію на їхню заробітну плату, розмір якої залежить від ступеня інвалідності та типу захворювання.</li>
+          <li><strong>Відшкодування витрат на обладнання робочого місця:</strong> Можливість отримання відшкодування витрат, понесених на адаптацію робочого місця до потреб працівника з інвалідністю.</li>
+          <li><strong>Кошти на відкриття бізнесу:</strong> Люди з інвалідністю можуть претендувати на безповоротні кошти для відкриття власної справи.</li>
+          <li><strong>Навчання та стажування:</strong> PFRON фінансує програми навчання та стажування, які допомагають у здобутті нових кваліфікацій та професійного досвіду.</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Резюме та перспективи</h4>
+        <p className="mb-4">
+          Працевлаштування людей з інвалідністю в Польщі є сферою динамічних змін. Статистика показує позитивну тенденцію зростання професійної активності та рівня зайнятості, що є результатом як дій держави, так і зростаючої соціальної свідомості. Тим не менш, усе ще існує багато бар'єрів, які обмежують повну інтеграцію людей з інвалідністю на ринку праці. Ключем до успіху є подальший розвиток та вдосконалення інструментів підтримки, усунення упереджень та просування передових практик серед роботодавців.
+        </p>
+      </>
+    ),
+    contentPl: (
+      <>
+        <img src="/images/articles/poland-stats.svg" alt="Statystyki zatrudnienia osób z niepełnosprawnościami w Polsce" className="w-full rounded-xl mb-8" />
+        
+        <p className="mb-4">
+          Wprowadzenie osób z niepełnosprawnościami na rynek pracy to kluczowy aspekt budowania inkluzywnego i sprawiedliwego społeczeństwa. W Polsce, podobnie jak w wielu innych krajach, dąży się do zwiększenia aktywności zawodowej tej grupy społecznej, oferując różnego rodzaju wsparcie i zachęty zarówno dla pracodawców, jak i pracowników. Przyjrzyjmy się aktualnym statystykom dotyczącym zatrudnienia osób z niepełnosprawnościami w Polsce oraz wyzwaniom, z jakimi się mierzą.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Liczebność i Struktura Populacji Osób z Niepełnosprawnościami</h4>
+        <p className="mb-4">
+          Według danych Głównego Urzędu Statystycznego (GUS) z Narodowego Spisu Powszechnego Ludności i Mieszkań 2021, w Polsce żyje około 3,1 mln osób z orzeczoną niepełnosprawnością, co stanowi blisko 8% całej populacji kraju. Wśród nich znaczącą grupę stanowią osoby w wieku produkcyjnym. Analizując strukturę tej populacji, należy zauważyć zróżnicowanie pod względem rodzaju i stopnia niepełnosprawności (znaczny, umiarkowany, lekki), co bezpośrednio wpływa na ich możliwości zawodowe. Przeważają osoby starsze, choć rośnie świadomość potrzeby wspierania aktywności zawodowej młodych osób z niepełnosprawnościami.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Poziom Aktywności Zawodowej i Wskaźnik Zatrudnienia</h4>
+        <p className="mb-4">
+          Wskaźniki dotyczące aktywności zawodowej i zatrudnienia osób z niepełnosprawnościami w Polsce ulegają stopniowej poprawie, jednak wciąż pozostają niższe w porównaniu do ogółu populacji. Według danych za 2023 rok, wskaźnik zatrudnienia osób z orzeczoną niepełnosprawnością wynosił około 21-23% (zależnie od źródła i metodologii, np. danych PFRON czy GUS). Choć oznacza to wzrost w stosunku do lat poprzednich, nadal istnieje znacząca luka. Poziom aktywności zawodowej (czyli osób pracujących lub poszukujących pracy) również wzrasta, oscylując wokół 25-27%. Niska aktywność zawodowa często wynika z barier zdrowotnych, architektonicznych, a także stereotypów i braku odpowiedniego dostosowania miejsc pracy.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Sektory Zatrudnienia i Popularne Zawody</h4>
+        <p className="mb-4">
+          Osoby z niepełnosprawnościami znajdują zatrudnienie w różnych sektorach gospodarki, jednak zauważalne są pewne tendencje. Znaczna część pracuje w sektorze usług, handlu oraz w administracji publicznej i obronie narodowej. Coraz większą popularność zyskuje praca zdalna, zwłaszcza w branży IT (programiści, analitycy danych), telemarketingu i usługach księgowych, co znacząco ułatwia aktywizację osób z ograniczeniami ruchowymi. Branże kreatywne, takie jak grafika czy copywriting, również oferują atrakcyjne możliwości. Wiele osób zatrudnionych jest także w Zakładach Pracy Chronionej oraz w przedsiębiorstwach społecznych, które specjalizują się w tworzeniu miejsc pracy dla osób z niepełnosprawnościami.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Wyzwania i Bariery na Rynku Pracy</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Bariery Architektoniczne i Komunikacyjne:</strong> Brak dostosowania budynków, transportu oraz systemów informatycznych utrudnia dotarcie do pracy i wykonywanie obowiązków.</li>
+          <li><strong>Stereotypy i Uprzedzenia Pracodawców:</strong> Obawy przed dodatkowymi kosztami, mniejszą wydajnością czy częstymi zwolnieniami lekarskimi wciąż funkcjonują w świadomości wielu pracodawców.</li>
+          <li><strong>Niski Poziom Wykształcenia i Kwalifikacji:</strong> Często osoby z niepełnosprawnościami mają ograniczony dostęp do edukacji i szkoleń zawodowych, co obniża ich konkurencyjność na rynku pracy.</li>
+          <li><strong>Niewystarczające Dostosowanie Miejsc Pracy:</strong> Brakuje odpowiedniego oprzyrządowania, elastycznych godzin pracy czy wsparcia asystenta, co uniemożliwia pełne wykorzystanie potencjału pracownika.</li>
+          <li><strong>Złożoność Systemu Orzecznictwa i Wsparcia:</strong> Skomplikowane procedury administracyjne i rozdrobnienie systemów wsparcia mogą zniechęcać zarówno osoby z niepełnosprawnościami, jak i pracodawców.</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Instrumenty Wsparcia i Rola PFRON</h4>
+        <p className="mb-4">
+          W Polsce kluczową rolę w wspieraniu zatrudnienia osób z niepełnosprawnościami odgrywa Państwowy Fundusz Rehabilitacji Osób Niepełnosprawnych (PFRON). Fundusz oferuje szeroki wachlarz programów i instrumentów finansowych, w tym:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Dofinansowanie do Wynagrodzeń:</strong> Pracodawcy zatrudniający osoby z niepełnosprawnościami mogą otrzymać miesięczne dofinansowanie do ich wynagrodzenia, którego wysokość zależy od stopnia niepełnosprawności i rodzaju schorzenia.</li>
+          <li><strong>Refundacja Kosztów Wyposażenia Stanowiska Pracy:</strong> Możliwość uzyskania zwrotu kosztów poniesionych na dostosowanie miejsca pracy do potrzeb pracownika z niepełnosprawnością (np. specjalistyczny sprzęt, oprogramowanie).</li>
+          <li><strong>Środki na Podjęcie Działalności Gospodarczej:</strong> Osoby z niepełnosprawnościami mogą ubiegać się o bezzwrotne środki na rozpoczęcie własnej działalności gospodarczej.</li>
+          <li><strong>Szkolenia i Staże:</strong> PFRON finansuje programy szkoleniowe i stażowe, które pomagają w zdobyciu nowych kwalifikacji i doświadczenia zawodowego.</li>
+          <li><strong>Wsparcie dla Pracodawców:</strong> Fundusz oferuje doradztwo i szkolenia dla pracodawców w zakresie zatrudniania osób z niepełnosprawnościami oraz tworzenia inkluzywnego środowiska pracy.</li>
+        </ul>
+        <p className="mt-4">
+          Polska stosuje również system kwotowy, który nakłada na pracodawców zatrudniających co najmniej 25 pracowników obowiązek zatrudnienia co najmniej 6% osób z niepełnosprawnościami.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Podsumowanie i Perspektywy</h4>
+        <p className="mb-4">
+          Zatrudnienie osób z niepełnosprawnościami w Polsce to obszar dynamicznych zmian. Statystyki pokazują pozytywny trend wzrostu wskaźników aktywności zawodowej i zatrudnienia, co jest efektem zarówno działań państwa, jak i rosnącej świadomości społecznej. Niemniej jednak, wciąż istnieje wiele barier, które ograniczają pełną integrację osób z niepełnosprawnościami na rynku pracy. Kluczem do sukcesu jest dalsze rozwijanie i doskonalenie instrumentów wsparcia, eliminowanie uprzedzeń oraz promowanie dobrych praktyk wśród pracodawców.
+        </p>
+      </>
+    ),
+  },
 };
 
 interface CMSArticle {

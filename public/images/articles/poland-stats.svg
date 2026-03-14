@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="#f8fafc"/>
+  <rect x="40" y="40" width="320" height="120" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
+  <rect x="60" y="130" width="40" height="30" rx="4" fill="#93c5fd"/>
+  <rect x="110" y="110" width="40" height="50" rx="4" fill="#60a5fa"/>
+  <rect x="160" y="90" width="40" height="70" rx="4" fill="#3b82f6"/>
+  <rect x="210" y="70" width="40" height="90" rx="4" fill="#2563eb"/>
+  <path d="M60 100 L110 80 L160 70 L210 50" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="210" cy="50" r="4" fill="#1d4ed8"/>
+  <rect x="270" y="60" width="70" height="80" rx="8" fill="white" shadow="sm"/>
+  <text x="305" y="100" font-family="system-ui" font-size="24" font-weight="bold" fill="#1e40af" text-anchor="middle">23%</text>
+  <text x="305" y="120" font-family="system-ui" font-size="10" fill="#64748b" text-anchor="middle">Employment</text>
+</svg>

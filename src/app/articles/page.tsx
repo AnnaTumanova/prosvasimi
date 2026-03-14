@@ -513,7 +513,7 @@ export default function ArticlesPage() {
             <p className="mt-4 text-lg text-slate-600">{t.pageSubtitle}</p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-12">
             <ArticleCard
               title={lang === "en" ? "The Inclusivity Revolution" : lang === "ua" ? "Реформа 2026" : "Inkluzywny rynek pracy 2026"}
               excerpt={lang === "en" 
@@ -551,6 +551,19 @@ export default function ArticlesPage() {
               lang={lang}
               readMore={t.readMore}
               image="/images/articles/practical-guide.svg"
+            />
+
+            <ArticleCard
+              title={lang === "en" ? "Employment in Poland: Statistics & Perspectives" : lang === "ua" ? "Працевлаштування в Польщі: статистика та перспективи" : "Zatrudnienie Osób z Niepełnosprawnościami w Polsce: Statystyki i Perspektywy"}
+              excerpt={lang === "en" 
+                ? "Discover current statistics on the employment of people with disabilities in Poland, the challenges they face, and the support systems available from PFRON." 
+                : lang === "ua" 
+                ? "Дізнайтеся про поточну статистику працевлаштування людей з інвалідністю в Польщі, виклики, з якими вони стикаються, та системи підтримки від PFRON." 
+                : "Przyjrzyjmy się aktualnym statystykom dotyczącym zatrudnienia osób z niepełnosprawnościami w Polsce oraz wyzwaniom i instrumentom wsparcia PFRON."}
+              slug="poland-employment-stats"
+              lang={lang}
+              readMore={t.readMore}
+              image="/images/articles/poland-stats.svg"
             />
 
             {/* CMS Articles */}
