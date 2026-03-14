@@ -62,20 +62,25 @@ function ArticleCard({
 }) {
   return (
     <Link href={`/articles/${slug}`}>
-      <article className="group rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:ring-slate-300 hover:shadow-lg transition-all cursor-pointer overflow-hidden flex flex-col sm:flex-row">
+      <article className="group h-full rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:ring-slate-300 hover:shadow-xl transition-all cursor-pointer overflow-hidden flex flex-col">
         {image && (
-          <div className="sm:w-72 h-48 sm:h-auto flex-shrink-0 bg-slate-100">
+          <div className="aspect-[16/9] w-full overflow-hidden bg-slate-100">
             <img 
               src={image} 
               alt={title} 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
         )}
-        <div className="p-6 sm:p-8 flex flex-col justify-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">{title}</h2>
-          <p className="text-slate-600 mb-4 line-clamp-3">{excerpt}</p>
-          <span className="text-slate-900 font-medium group-hover:underline">{readMore} →</span>
+        <div className="p-6 flex flex-col flex-grow">
+          <h2 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors line-clamp-2">{title}</h2>
+          <p className="text-slate-600 mb-6 line-clamp-3 text-sm flex-grow">{excerpt}</p>
+          <div className="mt-auto">
+            <span className="text-slate-900 text-sm font-semibold group-hover:underline inline-flex items-center gap-1">
+              {readMore} 
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </span>
+          </div>
         </div>
       </article>
     </Link>
@@ -507,13 +512,13 @@ export default function ArticlesPage() {
       </header>
 
       <main className="py-12 sm:py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{t.pageTitle}</h1>
-            <p className="mt-4 text-lg text-slate-600">{t.pageSubtitle}</p>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">{t.pageTitle}</h1>
+            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">{t.pageSubtitle}</p>
           </div>
 
-          <div className="space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
             <ArticleCard
               title={lang === "en" ? "The Inclusivity Revolution" : lang === "ua" ? "Реформа 2026" : "Inkluzywny rynek pracy 2026"}
               excerpt={lang === "en" 
