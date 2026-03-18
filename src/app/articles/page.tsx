@@ -20,6 +20,7 @@ const translations: Record<Lang, Record<string, string>> = {
     brandTagline: "Accessible jobs without barriers",
     navHome: "Home",
     navArticles: "Articles",
+    navJobs: "Jobs",
     pageTitle: "Articles & Research",
     pageSubtitle: "Data-driven insights on disability employment in Ukraine and Poland",
     footerNote: "Building an accessible job platform.",
@@ -29,6 +30,7 @@ const translations: Record<Lang, Record<string, string>> = {
     brandTagline: "Dostępna praca bez barier",
     navHome: "Strona główna",
     navArticles: "Artykuły",
+    navJobs: "Oferty pracy",
     pageTitle: "Artykuły i badania",
     pageSubtitle: "Analiza zatrudnienia osób z niepełnosprawnościami w Ukrainie i Polsce",
     footerNote: "Budujemy dostępną platformę pracy.",
@@ -38,6 +40,7 @@ const translations: Record<Lang, Record<string, string>> = {
     brandTagline: "Доступна робота без бар'єрів",
     navHome: "Головна",
     navArticles: "Статті",
+    navJobs: "Вакансії",
     pageTitle: "Статті та дослідження",
     pageSubtitle: "Аналіз працевлаштування людей з інвалідністю в Україні та Польщі",
     footerNote: "Будуємо доступну платформу для працевлаштування.",
@@ -494,6 +497,7 @@ export default function ArticlesPage() {
           <nav className="hidden md:flex items-center gap-8 text-sm">
             <Link href="/" className="hover:text-slate-700">{t.navHome}</Link>
             <Link href="/articles" className="text-slate-900 font-medium">{t.navArticles}</Link>
+            <Link href="/jobs" className="hover:text-slate-700">{t.navJobs}</Link>
           </nav>
           <div className="hidden sm:flex items-center gap-1 text-sm text-slate-600" role="group" aria-label="Language switch">
             <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "en" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>

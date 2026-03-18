@@ -121,6 +121,7 @@ export default function Page() {
       navHow: "How it works",
       navFAQ: "FAQ",
       navArticles: "Articles",
+      navJobs: "Jobs",
       ctaEarly: "Get early access",
       badgeInclusive: "Inclusive by design",
       heroTitleMain: "Work without barriers.",
@@ -200,6 +201,7 @@ export default function Page() {
       navHow: "Jak to działa",
       navFAQ: "Najczęstsze pytania",
       navArticles: "Artykuły",
+      navJobs: "Oferty pracy",
       ctaEarly: "Wczesny dostęp",
       badgeInclusive: "Włączająco z założenia",
       heroTitleMain: "Praca bez barier.",
@@ -292,6 +294,7 @@ export default function Page() {
       navHow: "Як це працює",
       navFAQ: "Питання",
       navArticles: "Статті",
+      navJobs: "Вакансії",
       ctaEarly: "Ранній доступ",
       badgeInclusive: "Інклюзивність за замовчуванням",
       heroTitleMain: "Робота без бар'єрів.",
@@ -412,6 +415,7 @@ export default function Page() {
             <a href="#how" className="hover:text-slate-700">{t.navHow}</a>
             <a href="#faq" className="hover:text-slate-700">{t.navFAQ}</a>
             <Link href="/articles" className="hover:text-slate-700">{t.navArticles}</Link>
+            <Link href="/jobs" className="hover:text-slate-700 font-medium text-slate-900">{t.navJobs}</Link>
           </nav>
           <div className="hidden sm:flex items-center gap-1 text-sm text-slate-600" role="group" aria-label="Language switch">
             <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "en" ? "text-slate-900" : "hover:text-slate-900"}`}>
@@ -579,6 +583,8 @@ export default function Page() {
             <a href="#for" className="hover:text-slate-700">{t.footerFor}</a>
             <a href="#how" className="hover:text-slate-700">{t.footerHow}</a>
             <a href="#waitlist" className="hover:text-slate-700">{t.footerEarly}</a>
+            <Link href="/articles" className="hover:text-slate-700">{t.navArticles}</Link>
+            <Link href="/jobs" className="hover:text-slate-700 font-medium">{t.navJobs}</Link>
           </div>
         </div>
       </footer>
