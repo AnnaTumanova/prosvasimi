@@ -537,6 +537,19 @@ export default function ArticlesPage() {
             />
 
             <ArticleCard
+              title={lang === "en" ? "Bridging the Gap: Disability Employment in 2026" : lang === "ua" ? "Долаючи розрив: працевлаштування людей з інвалідністю у 2026" : "Zmniejszając lukę: zatrudnienie osób z niepełnosprawnościami w 2026"}
+              excerpt={lang === "en" 
+                ? "In 2026, people with disabilities are still about twice as likely to be unemployed. Explore the numbers, barriers, and the rise of inclusive hiring and remote work." 
+                : lang === "ua" 
+                ? "У 2026 році люди з інвалідністю все ще приблизно вдвічі частіше залишаються без роботи. Про цифри, бар’єри та розвиток інклюзивного найму й дистанційної роботи." 
+                : "W 2026 r. osoby z niepełnosprawnościami nadal są około dwa razy częściej bezrobotne. Poznaj dane, bariery oraz rozwój rekrutacji inkluzywnej i pracy zdalnej."}
+              slug="bridging-the-gap"
+              lang={lang}
+              readMore={t.readMore}
+              image="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u.png"
+            />
+
+            <ArticleCard
               title={lang === "en" ? "How Do People with Disabilities Find Jobs?" : lang === "ua" ? "Як люди з інвалідністю знаходять роботу?" : "Jak osoby z niepełnosprawnościami znajdują pracę?"}
               excerpt={lang === "en" 
                 ? "Finding a job is rarely simple. For people with disabilities, it often involves additional barriers. Understanding how people typically search for work helps us design better systems." 

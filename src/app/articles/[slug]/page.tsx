@@ -834,6 +834,129 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
       </>
     ),
   },
+  "bridging-the-gap": {
+    titleEn: "Bridging the Gap: The State of Disability Employment in 2026",
+    titleUa: "Долаючи розрив: стан працевлаштування людей з інвалідністю у 2026 році",
+    titlePl: "Zmniejszając lukę: stan zatrudnienia osób z niepełnosprawnościami w 2026 roku",
+    contentEn: (
+      <>
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u.png" alt="Visualizing the disability employment gap in 2026" className="w-full rounded-xl mb-8" />
+
+        <p className="mb-4">
+          Despite a global shift toward more inclusive corporate cultures, the unemployment rate for people with disabilities remains a significant economic and social challenge. As of early 2026, individuals with disabilities are still roughly twice as likely to be unemployed compared to those without disabilities.
+        </p>
+        <p className="mb-4">
+          Understanding why this gap persists—and how inclusive hiring practices are evolving to bridge it—is essential for any organization aiming for true workplace diversity.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">The Disability Employment Gap: Understanding the Numbers</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Employment-to-Population Ratio:</strong> About <strong>38%</strong> of working-age people with disabilities are currently employed.</li>
+          <li><strong>Underemployment:</strong> Many are in part-time or insecure roles due to a lack of accessible full-time opportunities.</li>
+          <li><strong>The “Double” Factor:</strong> Across many economies, disability unemployment is consistently around double the national average.</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Common Barriers to Employment</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Inaccessible recruitment:</strong> non-compliant portals and automated screening can filter out qualified candidates.</li>
+          <li><strong>Misinformed attitudes:</strong> myths about cost or productivity still shape decisions.</li>
+          <li><strong>Lack of adjustments:</strong> uncertainty about reasonable accommodations delays action—despite many being low-cost.</li>
+        </ul>
+
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (1).png" alt="Accessible interview" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">The Rise of Inclusive Hiring in 2026</h4>
+        <p className="mb-4">
+          In 2026, more companies are adopting skills-based hiring and neuroinclusive recruitment—offering clearer processes, sensory-friendly options, and interview formats that reduce bias.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Remote Work: A Lifeline for Accessibility</h4>
+        <p className="mb-4">
+          Remote and hybrid work is increasingly recognized as a vital accessibility tool—removing the commute barrier and supporting sustainable performance for many people with chronic illness or mobility challenges.
+        </p>
+        <p className="mb-4 italic">
+          “In 2026, flexibility is no longer a concession; it is a strategic retention tool that unlocks an untapped talent pool.”
+        </p>
+
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (2).png" alt="Remote work as accessibility" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Conclusion: The Competitive Advantage of Inclusion</h4>
+        <p className="mb-4">
+          Closing the disability employment gap is not only social responsibility—it’s a business imperative. Organizations that invest in accessibility and assistive technology are better positioned to attract and retain talent.
+        </p>
+      </>
+    ),
+    contentUa: (
+      <>
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u.png" alt="Візуалізація розриву у працевлаштуванні у 2026 році" className="w-full rounded-xl mb-8" />
+
+        <p className="mb-4">
+          Попри глобальний рух до інклюзивніших корпоративних культур, безробіття серед людей з інвалідністю залишається серйозним викликом. Станом на 2026 рік люди з інвалідністю все ще приблизно вдвічі частіше є безробітними, ніж люди без інвалідності.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Розрив у працевлаштуванні: що показують цифри</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Частка зайнятих:</strong> близько <strong>38%</strong> людей працездатного віку з інвалідністю працюють.</li>
+          <li><strong>Неповна зайнятість:</strong> багато хто змушений обирати часткову або нестабільну роботу.</li>
+          <li><strong>Фактор “удвічі”:</strong> рівень безробіття часто близький до подвійного національного середнього.</li>
+        </ul>
+
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (1).png" alt="Доступна співбесіда" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Зростання інклюзивного найму у 2026</h4>
+        <p className="mb-4">
+          Компанії переходять від формального підходу до найму за навичками та нейроінклюзивних практик (прозорі етапи, адаптовані інтерв’ю, зменшення упереджень).
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Дистанційна робота як інструмент доступності</h4>
+        <p className="mb-4">
+          Віддалена/гібридна робота допомагає прибрати бар’єр дороги до офісу та підтримує стабільну продуктивність для людей з хронічними станами або обмеженнями мобільності.
+        </p>
+
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (2).png" alt="Віддалена робота" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Висновок</h4>
+        <p className="mb-4">
+          Закриття розриву — це не лише соціальна відповідальність, а й бізнес-перевага. Доступність “за дизайном” та інвестиції в асистивні технології підсилюють залучення й утримання талантів.
+        </p>
+      </>
+    ),
+    contentPl: (
+      <>
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u.png" alt="Wizualizacja luki zatrudnienia w 2026" className="w-full rounded-xl mb-8" />
+
+        <p className="mb-4">
+          Mimo globalnego zwrotu w stronę bardziej inkluzywnych kultur organizacyjnych, bezrobocie wśród osób z niepełnosprawnościami pozostaje istotnym wyzwaniem. W 2026 r. osoby z niepełnosprawnościami nadal są w przybliżeniu dwa razy częściej bezrobotne niż osoby bez niepełnosprawności.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Luka zatrudnienia: co mówią dane</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Wskaźnik zatrudnienia:</strong> około <strong>38%</strong> osób w wieku produkcyjnym z niepełnosprawnością pracuje.</li>
+          <li><strong>Niedozatrudnienie:</strong> część osób pracuje w niepełnym wymiarze lub w niestabilnych rolach.</li>
+          <li><strong>Efekt “x2”:</strong> w wielu krajach stopa bezrobocia jest około dwukrotnie wyższa niż średnia krajowa.</li>
+        </ul>
+
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (1).png" alt="Dostępna rozmowa rekrutacyjna" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Rozwój rekrutacji inkluzywnej w 2026</h4>
+        <p className="mb-4">
+          Coraz więcej firm przechodzi na rekrutację opartą o umiejętności oraz podejście neuroinkluzwne: jasne etapy procesu, mniej bodźców i formaty rozmów ograniczające stronniczość.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Praca zdalna jako narzędzie dostępności</h4>
+        <p className="mb-4">
+          Praca zdalna i hybrydowa redukuje barierę dojazdu i może wspierać długofalową efektywność wielu osób z chorobami przewlekłymi lub ograniczeniami mobilności.
+        </p>
+
+        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (2).png" alt="Praca zdalna" className="w-full rounded-xl mb-8 mt-8" />
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Wnioski</h4>
+        <p className="mb-4">
+          Zmniejszanie luki zatrudnienia to nie tylko kwestia odpowiedzialności społecznej, ale także przewaga biznesowa. Dostępność „by design” oraz technologie wspierające zwiększają szanse na pozyskanie i utrzymanie talentów.
+        </p>
+      </>
+    ),
+  },
 };
 
 interface CMSArticle {
