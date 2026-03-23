@@ -550,6 +550,19 @@ export default function ArticlesPage() {
             />
 
             <ArticleCard
+              title={lang === "en" ? "The Digital Frontier: 2026 Remote Jobs" : lang === "ua" ? "Цифровий фронтир: дистанційна робота 2026" : "Cyfrowa granica: praca zdalna 2026"}
+              excerpt={lang === "en" 
+                ? "Explore how remote work is bridging the employment gap in Ukraine and Poland, and discover the top 10 remote roles for 2026." 
+                : lang === "ua" 
+                ? "Дізнайтеся, як дистанційна робота долає розрив у працевлаштуванні в Україні та Польщі, та відкрийте для себе топ-10 вакансій 2026 року." 
+                : "Dowiedz się, jak praca zdalna zmniejsza lukę w zatrudnieniu na Ukrainie i w Polsce, oraz poznaj 10 najlepszych ról zdalnych na rok 2026."}
+              slug="digital-frontier"
+              lang={lang}
+              readMore={t.readMore}
+              image="/images/articles/digital-frontier.svg"
+            />
+
+            <ArticleCard
               title={lang === "en" ? "How Do People with Disabilities Find Jobs?" : lang === "ua" ? "Як люди з інвалідністю знаходять роботу?" : "Jak osoby z niepełnosprawnościami znajdują pracę?"}
               excerpt={lang === "en" 
                 ? "Finding a job is rarely simple. For people with disabilities, it often involves additional barriers. Understanding how people typically search for work helps us design better systems." 
