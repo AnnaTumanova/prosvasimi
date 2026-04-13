@@ -173,6 +173,17 @@ const translations = {
     navArticles: "Articles",
     navJobs: "Jobs",
     navOffer: "What We Offer",
+    modalTitle: "Register Your Interest",
+    modalSubtitle: "Be the first to know when this workshop launches",
+    formName: "Your Name",
+    formEmail: "Email Address",
+    formSubmit: "Register",
+    formSubmitting: "Registering...",
+    formSuccess: "You're registered!",
+    formSuccessMsg: "We'll notify you when the workshop is available.",
+    formError: "Something went wrong. Please try again.",
+    formClose: "Close",
+    formEmailError: "Please enter a valid email address.",
   },
   pl: {
     pageTitle: "Co oferujemy",
@@ -188,6 +199,17 @@ const translations = {
     navArticles: "Artykuły",
     navJobs: "Oferty pracy",
     navOffer: "Co oferujemy",
+    modalTitle: "Zgłoś zainteresowanie",
+    modalSubtitle: "Bądź pierwszy, gdy warsztat wystartuje",
+    formName: "Twoje imię",
+    formEmail: "Adres e-mail",
+    formSubmit: "Zarejestruj",
+    formSubmitting: "Rejestrowanie...",
+    formSuccess: "Zarejestrowano!",
+    formSuccessMsg: "Powiadomimy Cię, gdy warsztat będzie dostępny.",
+    formError: "Coś poszło nie tak. Spróbuj ponownie.",
+    formClose: "Zamknij",
+    formEmailError: "Podaj poprawny adres e-mail.",
   },
   ua: {
     pageTitle: "Що ми пропонуємо",
@@ -203,13 +225,86 @@ const translations = {
     navArticles: "Статті",
     navJobs: "Вакансії",
     navOffer: "Що ми пропонуємо",
+    modalTitle: "Зареєструвати інтерес",
+    modalSubtitle: "Дізнайтеся першими, коли воркшоп стартує",
+    formName: "Ваше ім'я",
+    formEmail: "Електронна пошта",
+    formSubmit: "Зареєструватися",
+    formSubmitting: "Реєстрація...",
+    formSuccess: "Ви зареєстровані!",
+    formSuccessMsg: "Ми повідомимо вас, коли воркшоп буде доступний.",
+    formError: "Щось пішло не так. Спробуйте ще раз.",
+    formClose: "Закрити",
+    formEmailError: "Будь ласка, введіть дійсну адресу електронної пошти.",
   },
 };
 
+interface SelectedWorkshop {
+  id: string;
+  title: string;
+}
+
 export default function OfferPage() {
   const [lang, setLang] = useState<Lang>("en");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedWorkshop, setSelectedWorkshop] = useState<SelectedWorkshop | null>(null);
+  const [formName, setFormName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState("");
+  
   const t = translations[lang];
   const currentWorkshops = workshops[lang];
+
+  const openModal = (workshop: SelectedWorkshop) => {
+    setSelectedWorkshop(workshop);
+    setIsModalOpen(true);
+    setIsSuccess(false);
+    setError("");
+    setFormName("");
+    setFormEmail("");
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedWorkshop(null);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    if (!formEmail || !/^([^\s@])+@([^\s@]+)\.[^\s@]+$/.test(formEmail)) {
+      setError(t.formEmailError);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/workshop-register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formName,
+          email: formEmail,
+          workshopId: selectedWorkshop?.id,
+          workshopTitle: selectedWorkshop?.title,
+          lang,
+          createdAt: new Date().toISOString(),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to register");
+
+      setIsSuccess(true);
+    } catch (err) {
+      setError(t.formError);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-dvh bg-white text-slate-900">
@@ -335,7 +430,10 @@ export default function OfferPage() {
                       </div>
 
                       <div className="mt-8">
-                        <button className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-slate-900/30">
+                        <button 
+                          onClick={() => openModal({ id: workshop.id, title: workshop.title })}
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-slate-900/30"
+                        >
                           {t.registerInterest}
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -351,6 +449,122 @@ export default function OfferPage() {
           </div>
         </section>
       </main>
+
+      {/* Registration Modal */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity" 
+            onClick={closeModal}
+            aria-hidden="true"
+          />
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all">
+            {/* Close button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {isSuccess ? (
+              <div className="flex flex-col items-center text-center">
+                <div className="h-16 w-16 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+                  <svg className="h-8 w-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-slate-900">{t.formSuccess}</h2>
+                <p className="mt-3 text-slate-600">{t.formSuccessMsg}</p>
+                <button
+                  onClick={closeModal}
+                  className="mt-6 inline-flex justify-center rounded-xl bg-slate-900 text-white px-6 py-3 font-medium shadow-lg hover:bg-slate-800 transition-colors"
+                >
+                  {t.formClose}
+                </button>
+              </div>
+            ) : (
+              <>
+                <h2 id="modal-title" className="text-2xl font-bold text-slate-900">
+                  {t.modalTitle}
+                </h2>
+                <p className="mt-2 text-slate-600">{t.modalSubtitle}</p>
+                
+                {selectedWorkshop && (
+                  <div className="mt-4 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <p className="text-sm font-medium text-slate-900">{selectedWorkshop.title}</p>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                  <div>
+                    <label htmlFor="modal-name" className="block text-sm font-medium text-slate-700 mb-2">
+                      {t.formName}
+                    </label>
+                    <input
+                      id="modal-name"
+                      type="text"
+                      value={formName}
+                      onChange={(e) => setFormName(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-slate-900 focus:outline-none transition-colors"
+                      placeholder="Anna"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="modal-email" className="block text-sm font-medium text-slate-700 mb-2">
+                      {t.formEmail}
+                    </label>
+                    <input
+                      id="modal-email"
+                      type="email"
+                      value={formEmail}
+                      onChange={(e) => setFormEmail(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-slate-900 focus:outline-none transition-colors"
+                      placeholder="you@example.com"
+                      required
+                    />
+                  </div>
+
+                  {error && (
+                    <p className="text-sm text-rose-600 bg-rose-50 p-3 rounded-lg">{error}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-slate-900 text-white font-medium shadow-lg shadow-slate-900/20 hover:bg-slate-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        {t.formSubmitting}
+                      </>
+                    ) : (
+                      <>
+                        {t.formSubmit}
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="border-t border-slate-100 py-12">
