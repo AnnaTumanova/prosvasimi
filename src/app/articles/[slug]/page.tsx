@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 type Lang = "en" | "pl" | "ua";
@@ -12,7 +13,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Home",
     navArticles: "Articles",
     navJobs: "Jobs",
-    backToArticles: "← Back to Articles",
+    backToArticles: "Back to Articles",
     footerNote: "Building an accessible job platform.",
   },
   pl: {
@@ -20,7 +21,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Strona główna",
     navArticles: "Artykuły",
     navJobs: "Oferty pracy",
-    backToArticles: "← Powrót do artykułów",
+    backToArticles: "Powrót do artykułów",
     footerNote: "Budujemy dostępną platformę pracy.",
   },
   ua: {
@@ -28,7 +29,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Головна",
     navArticles: "Статті",
     navJobs: "Вакансії",
-    backToArticles: "← Назад до статей",
+    backToArticles: "Назад до статей",
     footerNote: "Будуємо доступну платформу для працевлаштування.",
   },
 };
@@ -1250,8 +1251,13 @@ export default function ArticlePage() {
     <div className="min-h-dvh bg-slate-50 text-slate-900">
       <header className="border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3" aria-label="Prosvasimi home">
-            <div className="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">P</div>
+          <Link href="/" className="flex items-center gap-2.5" aria-label="Prosvasimi home">
+            <Image 
+              src="/images/logo.png" 
+              alt="Prosvasimi" 
+              width={36} 
+              height={36}
+            />
             <div className="leading-tight">
               <div className="font-semibold tracking-tight text-lg">Prosvasimi</div>
               <div className="text-xs text-slate-500">{t.brandTagline}</div>
@@ -1281,7 +1287,10 @@ export default function ArticlePage() {
 
       <main className="py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Link href="/articles" className="inline-flex items-center text-sm text-slate-600 hover:text-slate-900 mb-8">
+          <Link href="/articles" className="inline-flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 mb-8 group">
+            <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
             {t.backToArticles}
           </Link>
           

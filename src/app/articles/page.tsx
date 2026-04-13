@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface CMSArticle {
   id: string;
@@ -484,32 +485,35 @@ export default function ArticlesPage() {
   );
 
   return (
-    <div className="min-h-dvh bg-slate-50 text-slate-900">
-      <header className="border-b border-slate-200">
+    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
+      <header className="bg-white/95 backdrop-blur-md border-b border-[#E7E5E4]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3" aria-label="Prosvasimi home">
-            <div className="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">P</div>
+          <Link href="/" className="flex items-center gap-2.5" aria-label="Prosvasimi home">
+            <Image 
+              src="/images/logo.png" 
+              alt="Prosvasimi" 
+              width={36} 
+              height={36}
+            />
             <div className="leading-tight">
-              <div className="font-semibold tracking-tight text-lg">Prosvasimi</div>
-              <div className="text-xs text-slate-500">{t.brandTagline}</div>
+              <div className="font-semibold tracking-tight text-lg text-[#1B4332]">Prosvasimi</div>
+              <div className="text-xs text-[#2D6A4F]">{t.brandTagline}</div>
             </div>
           </Link>
-          <nav className="hidden md:flex items-center gap-8 text-sm">
-            <Link href="/" className="hover:text-slate-700">{t.navHome}</Link>
-            <Link href="/offer" className="hover:text-slate-700">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
-            <Link href="/articles" className="text-slate-900 font-medium">{t.navArticles}</Link>
-            <Link href="/jobs" className="hover:text-slate-700">{t.navJobs}</Link>
+          <nav className="hidden md:flex items-center gap-2 text-sm">
+            <Link href="/" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navHome}</Link>
+            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
+            <Link href="/articles" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg">{t.navArticles}</Link>
+            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
           </nav>
-          <div className="hidden sm:flex items-center gap-1 text-sm text-slate-600" role="group" aria-label="Language switch">
-            <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "en" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
+          <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group" aria-label="Language switch">
+            <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>
               EN
             </button>
-            <span aria-hidden>·</span>
-            <button type="button" onClick={() => setLang("pl")} aria-pressed={lang === "pl"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "pl" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
+            <button type="button" onClick={() => setLang("pl")} aria-pressed={lang === "pl"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>
               PL
             </button>
-            <span aria-hidden>·</span>
-            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "ua" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
+            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>
               UA
             </button>
           </div>
@@ -519,8 +523,8 @@ export default function ArticlesPage() {
       <main className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">{t.pageTitle}</h1>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">{t.pageSubtitle}</p>
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1B4332]">{t.pageTitle}</h1>
+            <p className="mt-4 text-lg text-[#2D6A4F] max-w-2xl mx-auto">{t.pageSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">

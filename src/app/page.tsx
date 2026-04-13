@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function SuccessModal({ 
   isOpen, 
@@ -26,15 +27,15 @@ function SuccessModal({
       aria-labelledby="success-modal-title"
     >
       <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity" 
+        className="fixed inset-0 bg-[#1B4332]/60 backdrop-blur-sm transition-opacity" 
         onClick={onClose}
         aria-hidden="true"
       />
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all">
         <div className="flex flex-col items-center text-center">
-          <div className="h-16 w-16 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+          <div className="h-16 w-16 rounded-full bg-[#40916C]/10 flex items-center justify-center mb-4">
             <svg 
-              className="h-8 w-8 text-emerald-600" 
+              className="h-8 w-8 text-[#40916C]" 
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor" 
@@ -43,15 +44,15 @@ function SuccessModal({
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 id="success-modal-title" className="text-2xl font-bold text-slate-900">
+          <h2 id="success-modal-title" className="text-2xl font-bold text-[#1B4332]">
             {title}
           </h2>
-          <p className="mt-3 text-slate-600">
+          <p className="mt-3 text-[#2D6A4F]">
             {message}
           </p>
           <button
             onClick={onClose}
-            className="mt-6 inline-flex justify-center rounded-xl bg-slate-900 text-white px-6 py-3 font-medium shadow-lg hover:bg-slate-800 transition-colors"
+            className="mt-6 inline-flex justify-center rounded-xl bg-[#2D6A4F] text-white px-6 py-3 font-medium hover:bg-[#1B4332] transition-colors"
           >
             {buttonText}
           </button>
@@ -314,33 +315,37 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-dvh bg-white text-slate-900">
+    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E7E5E4]">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-slate-900 to-slate-700 text-white grid place-items-center font-bold text-lg shadow-lg shadow-slate-900/20 group-hover:shadow-xl group-hover:shadow-slate-900/30 transition-shadow">
-              P
-            </div>
-            <span className="font-semibold text-lg tracking-tight">Prosvasimi</span>
-          </a>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Image 
+              src="/images/logo.png" 
+              alt="Prosvasimi" 
+              width={36} 
+              height={36}
+              className="transition-transform group-hover:scale-105"
+            />
+            <span className="font-semibold text-lg tracking-tight text-[#1B4332]">Prosvasimi</span>
+          </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <Link href="/offer" className="text-slate-500 hover:text-slate-900 transition-colors">{t.navOffer}</Link>
-            <Link href="/articles" className="text-slate-500 hover:text-slate-900 transition-colors">{t.navArticles}</Link>
-            <Link href="/jobs" className="text-slate-500 hover:text-slate-900 transition-colors">{t.navJobs}</Link>
+          <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
+            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navOffer}</Link>
+            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
+            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-1 text-sm" role="group">
+            <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group">
               {(["en", "pl", "ua"] as Lang[]).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-2.5 py-1.5 rounded-lg transition-all ${
+                  className={`px-3 py-1.5 rounded-md transition-all ${
                     lang === l
-                      ? "bg-slate-900 text-white"
-                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+                      ? "bg-white text-[#1B4332] shadow-sm"
+                      : "text-[#2D6A4F] hover:text-[#1B4332]"
                   }`}
                 >
                   {l.toUpperCase()}
@@ -349,7 +354,7 @@ export default function Page() {
             </div>
             <a 
               href="#waitlist" 
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-sm font-medium shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-slate-900/30 hover:bg-slate-800 transition-all"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2D6A4F] text-white text-sm font-medium hover:bg-[#1B4332] transition-colors"
             >
               {t.ctaEarly}
             </a>
@@ -359,31 +364,27 @@ export default function Page() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.08),transparent_50%)]" />
-          
-          <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 lg:py-40">
+        <section className="bg-white border-b border-[#E7E5E4]">
+          <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 lg:py-36">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium ring-1 ring-emerald-100/50">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#40916C]/10 text-[#40916C] text-sm font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#40916C] animate-pulse" />
                 {t.heroTagline}
               </span>
               
-              <h1 className="mt-8 text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+              <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-[#1B4332]">
                 {t.heroTitle}
-                <span className="block text-slate-400 font-medium text-4xl md:text-5xl lg:text-6xl mt-2">{t.heroSubtitle}</span>
+                <span className="block text-[#2D6A4F] font-medium text-3xl md:text-4xl lg:text-5xl mt-2">{t.heroSubtitle}</span>
               </h1>
               
-              <p className="mt-8 text-xl text-slate-600 leading-relaxed max-w-2xl">
+              <p className="mt-8 text-lg text-[#2D6A4F] leading-relaxed max-w-2xl">
                 {t.heroDescription}
               </p>
               
               <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <a 
                   href="#waitlist" 
-                  className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-slate-900 text-white font-medium shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-slate-900/30 hover:bg-slate-800 transition-all"
+                  className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors"
                 >
                   {t.heroJoin}
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -392,7 +393,7 @@ export default function Page() {
                 </a>
                 <Link 
                   href="/jobs" 
-                  className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl border-2 border-slate-200 font-medium hover:border-slate-300 hover:bg-slate-50 transition-all"
+                  className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl border-2 border-[#E7E5E4] text-[#1B4332] font-medium hover:border-[#2D6A4F] hover:bg-[#FAFAF9] transition-all"
                 >
                   {t.heroExplore}
                 </Link>
@@ -402,19 +403,19 @@ export default function Page() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 md:py-28 border-t border-slate-100">
+        <section className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { icon: "🔍", title: t.feature1Title, desc: t.feature1Desc },
-                { icon: "🧭", title: t.feature2Title, desc: t.feature2Desc },
-                { icon: "🧩", title: t.feature3Title, desc: t.feature3Desc },
-                { icon: "🤝", title: t.feature4Title, desc: t.feature4Desc },
+                { icon: "🔍", title: t.feature1Title, desc: t.feature1Desc, color: "bg-[#2D6A4F]" },
+                { icon: "🧭", title: t.feature2Title, desc: t.feature2Desc, color: "bg-[#C9705F]" },
+                { icon: "🧩", title: t.feature3Title, desc: t.feature3Desc, color: "bg-[#5B8FB9]" },
+                { icon: "🤝", title: t.feature4Title, desc: t.feature4Desc, color: "bg-[#D4A574]" },
               ].map((feature, i) => (
                 <div key={i} className="group">
-                  <div className="text-3xl mb-4">{feature.icon}</div>
-                  <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-2 text-slate-600 leading-relaxed">{feature.desc}</p>
+                  <div className={`w-12 h-12 ${feature.color} rounded-xl flex items-center justify-center text-2xl mb-4`}>{feature.icon}</div>
+                  <h3 className="text-lg font-semibold text-[#1B4332]">{feature.title}</h3>
+                  <p className="mt-2 text-[#57534E] leading-relaxed">{feature.desc}</p>
                 </div>
               ))}
             </div>
@@ -422,21 +423,21 @@ export default function Page() {
         </section>
 
         {/* Values Section */}
-        <section id="values" className="py-20 md:py-28 bg-slate-50">
+        <section id="values" className="py-20 md:py-28 bg-white border-y border-[#E7E5E4]">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16 text-[#1B4332]">
               {t.valuesTitle}
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { title: t.value1Title, desc: t.value1Desc, icon: "⚖️" },
-                { title: t.value2Title, desc: t.value2Desc, icon: "✨" },
-                { title: t.value3Title, desc: t.value3Desc, icon: "🛡️" },
+                { title: t.value1Title, desc: t.value1Desc, icon: "⚖️", color: "border-t-[#2D6A4F]" },
+                { title: t.value2Title, desc: t.value2Desc, icon: "✨", color: "border-t-[#C9705F]" },
+                { title: t.value3Title, desc: t.value3Desc, icon: "🛡️", color: "border-t-[#5B8FB9]" },
               ].map((value, i) => (
-                <div key={i} className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-lg hover:border-slate-200 transition-all">
+                <div key={i} className={`bg-[#FAFAF9] rounded-2xl p-8 border border-[#E7E5E4] ${value.color} border-t-4 hover:shadow-lg transition-all`}>
                   <div className="text-3xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-semibold">{value.title}</h3>
-                  <p className="mt-3 text-slate-600 leading-relaxed">{value.desc}</p>
+                  <h3 className="text-xl font-semibold text-[#1B4332]">{value.title}</h3>
+                  <p className="mt-3 text-[#57534E] leading-relaxed">{value.desc}</p>
                 </div>
               ))}
             </div>
@@ -446,21 +447,21 @@ export default function Page() {
         {/* For Whom Section */}
         <section id="for" className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16 text-[#1B4332]">
               {t.forWhomTitle}
             </h2>
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Candidates */}
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-10 border border-blue-100">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-500 text-white text-xl mb-6">
+              <div className="bg-white rounded-2xl p-8 md:p-10 border border-[#E7E5E4] border-l-4 border-l-[#5B8FB9]">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#5B8FB9] text-white text-xl mb-6">
                   👤
                 </div>
-                <h3 className="text-2xl font-bold">{t.forCandTitle}</h3>
-                <p className="mt-3 text-slate-600">{t.forCandDesc}</p>
+                <h3 className="text-2xl font-bold text-[#1B4332]">{t.forCandTitle}</h3>
+                <p className="mt-3 text-[#57534E]">{t.forCandDesc}</p>
                 <ul className="mt-6 space-y-3">
                   {[t.forCand1, t.forCand2, t.forCand3, t.forCand4].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-700">
-                      <svg className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <li key={i} className="flex items-start gap-3 text-[#1B4332]">
+                      <svg className="w-5 h-5 text-[#5B8FB9] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {item}
@@ -470,16 +471,16 @@ export default function Page() {
               </div>
 
               {/* Employers */}
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 md:p-10 border border-purple-100">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-purple-500 text-white text-xl mb-6">
+              <div className="bg-white rounded-2xl p-8 md:p-10 border border-[#E7E5E4] border-l-4 border-l-[#C9705F]">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#C9705F] text-white text-xl mb-6">
                   🏢
                 </div>
-                <h3 className="text-2xl font-bold">{t.forEmpTitle}</h3>
-                <p className="mt-3 text-slate-600">{t.forEmpDesc}</p>
+                <h3 className="text-2xl font-bold text-[#1B4332]">{t.forEmpTitle}</h3>
+                <p className="mt-3 text-[#57534E]">{t.forEmpDesc}</p>
                 <ul className="mt-6 space-y-3">
                   {[t.forEmp1, t.forEmp2, t.forEmp3, t.forEmp4].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-700">
-                      <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <li key={i} className="flex items-start gap-3 text-[#1B4332]">
+                      <svg className="w-5 h-5 text-[#C9705F] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {item}
@@ -492,7 +493,7 @@ export default function Page() {
         </section>
 
         {/* How It Works */}
-        <section id="how" className="py-20 md:py-28 bg-slate-900 text-white">
+        <section id="how" className="py-20 md:py-28 bg-[#2D6A4F] text-white">
           <div className="mx-auto max-w-6xl px-6">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16">
               {t.howTitle}
@@ -504,11 +505,11 @@ export default function Page() {
                 { n: 3, title: t.how3Title, desc: t.how3Desc },
               ].map((step) => (
                 <div key={step.n} className="relative">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-slate-900 font-bold text-lg mb-6">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white text-[#1B4332] font-bold text-lg mb-6">
                     {step.n}
                   </div>
                   <h3 className="text-xl font-semibold">{step.title}</h3>
-                  <p className="mt-3 text-slate-400 leading-relaxed">{step.desc}</p>
+                  <p className="mt-3 text-white/70 leading-relaxed">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -519,14 +520,14 @@ export default function Page() {
         <section id="waitlist" className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
             <div className="max-w-2xl mx-auto">
-              <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100">
-                <h2 className="text-3xl font-bold tracking-tight">{t.waitlistTitle}</h2>
-                <p className="mt-4 text-slate-600">{t.waitlistDesc}</p>
+              <div className="bg-white rounded-2xl p-8 md:p-12 border border-[#E7E5E4]">
+                <h2 className="text-3xl font-bold tracking-tight text-[#1B4332]">{t.waitlistTitle}</h2>
+                <p className="mt-4 text-[#2D6A4F]">{t.waitlistDesc}</p>
 
                 {submitted ? (
-                  <div className="mt-8 rounded-2xl bg-emerald-50 text-emerald-900 p-6 border border-emerald-100">
+                  <div className="mt-8 rounded-xl bg-[#40916C]/10 text-[#1B4332] p-6 border border-[#40916C]/20">
                     <div className="flex items-center gap-3">
-                      <svg className="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-6 h-6 text-[#40916C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="font-medium">
@@ -537,15 +538,15 @@ export default function Page() {
                 ) : (
                   <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                     <div>
-                      <label className="block text-sm font-medium mb-3">{t.formIam}</label>
+                      <label className="block text-sm font-medium text-[#1B4332] mb-3">{t.formIam}</label>
                       <div className="grid grid-cols-2 gap-3">
                         <button 
                           type="button" 
                           onClick={() => setRole("candidate")} 
                           className={`px-4 py-3 rounded-xl border-2 font-medium transition-all ${
                             role === "candidate" 
-                              ? "bg-slate-900 text-white border-slate-900" 
-                              : "border-slate-200 hover:border-slate-300"
+                              ? "bg-[#2D6A4F] text-white border-[#2D6A4F]" 
+                              : "border-[#E7E5E4] text-[#1B4332] hover:border-[#2D6A4F]"
                           }`}
                         >
                           {t.formCandidate}
@@ -555,8 +556,8 @@ export default function Page() {
                           onClick={() => setRole("employer")} 
                           className={`px-4 py-3 rounded-xl border-2 font-medium transition-all ${
                             role === "employer" 
-                              ? "bg-slate-900 text-white border-slate-900" 
-                              : "border-slate-200 hover:border-slate-300"
+                              ? "bg-[#2D6A4F] text-white border-[#2D6A4F]" 
+                              : "border-[#E7E5E4] text-[#1B4332] hover:border-[#2D6A4F]"
                           }`}
                         >
                           {t.formEmployer}
@@ -566,44 +567,44 @@ export default function Page() {
 
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium mb-2">{t.formName}</label>
+                        <label htmlFor="name" className="block text-sm font-medium text-[#1B4332] mb-2">{t.formName}</label>
                         <input 
                           id="name" 
                           name="name" 
                           value={name} 
                           onChange={(e) => setName(e.target.value)} 
-                          className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-slate-900 focus:outline-none transition-colors" 
+                          className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" 
                           placeholder="Anna"
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-2">{t.formEmail}</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-[#1B4332] mb-2">{t.formEmail}</label>
                         <input 
                           id="email" 
                           name="email" 
                           type="email"
                           value={email} 
                           onChange={(e) => setEmail(e.target.value)} 
-                          className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-slate-900 focus:outline-none transition-colors" 
+                          className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" 
                           placeholder="you@domain.com"
                           required
                         />
                       </div>
                     </div>
 
-                    {err && <p className="text-sm text-rose-600">{err}</p>}
+                    {err && <p className="text-sm text-[#FF7A59]">{err}</p>}
 
                     <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                       <button 
                         type="submit" 
-                        className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-slate-900 text-white font-medium shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-slate-900/30 hover:bg-slate-800 transition-all"
+                        className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors"
                       >
                         {t.joinBtn}
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </button>
-                      <p className="text-sm text-slate-500">{t.joinNote}</p>
+                      <p className="text-sm text-[#2D6A4F]">{t.joinNote}</p>
                     </div>
                   </form>
                 )}
@@ -613,9 +614,9 @@ export default function Page() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 md:py-28 bg-slate-50">
+        <section id="faq" className="py-20 md:py-28 bg-white border-t border-[#E7E5E4]">
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16 text-[#1B4332]">
               {t.faqTitle}
             </h2>
             <div className="space-y-6">
@@ -624,9 +625,9 @@ export default function Page() {
                 { q: t.faq2Q, a: t.faq2A },
                 { q: t.faq3Q, a: t.faq3A },
               ].map((faq, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                  <h3 className="text-lg font-semibold">{faq.q}</h3>
-                  <p className="mt-3 text-slate-600 leading-relaxed">{faq.a}</p>
+                <div key={i} className="bg-[#FAFAF9] rounded-2xl p-6 border border-[#E7E5E4]">
+                  <h3 className="text-lg font-semibold text-[#1B4332]">{faq.q}</h3>
+                  <p className="mt-3 text-[#2D6A4F] leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -635,23 +636,26 @@ export default function Page() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100 py-12">
+      <footer className="border-t border-[#E7E5E4] bg-white py-12">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 rounded-lg bg-slate-900 text-white grid place-items-center font-bold text-sm">
-                P
-              </div>
-              <span className="font-medium">Prosvasimi</span>
+            <div className="flex items-center gap-2.5">
+              <Image 
+                src="/images/logo.png" 
+                alt="Prosvasimi" 
+                width={28} 
+                height={28}
+              />
+              <span className="font-medium text-[#1B4332]">Prosvasimi</span>
             </div>
-            <nav className="flex items-center gap-6 text-sm text-slate-500">
-              <a href="#values" className="hover:text-slate-900 transition-colors">{t.valuesTitle}</a>
-              <a href="#for" className="hover:text-slate-900 transition-colors">{t.forWhomTitle}</a>
-              <Link href="/offer" className="hover:text-slate-900 transition-colors">{t.navOffer}</Link>
-              <Link href="/articles" className="hover:text-slate-900 transition-colors">{t.navArticles}</Link>
-              <Link href="/jobs" className="hover:text-slate-900 transition-colors">{t.navJobs}</Link>
+            <nav className="flex items-center gap-6 text-sm text-[#2D6A4F]">
+              <a href="#values" className="hover:text-[#1B4332] transition-colors">{t.valuesTitle}</a>
+              <a href="#for" className="hover:text-[#1B4332] transition-colors">{t.forWhomTitle}</a>
+              <Link href="/offer" className="hover:text-[#1B4332] transition-colors">{t.navOffer}</Link>
+              <Link href="/articles" className="hover:text-[#1B4332] transition-colors">{t.navArticles}</Link>
+              <Link href="/jobs" className="hover:text-[#1B4332] transition-colors">{t.navJobs}</Link>
             </nav>
-            <p className="text-sm text-slate-400">© {new Date().getFullYear()} Prosvasimi</p>
+            <p className="text-sm text-[#2D6A4F]">© {new Date().getFullYear()} Prosvasimi</p>
           </div>
         </div>
       </footer>
