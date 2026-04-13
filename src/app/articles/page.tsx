@@ -496,6 +496,7 @@ export default function ArticlesPage() {
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm">
             <Link href="/" className="hover:text-slate-700">{t.navHome}</Link>
+            <Link href="/offer" className="hover:text-slate-700">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
             <Link href="/articles" className="text-slate-900 font-medium">{t.navArticles}</Link>
             <Link href="/jobs" className="hover:text-slate-700">{t.navJobs}</Link>
           </nav>
