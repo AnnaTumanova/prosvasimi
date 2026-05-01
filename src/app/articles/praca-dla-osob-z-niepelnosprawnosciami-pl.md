@@ -15,8 +15,6 @@ Rynek pracy w Polsce zmienia się szybko. Firmy coraz częściej mówią o róż
 
 Według danych publicznych za 2024 rok, w urzędach pracy zarejestrowało się **77,4 tys. osób z niepełnosprawnością**, a pracę podjęło **35,9 tys. osób z niepełnosprawnościami**. Jednocześnie zgłoszono **25,3 tys. ofert pracy dedykowanych bezrobotnym z niepełnosprawnością**, co stanowiło tylko **2,5% wszystkich ofert**. To pokazuje dużą lukę między potencjałem kandydatów a dostępnością realnie dopasowanych ofert.
 
-![Dostępny rynek pracy](/images/articles/ChatGPT%20Image%20May%201,%202026,%2001_58_48%20PM.png)
-
 ## Problem nie leży tylko po stronie kandydatów
 
 W debacie publicznej często mówi się o „aktywizacji zawodowej", ale zbyt rzadko mówi się o tym, co naprawdę blokuje zatrudnienie: niedostępne procesy rekrutacyjne, brak elastyczności, stereotypy, niewiedza pracodawców oraz brak jasnej informacji o warunkach pracy.

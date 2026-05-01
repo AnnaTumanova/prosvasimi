@@ -15,8 +15,6 @@ The Polish job market is changing rapidly. Companies increasingly talk about div
 
 According to public data for 2024, **77.4 thousand people with disabilities** registered at employment offices, while **35.9 thousand people with disabilities** actually found employment. At the same time, only **25.3 thousand job offers** were registered specifically for unemployed people with disabilities, representing just **2.5% of all offers**. This shows a significant gap between candidate potential and the availability of truly adapted offers.
 
-![Accessible job market](/images/articles/ChatGPT%20Image%20May%201,%202026,%2001_58_48%20PM.png)
-
 ## The Problem Doesn't Lie Only with Candidates
 
 In public debate, we often hear about "professional activation," but too rarely about what actually blocks employment: inaccessible recruitment processes, lack of flexibility, stereotypes, employer ignorance, and lack of clear information about working conditions.

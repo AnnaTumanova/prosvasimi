@@ -1246,7 +1246,7 @@ export default function ArticlePage() {
               />
             )}
 
-            <div className="prose prose-lg max-w-none prose-headings:text-[#1B4332] prose-p:text-[#57534E] prose-ul:text-[#57534E] prose-li:text-[#57534E] prose-strong:text-[#1B4332] prose-a:text-[#2D6A4F] hover:prose-a:text-[#1B4332] prose-h4:text-[#1B4332]">
+            <div className="prose prose-lg max-w-none prose-headings:text-[#1B4332] prose-p:text-[#57534E] prose-p:mb-6 prose-p:leading-relaxed prose-ul:text-[#57534E] prose-li:text-[#57534E] prose-strong:text-[#1B4332] prose-a:text-[#2D6A4F] hover:prose-a:text-[#1B4332] prose-h4:text-[#1B4332] prose-h2:mt-10 prose-h2:mb-6 prose-h4:mt-8 prose-h4:mb-4">
               {getContent()}
             </div>
           </article>
