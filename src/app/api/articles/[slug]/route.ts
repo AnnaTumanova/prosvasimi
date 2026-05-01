@@ -17,21 +17,30 @@ export async function GET(
 
   try {
     // Map slug to file based on language
+    // All three slugs point to the same article in different languages
     let fileName: string;
-    switch (slug) {
-      case 'praca-dla-osob-z-niepelnosprawnosciami':
-        fileName = lang === 'en' ? 'accessible-jobs-market-en.md' : 
-                   lang === 'ua' ? 'dostupniy-robochiy-rinok-ua.md' : 
-                   'praca-dla-osob-z-niepelnosprawnosciami-pl.md';
-        break;
-      case 'accessible-jobs-market-poland':
-        fileName = 'accessible-jobs-market-en.md';
-        break;
-      case 'dostupniy-robochiy-rinok-poland':
-        fileName = 'dostupniy-robochiy-rinok-ua.md';
-        break;
-      default:
-        return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+    const accessibleJobsArticleSlugs = [
+      'praca-dla-osob-z-niepelnosprawnosciami',
+      'accessible-jobs-market-poland',
+      'dostupniy-robochiy-rinok-poland'
+    ];
+    
+    if (accessibleJobsArticleSlugs.includes(slug)) {
+      // Serve the correct language version based on user's selected language
+      switch (lang) {
+        case 'en':
+          fileName = 'accessible-jobs-market-en.md';
+          break;
+        case 'ua':
+          fileName = 'dostupniy-robochiy-rinok-ua.md';
+          break;
+        case 'pl':
+        default:
+          fileName = 'praca-dla-osob-z-niepelnosprawnosciami-pl.md';
+          break;
+      }
+    } else {
+      return NextResponse.json({ error: 'Article not found' }, { status: 404 });
     }
 
     const fullPath = path.join(articlesDirectory, fileName);

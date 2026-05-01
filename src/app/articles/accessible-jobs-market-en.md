@@ -13,7 +13,7 @@ lang: "en"
 
 The Polish job market is changing rapidly. Companies increasingly talk about diversity, ESG, social responsibility, and inclusive recruitment. Yet people with disabilities too often remain outside the mainstream employment pipeline—not because they lack skills, but because recruitment systems, communication, and work organization aren't adapted to their real needs.
 
-According to public data for 2024, **77.4 thousand people with disabilities** registered at employment offices, while **35.9 thousand people with disabilities** actually found employment. At the same time, only **25.3 thousand job offers** were registered specifically for unemployed people with disabilities, representing just **2.5% of all offers**. This shows a significant gap between candidate potential and the availability of truly adapted offers. [[1]](https://psz.praca.gov.pl/documents/d/urzad-pracy/2024-bezrobotni-z-niepelnosprawnoscia)
+According to public data for 2024, **77.4 thousand people with disabilities** registered at employment offices, while **35.9 thousand people with disabilities** actually found employment. At the same time, only **25.3 thousand job offers** were registered specifically for unemployed people with disabilities, representing just **2.5% of all offers**. This shows a significant gap between candidate potential and the availability of truly adapted offers.
 
 ![Accessible job market](/images/articles/ChatGPT%20Image%20May%201,%202026,%2001_58_48%20PM.png)
 
@@ -21,17 +21,17 @@ According to public data for 2024, **77.4 thousand people with disabilities** re
 
 In public debate, we often hear about "professional activation," but too rarely about what actually blocks employment: inaccessible recruitment processes, lack of flexibility, stereotypes, employer ignorance, and lack of clear information about working conditions.
 
-Data from PFRON's report shows that people with different types of disabilities need very specific solutions: appropriate working conditions, longer training, job coach support, opportunities to work in quiet environments, adapted workstations, transportation, written communication, or sign language interpreter support. [[2]](https://www.pfron.org.pl/fileadmin/Badania_i_analizy/2024/Badanie_potrzeb_ON/Raport_koncowy_Badanie_potrzeb_ON_w_Polsce_09.2024.pdf)
+Data from PFRON's report shows that people with different types of disabilities need very specific solutions: appropriate working conditions, longer training, job coach support, opportunities to work in quiet environments, adapted workstations, transportation, written communication, or sign language interpreter support.
 
 This means that "inclusive recruitment" isn't just about adding the sentence "we welcome people with disabilities" to a job posting. True accessibility starts earlier: from the language of the offer, application form, recruitment interview, onboarding process, and work culture in the team.
 
 ## Poland Has Potential, But People with Disabilities Remain Outside the Market
 
-Poland's job market as a whole looks relatively strong. In 2024, the employment rate for people aged 20-64 in Poland was **78.3%**, higher than the European Union average of **75.8%**. [[3]](https://www.gov.pl/attachment/844d1d16-e5fe-435e-97ec-fc04a3621827)
+Poland's job market as a whole looks relatively strong. In 2024, the employment rate for people aged 20-64 in Poland was **78.3%**, higher than the European Union average of **75.8%**.
 
-However, this positive picture doesn't automatically translate to the situation of people with disabilities. In the European Union in 2024, the unemployment rate for people with disabilities aged 15-64 was **9.5%**, while among people without disabilities it was **5.9%**. For people with significant disabilities, the unemployment rate was even higher at **11.6%**. [[4]](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Disability_statistics_-_unemployment_and_people_outside_the_labour_force)
+However, this positive picture doesn't automatically translate to the situation of people with disabilities. In the European Union in 2024, the unemployment rate for people with disabilities aged 15-64 was **9.5%**, while among people without disabilities it was **5.9%**. For people with significant disabilities, the unemployment rate was even higher at **11.6%**.
 
-An even bigger problem is economic inactivity. Eurostat indicates that in 2024, as many as **67.7% of people aged 15-64 with significant disabilities in the EU remained outside the labor force**, compared to **21.8% of people without disabilities**. [[4]](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Disability_statistics_-_unemployment_and_people_outside_the_labour_force)
+An even bigger problem is economic inactivity. Eurostat indicates that in 2024, as many as **67.7% of people aged 15-64 with significant disabilities in the EU remained outside the labor force**, compared to **21.8% of people without disabilities**.
 
 This isn't just a social problem. It's also untapped potential of skills, experience, and loyalty.
 
@@ -45,7 +45,7 @@ Analysis of the Polish search and job offer market shows that candidates most of
 **"Is the workplace accessible?"**
 **"Can I apply without stress and discrimination?"**
 
-In Polish search results, phrases related to remote work, disability certificates, office work, customer service, administration, accounting, and positions not requiring physical work are very visible. Job portals for people with disabilities increasingly show filters related to accessibility: elevator, accessible toilet for wheelchair users, parking, written communication, quiet workplace, adjustable desk, or screen-reading software. [[5]](https://dostepnapraca.pl/)
+In Polish search results, phrases related to remote work, disability certificates, office work, customer service, administration, accounting, and positions not requiring physical work are very visible. Job portals for people with disabilities increasingly show filters related to accessibility: elevator, accessible toilet for wheelchair users, parking, written communication, quiet workplace, adjustable desk, or screen-reading software.
 
 This is an important signal for employers: candidates aren't looking for "special treatment." They're looking for clear information, fair conditions, and an environment where they can work effectively.
 
@@ -60,7 +60,7 @@ How do we write an accessible job posting?
 How do we conduct a recruitment interview without unconscious discrimination?
 How do we support an employee after hiring?
 
-In Poland, there are financial support instruments for employers. PFRON indicates that monthly funding for an employee's salary with a disability can be up to **2760 PLN** for significant disability, **1550 PLN** for moderate disability, and **575 PLN** for mild disability. In the case of selected specific conditions, amounts can increase to **4140 PLN**, **2585 PLN**, and **1265 PLN** respectively. [[6]](https://www.pfron.org.pl/pracodawcy/dofinansowanie-wynagrodzen/wysokosc-dofinansowania-do-wynagrodzen-pracownikow-niepelnosprawnych/)
+In Poland, there are financial support instruments for employers. PFRON indicates that monthly funding for an employee's salary with a disability can be up to **2760 PLN** for significant disability, **1550 PLN** for moderate disability, and **575 PLN** for mild disability. In the case of selected specific conditions, amounts can increase to **4140 PLN**, **2585 PLN**, and **1265 PLN** respectively.
 
 But money isn't enough. Companies also need knowledge, processes, and support in adapting positions to candidates' real needs.
 
