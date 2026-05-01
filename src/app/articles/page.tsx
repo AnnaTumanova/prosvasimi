@@ -581,6 +581,19 @@ export default function ArticlesPage() {
             />
 
             <ArticleCard
+              title={lang === "en" ? "Building a Truly Accessible Job Market in Poland" : lang === "ua" ? "Будування по-справді доступного ринку праці в Польщі" : "Praca dla osób z niepełnosprawnościami w Polsce: jak budować naprawdę dostępny rynek pracy?"}
+              excerpt={lang === "en" 
+                ? "Poland has a strong job market, but people with disabilities still don't benefit from it on equal terms. Discover data, candidate needs, and solutions for companies." 
+                : lang === "ua" 
+                ? "Польща має сильний ринок праці, але люди з інвалідністю все ще не користуються ним на рівних умовах. Дізнайтеся дані, потреби кандидатів та рішення для компаній." 
+                : "W Polsce tysiące osób z niepełnosprawnościami nadal napotyka bariery w zatrudnieniu. Sprawdź dane, potrzeby kandydatów i rozwiązania dla firm."}
+              slug={lang === "en" ? "accessible-jobs-market-poland" : lang === "ua" ? "dostupniy-robochiy-rinok-poland" : "praca-dla-osob-z-niepelnosprawnosciami"}
+              lang={lang}
+              readMore={t.readMore}
+              image="/images/articles/ChatGPT Image May 1, 2026, 01_58_48 PM.png"
+            />
+
+            <ArticleCard
               title={lang === "en" ? "A Practical Guide to Inclusive Employment" : lang === "ua" ? "Практичний посібник з інклюзивного працевлаштування" : "Praca osób z niepełnosprawnościami: praktyczny poradnik"}
               excerpt={lang === "en" 
                 ? "Work is more than income—it's independence, identity, and access to opportunity. Learn what disability-friendly jobs actually means, how to find inclusive employers, and practical steps for both jobseekers and employers." 
