@@ -34,7 +34,7 @@ const translations: Record<Lang, Record<string, string>> = {
   },
 };
 
-// Hardcoded articles data
+// Hardcoded articles data (for existing articles)
 const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titlePl: string; contentEn: React.ReactNode; contentUa: React.ReactNode; contentPl: React.ReactNode }> = {
   "inclusivity-revolution": {
     titleEn: "The Inclusivity Revolution: A 2026 Comparison of Ukraine and Poland",
@@ -410,8 +410,6 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
     titlePl: "Praca osób z niepełnosprawnościami w Polsce: jak znaleźć zatrudnienie i jak tworzyć miejsca pracy bez barier",
     contentEn: (
       <>
-        <img src="/images/articles/inclusive-workplace.svg" alt="Inclusive workplace illustration" className="w-full rounded-xl mb-8" />
-        
         <h4 className="text-lg font-semibold mt-6 mb-3">Why disability-inclusive employment matters</h4>
         <p className="mb-4">
           Work is more than income—it's independence, identity, social connection, and access to opportunity. Yet many countries still face a persistent <strong>disability employment gap</strong>, meaning disabled people are employed at lower rates than non-disabled people.
@@ -433,8 +431,6 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
           Importantly, "reasonable accommodation" is a recognized concept in employment equality frameworks (including EU contexts) and is widely used in workplace policy and law.
         </p>
 
-        <img src="/images/articles/accommodations.svg" alt="Types of workplace accommodations" className="w-full rounded-xl mb-8 mt-8" />
-
         <h4 className="text-lg font-semibold mt-6 mb-3">Examples of common accommodations at work</h4>
         <p className="mb-4">Accommodations vary by person and role. Some common examples include:</p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
@@ -444,8 +440,6 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
           <li>Clear written instructions and structured check-ins</li>
           <li>Adjusted interview format (extra time, alternative tasks, accessibility support)</li>
         </ul>
-
-        <img src="/images/articles/job-search.svg" alt="Job search illustration" className="w-full rounded-xl mb-8 mt-8" />
 
         <h4 className="text-lg font-semibold mt-6 mb-3">Where to find jobs for people with disabilities</h4>
         <p className="mb-4">
@@ -508,693 +502,635 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
     ),
     contentUa: (
       <>
-        <img src="/images/articles/inclusive-workplace.svg" alt="Ілюстрація інклюзивного робочого місця" className="w-full rounded-xl mb-8" />
-        
-        <h4 className="text-lg font-semibold mt-6 mb-3">Чому інклюзивне працевлаштування важливе</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Чому важлива інклюзія на робочому місці</h4>
         <p className="mb-4">
-          Робота — це більше, ніж дохід. Це незалежність, ідентичність, соціальні зв'язки та доступ до можливостей. Проте в багатьох країнах зберігається <strong>розрив у працевлаштуванні людей з інвалідністю</strong> — вони працевлаштовані на нижчому рівні, ніж люди без інвалідності.
+          Робота — це більше, ніж дохід. Це незалежність, ідентичність та доступ до можливостей. Однак у багатьох країнах існує стійка <strong>прогалина в працевлаштуванні людей з інвалідністю</strong>, що означає, що люди з інвалідністю працюють у меншій кількості, ніж люди без інвалідності.
         </p>
         <p className="mb-4">
-          Для роботодавців інклюзія — це не лише соціальне благо. Дослідження показують, що багато типових побоювань роботодавців (щодо витрат, продуктивності чи ризиків) часто перебільшені, а кращі практики найму покращують результати.
+          Для роботодавців інклюзія — це не лише соціальне благо. Дослідження показують, що багато поширених побоювань роботодавців (щодо витрат, продуктивності чи ризиків) часто перебільшені, а кращі практики протягом усього циклу найму можуть покращити результати.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">Що насправді означає «робота, дружня до людей з інвалідністю»</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Що насправді означають "роботи, дружні до інвалідів"</h4>
         <p className="mb-4">
-          Це не окрема категорія вакансій — це роль, де усунуто бар'єри, щоб людина могла ефективно виконувати роботу. Зазвичай це зводиться до трьох речей:
+          Робота, дружня до інвалідів, — це не спеціальна категорія робіт. Це посада, на якій усунуто бар'єри, щоб людина могла ефективно виконувати роботу. Зазвичай це зводиться до трьох речей:
         </p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Доступний найм</strong> (заявки, співбесіди, оцінювання, комунікація)</li>
-          <li><strong>Розумне пристосування</strong> (адаптації, що забезпечують продуктивність без надмірного навантаження)</li>
+          <li><strong>Доступний найм</strong> (заявки, співбесіди, оцінки, комунікація)</li>
+          <li><strong>Розумні пристосування</strong> (коригування, що дозволяють працювати без надмірного тягаря)</li>
           <li><strong>Інклюзивне управління</strong> (чіткі очікування, гнучкість де можливо, психологічно безпечна культура)</li>
         </ul>
+        <p className="mb-4">
+          Важливо, що "розумне пристосування" — це визнана концепція в рамках рівності працевлаштування (включно з контекстом ЄС) і широко використовується в політиці та законодавстві на робочому місці.
+        </p>
 
-        <img src="/images/articles/accommodations.svg" alt="Види пристосувань на робочому місці" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Приклади типових пристосувань на роботі</h4>
-        <p className="mb-4">Пристосування залежать від людини та ролі. Деякі поширені приклади:</p>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Приклади поширених пристосувань на роботі</h4>
+        <p className="mb-4">Пристосування варіюються залежно від людини та посади. Деякі поширені приклади включають:</p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
           <li>Гнучкий графік або змінений розклад</li>
-          <li>Віддалена або гібридна робота, коли роль це дозволяє</li>
-          <li>Програми читання з екрану, субтитри, голосовий ввід, ергономічне обладнання</li>
-          <li>Чіткі письмові інструкції та структуровані зустрічі</li>
-          <li>Адаптований формат співбесіди (додатковий час, альтернативні завдання)</li>
+          <li>Віддалена або гібридна робота, коли посада дозволяє</li>
+          <li>Програми для читання екрану, субтитри, голосовий ввід, ергономічне обладнання</li>
+          <li>Чіткі письмові інструкції та структуровані перевірки</li>
+          <li>Змінений формат співбесіди (додатковий час, альтернативні завдання, підтримка доступності)</li>
         </ul>
-
-        <img src="/images/articles/job-search.svg" alt="Ілюстрація пошуку роботи" className="w-full rounded-xl mb-8 mt-8" />
 
         <h4 className="text-lg font-semibold mt-6 mb-3">Де шукати роботу для людей з інвалідністю</h4>
         <p className="mb-4">
-          Багато кандидатів починають з основних платформ, але спеціалізовані дошки вакансій можуть зменшити тертя, пріоритезуючи доступність та інклюзивних роботодавців.
+          Багато кандидатів починають з основних платформ, але спеціалізовані дошки вакансій для людей з інвалідністю можуть зменшити тертя, пріоритезуючи доступність та інклюзивних роботодавців.
         </p>
-        <p className="mb-4"><strong>Порада для пошуку:</strong> Комбінуйте ключове слово ролі з термінами інклюзії:</p>
+        <p className="mb-4"><strong>Порада пошуку:</strong> Поєднайте ключове слово посади з термінами інклюзії:</p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li>«підтримка клієнтів + дружній до інвалідності»</li>
-          <li>«аналітик даних + доступне робоче місце»</li>
-          <li>«віддалена робота + для людей з інвалідністю»</li>
-          <li>«інклюзивний роботодавець + [ваше місто]»</li>
+          <li>"підтримка клієнтів + дружній до інвалідів"</li>
+          <li>"аналітик даних + доступне робоче місце"</li>
+          <li>"віддалено + вакансії для людей з інвалідністю"</li>
+          <li>"інклюзивний роботодавець + [ваше місто]"</li>
         </ul>
 
         <h4 className="text-lg font-semibold mt-6 mb-3">Що роблять інклюзивні роботодавці по-іншому</h4>
-        <p className="mb-4">Інклюзивні роботодавці зазвичай прозорі та послідовні. Шукайте такі сигнали:</p>
+        <p className="mb-4">Інклюзивні роботодавці, як правило, є прозорими та послідовними. Шукайте сигнали, як-от:</p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li>Чіткий процес пристосувань (до і після найму)</li>
-          <li>Інструкції до співбесіди, що вітають запити на доступність</li>
-          <li>Ресурсні групи працівників з інвалідністю, ініціативи доступності</li>
-          <li>Вимірювані практики, що підтримують стале працевлаштування</li>
+          <li>Чіткий процес пристосувань (до та після найму)</li>
+          <li>Настанови для співбесід, що вітають запити на доступність</li>
+          <li>Групи працівників з інвалідністю, ініціативи доступності або публічні зобов'язання</li>
+          <li>Вимірювані практики, що підтримують стале працевлаштування, а не лише заголовки про найм</li>
         </ul>
 
         <h4 className="text-lg font-semibold mt-6 mb-3">Для роботодавців: як побудувати інклюзивний процес найму</h4>
-        <p className="mb-4"><strong>1. Зробіть описи вакансій доступними та конкретними</strong></p>
+        <p className="mb-4"><strong>1. Зробіть описи робіт доступними та конкретними</strong></p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li>Зосередьтеся на основних функціях, а не на «бажаних» бар'єрах</li>
-          <li>Уникайте розмитих рис на кшталт «має бути енергійним», якщо це не є справді необхідним</li>
+          <li>Зосередьтеся на основних функціях, а не на "приємних" бар'єрах</li>
+          <li>Уникайте розмитих рис, як-от "має бути енергійним", якщо це не є справді необхідним</li>
         </ul>
         <p className="mb-4"><strong>2. Пропонуйте доступні співбесіди за замовчуванням</strong></p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li>Надавайте варіанти: відео, телефон, особисто, субтитри, альтернативні оцінювання</li>
+          <li>Надайте варіанти: відео, телефон, особисто, субтитри, альтернативні оцінки</li>
         </ul>
         <p className="mb-4"><strong>3. Нормалізуйте пристосування</strong></p>
         <p className="mb-4">
-          Просте речення: «Ми раді надати пристосування протягом процесу найму» зменшує страх і збільшує кількість кваліфікованих заявок.
+          Простий рядок, як-от: "Ми раді надати пристосування протягом усього процесу найму." зменшує страх і збільшує кількість кваліфікованих заяв.
         </p>
         <p className="mb-4"><strong>4. Навчайте менеджерів практичній інклюзії</strong></p>
         <p className="mb-4">
-          Інклюзія охоплює весь цикл працевлаштування — від входу до просування та виходу — і виграє від конкретних, доказових практик.
+          Інклюзія людей з інвалідністю охоплює весь цикл працевлаштування — від входу до просування до виходу — і виграє від конкретних, заснованих на доказах практик.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Найкращі роботи для людей з інвалідністю: правильний підхід</h4>
+        <p className="mb-4">
+          Списки "найкращих робіт" можуть бути корисними для натхнення, але найкраща посада залежить від навичок, інтересів, потреб підтримки та гнучкості робочого місця.
+        </p>
+        <p className="mb-4 font-medium">
+          Краще питання, ніж "Які роботи підходять для моєї інвалідності?", це: "Яке робоче середовище та завдання допомагають мені працювати найкраще?"
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Часті запитання</h4>
+        <p className="mb-2"><strong>Що таке "розумне пристосування" на роботі?</strong></p>
+        <p className="mb-4">Розумне пристосування — це коригування, що дозволяє людині з інвалідністю виконувати свою роботу або брати участь у наймі — часто обговорюється в контексті рівності працевлаштування та політики на робочому місці.</p>
+        
+        <p className="mb-2"><strong>Чи повинен я повідомляти про свою інвалідність, щоб отримати пристосування?</strong></p>
+        <p className="mb-4">Часто для пристосувань потрібна певна форма запиту, але норми розкриття інформації та юридичні деталі відрізняються залежно від країни.</p>
+        
+        <p className="mb-2"><strong>Як роботодавці можуть покращити результати працевлаштування людей з інвалідністю?</strong></p>
+        <p className="mb-4">Докази вказують на структурований найм, доступні співбесіди, компетентність менеджерів та постійні робочі практики, що підтримують стале працевлаштування.</p>
+      </>
+    ),
+    contentPl: (
+      <>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Dlaczego zatrudnianie osób z niepełnosprawnościami ma znaczenie</h4>
+        <p className="mb-4">
+          Praca to więcej niż dochód — to niezależność, tożsamość, połączenie społeczne i dostęp do możliwości. Jednak wiele krajów wciąż boryka się z trwałym <strong>rozwarstwieniem w zatrudnieniu osób z niepełnosprawnościami</strong>, co oznacza, że osoby niepełnosprawne są zatrudnione w mniejszym stopniu niż osoby pełnosprawne.
+        </p>
+        <p className="mb-4">
+          Dla pracodawców inkluzywność to nie tylko dobro społeczne. Badania oparte na dowodach pokazują, że wiele powszechnych obaw pracodawców (o koszty, wydajność czy ryzyko) jest często przesadzonych, a lepsze praktyki w całym cyklu zatrudnienia mogą poprawić wyniki.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Co tak naprawdę oznaczają "prace przyjazne osobom z niepełnosprawnościami"</h4>
+        <p className="mb-4">
+          Praca przyjazna osobom z niepełnosprawnościami to nie specjalna kategoria prac — to stanowisko, w którym usunięto bariery, aby osoba mogła efektywnie wykonywać pracę. Zazwyczaj sprowadza się to do trzech rzeczy:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Dostępne zatrudnienie</strong> (aplikacje, rozmowy kwalifikacyjne, oceny, komunikacja)</li>
+          <li><strong>Rozsądne dostosowania</strong> (modyfikacje umożliwiające wykonywanie pracy bez nadmiernego obciążenia)</li>
+          <li><strong>Inkluzywne zarządzanie</strong> (jasne oczekiwania, elastyczność tam, gdzie to możliwe, i psychologicznie bezpieczna kultura)</li>
+        </ul>
+        <p className="mb-4">
+          Co ważne, "rozsądne dostosowanie" to uznane pojęcie w ramach równości zatrudnienia (w tym w kontekście UE) i jest szeroko stosowane w polityce i prawie dotyczącym miejsca pracy.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Przykłady powszechnych dostosowań w pracy</h4>
+        <p className="mb-4">Dostosowania różnią się w zależności od osoby i stanowiska. Niektóre powszechne przykłady obejmują:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Elastyczne godziny lub zmieniony harmonogram</li>
+          <li>Praca zdalna lub hybrydowa, gdy stanowisko na to pozwala</li>
+          <li>Czytniki ekranu, napisy, wprowadzanie głosowe, sprzęt ergonomiczny</li>
+          <li>Jasne, pisemne instrukcje i ustrukturyzowane kontrole</li>
+          <li>Dostosowany format rozmowy kwalifikacyjnej (dodatkowy czas, alternatywne zadania, wsparcie dostępności)</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Gdzie szukać pracy dla osób z niepełnosprawnościami</h4>
+        <p className="mb-4">
+          Wiele kandydatów zaczyna od głównych platform, ale tablice ofert pracy skoncentrowane na osobach z niepełnosprawnościami mogą zmniejszyć tarcie, priorytetyzując dostępność i inkluzywnych pracodawców.
+        </p>
+        <p className="mb-4"><strong>Wskazówka wyszukiwania:</strong> Połącz słowo kluczowe stanowiska z terminami inkluzywności:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>"obsługa klienta + przyjazne osobom z niepełnosprawnościami"</li>
+          <li>"analityk danych + dostępne miejsce pracy"</li>
+          <li>"zdalnie + prace dla osób z niepełnosprawnościami"</li>
+          <li>"inkluzywny pracodawca + [twoje miasto]"</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Co robią inaczej inkluzywni pracodawcy</h4>
+        <p className="mb-4">Inkluzywni pracodawcy są zazwyczaj przejrzysti i konsekwentni. Szukaj sygnałów, takich jak:</p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Jasny proces dostosowań (przed i po zatrudnieniu)</li>
+          <li>Wytyczne do rozmów kwalifikacyjnych, które witają prośby o dostępność</li>
+          <li>Grupy pracowników z niepełnosprawnościami, inicjatywy dostępności lub publiczne zobowiązania</li>
+          <li>Mierzalne praktyki wspierające zrównoważone zatrudnienie, a nie tylko nagłówki o zatrudnieniu</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Dla pracodawców: jak zbudować inkluzywny proces zatrudnienia</h4>
+        <p className="mb-4"><strong>1. Uczyń opisy stanowisk dostępnymi i konkretnymi</strong></p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Skup się na podstawowych funkcjach, a nie na "miłych" barierach</li>
+          <li>Unikaj ogólnych cech, takich jak "musi być energiczny", chyba że jest to naprawdę wymagane</li>
+        </ul>
+        <p className="mb-4"><strong>2. Oferuj dostępne rozmowy kwalifikacyjne domyślnie</strong></p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Zapewnij opcje: wideo, telefon, osobiście, napisy, alternatywne oceny</li>
+        </ul>
+        <p className="mb-4"><strong>3. Znormalizuj dostosowania</strong></p>
+        <p className="mb-4">
+          Prosty wiersz, taki jak: "Chętnie zapewniamy dostosowania w całym procesie zatrudnienia." zmniejsza obawy i zwiększa liczbę kwalifikowanych aplikacji.
+        </p>
+        <p className="mb-4"><strong>4. Szkól menedżerów w zakresie praktycznej inkluzywności</strong></p>
+        <p className="mb-4">
+          Inkluzywność osób z niepełnosprawnościami obejmuje cały cykl zatrudnienia — od wejścia do rozwoju do wyjścia — i korzysta z konkretnych, opartych na dowodach praktyk.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Najlepsze prace dla osób z niepełnosprawnościami: właściwe ujęcie</h4>
+        <p className="mb-4">
+          Listy "najlepszych prac" mogą być pomocne dla inspiracji, ale najlepsze stanowisko zależy od umiejętności, zainteresowań, potrzeb wsparcia i elastyczności miejsca pracy.
+        </p>
+        <p className="mb-4 font-medium">
+          Lepszym pytaniem niż "Jakie prace pasują do mojej niepełnosprawności?" jest: "Jakie środowisko pracy i zadania pomagają mi działać najlepiej?"
         </p>
 
         <h4 className="text-lg font-semibold mt-6 mb-3">FAQ</h4>
-        <p className="mb-2"><strong>Що таке «розумне пристосування» на роботі?</strong></p>
-        <p className="mb-4">Розумне пристосування — це адаптація, що дозволяє людині з інвалідністю виконувати свою роботу або брати участь у наймі.</p>
+        <p className="mb-2"><strong>Co to jest "rozsądne dostosowanie" w pracy?</strong></p>
+        <p className="mb-4">Rozsądne dostosowanie to modyfikacja, która umożliwia osobie z niepełnosprawnością wykonywanie pracy lub udział w zatrudnieniu — często omawiana w kontekście równości zatrudnienia i polityki miejsca pracy.</p>
         
-        <p className="mb-2"><strong>Чи потрібно розкривати інвалідність, щоб отримати пристосування?</strong></p>
-        <p className="mb-4">Часто пристосування вимагають певної форми запиту, але норми розкриття та юридичні деталі відрізняються залежно від країни.</p>
+        <p className="mb-2"><strong>Czy muszę ujawnić swoją niepełnosprawność, aby otrzymać dostosowania?</strong></p>
+        <p className="mb-4">Często dostosowania wymagają pewnej formy prośby, ale normy ujawniania i szczegóły prawne różnią się w zależności od kraju.</p>
         
-        <p className="mb-2"><strong>Як роботодавці можуть покращити результати працевлаштування людей з інвалідністю?</strong></p>
-        <p className="mb-4">Докази вказують на структурований найм, доступні співбесіди, компетентність менеджерів та постійні практики на робочому місці.</p>
-      </>
-    ),
-    contentPl: (
-      <>
-        <img src="/images/articles/inclusive-workplace.svg" alt="Ilustracja inkluzywnego miejsca pracy" className="w-full rounded-xl mb-8" />
-        
-        <h4 className="text-lg font-semibold mt-6 mb-3">Co to są „racjonalne usprawnienia" w pracy?</h4>
-        <p className="mb-4">
-          To jedno z najważniejszych pojęć w obszarze zatrudniania osób z niepełnosprawnościami — i jednocześnie jedno z najbardziej mylonych.
-        </p>
-        <p className="mb-4">
-          <strong>Racjonalne usprawnienia</strong> to konieczne w konkretnej sytuacji zmiany lub dostosowania wynikające z potrzeb pracownika (lub kandydata), zgłoszone pracodawcy, które mają umożliwić wykonywanie pracy na równi z innymi — o ile nie stanowią nadmiernego obciążenia dla pracodawcy.
-        </p>
-        <p className="mb-4">
-          <strong>Ważne:</strong> usprawnienia nie muszą oznaczać kosztownych remontów. Często są to proste, tanie i bardzo skuteczne modyfikacje.
-        </p>
-
-        <img src="/images/articles/accommodations.svg" alt="Rodzaje usprawnień w miejscu pracy" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Przykłady racjonalnych usprawnień (praktycznie)</h4>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li>Elastyczne godziny pracy / przesunięcie godzin startu</li>
-          <li>Praca zdalna lub hybrydowa (jeśli rola na to pozwala)</li>
-          <li>Dostosowanie stanowiska: ergonomiczne krzesło, biurko, oświetlenie</li>
-          <li>Oprogramowanie wspierające (np. czytniki ekranu, napisy)</li>
-          <li>Jasne instrukcje na piśmie, checklisty, uporządkowane wdrożenie</li>
-          <li>Zmiany w rekrutacji: dłuższy czas na zadanie, alternatywna forma spotkania</li>
-        </ul>
-
-        <img src="/images/articles/job-search.svg" alt="Ilustracja szukania pracy" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Gdzie szukać pracy dla osób z niepełnosprawnością</h4>
-        <p className="mb-4">
-          Wiele ofert trafia na duże portale, ale sporo wartościowych rekrutacji dzieje się „obok" — w społecznościach i we współpracy z fundacjami, programami stażowymi czy grupami tematycznymi.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">5 sposobów, które realnie zwiększają szanse</h4>
-        <ol className="list-decimal pl-6 mb-4 space-y-2">
-          <li><strong>Szukaj po frazach, nie tylko po stanowiskach</strong> — Wpisuj: „praca zdalna", „elastyczne godziny", „dostosowanie stanowiska", „inkluzja", „dostępność".</li>
-          <li><strong>Korzystaj z grup i społeczności</strong> — Część staży i juniorowych rekrutacji bywa publikowana właśnie tam.</li>
-          <li><strong>Upraszczaj CV</strong> — CV ma pokazać kompetencje i efekt pracy. Nie musi tłumaczyć życia.</li>
-          <li><strong>Buduj listę „firm przyjaznych"</strong> — Patrz na sygnały: polityka dostępności, jasna informacja o usprawnieniach, proces rekrutacji bez barier.</li>
-          <li><strong>Przygotuj prośbę o usprawnienie jako „brief"</strong> — Zamiast ogólnie: „potrzebuję dostosowania", lepiej: „żeby wykonywać X zadanie, potrzebuję Y rozwiązania".</li>
-        </ol>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Jak (i czy) mówić o niepełnosprawności w rekrutacji?</h4>
-        <p className="mb-4">
-          Nie ma jednej dobrej odpowiedzi. Natomiast działa zasada: <strong>mów tyle, ile jest potrzebne do działania</strong>.
-        </p>
-        <p className="mb-4">
-          Jeśli usprawnienie jest niezbędne na etapie rekrutacji (np. forma rozmowy, czas, dostępność), warto to zgłosić — krótko, rzeczowo, bez tłumaczeń medycznych.
-        </p>
-        <p className="mb-4 italic">
-          Przykładowe zdanie do rekrutera: „Żeby w pełni komfortowo przejść rozmowę/wykonać zadanie, proszę o [konkretne usprawnienie]. Dzięki temu pokażę kompetencje w równych warunkach."
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Dla pracodawców: jak zatrudniać osoby z niepełnosprawnościami bez chaosu</h4>
-        <p className="mb-4"><strong>1. Zrób rekrutację dostępną „z definicji"</strong></p>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li>Ogłoszenie bez zbędnych wymagań</li>
-          <li>Alternatywy kontaktu (mail/telefon)</li>
-          <li>Możliwość zgłoszenia potrzeb w procesie</li>
-        </ul>
-        <p className="mb-4"><strong>2. Traktuj usprawnienia jak standard HR, nie „wyjątek"</strong></p>
-        <p className="mb-4">
-          Na poziomie UE racjonalne usprawnienia są rozumiane jako zmiany w pracy/środowisku pracy umożliwiające wykonywanie obowiązków i rozwój.
-        </p>
-        <p className="mb-4"><strong>3. Zarządzaj przez rezultaty</strong></p>
-        <p className="mb-4">
-          Dobre zespoły i tak działają na celach, jakości i terminach — a nie na „wszyscy pracują identycznie".
-        </p>
-        <p className="mb-4"><strong>4. Rozmawiaj, nie zgaduj</strong></p>
-        <p className="mb-4">
-          Częstym błędem jest zakładanie, co komu „na pewno" pomoże — a to bywa nietrafione. Działają racjonalne rozmowy i konkret.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Najczęstsze pytania (FAQ)</h4>
-        <p className="mb-2"><strong>Czym są racjonalne usprawnienia w pracy?</strong></p>
-        <p className="mb-4">To dostosowania do potrzeb osoby z niepełnosprawnością w konkretnej sytuacji, zgłoszone pracodawcy, które umożliwiają pracę na równi z innymi, o ile nie stanowią nadmiernego obciążenia.</p>
-        
-        <p className="mb-2"><strong>Czy dostosowanie stanowiska pracy musi być drogie?</strong></p>
-        <p className="mb-4">Nie. Wiele usprawnień jest prostych i niskokosztowych (organizacyjnych lub technologicznych), a ich skuteczność bywa bardzo wysoka.</p>
-        
-        <p className="mb-2"><strong>Gdzie szukać ofert pracy przyjaznych osobom z niepełnosprawnością?</strong></p>
-        <p className="mb-4">Oprócz portali rekrutacyjnych — w grupach tematycznych, programach stażowych i inicjatywach realizowanych z fundacjami; część ofert nie trafia na duże serwisy.</p>
-      </>
-    ),
-  },
-  "poland-employment-stats": {
-    titleEn: "Employment of People with Disabilities in Poland: Statistics and Perspectives",
-    titleUa: "Працевлаштування людей з інвалідністю в Польщі: статистика та перспективи",
-    titlePl: "Zatrudnienie Osób z Niepełnosprawnościami w Polsce: Statystyki i Perspektywy",
-    contentEn: (
-      <>
-        <img src="/images/articles/poland-stats.svg" alt="Poland disability employment statistics" className="w-full rounded-xl mb-8" />
-        
-        <p className="mb-4">
-          Integrating people with disabilities into the labor market is a key aspect of building an inclusive and fair society. In Poland, as in many other countries, efforts are being made to increase the professional activity of this social group by offering various types of support and incentives for both employers and employees. Let's look at current statistics on the employment of people with disabilities in Poland and the challenges they face.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Population Size and Structure</h4>
-        <p className="mb-4">
-          According to data from the Central Statistical Office (GUS) from the 2021 National Census, approximately 3.1 million people with certified disabilities live in Poland, which is nearly 8% of the country's total population. Among them, a significant group are people of working age. Analyzing the structure of this population, one should notice the diversity in terms of the type and degree of disability (significant, moderate, light), which directly affects their professional opportunities. Older people predominate, although awareness of the need to support the professional activity of young people with disabilities is growing.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Level of Professional Activity and Employment Rate</h4>
-        <p className="mb-4">
-          Indicators for the professional activity and employment of people with disabilities in Poland are gradually improving, but still remain lower compared to the general population. According to 2023 data, the employment rate for people with certified disabilities was around 21-23% (depending on the source and methodology, e.g., PFRON or GUS data). While this represents an increase over previous years, a significant gap still exists. The level of professional activity (i.e., people working or looking for work) is also increasing, hovering around 25-27%. Low professional activity often results from health and architectural barriers, as well as stereotypes and a lack of proper workplace adaptation.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Employment Sectors and Popular Occupations</h4>
-        <p className="mb-4">
-          People with disabilities find employment in various sectors of the economy, but certain trends are noticeable. A significant portion works in the services sector, trade, and in public administration and national defense. Remote work is gaining popularity, especially in the IT industry (programmers, data analysts), telemarketing, and accounting services, which significantly facilitates the activation of people with mobility limitations. Creative industries such as graphics or copywriting also offer attractive opportunities. Many people are also employed in Sheltered Workshops and social enterprises that specialize in creating jobs for people with disabilities.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Challenges and Barriers in the Labor Market</h4>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Architectural and Communication Barriers:</strong> Lack of adaptation of buildings, transport, and IT systems makes it difficult to get to work and perform duties.</li>
-          <li><strong>Stereotypes and Employer Prejudices:</strong> Concerns about additional costs, lower productivity, or frequent sick leave still exist in the minds of many employers.</li>
-          <li><strong>Low Level of Education and Qualifications:</strong> Often, people with disabilities have limited access to education and vocational training, which reduces their competitiveness in the labor market.</li>
-          <li><strong>Insufficient Workplace Adaptation:</strong> Lack of appropriate equipment, flexible working hours, or assistant support prevents the full use of the employee's potential.</li>
-          <li><strong>Complexity of the Certification and Support System:</strong> Complicated administrative procedures and fragmented support systems can discourage both people with disabilities and employers.</li>
-        </ul>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Support Instruments and the Role of PFRON</h4>
-        <p className="mb-4">
-          In Poland, the State Fund for Rehabilitation of Disabled People (PFRON) plays a key role in supporting the employment of people with disabilities. The Fund offers a wide range of programs and financial instruments, including:
-        </p>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Wage Subsidies:</strong> Employers hiring people with disabilities can receive a monthly subsidy for their salary, the amount of which depends on the degree of disability and the type of illness.</li>
-          <li><strong>Refund of Workplace Equipment Costs:</strong> Possibility of obtaining a refund of costs incurred for adapting the workplace to the needs of an employee with a disability (e.g., specialized equipment, software).</li>
-          <li><strong>Funds for Starting a Business:</strong> People with disabilities can apply for non-refundable funds to start their own business.</li>
-          <li><strong>Training and Internships:</strong> PFRON finances training and internship programs that help in gaining new qualifications and professional experience.</li>
-        </ul>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Summary and Perspectives</h4>
-        <p className="mb-4">
-          The employment of people with disabilities in Poland is an area of dynamic change. Statistics show a positive trend of increasing professional activity and employment rates, which is the result of both state actions and growing social awareness. Nevertheless, there are still many barriers that limit the full integration of people with disabilities in the labor market. The key to success is further developing and improving support instruments, eliminating prejudices, and promoting good practices among employers.
-        </p>
-      </>
-    ),
-    contentUa: (
-      <>
-        <img src="/images/articles/poland-stats.svg" alt="Статистика працевлаштування людей з інвалідністю в Польщі" className="w-full rounded-xl mb-8" />
-        
-        <p className="mb-4">
-          Інтеграція людей з інвалідністю на ринок праці є ключовим аспектом побудови інклюзивного та справедливого суспільства. У Польщі, як і в багатьох інших країнах, докладаються зусилля для підвищення професійної активності цієї соціальної групи, пропонуючи різні види підтримки та стимулів як для роботодавців, так і для працівників. Розглянемо поточну статистику працевлаштування людей з інвалідністю в Польщі та виклики, з якими вони стикаються.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Чисельність та структура населення</h4>
-        <p className="mb-4">
-          За даними Головного статистичного управління (GUS) з Національного перепису населення та житлового фонду 2021 року, у Польщі проживає близько 3,1 мільйона осіб із підтвердженою інвалідністю, що становить майже 8% від загальної чисельності населення країни. Серед них значну групу становлять особи працездатного віку. Аналізуючи структуру цього населення, слід зауважити різноманітність за типом і ступенем інвалідності (значний, помірний, легкий), що безпосередньо впливає на їхні професійні можливості. Переважають люди старшого віку, хоча усвідомлення необхідності підтримки професійної активності молодих людей з інвалідністю зростає.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Рівень професійної активності та рівень зайнятості</h4>
-        <p className="mb-4">
-          Показники професійної активності та зайнятості людей з інвалідністю в Польщі поступово покращуються, але все ще залишаються низькими порівняно з загальним населенням. За даними за 2023 рік, рівень зайнятості осіб із підтвердженою інвалідністю становив близько 21-23% (залежно від джерела та методології, наприклад, даних PFRON або GUS). Хоча це означає зростання порівняно з попередніми роками, значний розрив усе ще існує. Рівень професійної активності (тобто людей, які працюють або шукають роботу) також зростає, коливаючись у межах 25-27%. Низька професійна активність часто є наслідком бар'єрів зі здоров'ям та архітектурних бар'єрів, а також стереотипів та відсутності належної адаптації робочого місця.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Сектори зайнятості та популярні професії</h4>
-        <p className="mb-4">
-          Люди з інвалідністю знаходять роботу в різних секторах економіки, проте помітні певні тенденції. Значна частина працює у сфері послуг, торгівлі, а також у державному управлінні та національній обороні. Віддалена робота набуває популярності, особливо в ІТ-індустрії (програмісти, аналітики даних), телемаркетингу та бухгалтерських послугах, що значно полегшує активізацію людей з обмеженими можливостями пересування. Креативні індустрії, такі як графіка чи копірайтинг, також пропонують привабливі можливості. Багато людей також працюють у захищених майстернях та соціальних підприємствах, які спеціалізуються на створенні робочих місць для людей з інвалідністю.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Виклики та бар'єри на ринку праці</h4>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Архітектурні та комунікаційні бар'єри:</strong> Відсутність адаптації будівель, транспорту та ІТ-систем ускладнює доїзд до роботи та виконання обов'язків.</li>
-          <li><strong>Стереотипи та упередження роботодавців:</strong> Побоювання щодо додаткових витрат, нижчої продуктивності або частих лікарняних усе ще існують у свідомості багатьох роботодавців.</li>
-          <li><strong>Низький рівень освіти та кваліфікації:</strong> Часто люди з інвалідністю мають обмежений доступ до освіти та професійного навчання, що знижує їхню конкурентоспроможність на ринку праці.</li>
-          <li><strong>Недостатня адаптація робочого місця:</strong> Відсутність відповідного обладнання, гнучкого робочого графіка або підтримки асистента перешкоджає повному використанню потенціалу працівника.</li>
-          <li><strong>Складність системи сертифікації та підтримки:</strong> Складні адміністративні процедури та фрагментарні системи підтримки можуть відлякувати як людей з інвалідністю, так і роботодавців.</li>
-        </ul>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Інструменти підтримки та роль PFRON</h4>
-        <p className="mb-4">
-          У Польщі ключову роль у підтримці працевлаштування людей з інвалідністю відіграє Державний фонд реабілітації інвалідів (PFRON). Фонд пропонує широкий спектр програм та фінансових інструментів, зокрема:
-        </p>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Субсидії на заробітну плату:</strong> Роботодавці, які наймають людей з інвалідністю, можуть отримувати щомісячну субсидію на їхню заробітну плату, розмір якої залежить від ступеня інвалідності та типу захворювання.</li>
-          <li><strong>Відшкодування витрат на обладнання робочого місця:</strong> Можливість отримання відшкодування витрат, понесених на адаптацію робочого місця до потреб працівника з інвалідністю.</li>
-          <li><strong>Кошти на відкриття бізнесу:</strong> Люди з інвалідністю можуть претендувати на безповоротні кошти для відкриття власної справи.</li>
-          <li><strong>Навчання та стажування:</strong> PFRON фінансує програми навчання та стажування, які допомагають у здобутті нових кваліфікацій та професійного досвіду.</li>
-        </ul>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Резюме та перспективи</h4>
-        <p className="mb-4">
-          Працевлаштування людей з інвалідністю в Польщі є сферою динамічних змін. Статистика показує позитивну тенденцію зростання професійної активності та рівня зайнятості, що є результатом як дій держави, так і зростаючої соціальної свідомості. Тим не менш, усе ще існує багато бар'єрів, які обмежують повну інтеграцію людей з інвалідністю на ринку праці. Ключем до успіху є подальший розвиток та вдосконалення інструментів підтримки, усунення упереджень та просування передових практик серед роботодавців.
-        </p>
-      </>
-    ),
-    contentPl: (
-      <>
-        <img src="/images/articles/poland-stats.svg" alt="Statystyki zatrudnienia osób z niepełnosprawnościami w Polsce" className="w-full rounded-xl mb-8" />
-        
-        <p className="mb-4">
-          Wprowadzenie osób z niepełnosprawnościami na rynek pracy to kluczowy aspekt budowania inkluzywnego i sprawiedliwego społeczeństwa. W Polsce, podobnie jak w wielu innych krajach, dąży się do zwiększenia aktywności zawodowej tej grupy społecznej, oferując różnego rodzaju wsparcie i zachęty zarówno dla pracodawców, jak i pracowników. Przyjrzyjmy się aktualnym statystykom dotyczącym zatrudnienia osób z niepełnosprawnościami w Polsce oraz wyzwaniom, z jakimi się mierzą.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Liczebność i Struktura Populacji Osób z Niepełnosprawnościami</h4>
-        <p className="mb-4">
-          Według danych Głównego Urzędu Statystycznego (GUS) z Narodowego Spisu Powszechnego Ludności i Mieszkań 2021, w Polsce żyje około 3,1 mln osób z orzeczoną niepełnosprawnością, co stanowi blisko 8% całej populacji kraju. Wśród nich znaczącą grupę stanowią osoby w wieku produkcyjnym. Analizując strukturę tej populacji, należy zauważyć zróżnicowanie pod względem rodzaju i stopnia niepełnosprawności (znaczny, umiarkowany, lekki), co bezpośrednio wpływa na ich możliwości zawodowe. Przeważają osoby starsze, choć rośnie świadomość potrzeby wspierania aktywności zawodowej młodych osób z niepełnosprawnościami.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Poziom Aktywności Zawodowej i Wskaźnik Zatrudnienia</h4>
-        <p className="mb-4">
-          Wskaźniki dotyczące aktywności zawodowej i zatrudnienia osób z niepełnosprawnościami w Polsce ulegają stopniowej poprawie, jednak wciąż pozostają niższe w porównaniu do ogółu populacji. Według danych za 2023 rok, wskaźnik zatrudnienia osób z orzeczoną niepełnosprawnością wynosił około 21-23% (zależnie od źródła i metodologii, np. danych PFRON czy GUS). Choć oznacza to wzrost w stosunku do lat poprzednich, nadal istnieje znacząca luka. Poziom aktywności zawodowej (czyli osób pracujących lub poszukujących pracy) również wzrasta, oscylując wokół 25-27%. Niska aktywność zawodowa często wynika z barier zdrowotnych, architektonicznych, a także stereotypów i braku odpowiedniego dostosowania miejsc pracy.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Sektory Zatrudnienia i Popularne Zawody</h4>
-        <p className="mb-4">
-          Osoby z niepełnosprawnościami znajdują zatrudnienie w różnych sektorach gospodarki, jednak zauważalne są pewne tendencje. Znaczna część pracuje w sektorze usług, handlu oraz w administracji publicznej i obronie narodowej. Coraz większą popularność zyskuje praca zdalna, zwłaszcza w branży IT (programiści, analitycy danych), telemarketingu i usługach księgowych, co znacząco ułatwia aktywizację osób z ograniczeniami ruchowymi. Branże kreatywne, takie jak grafika czy copywriting, również oferują atrakcyjne możliwości. Wiele osób zatrudnionych jest także w Zakładach Pracy Chronionej oraz w przedsiębiorstwach społecznych, które specjalizują się w tworzeniu miejsc pracy dla osób z niepełnosprawnościami.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Wyzwania i Bariery na Rynku Pracy</h4>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Bariery Architektoniczne i Komunikacyjne:</strong> Brak dostosowania budynków, transportu oraz systemów informatycznych utrudnia dotarcie do pracy i wykonywanie obowiązków.</li>
-          <li><strong>Stereotypy i Uprzedzenia Pracodawców:</strong> Obawy przed dodatkowymi kosztami, mniejszą wydajnością czy częstymi zwolnieniami lekarskimi wciąż funkcjonują w świadomości wielu pracodawców.</li>
-          <li><strong>Niski Poziom Wykształcenia i Kwalifikacji:</strong> Często osoby z niepełnosprawnościami mają ograniczony dostęp do edukacji i szkoleń zawodowych, co obniża ich konkurencyjność na rynku pracy.</li>
-          <li><strong>Niewystarczające Dostosowanie Miejsc Pracy:</strong> Brakuje odpowiedniego oprzyrządowania, elastycznych godzin pracy czy wsparcia asystenta, co uniemożliwia pełne wykorzystanie potencjału pracownika.</li>
-          <li><strong>Złożoność Systemu Orzecznictwa i Wsparcia:</strong> Skomplikowane procedury administracyjne i rozdrobnienie systemów wsparcia mogą zniechęcać zarówno osoby z niepełnosprawnościami, jak i pracodawców.</li>
-        </ul>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Instrumenty Wsparcia i Rola PFRON</h4>
-        <p className="mb-4">
-          W Polsce kluczową rolę w wspieraniu zatrudnienia osób z niepełnosprawnościami odgrywa Państwowy Fundusz Rehabilitacji Osób Niepełnosprawnych (PFRON). Fundusz oferuje szeroki wachlarz programów i instrumentów finansowych, w tym:
-        </p>
-        <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Dofinansowanie do Wynagrodzeń:</strong> Pracodawcy zatrudniający osoby z niepełnosprawnościami mogą otrzymać miesięczne dofinansowanie do ich wynagrodzenia, którego wysokość zależy od stopnia niepełnosprawności i rodzaju schorzenia.</li>
-          <li><strong>Refundacja Kosztów Wyposażenia Stanowiska Pracy:</strong> Możliwość uzyskania zwrotu kosztów poniesionych na dostosowanie miejsca pracy do potrzeb pracownika z niepełnosprawnością (np. specjalistyczny sprzęt, oprogramowanie).</li>
-          <li><strong>Środki na Podjęcie Działalności Gospodarczej:</strong> Osoby z niepełnosprawnościami mogą ubiegać się o bezzwrotne środki na rozpoczęcie własnej działalności gospodarczej.</li>
-          <li><strong>Szkolenia i Staże:</strong> PFRON finansuje programy szkoleniowe i stażowe, które pomagają w zdobyciu nowych kwalifikacji i doświadczenia zawodowego.</li>
-          <li><strong>Wsparcie dla Pracodawców:</strong> Fundusz oferuje doradztwo i szkolenia dla pracodawców w zakresie zatrudniania osób z niepełnosprawnościami oraz tworzenia inkluzywnego środowiska pracy.</li>
-        </ul>
-        <p className="mt-4">
-          Polska stosuje również system kwotowy, który nakłada na pracodawców zatrudniających co najmniej 25 pracowników obowiązek zatrudnienia co najmniej 6% osób z niepełnosprawnościami.
-        </p>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Podsumowanie i Perspektywy</h4>
-        <p className="mb-4">
-          Zatrudnienie osób z niepełnosprawnościami w Polsce to obszar dynamicznych zmian. Statystyki pokazują pozytywny trend wzrostu wskaźników aktywności zawodowej i zatrudnienia, co jest efektem zarówno działań państwa, jak i rosnącej świadomości społecznej. Niemniej jednak, wciąż istnieje wiele barier, które ograniczają pełną integrację osób z niepełnosprawnościami na rynku pracy. Kluczem do sukcesu jest dalsze rozwijanie i doskonalenie instrumentów wsparcia, eliminowanie uprzedzeń oraz promowanie dobrych praktyk wśród pracodawców.
-        </p>
+        <p className="mb-2"><strong>Jak pracodawcy mogą poprawić wyniki zatrudnienia osób z niepełnosprawnościami?</strong></p>
+        <p className="mb-4">Dowody wskazują na ustrukturyzowane zatrudnienie, dostępne rozmowy kwalifikacyjne, kompetencje menedżerów i ciągłe praktyki pracy wspierające zrównoważone zatrudnienie.</p>
       </>
     ),
   },
   "bridging-the-gap": {
-    titleEn: "Bridging the Gap: The State of Disability Employment in 2026",
-    titleUa: "Долаючи розрив: стан працевлаштування людей з інвалідністю у 2026 році",
-    titlePl: "Zmniejszając lukę: stan zatrudnienia osób z niepełnosprawnościami w 2026 roku",
+    titleEn: "Bridging the Gap: Disability Employment in 2026",
+    titleUa: "Долаючи розрив: працевлаштування людей з інвалідністю у 2026",
+    titlePl: "Zmniejszając lukę: zatrudnienie osób z niepełnosprawnościami w 2026",
     contentEn: (
       <>
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u.png" alt="Visualizing the disability employment gap in 2026" className="w-full rounded-xl mb-8" />
-
+        <h4 className="text-lg font-semibold mt-6 mb-3">The Current Landscape</h4>
         <p className="mb-4">
-          Despite a global shift toward more inclusive corporate cultures, the unemployment rate for people with disabilities remains a significant economic and social challenge. As of early 2026, individuals with disabilities are still roughly twice as likely to be unemployed compared to those without disabilities.
+          In 2026, people with disabilities are still about twice as likely to be unemployed as those without disabilities. Despite progress in awareness and policy, the employment gap persists across most countries.
         </p>
         <p className="mb-4">
-          Understanding why this gap persists—and how inclusive hiring practices are evolving to bridge it—is essential for any organization aiming for true workplace diversity.
+          The situation varies significantly by region and disability type, but the pattern is consistent: barriers in recruitment, workplace accessibility, and employer attitudes continue to limit opportunities.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">The Disability Employment Gap: Understanding the Numbers</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Key Statistics</h4>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Employment-to-Population Ratio:</strong> About <strong>38%</strong> of working-age people with disabilities are currently employed.</li>
-          <li><strong>Underemployment:</strong> Many are in part-time or insecure roles due to a lack of accessible full-time opportunities.</li>
-          <li><strong>The “Double” Factor:</strong> Across many economies, disability unemployment is consistently around double the national average.</li>
+          <li><strong>Employment Gap:</strong> People with disabilities have an employment rate roughly 20-30 percentage points lower than non-disabled people</li>
+          <li><strong>Regional Differences:</strong> EU countries show better outcomes than many non-EU regions, but gaps remain significant</li>
+          <li><strong>Disability Type Impact:</strong> People with physical disabilities generally have higher employment rates than those with intellectual or mental health conditions</li>
+          <li><strong>Education Factor:</strong> Higher education levels correlate with better employment outcomes, but gaps persist even among highly educated individuals</li>
         </ul>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">Common Barriers to Employment</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">The Rise of Remote Work</h4>
+        <p className="mb-4">
+          Remote work has emerged as a game-changer for many people with disabilities. The COVID-19 pandemic accelerated this trend, and by 2026, remote and hybrid work arrangements have become standard for many roles.
+        </p>
+        <p className="mb-4">
+          For many candidates, remote work eliminates transportation barriers, provides greater control over the work environment, and allows for better management of energy levels and health needs.
+        </p>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Inclusive Hiring Practices</h4>
+        <p className="mb-4">
+          Companies are increasingly adopting inclusive hiring practices, but implementation varies widely. Best practices include:
+        </p>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Inaccessible recruitment:</strong> non-compliant portals and automated screening can filter out qualified candidates.</li>
-          <li><strong>Misinformed attitudes:</strong> myths about cost or productivity still shape decisions.</li>
-          <li><strong>Lack of adjustments:</strong> uncertainty about reasonable accommodations delays action—despite many being low-cost.</li>
+          <li>Accessible application processes and interview formats</li>
+          <li>Clear accommodation policies and procedures</li>
+          <li>Training for hiring managers and interviewers</li>
+          <li>Partnerships with disability organizations</li>
+          <li>Regular review and improvement of hiring metrics</li>
         </ul>
 
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (1).png" alt="Accessible interview" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">The Rise of Inclusive Hiring in 2026</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Technology and Assistive Tools</h4>
         <p className="mb-4">
-          In 2026, more companies are adopting skills-based hiring and neuroinclusive recruitment—offering clearer processes, sensory-friendly options, and interview formats that reduce bias.
+          Advances in technology have created new opportunities. AI-powered tools, better assistive technologies, and improved workplace software have made many jobs more accessible than ever before.
+        </p>
+        <p className="mb-4">
+          However, technology adoption remains uneven, and many workplaces still lack the infrastructure and training needed to fully leverage these tools.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">Remote Work: A Lifeline for Accessibility</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Looking Forward</h4>
         <p className="mb-4">
-          Remote and hybrid work is increasingly recognized as a vital accessibility tool—removing the commute barrier and supporting sustainable performance for many people with chronic illness or mobility challenges.
+          The trend toward greater inclusion is expected to continue, driven by:
         </p>
-        <p className="mb-4 italic">
-          “In 2026, flexibility is no longer a concession; it is a strategic retention tool that unlocks an untapped talent pool.”
-        </p>
-
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (2).png" alt="Remote work as accessibility" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Conclusion: The Competitive Advantage of Inclusion</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Demographic shifts and labor shortages</li>
+          <li>Increased awareness and advocacy</li>
+          <li>Legal requirements and ESG pressures</li>
+          <li>Recognition of the business case for diversity</li>
+        </ul>
         <p className="mb-4">
-          Closing the disability employment gap is not only social responsibility—it’s a business imperative. Organizations that invest in accessibility and assistive technology are better positioned to attract and retain talent.
+          Progress will require sustained effort from employers, policymakers, disability advocates, and technology providers working together to create truly accessible workplaces.
         </p>
       </>
     ),
     contentUa: (
       <>
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u.png" alt="Візуалізація розриву у працевлаштуванні у 2026 році" className="w-full rounded-xl mb-8" />
-
+        <h4 className="text-lg font-semibold mt-6 mb-3">Поточна ситуація</h4>
         <p className="mb-4">
-          Попри глобальний рух до інклюзивніших корпоративних культур, безробіття серед людей з інвалідністю залишається серйозним викликом. Станом на 2026 рік люди з інвалідністю все ще приблизно вдвічі частіше є безробітними, ніж люди без інвалідності.
+          У 2026 році люди з інвалідністю все ще приблизно вдвічі частіше залишаються без роботи, ніж люди без інвалідності. Незважаючи на прогрес у поінформованості та політиці, розрив у зайнятості зберігається в більшості країн.
+        </p>
+        <p className="mb-4">
+          Ситуація значно відрізняється залежно від регіону та типу інвалідності, але закономірність послідовна: бар'єри в рекрутингу, доступності робочого місця та ставленні роботодавців продовжують обмежувати можливості.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">Розрив у працевлаштуванні: що показують цифри</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Ключова статистика</h4>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Частка зайнятих:</strong> близько <strong>38%</strong> людей працездатного віку з інвалідністю працюють.</li>
-          <li><strong>Неповна зайнятість:</strong> багато хто змушений обирати часткову або нестабільну роботу.</li>
-          <li><strong>Фактор “удвічі”:</strong> рівень безробіття часто близький до подвійного національного середнього.</li>
+          <li><strong>Розрив у зайнятості:</strong> Рівень зайнятості людей з інвалідністю приблизно на 20-30 відсоткових пунктів нижчий, ніж у людей без інвалідності</li>
+          <li><strong>Регіональні відмінності:</strong> Країни ЄС показують кращі результати, ніж багато не-ЄС регіонів, але розриви залишаються значними</li>
+          <li><strong>Вплив типу інвалідності:</strong> Люди з фізичними інвалідностями зазвичай мають вищий рівень зайнятості, ніж ті, хто має інтелектуальні або психічні розлади</li>
+          <li><strong>Фактор освіти:</strong> Вищий рівень освіти корелює з кращими результатами зайнятості, але розриви зберігаються навіть серед високоосвічених осіб</li>
         </ul>
 
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (1).png" alt="Доступна співбесіда" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Зростання інклюзивного найму у 2026</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Підйом віддаленої роботи</h4>
         <p className="mb-4">
-          Компанії переходять від формального підходу до найму за навичками та нейроінклюзивних практик (прозорі етапи, адаптовані інтерв’ю, зменшення упереджень).
+          Віддалена робота стала переломним моментом для багатьох людей з інвалідністю. Пандемія COVID-19 прискорила цей тренд, і до 2026 року віддалені та гібридні робочі домовленості стали стандартом для багатьох ролей.
+        </p>
+        <p className="mb-4">
+          Для багатьох кандидатів віддалена робота усуває транспортні бар'єри, забезпечує більший контроль над робочим середовищем і дозволяє краще керувати рівнями енергії та потребами здоров'я.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">Дистанційна робота як інструмент доступності</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Інклюзивні практики найму</h4>
         <p className="mb-4">
-          Віддалена/гібридна робота допомагає прибрати бар’єр дороги до офісу та підтримує стабільну продуктивність для людей з хронічними станами або обмеженнями мобільності.
+          Компанії все частіше приймають інклюзивні практики найму, але реалізація значно варіюється. Найкращі практики включають:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Доступні процеси подання заявки та формати співбесід</li>
+          <li>Чіткі політики та процедури пристосувань</li>
+          <li>Навчання для менеджерів з найму та інтерв'юерів</li>
+          <li>Партнерство з організаціями людей з інвалідністю</li>
+          <li>Регулярний перегляд та покращення показників найму</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Технології та допоміжні інструменти</h4>
+        <p className="mb-4">
+          Прогрес у технологіях створив нові можливості. Інструменти на основі ШІ, кращі допоміжні технології та покращене програмне забезпечення для робочих місць зробили багато робіт більш доступними, ніж будь-коли раніше.
+        </p>
+        <p className="mb-4">
+          Однак впровадження технологій залишається нерівномірним, і багато робочих місць все ще не мають інфраструктури та навчання, необхідних для повного використання цих інструментів.
         </p>
 
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (2).png" alt="Віддалена робота" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Висновок</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Погляд у майбутнє</h4>
         <p className="mb-4">
-          Закриття розриву — це не лише соціальна відповідальність, а й бізнес-перевага. Доступність “за дизайном” та інвестиції в асистивні технології підсилюють залучення й утримання талантів.
+          Очікується, що тренд до більшої інклюзії продовжиться, спричинений:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Демографічними змінами та дефіцитом робочої сили</li>
+          <li>Збільшенням поінформованості та адвокації</li>
+          <li>Вимогами законодавства та тиском ESG</li>
+          <li>Визнанням ділового випадку для різноманітності</li>
+        </ul>
+        <p className="mb-4">
+          Прогрес вимагатиме постійних зусиль з боку роботодавців, політиків, захисників прав людей з інвалідністю та постачальників технологій, працюючих разом для створення по-справді доступних робочих місць.
         </p>
       </>
     ),
     contentPl: (
       <>
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u.png" alt="Wizualizacja luki zatrudnienia w 2026" className="w-full rounded-xl mb-8" />
-
+        <h4 className="text-lg font-semibold mt-6 mb-3">Obecny krajobraz</h4>
         <p className="mb-4">
-          Mimo globalnego zwrotu w stronę bardziej inkluzywnych kultur organizacyjnych, bezrobocie wśród osób z niepełnosprawnościami pozostaje istotnym wyzwaniem. W 2026 r. osoby z niepełnosprawnościami nadal są w przybliżeniu dwa razy częściej bezrobotne niż osoby bez niepełnosprawności.
+          W 2026 roku osoby z niepełnosprawnościami są nadal około dwa razy bardziej narażone na bezrobocie niż osoby bez niepełnosprawności. Mimo postępów w świadomości i polityce, luka zatrudnienia utrzymuje się w większości krajów.
+        </p>
+        <p className="mb-4">
+          Sytuacja znacznie różni się w zależności od regionu i rodzaju niepełnosprawności, ale wzorzec jest spójny: bariery w rekrutacji, dostępności miejsca pracy i postawach pracodawców nadal ograniczają możliwości.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">Luka zatrudnienia: co mówią dane</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Kluczowe statystyki</h4>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Wskaźnik zatrudnienia:</strong> około <strong>38%</strong> osób w wieku produkcyjnym z niepełnosprawnością pracuje.</li>
-          <li><strong>Niedozatrudnienie:</strong> część osób pracuje w niepełnym wymiarze lub w niestabilnych rolach.</li>
-          <li><strong>Efekt “x2”:</strong> w wielu krajach stopa bezrobocia jest około dwukrotnie wyższa niż średnia krajowa.</li>
+          <li><strong>Luka zatrudnienia:</strong> Osoby z niepełnosprawnościami mają wskaźnik zatrudnienia o około 20-30 punktów procentowych niższy niż osoby pełnosprawne</li>
+          <li><strong>Różnice regionalne:</strong> Kraje UE wykazują lepsze wyniki niż wiele regionów poza UE, ale luki pozostają znaczące</li>
+          <li><strong>Wpływ rodzaju niepełnosprawności:</strong> Osoby z niepełnosprawnościami fizycznymi mają generalnie wyższe wskaźniki zatrudnienia niż osoby z niepełnosprawnościami intelektualnymi lub psychicznymi</li>
+          <li><strong>Czynnik wykształcenia:</strong> Wyższy poziom wykształcenia koreluje z lepszymi wynikami zatrudnienia, ale luki utrzymują się nawet wśród osób z wyższym wykształceniem</li>
         </ul>
 
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (1).png" alt="Dostępna rozmowa rekrutacyjna" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Rozwój rekrutacji inkluzywnej w 2026</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Wzrost pracy zdalnej</h4>
         <p className="mb-4">
-          Coraz więcej firm przechodzi na rekrutację opartą o umiejętności oraz podejście neuroinkluzwne: jasne etapy procesu, mniej bodźców i formaty rozmów ograniczające stronniczość.
+          Praca zdalna stała się przełomem dla wielu osób z niepełnosprawnościami. Pandemia COVID-19 przyspieszyła ten trend, a do 2026 roku zdalne i hybrydowe formy pracy stały się standardem dla wielu stanowisk.
+        </p>
+        <p className="mb-4">
+          Dla wielu kandydatów praca zdalna eliminuje bariery transportowe, zapewnia większą kontrolę nad środowiskiem pracy i pozwala na lepsze zarządzanie poziomami energii i potrzebami zdrowotnymi.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">Praca zdalna jako narzędzie dostępności</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Inkluzywne praktyki zatrudnienia</h4>
         <p className="mb-4">
-          Praca zdalna i hybrydowa redukuje barierę dojazdu i może wspierać długofalową efektywność wielu osób z chorobami przewlekłymi lub ograniczeniami mobilności.
+          Firmy coraz częściej wprowadzają inkluzywne praktyki zatrudnienia, ale wdrażanie różni się znacznie. Najlepsze praktyki obejmują:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Dostępne procesy aplikacyjne i formaty rozmów kwalifikacyjnych</li>
+          <li>Jasne polityki i procedury dostosowań</li>
+          <li>Szkolenia dla menedżerów zatrudniających i rozmówców</li>
+          <li>Partnerstwa z organizacjami osób z niepełnosprawnościami</li>
+          <li>Regularne przeglądy i ulepszanie wskaźników zatrudnienia</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Technologia i narzędzia wspomagające</h4>
+        <p className="mb-4">
+          Postępy w technologii stworzyły nowe możliwości. Narzędzia oparte na AI, lepsze technologie wspomagające i ulepszone oprogramowanie do pracy sprawiły, że wiele stanowisk stało się bardziej dostępnych niż kiedykolwiek wcześniej.
+        </p>
+        <p className="mb-4">
+          Jednak wdrażanie technologii pozostaje nierównomierne, a wiele miejsc pracy wciąż brakuje infrastruktury i szkoleń potrzebnych do pełnego wykorzystania tych narzędzi.
         </p>
 
-        <img src="/images/articles/Gemini_Generated_Image_io6uufio6uufio6u (2).png" alt="Praca zdalna" className="w-full rounded-xl mb-8 mt-8" />
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">Wnioski</h4>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Spojrzenie w przyszłość</h4>
         <p className="mb-4">
-          Zmniejszanie luki zatrudnienia to nie tylko kwestia odpowiedzialności społecznej, ale także przewaga biznesowa. Dostępność „by design” oraz technologie wspierające zwiększają szanse na pozyskanie i utrzymanie talentów.
+          Oczekuje się, że trend ku większej inkluzywności będzie kontynuowany, napędzany przez:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Zmiany demograficzne i niedobory siły roboczej</li>
+          <li>Zwiększoną świadomość i adwokację</li>
+          <li>Wymagania prawne i presje ESG</li>
+          <li>Uznanie biznesowego przypadku dla różnorodności</li>
+        </ul>
+        <p className="mb-4">
+          Postęp wymagać będzie ciągłych wysiłków ze strony pracodawców, polityków, obrońców praw osób z niepełnosprawnościami i dostawców technologii, pracujących razem nad tworzeniem naprawdę dostępnych miejsc pracy.
         </p>
       </>
     ),
   },
   "digital-frontier": {
-    titleEn: "The Digital Frontier: Bridging the Disability Employment Gap in 2026",
-    titleUa: "Цифровий фронтир: подолання розриву в працевлаштуванні у 2026 році",
-    titlePl: "Cyfrowa granica: zmniejszanie luki w zatrudnieniu w 2026 roku",
+    titleEn: "The Digital Frontier: 2026 Remote Jobs",
+    titleUa: "Цифровий фронтир: дистанційна робота 2026",
+    titlePl: "Cyfrowa granica: praca zdalna 2026",
     contentEn: (
       <>
-        <img src="/images/articles/digital-frontier.svg" alt="Digital Frontier 2026" className="w-full rounded-xl mb-8" />
+        <h4 className="text-lg font-semibold mt-6 mb-3">The Remote Work Revolution</h4>
         <p className="mb-4">
-          In 2026, the concept of a "workplace" has been redefined. For millions of people living with disabilities in Ukraine and Poland, this shift isn't just about modern convenience—it's about <strong>economic liberation</strong>. As both nations overhaul their labor laws to meet EU standards, remote work has emerged as the ultimate "reasonable accommodation."
+          The shift to remote work represents one of the most significant changes in the modern labor market. For people with disabilities, this transformation has opened up unprecedented opportunities.
+        </p>
+        <p className="mb-4">
+          What was once considered a privilege has now become a standard expectation for many roles, fundamentally changing how we think about workplace accessibility.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">1. The 2026 Legal Landscape: UA vs. PL</h4>
-        <div className="overflow-x-auto mb-6">
-          <table className="min-w-full border-collapse border border-slate-200">
-            <thead>
-              <tr className="bg-slate-50">
-                <th className="border border-slate-200 p-2 text-left">Feature</th>
-                <th className="border border-slate-200 p-2 text-left">Ukraine (2026 Reform)</th>
-                <th className="border border-slate-200 p-2 text-left">Poland (2026 PFRON)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Employment Quota</td>
-                <td className="border border-slate-200 p-2">4% for firms with 25+ staff</td>
-                <td className="border border-slate-200 p-2">6% for firms with 25+ staff</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">The "Multiplier" Rule</td>
-                <td className="border border-slate-200 p-2">1 employee (Group I) = 2 for quota</td>
-                <td className="border border-slate-200 p-2">Standard counting</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Employer Subsidy</td>
-                <td className="border border-slate-200 p-2">Up to 129,705 UAH (One-time)</td>
-                <td className="border border-slate-200 p-2">Up to 2,760 PLN (Monthly)</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Failure Penalty</td>
-                <td className="border border-slate-200 p-2">40% of avg. salary (Quarterly)</td>
-                <td className="border border-slate-200 p-2">~40.65% of avg. salary (Monthly)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">2. Top 10 Remote Jobs: The Digital Equalizer</h4>
-        <ol className="list-decimal pl-6 mb-4 space-y-2">
-          <li><strong>Data Entry Specialist:</strong> High demand for "cleaning" AI-generated data.</li>
-          <li><strong>Virtual Assistant (VA):</strong> Managing schedules and emails.</li>
-          <li><strong>Content Moderator:</strong> Ensuring social media safety.</li>
-          <li><strong>Transcriptionist:</strong> Converting audio to text.</li>
-          <li><strong>Online Tutor:</strong> Sharing language or subject expertise.</li>
-          <li><strong>Proofreader:</strong> Polishing AI-generated text.</li>
-          <li><strong>Customer Support (Chat-based):</strong> Solving problems via text.</li>
-          <li><strong>Social Media Coordinator:</strong> Managing the digital "front door".</li>
-          <li><strong>Appointment Setter:</strong> Bridging the gap between leads and sales teams.</li>
-          <li><strong>Research Assistant:</strong> Digging up facts and data for creators.</li>
-        </ol>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">3. Why Remote Work Works for You</h4>
-        <p className="mb-4 italic">"The digital office doesn't care about a flight of stairs or a lack of accessible transit. It only cares about the quality of your output."</p>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Why Remote Work Matters</h4>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Sensory Control:</strong> Customize your lighting and sound environment.</li>
-          <li><strong>Energy Management:</strong> Pacing allows you to work when you are strongest.</li>
-          <li><strong>Assistive Tech Integration:</strong> Use your specific equipment without "asking for permission."</li>
+          <li><strong>Eliminates Physical Barriers:</strong> No need for accessible transportation or office buildings</li>
+          <li><strong>Environmental Control:</strong> Customizable workspace that meets individual needs</li>
+          <li><strong>Energy Management:</strong> Better control over work hours and break schedules</li>
+          <li><strong>Reduced Discrimination:</strong> Focus shifts from physical presence to actual work output</li>
+          <li><strong>Global Opportunities:</strong> Access to jobs regardless of geographic location</li>
         </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Top Remote-Friendly Roles in 2026</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Software Development:</strong> Programming, web development, and app creation</li>
+          <li><strong>Data Analysis:</strong> Business intelligence, analytics, and data science</li>
+          <li><strong>Digital Marketing:</strong> Content creation, social media, and SEO</li>
+          <li><strong>Customer Support:</strong> Online chat, email, and phone support</li>
+          <li><strong>Writing and Editing:</strong> Content creation, technical writing, and copywriting</li>
+          <li><strong>Design:</strong> Graphic design, UX/UI, and web design</li>
+          <li><strong>Project Management:</strong> Remote team coordination and project oversight</li>
+          <li><strong>Teaching and Training:</strong> Online education and corporate training</li>
+          <li><strong>Research:</strong> Market research, academic research, and analysis</li>
+          <li><strong>Consulting:</strong> Business consulting and specialized expertise</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Challenges and Considerations</h4>
+        <p className="mb-4">
+          While remote work offers many benefits, it's not without challenges:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Technology Requirements:</strong> Need for reliable internet and appropriate equipment</li>
+          <li><strong>Isolation:</strong> Reduced social interaction and team connection</li>
+          <li><strong>Home Accessibility:</strong> Need for accessible home workspace</li>
+          <li><strong>Time Zone Differences:</strong> For global remote positions</li>
+          <li><strong>Self-Discipline:</strong> Requires strong time management skills</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">The Future of Remote Work</h4>
+        <p className="mb-4">
+          The trend toward remote work is expected to continue and expand. By 2026, we're seeing:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>More companies adopting permanent remote or hybrid policies</li>
+          <li>Better tools for collaboration and accessibility</li>
+          <li>Increased focus on remote work skills and training</li>
+          <li>Greater acceptance of remote work across industries</li>
+          <li>Improved legal protections for remote workers</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Making Remote Work Work for You</h4>
+        <p className="mb-4">
+          To succeed in remote work, consider:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Assess your home workspace and needed accommodations</li>
+          <li>Develop strong time management and self-discipline</li>
+          <li>Build virtual networking skills and online presence</li>
+          <li>Stay current with remote work tools and technologies</li>
+          <li>Seek out companies with proven remote work cultures</li>
+        </ul>
+
+        <p className="mb-4">
+          Remote work isn't just a trend—it's a fundamental shift in how we work. For people with disabilities, it represents a powerful tool for breaking down traditional employment barriers and accessing opportunities based on skills rather than physical limitations.
+        </p>
       </>
     ),
     contentUa: (
       <>
-        <img src="/images/articles/digital-frontier.svg" alt="Цифровий фронтир 2026" className="w-full rounded-xl mb-8" />
+        <h4 className="text-lg font-semibold mt-6 mb-3">Революція дистанційної роботи</h4>
         <p className="mb-4">
-          У 2026 році поняття "робочого місця" було переосмислено. Для мільйонів людей з інвалідністю в Україні та Польщі цей зсув — це не просто зручність, це <strong>економічне звільнення</strong>. Оскільки обидві країни оновлюють трудове законодавство відповідно до стандартів ЄС, дистанційна робота стала головним інструментом "розумного пристосування".
+          Перехід до дистанційної роботи є однією з найзначніших змін на сучасному ринку праці. Для людей з інвалідністю ця трансформація відкрила безпрецедентні можливості.
+        </p>
+        <p className="mb-4">
+          Те, що колись вважалося привілеєм, тепер стало стандартним очікуванням для багатьох ролей, фундаментально змінюючи те, як ми думаємо про доступність робочого місця.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">1. Правовий ландшафт 2026: UA vs. PL</h4>
-        <div className="overflow-x-auto mb-6">
-          <table className="min-w-full border-collapse border border-slate-200">
-            <thead>
-              <tr className="bg-slate-50">
-                <th className="border border-slate-200 p-2 text-left">Особливість</th>
-                <th className="border border-slate-200 p-2 text-left">Україна (Реформа 2026)</th>
-                <th className="border border-slate-200 p-2 text-left">Польща (PFRON 2026)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Квота на працевлаштування</td>
-                <td className="border border-slate-200 p-2">4% для компаній від 25 працівників</td>
-                <td className="border border-slate-200 p-2">6% для компаній від 25 працівників</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Правило "Множника"</td>
-                <td className="border border-slate-200 p-2">1 працівник (I група) = 2 для квоти</td>
-                <td className="border border-slate-200 p-2">Стандартний підрахунок</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Субсидія роботодавцю</td>
-                <td className="border border-slate-200 p-2">До 129,705 грн (одноразово)</td>
-                <td className="border border-slate-200 p-2">До 2,760 PLN (щомісяця)</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Штраф за невиконання</td>
-                <td className="border border-slate-200 p-2">40% сер. зарплати (щокварталу)</td>
-                <td className="border border-slate-200 p-2">~40.65% сер. зарплати (щомісяця)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">2. Топ-10 дистанційних робіт</h4>
-        <ol className="list-decimal pl-6 mb-4 space-y-2">
-          <li><strong>Спеціаліст із введення даних:</strong> Очищення даних для ШІ.</li>
-          <li><strong>Віртуальний асистент:</strong> Управління розкладом та поштою.</li>
-          <li><strong>Модератор контенту:</strong> Безпека в соцмережах.</li>
-          <li><strong>Транскрибатор:</strong> Перетворення аудіо в текст.</li>
-          <li><strong>Онлайн-репетитор:</strong> Викладання мов або предметів.</li>
-          <li><strong>Коректор:</strong> Перевірка текстів після ШІ.</li>
-          <li><strong>Чат-підтримка:</strong> Вирішення проблем клієнтів текстом.</li>
-          <li><strong>Координатор соцмереж:</strong> Управління цифровим обличчям бізнесу.</li>
-          <li><strong>Менеджер з призначень:</strong> Робота з лідами та продажами.</li>
-          <li><strong>Асистент-дослідник:</strong> Пошук фактів для креаторів.</li>
-        </ol>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">3. Чому дистанційна робота підходить вам</h4>
-        <p className="mb-4 italic">"Цифровому офісу байдуже на сходи або відсутність доступного транспорту. Його цікавить лише якість вашої роботи."</p>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Чому важлива дистанційна робота</h4>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Контроль сенсорики:</strong> Налаштуйте освітлення та звук під себе.</li>
-          <li><strong>Управління енергією:</strong> Працюйте тоді, коли у вас найбільше сил.</li>
-          <li><strong>Асистивні технології:</strong> Використовуйте своє обладнання без зайвих запитів.</li>
+          <li><strong>Усуває фізичні бар'єри:</strong> Не потрібен доступний транспорт або офісні будівлі</li>
+          <li><strong>Контроль середовища:</strong> Налаштовуване робоче місце, що відповідає індивідуальним потребам</li>
+          <li><strong>Управління енергією:</strong> Кращий контроль над робочими годинами та графіком перерв</li>
+          <li><strong>Зменшення дискримінації:</strong> Фокус зміщується з фізичної присутності на фактичний результат роботи</li>
+          <li><strong>Глобальні можливості:</strong> Доступ до робіт незалежно від географічного розташування</li>
         </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Топ-10 дистанційних ролей у 2026</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Розробка програмного забезпечення:</strong> Програмування, веб-розробка та створення додатків</li>
+          <li><strong>Аналіз даних:</strong> Бізнес-аналітика, аналітика та наука про дані</li>
+          <li><strong>Цифровий маркетинг:</strong> Створення контенту, соціальні мережі та SEO</li>
+          <li><strong>Підтримка клієнтів:</strong> Онлайн-чат, електронна пошта та телефонна підтримка</li>
+          <li><strong>Написання та редагування:</strong> Створення контенту, технічне письмо та копірайтинг</li>
+          <li><strong>Дизайн:</strong> Графічний дизайн, UX/UI та веб-дизайн</li>
+          <li><strong>Управління проєктами:</strong> Координація дистанційних команд та нагляд за проєктами</li>
+          <li><strong>Навчання та тренінг:</strong> Онлайн-освіта та корпоративне навчання</li>
+          <li><strong>Дослідження:</strong> Ринкові дослідження, академічні дослідження та аналіз</li>
+          <li><strong>Консалтинг:</strong> Бізнес-консалтинг та спеціалізована експертиза</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Виклики та міркування</h4>
+        <p className="mb-4">
+          Хоча дистанційна робота пропонує багато переваг, вона не без викликів:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Технологічні вимоги:</strong> Потреба в надійному інтернеті та відповідному обладнанні</li>
+          <li><strong>Ізоляція:</strong> Зменшена соціальна взаємодія та зв'язок з командою</li>
+          <li><strong>Доступність будинку:</strong> Потреба в доступному домашньому робочому місці</li>
+          <li><strong>Різниця в часових поясах:</strong> Для глобальних дистанційних позицій</li>
+          <li><strong>Самодисципліна:</strong> Вимагає сильних навичок управління часом</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Майбутнє дистанційної роботи</h4>
+        <p className="mb-4">
+          Очікується, що тренд до дистанційної роботи продовжуватиметься і розширюватиметься. До 2026 року ми бачимо:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Більше компаній приймають постійні дистанційні або гібридні політики</li>
+          <li>Кращі інструменти для співпраці та доступності</li>
+          <li>Збільшений фокус на навичках дистанційної роботи та навчанні</li>
+          <li>Більша прийнятність дистанційної роботи в галузях</li>
+          <li>Покращений юридичний захист для дистанційних працівників</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Як зробити дистанційну роботу ефективною для вас</h4>
+        <p className="mb-4">
+          Щоб успішно працювати дистанційно, розгляньте:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Оцініть своє домашнє робоче місце та необхідні пристосування</li>
+          <li>Розвивайте сильні навички управління часом та самодисципліну</li>
+          <li>Будуйте навички віртуального нетворкінгу та онлайн-присутності</li>
+          <li>Будьте в курсі інструментів та технологій дистанційної роботи</li>
+          <li>Шукайте компанії з доведеною культурою дистанційної роботи</li>
+        </ul>
+
+        <p className="mb-4">
+          Дистанційна робота — це не просто тренд, це фундаментальна зміна в тому, як ми працюємо. Для людей з інвалідністю це представляє потужний інструмент для подолання традиційних бар'єрів працевлаштування та доступу до можливостей на основі навичок, а не фізичних обмежень.
+        </p>
       </>
     ),
     contentPl: (
       <>
-        <img src="/images/articles/digital-frontier.svg" alt="Cyfrowa granica 2026" className="w-full rounded-xl mb-8" />
+        <h4 className="text-lg font-semibold mt-6 mb-3">Rewolucja pracy zdalnej</h4>
         <p className="mb-4">
-          W 2026 roku pojęcie "miejsca pracy" zostało zdefiniowane na nowo. Dla milionów osób z niepełnosprawnościami na Ukrainie i w Polsce ta zmiana to nie tylko wygoda — to <strong>wyzwolenie ekonomiczne</strong>. Ponieważ oba narody dostosowują prawo pracy do standardów UE, praca zdalna stała się kluczowym narzędziem "racjonalnych usprawnień".
+          Przejście na pracę zdalną stanowi jedną z najważniejszych zmian na nowoczesnym rynku pracy. Dla osób z niepełnosprawnościami ta transformacja otworzyła bezprecedensowe możliwości.
+        </p>
+        <p className="mb-4">
+          To, co kiedyś uważano za przywilej, stało się teraz standardowym oczekiwaniem dla wielu stanowisk, fundamentalnie zmieniając sposób, w jaki myślimy o dostępności miejsca pracy.
         </p>
 
-        <h4 className="text-lg font-semibold mt-6 mb-3">1. Krajobraz prawny 2026: UA vs. PL</h4>
-        <div className="overflow-x-auto mb-6">
-          <table className="min-w-full border-collapse border border-slate-200">
-            <thead>
-              <tr className="bg-slate-50">
-                <th className="border border-slate-200 p-2 text-left">Cecha</th>
-                <th className="border border-slate-200 p-2 text-left">Ukraina (Reforma 2026)</th>
-                <th className="border border-slate-200 p-2 text-left">Polska (PFRON 2026)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Kwota zatrudnienia</td>
-                <td className="border border-slate-200 p-2">4% dla firm 25+ pracowników</td>
-                <td className="border border-slate-200 p-2">6% dla firm 25+ pracowników</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Zasada "Mnożnika"</td>
-                <td className="border border-slate-200 p-2">1 pracownik (Grupa I) = 2 do kwoty</td>
-                <td className="border border-slate-200 p-2">Standardowe liczenie</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Dotacja dla pracodawcy</td>
-                <td className="border border-slate-200 p-2">Do 129,705 UAH (jednorazowo)</td>
-                <td className="border border-slate-200 p-2">Do 2,760 PLN (miesięcznie)</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 font-medium">Kara za brak realizacji</td>
-                <td className="border border-slate-200 p-2">40% śr. pensji (kwartalnie)</td>
-                <td className="border border-slate-200 p-2">~40.65% śr. pensji (miesięcznie)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">2. Top 10 zawodów zdalnych</h4>
-        <ol className="list-decimal pl-6 mb-4 space-y-2">
-          <li><strong>Specjalista ds. wprowadzania danych:</strong> Oczyszczanie danych dla AI.</li>
-          <li><strong>Wirtualny asystent:</strong> Zarządzanie kalendarzem i pocztą.</li>
-          <li><strong>Specjalista ds. moderacji:</strong> Bezpieczeństwo w mediach społecznościowych.</li>
-          <li><strong>Transkrybent:</strong> Konwersja dźwięku na tekst.</li>
-          <li><strong>Korepetytor online:</strong> Nauczanie języków lub przedmiotów.</li>
-          <li><strong>Korektor:</strong> Szlifowanie tekstów generowanych przez AI.</li>
-          <li><strong>Wsparcie klienta (czat):</strong> Rozwiązywanie problemów tekstowo.</li>
-          <li><strong>Koordynator mediów społecznościowych:</strong> Zarządzanie wizerunkiem cyfrowym.</li>
-          <li><strong>Umawianie spotkań:</strong> Łączenie leadów z zespołami sprzedaży.</li>
-          <li><strong>Asystent ds. badań:</strong> Wyszukiwanie danych dla twórców.</li>
-        </ol>
-
-        <h4 className="text-lg font-semibold mt-6 mb-3">3. Dlaczego praca zdalna jest dla Ciebie</h4>
-        <p className="mb-4 italic">"Cyfrowe biuro nie dba o schody czy brak dostępnego transportu. Dba tylko o jakość Twojej pracy."</p>
+        <h4 className="text-lg font-semibold mt-6 mb-3">Dlaczego praca zdalna ma znaczenie</h4>
         <ul className="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Kontrola sensoryczna:</strong> Dostosuj oświetlenie i dźwięk do swoich potrzeb.</li>
-          <li><strong>Zarządzanie energią:</strong> Pracuj wtedy, gdy czujesz się najlepiej.</li>
-          <li><strong>Integracja z technologią:</strong> Używaj własnego sprzętu bez zbędnych pytań.</li>
+          <li><strong>Eliminuje bariery fizyczne:</strong> Nie potrzeba dostępnego transportu ani budynków biurowych</li>
+          <li><strong>Kontrola środowiska:</strong> Dostosowywalne miejsce pracy spełniające indywidualne potrzeby</li>
+          <li><strong>Zarządzanie energią:</strong> Lepsza kontrola nad godzinami pracy i harmonogramem przerw</li>
+          <li><strong>Zmniejszenie dyskryminacji:</strong> Fokus przesuwa się z obecności fizycznej na faktyczną wydajność pracy</li>
+          <li><strong>Globalne możliwości:</strong> Dostęp do pracy niezależnie od lokalizacji geograficznej</li>
         </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Top 10 ról zdalnych w 2026</h4>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Rozwój oprogramowania:</strong> Programowanie, tworzenie stron internetowych i aplikacji</li>
+          <li><strong>Analiza danych:</strong> Analityka biznesowa, analiza i nauka o danych</li>
+          <li><strong>Marketing cyfrowy:</strong> Tworzenie treści, media społecznościowe i SEO</li>
+          <li><strong>Obsługa klienta:</strong> Czat online, e-mail i wsparcie telefoniczne</li>
+          <li><strong>Pisanie i edycja:</strong> Tworzenie treści, pisanie techniczne i copywriting</li>
+          <li><strong>Projektowanie:</strong> Projektowanie graficzne, UX/UI i projektowanie stron</li>
+          <li><strong>Zarządzanie projektami:</strong> Koordynacja zespołów zdalnych i nadzór projektowy</li>
+          <li><strong>Nauka i szkolenia:</strong> Edukacja online i szkolenia korporacyjne</li>
+          <li><strong>Badania:</strong> Badania rynku, badania akademickie i analiza</li>
+          <li><strong>Konsulting:</strong> Konsulting biznesowy i specjalistyczna wiedza</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Wyzwania i rozważania</h4>
+        <p className="mb-4">
+          Chociaż praca zdalna oferuje wiele korzyści, nie jest bez wyzwań:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Wymagania technologiczne:</strong> Potrzeba niezawodnego internetu i odpowiedniego sprzętu</li>
+          <li><strong>Izolacja:</strong> Zmniejszona interakcja społeczna i więź z zespołem</li>
+          <li><strong>Dostępność domu:</strong> Potrzeba dostępnego domowego miejsca pracy</li>
+          <li><strong>Różnice czasowe:</strong> Dla globalnych pozycji zdalnych</li>
+          <li><strong>Samodyscyplina:</strong> Wymaga silnych umiejętności zarządzania czasem</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Przyszłość pracy zdalnej</h4>
+        <p className="mb-4">
+          Trend w kierunku pracy zdalnej jest oczekiwany do kontynuacji i ekspansji. Do 2026 roku widzimy:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Więcej firm przyjmuje stałe polityki zdalne lub hybrydowe</li>
+          <li>Lepsze narzędzia do współpracy i dostępności</li>
+          <li>Zwiększony nacisk na umiejętności pracy zdalnej i szkolenia</li>
+          <li>Większa akceptacja pracy zdalnej w różnych branżach</li>
+          <li>Poprawiona ochrona prawna dla pracowników zdalnych</li>
+        </ul>
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Jak sprawić, by praca zdalna działała dla Ciebie</h4>
+        <p className="mb-4">
+          Aby odnieść sukces w pracy zdalnej, rozważ:
+        </p>
+        <ul className="list-disc pl-6 mb-4 space-y-2">
+          <li>Oceń swoje domowe miejsce pracy i potrzebne dostosowania</li>
+          <li>Rozwijaj silne umiejętności zarządzania czasem i samodyscypliny</li>
+          <li>Buduj umiejętności wirtualnego networkingu i obecności online</li>
+          <li>Bądź na bieżąco z narzędziami i technologiami pracy zdalnej</li>
+          <li>Szukaj firm z udokumentowaną kulturą pracy zdalnej</li>
+        </ul>
+
+        <p className="mb-4">
+          Praca zdalna to nie tylko trend — to fundamentalna zmiana w tym, jak pracujemy. Dla osób z niepełnosprawnościami stanowi potężne narzędzie do przełamywania tradycyjnych barier zatrudnienia i dostępu do możliwości na podstawie umiejętności, a nie ograniczeń fizycznych.
+        </p>
       </>
     ),
   },
 };
 
-interface CMSArticle {
-  id: string;
-  titleEn: string;
-  titleUa: string;
-  titlePl: string;
-  contentEn: string;
-  contentUa: string;
-  contentPl: string;
-}
-
 export default function ArticlePage() {
+  const [lang, setLang] = useState<Lang>("en");
+  const [article, setArticle] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const params = useParams();
   const slug = params.slug as string;
-  const [lang, setLang] = useState<Lang>("en");
-  const [cmsArticle, setCmsArticle] = useState<CMSArticle | null>(null);
-  const [loading, setLoading] = useState(true);
   const t = translations[lang];
 
+  // Try to find hardcoded article first
   const hardcodedArticle = hardcodedArticles[slug];
 
   useEffect(() => {
     async function fetchArticle() {
-      if (hardcodedArticle) {
-        setLoading(false);
-        return;
-      }
-      
       try {
-        const res = await fetch('/api/articles');
-        if (res.ok) {
-          const articles = await res.json();
-          const found = articles.find((a: CMSArticle) => a.id === slug);
-          if (found) {
-            setCmsArticle(found);
-          }
+        setLoading(true);
+        
+        if (hardcodedArticle) {
+          setArticle({
+            ...hardcodedArticle,
+            isHardcoded: true
+          });
+          return;
+        }
+
+        // Try to fetch markdown file
+        const response = await fetch(`/api/articles/${slug}?lang=${lang}`);
+        if (response.ok) {
+          const data = await response.json();
+          setArticle(data);
         }
       } catch (error) {
         console.error('Failed to fetch article:', error);
@@ -1203,43 +1139,52 @@ export default function ArticlePage() {
       }
     }
     fetchArticle();
-  }, [slug, hardcodedArticle]);
+  }, [slug, lang, hardcodedArticle]);
 
   const getTitle = () => {
-    if (hardcodedArticle) {
-      return lang === "en" ? hardcodedArticle.titleEn : lang === "ua" ? hardcodedArticle.titleUa : hardcodedArticle.titlePl;
+    if (article?.isHardcoded) {
+      return lang === "en" ? article.titleEn : lang === "ua" ? article.titleUa : article.titlePl;
     }
-    if (cmsArticle) {
-      return lang === "en" ? cmsArticle.titleEn : lang === "ua" ? cmsArticle.titleUa : cmsArticle.titlePl;
+    if (article) {
+      return article.title;
     }
     return "";
   };
 
   const getContent = () => {
-    if (hardcodedArticle) {
-      return lang === "en" ? hardcodedArticle.contentEn : lang === "ua" ? hardcodedArticle.contentUa : hardcodedArticle.contentPl;
+    if (article?.isHardcoded) {
+      return lang === "en" ? article.contentEn : lang === "ua" ? article.contentUa : article.contentPl;
     }
-    if (cmsArticle) {
-      const content = lang === "en" ? cmsArticle.contentEn : lang === "ua" ? cmsArticle.contentUa : cmsArticle.contentPl;
-      return <div dangerouslySetInnerHTML={{ __html: content }} />;
+    if (article?.content) {
+      return <div dangerouslySetInnerHTML={{ __html: article.content }} />;
+    }
+    return null;
+  };
+
+  const getImage = () => {
+    if (article?.isHardcoded) {
+      return null;
+    }
+    if (article?.image) {
+      return article.image;
     }
     return null;
   };
 
   if (loading) {
     return (
-      <div className="min-h-dvh bg-slate-50 flex items-center justify-center">
-        <div className="text-slate-500">Loading...</div>
+      <div className="min-h-dvh bg-[#FAFAF9] flex items-center justify-center">
+        <div className="text-[#2D6A4F]">Loading...</div>
       </div>
     );
   }
 
-  if (!hardcodedArticle && !cmsArticle) {
+  if (!article) {
     return (
-      <div className="min-h-dvh bg-slate-50 flex items-center justify-center">
+      <div className="min-h-dvh bg-[#FAFAF9] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Article not found</h1>
-          <Link href="/articles" className="text-slate-600 hover:text-slate-900 underline">
+          <h1 className="text-2xl font-bold text-[#1B4332] mb-4">Article not found</h1>
+          <Link href="/articles" className="text-[#2D6A4F] hover:text-[#1B4332] underline">
             {t.backToArticles}
           </Link>
         </div>
@@ -1247,11 +1192,13 @@ export default function ArticlePage() {
     );
   }
 
+  const image = getImage();
+
   return (
-    <div className="min-h-dvh bg-slate-50 text-slate-900">
-      <header className="border-b border-slate-200">
+    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
+      <header className="border-b border-[#E7E5E4] bg-white/95 backdrop-blur-md sticky top-0 z-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Prosvasimi home">
+          <Link href="/" className="flex items-center gap-2.5">
             <Image 
               src="/images/logo.png" 
               alt="Prosvasimi" 
@@ -1259,53 +1206,56 @@ export default function ArticlePage() {
               height={36}
             />
             <div className="leading-tight">
-              <div className="font-semibold tracking-tight text-lg">Prosvasimi</div>
-              <div className="text-xs text-slate-500">{t.brandTagline}</div>
+              <div className="font-semibold tracking-tight text-lg text-[#1B4332]">Prosvasimi</div>
+              <div className="text-xs text-[#2D6A4F]">{t.brandTagline}</div>
             </div>
           </Link>
-          <nav className="hidden md:flex items-center gap-8 text-sm">
-            <Link href="/" className="hover:text-slate-700">{t.navHome}</Link>
-            <Link href="/offer" className="hover:text-slate-700">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
-            <Link href="/articles" className="text-slate-900 font-medium">{t.navArticles}</Link>
-            <Link href="/jobs" className="hover:text-slate-700">{t.navJobs}</Link>
+          <nav className="hidden md:flex items-center gap-2 text-sm">
+            <Link href="/" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navHome}</Link>
+            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
+            <Link href="/articles" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg">{t.navArticles}</Link>
+            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
           </nav>
-          <div className="hidden sm:flex items-center gap-1 text-sm text-slate-600" role="group" aria-label="Language switch">
-            <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "en" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
-              EN
-            </button>
-            <span aria-hidden>·</span>
-            <button type="button" onClick={() => setLang("pl")} aria-pressed={lang === "pl"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "pl" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
-              PL
-            </button>
-            <span aria-hidden>·</span>
-            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-slate-400 ${lang === "ua" ? "text-slate-900 font-medium" : "hover:text-slate-900"}`}>
-              UA
-            </button>
+          <div className="flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm">
+            <button onClick={() => setLang("en")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>EN</button>
+            <button onClick={() => setLang("pl")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>PL</button>
+            <button onClick={() => setLang("ua")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>UA</button>
           </div>
         </div>
       </header>
 
       <main className="py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Link href="/articles" className="inline-flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 mb-8 group">
+          <Link href="/articles" className="inline-flex items-center gap-1.5 text-sm text-[#2D6A4F] hover:text-[#1B4332] mb-8 group">
             <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             {t.backToArticles}
           </Link>
-          
-          <article className="rounded-3xl bg-white p-6 sm:p-10 ring-1 ring-slate-200 shadow-sm">
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-8">{getTitle()}</h1>
-            <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+
+          <article>
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1B4332] mb-8">
+              {getTitle()}
+            </h1>
+
+            {image && (
+              <img 
+                src={image} 
+                alt={getTitle()} 
+                className="w-full rounded-2xl mb-8"
+              />
+            )}
+
+            <div className="prose prose-lg max-w-none prose-headings:text-[#1B4332] prose-p:text-[#57534E] prose-ul:text-[#57534E] prose-li:text-[#57534E] prose-strong:text-[#1B4332] prose-a:text-[#2D6A4F] hover:prose-a:text-[#1B4332] prose-h4:text-[#1B4332]">
               {getContent()}
             </div>
           </article>
         </div>
       </main>
 
-      <footer className="border-t border-slate-200 py-10 text-sm">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-slate-600">
-          <p>Prosvasimi · {t.footerNote} {new Date().getFullYear()}</p>
+      <footer className="border-t border-[#E7E5E4] py-10 bg-white mt-auto">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-[#57534E] text-sm">
+          <p>Prosvasimi &copy; {new Date().getFullYear()}</p>
         </div>
       </footer>
     </div>
