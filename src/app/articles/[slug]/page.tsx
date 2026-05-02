@@ -1264,7 +1264,24 @@ export default function ArticlePage() {
               />
             )}
 
-            <div className="prose prose-lg max-w-none prose-headings:text-[#1B4332] prose-p:text-[#57534E] prose-p:mb-6 prose-p:leading-relaxed prose-ul:text-[#57534E] prose-li:text-[#57534E] prose-strong:text-[#1B4332] prose-a:text-[#2D6A4F] hover:prose-a:text-[#1B4332] prose-h4:text-[#1B4332] prose-h2:mt-10 prose-h2:mb-6 prose-h4:mt-8 prose-h4:mb-4 prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-th:bg-[#1B4332] prose-th:text-white prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-[#E7E5E4] prose-tr:even:bg-[#FAFAF9]">
+            <div className="prose prose-lg max-w-none 
+              prose-headings:text-[#1B4332] 
+              prose-h1:text-3xl prose-h1:font-bold prose-h1:mb-8 prose-h1:mt-0
+              prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-[#E7E5E4]
+              prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-4
+              prose-h4:text-lg prose-h4:font-semibold prose-h4:mt-8 prose-h4:mb-4 prose-h4:text-[#2D6A4F]
+              prose-p:text-[#57534E] prose-p:text-base prose-p:leading-7 prose-p:mb-6
+              prose-ul:text-[#57534E] prose-ul:my-6 prose-ul:pl-6
+              prose-ol:text-[#57534E] prose-ol:my-6 prose-ol:pl-6
+              prose-li:text-[#57534E] prose-li:mb-3 prose-li:leading-7
+              prose-strong:text-[#1B4332] prose-strong:font-semibold
+              prose-a:text-[#2D6A4F] prose-a:underline hover:prose-a:text-[#1B4332]
+              prose-blockquote:border-l-4 prose-blockquote:border-[#2D6A4F] prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-[#57534E] prose-blockquote:my-8
+              prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-table:rounded-lg prose-table:overflow-hidden
+              prose-th:bg-[#1B4332] prose-th:text-white prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-sm
+              prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-[#E7E5E4] prose-td:text-sm
+              prose-tr:even:bg-[#FAFAF9]
+              prose-hr:my-10 prose-hr:border-[#E7E5E4]">
               {getContent()}
             </div>
           </article>
