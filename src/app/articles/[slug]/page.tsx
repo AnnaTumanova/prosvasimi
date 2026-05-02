@@ -1264,7 +1264,7 @@ export default function ArticlePage() {
               />
             )}
 
-            <div className="prose prose-lg max-w-none prose-headings:text-[#1B4332] prose-p:text-[#57534E] prose-p:mb-6 prose-p:leading-relaxed prose-ul:text-[#57534E] prose-li:text-[#57534E] prose-strong:text-[#1B4332] prose-a:text-[#2D6A4F] hover:prose-a:text-[#1B4332] prose-h4:text-[#1B4332] prose-h2:mt-10 prose-h2:mb-6 prose-h4:mt-8 prose-h4:mb-4">
+            <div className="prose prose-lg max-w-none prose-headings:text-[#1B4332] prose-p:text-[#57534E] prose-p:mb-6 prose-p:leading-relaxed prose-ul:text-[#57534E] prose-li:text-[#57534E] prose-strong:text-[#1B4332] prose-a:text-[#2D6A4F] hover:prose-a:text-[#1B4332] prose-h4:text-[#1B4332] prose-h2:mt-10 prose-h2:mb-6 prose-h4:mt-8 prose-h4:mb-4 prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-th:bg-[#1B4332] prose-th:text-white prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-[#E7E5E4] prose-tr:even:bg-[#FAFAF9]">
               {getContent()}
             </div>
           </article>

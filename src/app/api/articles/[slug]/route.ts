@@ -4,6 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkGfm from 'remark-gfm';
 
 const articlesDirectory = path.join(process.cwd(), 'src/app/articles');
 
@@ -70,6 +71,7 @@ export async function GET(
     const matterResult = matter(fileContents);
 
     const processedContent = await remark()
+      .use(remarkGfm)
       .use(html)
       .process(matterResult.content);
     const contentHtml = processedContent.toString();
