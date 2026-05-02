@@ -619,6 +619,19 @@ export default function ArticlesPage() {
               image="/images/articles/poland-stats.svg"
             />
 
+            <ArticleCard
+              title={lang === "en" ? "Disability Employment in Europe vs USA: What Employers Need to Know" : lang === "ua" ? "Працевлаштування людей з інвалідністю в Європі та США: що потрібно знати роботодавцям" : "Zatrudnienie osób z niepełnosprawnościami w Europie i USA: co pracodawcy powinni wiedzieć"}
+              excerpt={lang === "en" 
+                ? "A practical guide for employers comparing disability employment in Europe and the USA, with key statistics, legal obligations, workplace accommodations, and inclusive hiring strategies." 
+                : lang === "ua" 
+                ? "Практичний посібник для роботодавців, що порівнює працевлаштування людей з інвалідністю в Європі та США, з ключовою статистикою, правовими зобов'язаннями та стратегіями інклюзивного найму." 
+                : "Praktyczny przewodnik dla pracodawców porównujący zatrudnienie osób z niepełnosprawnościami w Europie i USA, z kluczowymi statystykami, obowiązkami prawnymi i strategiami inkluzywnej rekrutacji."}
+              slug={lang === "en" ? "disability-employment-europe-vs-usa" : lang === "ua" ? "pracevlashtuvannya-invalidiv-yevropa-ssha" : "zatrudnienie-niepelnosprawnych-europa-usa"}
+              lang={lang}
+              readMore={t.readMore}
+              image="/images/articles/ChatGPT Image May 2, 2026, 10_01_26 PM.png"
+            />
+
             {/* CMS Articles */}
             {cmsArticles.map((article) => (
               <ArticleCard

@@ -25,8 +25,8 @@ export async function GET(
       'dostupniy-robochiy-rinok-poland'
     ];
     
+    // Article: Accessible Jobs Market in Poland
     if (accessibleJobsArticleSlugs.includes(slug)) {
-      // Serve the correct language version based on user's selected language
       switch (lang) {
         case 'en':
           fileName = 'accessible-jobs-market-en.md';
@@ -37,6 +37,23 @@ export async function GET(
         case 'pl':
         default:
           fileName = 'praca-dla-osob-z-niepelnosprawnosciami-pl.md';
+          break;
+      }
+    }
+    // Article: Disability Employment Europe vs USA
+    else if (slug === 'disability-employment-europe-vs-usa' || 
+             slug === 'zatrudnienie-niepelnosprawnych-europa-usa' || 
+             slug === 'pracevlashtuvannya-invalidiv-yevropa-ssha') {
+      switch (lang) {
+        case 'en':
+          fileName = 'disability-employment-europe-vs-usa-en.md';
+          break;
+        case 'ua':
+          fileName = 'pracevlashtuvannya-invalidiv-yevropa-ssha-ua.md';
+          break;
+        case 'pl':
+        default:
+          fileName = 'zatrudnienie-osob-niepelnosprawnych-europa-usa-pl.md';
           break;
       }
     } else {
