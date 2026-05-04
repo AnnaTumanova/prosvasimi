@@ -77,6 +77,7 @@ export default function Page() {
       navOffer: "What We Offer",
       navArticles: "Articles",
       navJobs: "Jobs",
+      navQuiz: "Quiz",
       ctaEarly: "Get Early Access",
       heroTagline: "Inclusive by design",
       heroTitle: "Work without barriers.",
@@ -147,6 +148,7 @@ export default function Page() {
       navOffer: "Co oferujemy",
       navArticles: "Artykuły",
       navJobs: "Oferty pracy",
+      navQuiz: "Quiz",
       ctaEarly: "Wczesny dostęp",
       heroTagline: "Włączająco z założenia",
       heroTitle: "Praca bez barier.",
@@ -217,6 +219,7 @@ export default function Page() {
       navOffer: "Що ми пропонуємо",
       navArticles: "Статті",
       navJobs: "Вакансії",
+      navQuiz: "Тест",
       ctaEarly: "Ранній доступ",
       heroTagline: "Інклюзивність за замовчуванням",
       heroTitle: "Робота без бар'єрів.",
@@ -334,6 +337,7 @@ export default function Page() {
             <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navOffer}</Link>
             <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
             <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -654,6 +658,7 @@ export default function Page() {
               <Link href="/offer" className="hover:text-[#1B4332] transition-colors">{t.navOffer}</Link>
               <Link href="/articles" className="hover:text-[#1B4332] transition-colors">{t.navArticles}</Link>
               <Link href="/jobs" className="hover:text-[#1B4332] transition-colors">{t.navJobs}</Link>
+              <Link href="/quiz" className="hover:text-[#1B4332] transition-colors">{t.navQuiz}</Link>
             </nav>
             <p className="text-sm text-[#2D6A4F]">© {new Date().getFullYear()} Prosvasimi</p>
           </div>

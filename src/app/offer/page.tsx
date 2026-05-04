@@ -182,6 +182,7 @@ const translations = {
     backHome: "Back to Home",
     navArticles: "Articles",
     navJobs: "Jobs",
+    navQuiz: "Quiz",
     navOffer: "What We Offer",
     modalTitle: "Register Your Interest",
     modalSubtitle: "Be the first to know when this workshop launches",
@@ -209,6 +210,7 @@ const translations = {
     backHome: "Powrót do strony głównej",
     navArticles: "Artykuły",
     navJobs: "Oferty pracy",
+    navQuiz: "Quiz",
     navOffer: "Co oferujemy",
     modalTitle: "Zgłoś zainteresowanie",
     modalSubtitle: "Bądź pierwszy, gdy warsztat wystartuje",
@@ -236,6 +238,7 @@ const translations = {
     backHome: "Повернутися на головну",
     navArticles: "Статті",
     navJobs: "Вакансії",
+    navQuiz: "Тест",
     navOffer: "Що ми пропонуємо",
     modalTitle: "Зареєструвати інтерес",
     modalSubtitle: "Дізнайтеся першими, коли воркшоп стартує",
@@ -339,6 +342,7 @@ export default function OfferPage() {
             <Link href="/offer" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg hover:bg-[#1B4332] transition-colors">{t.navOffer}</Link>
             <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
             <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -629,6 +633,7 @@ export default function OfferPage() {
               <Link href="/offer" className="hover:text-[#1B4332] transition-colors">{t.navOffer}</Link>
               <Link href="/articles" className="hover:text-[#1B4332] transition-colors">{t.navArticles}</Link>
               <Link href="/jobs" className="hover:text-[#1B4332] transition-colors">{t.navJobs}</Link>
+              <Link href="/quiz" className="hover:text-[#1B4332] transition-colors">{t.navQuiz}</Link>
             </nav>
             <p className="text-sm text-[#2D6A4F]">© {new Date().getFullYear()} Prosvasimi</p>
           </div>

@@ -22,6 +22,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Home",
     navArticles: "Articles",
     navJobs: "Jobs",
+    navQuiz: "Quiz",
     pageTitle: "Articles & Research",
     pageSubtitle: "Data-driven insights on disability employment in Ukraine and Poland",
     footerNote: "Building an accessible job platform.",
@@ -32,6 +33,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Strona główna",
     navArticles: "Artykuły",
     navJobs: "Oferty pracy",
+    navQuiz: "Quiz",
     pageTitle: "Artykuły i badania",
     pageSubtitle: "Analiza zatrudnienia osób z niepełnosprawnościami w Ukrainie i Polsce",
     footerNote: "Budujemy dostępną platformę pracy.",
@@ -42,6 +44,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Головна",
     navArticles: "Статті",
     navJobs: "Вакансії",
+    navQuiz: "Тест",
     pageTitle: "Статті та дослідження",
     pageSubtitle: "Аналіз працевлаштування людей з інвалідністю в Україні та Польщі",
     footerNote: "Будуємо доступну платформу для працевлаштування.",
@@ -505,6 +508,7 @@ export default function ArticlesPage() {
             <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
             <Link href="/articles" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg">{t.navArticles}</Link>
             <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
           </nav>
           <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group" aria-label="Language switch">
             <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>

@@ -24,6 +24,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Home",
     navArticles: "Articles",
     navJobs: "Jobs",
+    navQuiz: "Quiz",
     pageTitle: "Inclusive Job Offers",
     pageSubtitle: "Curated roles in Poland specifically mentioning disability support (PFRON/Orzeczenie)",
     searchPlaceholder: "Search by title or keyword...",
@@ -40,6 +41,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Strona główna",
     navArticles: "Artykuły",
     navJobs: "Oferty pracy",
+    navQuiz: "Quiz",
     pageTitle: "Oferty pracy z orzeczeniem",
     pageSubtitle: "Wyselekcjonowane oferty z Polski wspierające osoby z niepełnosprawnościami (PFRON/Orzeczenie)",
     searchPlaceholder: "Szukaj po nazwie lub słowie kluczowym...",
@@ -56,6 +58,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Головна",
     navArticles: "Статті",
     navJobs: "Вакансії",
+    navQuiz: "Тест",
     pageTitle: "Вакансії для людей з інвалідністю",
     pageSubtitle: "Відібрані пропозиції в Польщі з підтримкою людей з інвалідністю (PFRON/Orzeczenie)",
     searchPlaceholder: "Шукати за назвою або ключовим словом...",
@@ -212,6 +215,7 @@ export default function JobsPage() {
             <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
             <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
             <Link href="/jobs" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg">{t.navJobs}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
           </nav>
           <div className="flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm">
             <button onClick={() => setLang("en")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>EN</button>
