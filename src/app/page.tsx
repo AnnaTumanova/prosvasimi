@@ -338,6 +338,7 @@ export default function Page() {
             <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
             <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
             <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
+            <Link href="/user" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Register</Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -659,6 +660,7 @@ export default function Page() {
               <Link href="/articles" className="hover:text-[#1B4332] transition-colors">{t.navArticles}</Link>
               <Link href="/jobs" className="hover:text-[#1B4332] transition-colors">{t.navJobs}</Link>
               <Link href="/quiz" className="hover:text-[#1B4332] transition-colors">{t.navQuiz}</Link>
+              <Link href="/user" className="hover:text-[#1B4332] transition-colors">Register</Link>
             </nav>
             <p className="text-sm text-[#2D6A4F]">© {new Date().getFullYear()} Prosvasimi</p>
           </div>

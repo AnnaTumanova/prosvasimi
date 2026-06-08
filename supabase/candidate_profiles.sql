@@ -1,0 +1,38 @@
+create table if not exists public.candidate_profiles (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  name text not null default '',
+  email text not null,
+  phone text not null default '',
+  location text not null default '',
+  experience_level text not null default '',
+  job_field text not null default '',
+  work_preference text not null default '',
+  skills text not null default '',
+  accommodations text not null default '',
+  goals text not null default '',
+  cv_path text,
+  cv_file_name text,
+  cv_file_type text,
+  cv_file_size integer,
+  user_agent text not null default '',
+  ip text not null default ''
+);
+
+alter table public.candidate_profiles enable row level security;
+
+create policy "Service role can manage candidate profiles"
+  on public.candidate_profiles
+  for all
+  using (auth.role() = 'service_role')
+  with check (auth.role() = 'service_role');
+
+insert into storage.buckets (id, name, public)
+values ('candidate-cvs', 'candidate-cvs', false)
+on conflict (id) do nothing;
+
+create policy "Service role can manage candidate CVs"
+  on storage.objects
+  for all
+  using (bucket_id = 'candidate-cvs' and auth.role() = 'service_role')
+  with check (bucket_id = 'candidate-cvs' and auth.role() = 'service_role');
