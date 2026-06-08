@@ -37,6 +37,22 @@ export async function POST(req: Request) {
     }
 
     const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
+    const token = req.headers.get("authorization")?.replace("Bearer ", "");
+
+    if (!token) {
+      return NextResponse.json({ error: "Authentication required" }, { status: 401 });
+    }
+
+    const { data: authData, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !authData.user) {
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
+    }
+
+    if (authData.user.email && authData.user.email !== email) {
+      return NextResponse.json({ error: "Email does not match signed-in user" }, { status: 400 });
+    }
+
     let cvPath: string | null = null;
 
     if (cv instanceof File) {
@@ -58,6 +74,7 @@ export async function POST(req: Request) {
     }
 
     const payload = {
+      user_id: authData.user.id,
       name: String(formData.get("name") ?? ""),
       email,
       phone: String(formData.get("phone") ?? ""),

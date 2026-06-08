@@ -1,5 +1,6 @@
 create table if not exists public.candidate_profiles (
   id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id) on delete cascade,
   created_at timestamptz not null default now(),
   name text not null default '',
   email text not null,
@@ -26,6 +27,11 @@ create policy "Service role can manage candidate profiles"
   for all
   using (auth.role() = 'service_role')
   with check (auth.role() = 'service_role');
+
+create policy "Users can read their own candidate profile"
+  on public.candidate_profiles
+  for select
+  using (auth.uid() = user_id);
 
 insert into storage.buckets (id, name, public)
 values ('candidate-cvs', 'candidate-cvs', false)

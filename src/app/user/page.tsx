@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import type { User } from "@supabase/supabase-js";
+import { supabase } from "@/lib/supabaseClient";
 
 type FormStatus = "idle" | "submitting" | "success";
 
@@ -37,6 +39,19 @@ export default function UserPage() {
   const [cv, setCv] = useState<File | null>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const loadUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+      if (data.user?.email) {
+        updateField("email", data.user.email);
+      }
+    };
+
+    loadUser();
+  }, []);
 
   const updateField = (field: keyof UserProfile, value: string) => {
     setProfile((current) => ({ ...current, [field]: value }));
@@ -45,6 +60,11 @@ export default function UserPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
+
+    if (!user) {
+      setError("Please create an account or log in before submitting your profile.");
+      return;
+    }
 
     if (!profile.email || !/^([^\s@])+@([^\s@]+)\.[^\s@]+$/.test(profile.email)) {
       setError("Please enter a valid email address.");
@@ -59,8 +79,12 @@ export default function UserPage() {
     setStatus("submitting");
 
     try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
       const res = await fetch("/api/user-register", {
         method: "POST",
+        headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : undefined,
         body: formData,
       });
 
@@ -95,6 +119,11 @@ export default function UserPage() {
             <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Articles</Link>
             <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Jobs</Link>
             <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Quiz</Link>
+            {user ? (
+              <Link href="/account" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Account</Link>
+            ) : (
+              <Link href="/login" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Log in</Link>
+            )}
           </nav>
         </div>
       </header>
@@ -112,6 +141,16 @@ export default function UserPage() {
               <p className="mt-6 text-lg text-[#2D6A4F] leading-relaxed">
                 Share your skills, work preferences, support needs, and optionally upload your CV so Prosvasimi can better match you with accessible opportunities.
               </p>
+              {!user && (
+                <div className="mt-8 rounded-2xl border border-[#D4A574]/40 bg-[#D4A574]/10 p-5">
+                  <p className="font-medium text-[#1B4332]">Create an account before submitting your profile.</p>
+                  <p className="mt-2 text-sm text-[#2D6A4F]">This lets you log in later with your email and password.</p>
+                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                    <Link href="/register" className="inline-flex justify-center rounded-xl bg-[#2D6A4F] px-5 py-3 text-white font-medium hover:bg-[#1B4332] transition-colors">Register</Link>
+                    <Link href="/login" className="inline-flex justify-center rounded-xl border-2 border-[#E7E5E4] px-5 py-3 text-[#1B4332] font-medium hover:border-[#2D6A4F] transition-colors">Log in</Link>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
