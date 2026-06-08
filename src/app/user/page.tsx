@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
+import { detectBrowserLanguage, type Lang } from "@/lib/language";
 
 type FormStatus = "idle" | "submitting" | "success";
 
@@ -34,14 +35,57 @@ const initialProfile: UserProfile = {
   goals: "",
 };
 
+const translations = {
+  en: {
+    navOffer: "What We Offer", navArticles: "Articles", navJobs: "Jobs", navQuiz: "Quiz", account: "Account", login: "Log in", register: "Register",
+    authRequiredError: "Please create an account or log in before submitting your profile.", emailError: "Please enter a valid email address.", submitError: "Could not submit your profile. Please try again later.",
+    badge: "Candidate profile", title: "Register your profile and tell us about your experience.", subtitle: "Share your skills, work preferences, support needs, and optionally upload your CV so Prosvasimi can better match you with accessible opportunities.", authTitle: "Create an account before submitting your profile.", authSubtitle: "This lets you log in later with your email and password.",
+    successTitle: "Your profile was submitted", successText: "Thank you. We will review your information and contact you when suitable opportunities are available.", anotherProfile: "Register another profile",
+    details: "Your details", fullName: "Full name", email: "Email", phone: "Phone", location: "Location", locationPlaceholder: "Warsaw / Remote",
+    experienceQuestions: "Experience questions", experienceLevel: "Experience level", selectLevel: "Select level", entry: "Entry level", junior: "Junior", mid: "Mid-level", senior: "Senior", careerChange: "Career change",
+    preferredField: "Preferred field", preferredFieldPlaceholder: "Customer support, IT, design...", workPreference: "Work preference", selectPreference: "Select preference", remote: "Remote", hybrid: "Hybrid", onsite: "On-site", flexible: "Flexible",
+    skills: "Key skills and previous experience", skillsPlaceholder: "Tell us about your skills, tools, projects, studies, volunteering, or previous jobs.", accommodations: "Accessibility needs or accommodations", accommodationsPlaceholder: "Optional. Share only what you feel comfortable sharing.", goals: "Career goals", goalsPlaceholder: "What kind of role or support are you looking for?",
+    cvUpload: "CV upload", uploadCv: "Upload your CV", cvHint: "PDF, DOC, or DOCX up to 5MB. Optional but recommended.", selected: "Selected:", submitting: "Submitting...", submit: "Submit profile",
+    nextTitle: "What happens next?", step1: "1. Profile review", step1Text: "We review your experience and preferences.", step2: "2. Matching", step2Text: "We look for roles aligned with your skills and accessibility needs.", step3: "3. Contact", step3Text: "We contact you when a relevant opportunity or support program is available.",
+  },
+  pl: {
+    navOffer: "Co oferujemy", navArticles: "Artykuły", navJobs: "Oferty pracy", navQuiz: "Quiz", account: "Konto", login: "Zaloguj się", register: "Zarejestruj się",
+    authRequiredError: "Utwórz konto lub zaloguj się przed wysłaniem profilu.", emailError: "Podaj poprawny adres e-mail.", submitError: "Nie udało się wysłać profilu. Spróbuj ponownie później.",
+    badge: "Profil kandydata", title: "Zarejestruj swój profil i opowiedz nam o swoim doświadczeniu.", subtitle: "Podziel się umiejętnościami, preferencjami pracy, potrzebami wsparcia i opcjonalnie prześlij CV, aby Prosvasimi mogło lepiej dopasować Cię do dostępnych możliwości.", authTitle: "Utwórz konto przed wysłaniem profilu.", authSubtitle: "Dzięki temu później zalogujesz się swoim e-mailem i hasłem.",
+    successTitle: "Twój profil został wysłany", successText: "Dziękujemy. Przejrzymy Twoje informacje i skontaktujemy się, gdy pojawią się odpowiednie możliwości.", anotherProfile: "Zarejestruj kolejny profil",
+    details: "Twoje dane", fullName: "Imię i nazwisko", email: "E-mail", phone: "Telefon", location: "Lokalizacja", locationPlaceholder: "Warszawa / Zdalnie",
+    experienceQuestions: "Pytania o doświadczenie", experienceLevel: "Poziom doświadczenia", selectLevel: "Wybierz poziom", entry: "Początkujący", junior: "Junior", mid: "Średniozaawansowany", senior: "Senior", careerChange: "Zmiana ścieżki kariery",
+    preferredField: "Preferowana dziedzina", preferredFieldPlaceholder: "Obsługa klienta, IT, design...", workPreference: "Preferencje pracy", selectPreference: "Wybierz preferencję", remote: "Zdalnie", hybrid: "Hybrydowo", onsite: "Stacjonarnie", flexible: "Elastycznie",
+    skills: "Kluczowe umiejętności i wcześniejsze doświadczenie", skillsPlaceholder: "Opowiedz o swoich umiejętnościach, narzędziach, projektach, edukacji, wolontariacie lub wcześniejszej pracy.", accommodations: "Potrzeby dostępności lub dostosowania", accommodationsPlaceholder: "Opcjonalnie. Udostępnij tylko to, czym chcesz się podzielić.", goals: "Cele zawodowe", goalsPlaceholder: "Jakiej roli lub wsparcia szukasz?",
+    cvUpload: "Przesyłanie CV", uploadCv: "Prześlij CV", cvHint: "PDF, DOC lub DOCX do 5 MB. Opcjonalne, ale zalecane.", selected: "Wybrano:", submitting: "Wysyłanie...", submit: "Wyślij profil",
+    nextTitle: "Co dalej?", step1: "1. Przegląd profilu", step1Text: "Analizujemy Twoje doświadczenie i preferencje.", step2: "2. Dopasowanie", step2Text: "Szukamy ról zgodnych z Twoimi umiejętnościami i potrzebami dostępności.", step3: "3. Kontakt", step3Text: "Skontaktujemy się, gdy pojawi się odpowiednia oferta lub program wsparcia.",
+  },
+  ua: {
+    navOffer: "Що ми пропонуємо", navArticles: "Статті", navJobs: "Вакансії", navQuiz: "Тест", account: "Акаунт", login: "Увійти", register: "Зареєструватися",
+    authRequiredError: "Будь ласка, створіть акаунт або увійдіть перед надсиланням профілю.", emailError: "Будь ласка, введіть дійсну адресу e-mail.", submitError: "Не вдалося надіслати профіль. Спробуйте пізніше.",
+    badge: "Профіль кандидата", title: "Зареєструйте свій профіль і розкажіть про свій досвід.", subtitle: "Поділіться навичками, робочими вподобаннями, потребами підтримки та за бажанням завантажте CV, щоб Prosvasimi краще підібрало для вас доступні можливості.", authTitle: "Створіть акаунт перед надсиланням профілю.", authSubtitle: "Так ви зможете пізніше увійти за допомогою e-mail і пароля.",
+    successTitle: "Ваш профіль надіслано", successText: "Дякуємо. Ми переглянемо вашу інформацію і зв’яжемося з вами, коли будуть відповідні можливості.", anotherProfile: "Зареєструвати інший профіль",
+    details: "Ваші дані", fullName: "Повне ім’я", email: "E-mail", phone: "Телефон", location: "Локація", locationPlaceholder: "Варшава / Віддалено",
+    experienceQuestions: "Питання про досвід", experienceLevel: "Рівень досвіду", selectLevel: "Оберіть рівень", entry: "Початковий рівень", junior: "Junior", mid: "Середній рівень", senior: "Senior", careerChange: "Зміна кар’єри",
+    preferredField: "Бажана сфера", preferredFieldPlaceholder: "Підтримка клієнтів, IT, дизайн...", workPreference: "Формат роботи", selectPreference: "Оберіть формат", remote: "Віддалено", hybrid: "Гібридно", onsite: "В офісі", flexible: "Гнучко",
+    skills: "Ключові навички та попередній досвід", skillsPlaceholder: "Розкажіть про навички, інструменти, проєкти, навчання, волонтерство або попередню роботу.", accommodations: "Потреби доступності або адаптації", accommodationsPlaceholder: "Необов’язково. Діліться лише тим, чим вам комфортно.", goals: "Кар’єрні цілі", goalsPlaceholder: "Яку роль або підтримку ви шукаєте?",
+    cvUpload: "Завантаження CV", uploadCv: "Завантажте CV", cvHint: "PDF, DOC або DOCX до 5 МБ. Необов’язково, але рекомендовано.", selected: "Вибрано:", submitting: "Надсилання...", submit: "Надіслати профіль",
+    nextTitle: "Що далі?", step1: "1. Перегляд профілю", step1Text: "Ми переглядаємо ваш досвід і вподобання.", step2: "2. Підбір", step2Text: "Ми шукаємо ролі, що відповідають вашим навичкам і потребам доступності.", step3: "3. Контакт", step3Text: "Ми зв’яжемося з вами, коли буде відповідна можливість або програма підтримки.",
+  },
+} satisfies Record<Lang, Record<string, string>>;
+
 export default function UserPage() {
+  const [lang, setLang] = useState<Lang>("en");
   const [profile, setProfile] = useState<UserProfile>(initialProfile);
   const [cv, setCv] = useState<File | null>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
   const [user, setUser] = useState<User | null>(null);
+  const t = translations[lang];
 
   useEffect(() => {
+    setLang(detectBrowserLanguage());
+
     const loadUser = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
@@ -62,12 +106,12 @@ export default function UserPage() {
     setError("");
 
     if (!user) {
-      setError("Please create an account or log in before submitting your profile.");
+      setError(t.authRequiredError);
       return;
     }
 
     if (!profile.email || !/^([^\s@])+@([^\s@]+)\.[^\s@]+$/.test(profile.email)) {
-      setError("Please enter a valid email address.");
+      setError(t.emailError);
       return;
     }
 
@@ -94,7 +138,7 @@ export default function UserPage() {
       setProfile(initialProfile);
       setCv(null);
     } catch {
-      setError("Could not submit your profile. Please try again later.");
+      setError(t.submitError);
       setStatus("idle");
     }
   };
@@ -115,14 +159,14 @@ export default function UserPage() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">What We Offer</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Articles</Link>
-            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Jobs</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Quiz</Link>
+            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navOffer}</Link>
+            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
+            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
             {user ? (
-              <Link href="/account" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Account</Link>
+              <Link href="/account" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.account}</Link>
             ) : (
-              <Link href="/login" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Log in</Link>
+              <Link href="/login" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.login}</Link>
             )}
           </nav>
         </div>
@@ -133,21 +177,21 @@ export default function UserPage() {
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
             <div className="max-w-3xl">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#40916C]/10 text-[#40916C] text-sm font-medium">
-                Candidate profile
+                {t.badge}
               </span>
               <h1 className="mt-8 text-4xl md:text-5xl font-bold tracking-tight leading-tight text-[#1B4332]">
-                Register your profile and tell us about your experience.
+                {t.title}
               </h1>
               <p className="mt-6 text-lg text-[#2D6A4F] leading-relaxed">
-                Share your skills, work preferences, support needs, and optionally upload your CV so Prosvasimi can better match you with accessible opportunities.
+                {t.subtitle}
               </p>
               {!user && (
                 <div className="mt-8 rounded-2xl border border-[#D4A574]/40 bg-[#D4A574]/10 p-5">
-                  <p className="font-medium text-[#1B4332]">Create an account before submitting your profile.</p>
-                  <p className="mt-2 text-sm text-[#2D6A4F]">This lets you log in later with your email and password.</p>
+                  <p className="font-medium text-[#1B4332]">{t.authTitle}</p>
+                  <p className="mt-2 text-sm text-[#2D6A4F]">{t.authSubtitle}</p>
                   <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                    <Link href="/register" className="inline-flex justify-center rounded-xl bg-[#2D6A4F] px-5 py-3 text-white font-medium hover:bg-[#1B4332] transition-colors">Register</Link>
-                    <Link href="/login" className="inline-flex justify-center rounded-xl border-2 border-[#E7E5E4] px-5 py-3 text-[#1B4332] font-medium hover:border-[#2D6A4F] transition-colors">Log in</Link>
+                    <Link href="/register" className="inline-flex justify-center rounded-xl bg-[#2D6A4F] px-5 py-3 text-white font-medium hover:bg-[#1B4332] transition-colors">{t.register}</Link>
+                    <Link href="/login" className="inline-flex justify-center rounded-xl border-2 border-[#E7E5E4] px-5 py-3 text-[#1B4332] font-medium hover:border-[#2D6A4F] transition-colors">{t.login}</Link>
                   </div>
                 </div>
               )}
@@ -163,14 +207,14 @@ export default function UserPage() {
                   <div className="flex items-start gap-4">
                     <div className="h-10 w-10 rounded-full bg-[#40916C] text-white flex items-center justify-center flex-shrink-0">✓</div>
                     <div>
-                      <h2 className="text-xl font-semibold">Your profile was submitted</h2>
-                      <p className="mt-2 text-[#2D6A4F]">Thank you. We will review your information and contact you when suitable opportunities are available.</p>
+                      <h2 className="text-xl font-semibold">{t.successTitle}</h2>
+                      <p className="mt-2 text-[#2D6A4F]">{t.successText}</p>
                       <button
                         type="button"
                         onClick={() => setStatus("idle")}
                         className="mt-6 inline-flex justify-center rounded-xl bg-[#2D6A4F] text-white px-5 py-3 font-medium hover:bg-[#1B4332] transition-colors"
                       >
-                        Register another profile
+                        {t.anotherProfile}
                       </button>
                     </div>
                   </div>
@@ -178,109 +222,109 @@ export default function UserPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div>
-                    <h2 className="text-2xl font-bold text-[#1B4332]">Your details</h2>
+                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.details}</h2>
                     <div className="mt-6 grid sm:grid-cols-2 gap-4">
                       <label className="block">
-                        <span className="block text-sm font-medium mb-2">Full name</span>
+                        <span className="block text-sm font-medium mb-2">{t.fullName}</span>
                         <input value={profile.name} onChange={(e) => updateField("name", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="Anna Nowak" required />
                       </label>
                       <label className="block">
-                        <span className="block text-sm font-medium mb-2">Email</span>
+                        <span className="block text-sm font-medium mb-2">{t.email}</span>
                         <input type="email" value={profile.email} onChange={(e) => updateField("email", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="you@domain.com" required />
                       </label>
                       <label className="block">
-                        <span className="block text-sm font-medium mb-2">Phone</span>
+                        <span className="block text-sm font-medium mb-2">{t.phone}</span>
                         <input value={profile.phone} onChange={(e) => updateField("phone", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="+48 123 456 789" />
                       </label>
                       <label className="block">
-                        <span className="block text-sm font-medium mb-2">Location</span>
-                        <input value={profile.location} onChange={(e) => updateField("location", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="Warsaw / Remote" />
+                        <span className="block text-sm font-medium mb-2">{t.location}</span>
+                        <input value={profile.location} onChange={(e) => updateField("location", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.locationPlaceholder} />
                       </label>
                     </div>
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-[#1B4332]">Experience questions</h2>
+                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.experienceQuestions}</h2>
                     <div className="mt-6 grid sm:grid-cols-2 gap-4">
                       <label className="block">
-                        <span className="block text-sm font-medium mb-2">Experience level</span>
+                        <span className="block text-sm font-medium mb-2">{t.experienceLevel}</span>
                         <select value={profile.experienceLevel} onChange={(e) => updateField("experienceLevel", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors bg-white" required>
-                          <option value="">Select level</option>
-                          <option value="entry">Entry level</option>
-                          <option value="junior">Junior</option>
-                          <option value="mid">Mid-level</option>
-                          <option value="senior">Senior</option>
-                          <option value="career-change">Career change</option>
+                          <option value="">{t.selectLevel}</option>
+                          <option value="entry">{t.entry}</option>
+                          <option value="junior">{t.junior}</option>
+                          <option value="mid">{t.mid}</option>
+                          <option value="senior">{t.senior}</option>
+                          <option value="career-change">{t.careerChange}</option>
                         </select>
                       </label>
                       <label className="block">
-                        <span className="block text-sm font-medium mb-2">Preferred field</span>
-                        <input value={profile.jobField} onChange={(e) => updateField("jobField", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="Customer support, IT, design..." required />
+                        <span className="block text-sm font-medium mb-2">{t.preferredField}</span>
+                        <input value={profile.jobField} onChange={(e) => updateField("jobField", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.preferredFieldPlaceholder} required />
                       </label>
                       <label className="block sm:col-span-2">
-                        <span className="block text-sm font-medium mb-2">Work preference</span>
+                        <span className="block text-sm font-medium mb-2">{t.workPreference}</span>
                         <select value={profile.workPreference} onChange={(e) => updateField("workPreference", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors bg-white" required>
-                          <option value="">Select preference</option>
-                          <option value="remote">Remote</option>
-                          <option value="hybrid">Hybrid</option>
-                          <option value="onsite">On-site</option>
-                          <option value="flexible">Flexible</option>
+                          <option value="">{t.selectPreference}</option>
+                          <option value="remote">{t.remote}</option>
+                          <option value="hybrid">{t.hybrid}</option>
+                          <option value="onsite">{t.onsite}</option>
+                          <option value="flexible">{t.flexible}</option>
                         </select>
                       </label>
                       <label className="block sm:col-span-2">
-                        <span className="block text-sm font-medium mb-2">Key skills and previous experience</span>
-                        <textarea value={profile.skills} onChange={(e) => updateField("skills", e.target.value)} className="min-h-32 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="Tell us about your skills, tools, projects, studies, volunteering, or previous jobs." required />
+                        <span className="block text-sm font-medium mb-2">{t.skills}</span>
+                        <textarea value={profile.skills} onChange={(e) => updateField("skills", e.target.value)} className="min-h-32 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.skillsPlaceholder} required />
                       </label>
                       <label className="block sm:col-span-2">
-                        <span className="block text-sm font-medium mb-2">Accessibility needs or accommodations</span>
-                        <textarea value={profile.accommodations} onChange={(e) => updateField("accommodations", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="Optional. Share only what you feel comfortable sharing." />
+                        <span className="block text-sm font-medium mb-2">{t.accommodations}</span>
+                        <textarea value={profile.accommodations} onChange={(e) => updateField("accommodations", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.accommodationsPlaceholder} />
                       </label>
                       <label className="block sm:col-span-2">
-                        <span className="block text-sm font-medium mb-2">Career goals</span>
-                        <textarea value={profile.goals} onChange={(e) => updateField("goals", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="What kind of role or support are you looking for?" />
+                        <span className="block text-sm font-medium mb-2">{t.goals}</span>
+                        <textarea value={profile.goals} onChange={(e) => updateField("goals", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.goalsPlaceholder} />
                       </label>
                     </div>
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-[#1B4332]">CV upload</h2>
+                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.cvUpload}</h2>
                     <label className="mt-6 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#B7C9BD] bg-[#FAFAF9] px-6 py-10 text-center cursor-pointer hover:border-[#2D6A4F] transition-colors">
                       <span className="text-4xl">📄</span>
-                      <span className="mt-3 font-semibold text-[#1B4332]">Upload your CV</span>
-                      <span className="mt-1 text-sm text-[#2D6A4F]">PDF, DOC, or DOCX up to 5MB. Optional but recommended.</span>
+                      <span className="mt-3 font-semibold text-[#1B4332]">{t.uploadCv}</span>
+                      <span className="mt-1 text-sm text-[#2D6A4F]">{t.cvHint}</span>
                       <input
                         type="file"
                         accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                         onChange={(e) => setCv(e.target.files?.[0] ?? null)}
                         className="sr-only"
                       />
-                      {cv && <span className="mt-4 text-sm font-medium text-[#1B4332]">Selected: {cv.name}</span>}
+                      {cv && <span className="mt-4 text-sm font-medium text-[#1B4332]">{t.selected} {cv.name}</span>}
                     </label>
                   </div>
 
                   {error && <p className="text-sm text-[#FF7A59]">{error}</p>}
 
                   <button type="submit" disabled={status === "submitting"} className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
-                    {status === "submitting" ? "Submitting..." : "Submit profile"}
+                    {status === "submitting" ? t.submitting : t.submit}
                   </button>
                 </form>
               )}
             </div>
 
             <aside className="bg-[#2D6A4F] text-white rounded-2xl p-8 sticky top-24">
-              <h2 className="text-2xl font-bold">What happens next?</h2>
+              <h2 className="text-2xl font-bold">{t.nextTitle}</h2>
               <div className="mt-6 space-y-5">
                 <div>
-                  <p className="font-semibold">1. Profile review</p>
-                  <p className="mt-1 text-white/75">We review your experience and preferences.</p>
+                  <p className="font-semibold">{t.step1}</p>
+                  <p className="mt-1 text-white/75">{t.step1Text}</p>
                 </div>
                 <div>
-                  <p className="font-semibold">2. Matching</p>
-                  <p className="mt-1 text-white/75">We look for roles aligned with your skills and accessibility needs.</p>
+                  <p className="font-semibold">{t.step2}</p>
+                  <p className="mt-1 text-white/75">{t.step2Text}</p>
                 </div>
                 <div>
-                  <p className="font-semibold">3. Contact</p>
-                  <p className="mt-1 text-white/75">We contact you when a relevant opportunity or support program is available.</p>
+                  <p className="font-semibold">{t.step3}</p>
+                  <p className="mt-1 text-white/75">{t.step3Text}</p>
                 </div>
               </div>
             </aside>
