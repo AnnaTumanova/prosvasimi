@@ -168,6 +168,20 @@ export default function UserPage() {
             ) : (
               <Link href="/login" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.login}</Link>
             )}
+            <div className="flex items-center gap-1">
+              {(["en", "pl", "ua"] as const).map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => setLang(option)}
+                  className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase transition-colors ${
+                    lang === option ? "bg-[#2D6A4F] text-white" : "text-[#2D6A4F] hover:bg-[#E7E5E4]"
+                  }`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
           </nav>
         </div>
       </header>
