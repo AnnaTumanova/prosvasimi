@@ -90,7 +90,21 @@ export default function LoginPage() {
             <Image src="/images/logo.png" alt="Prosvasimi" width={36} height={36} />
             <span className="font-semibold text-lg tracking-tight">Prosvasimi</span>
           </Link>
-          <Link href="/register" className="px-4 py-2 rounded-lg text-sm font-medium text-[#2D6A4F] hover:bg-[#E7E5E4] transition-colors">{t.register}</Link>
+          <div className="flex items-center gap-2">
+            {(["en", "pl", "ua"] as const).map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => setLang(option)}
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase transition-colors ${
+                  lang === option ? "bg-[#2D6A4F] text-white" : "text-[#2D6A4F] hover:bg-[#E7E5E4]"
+                }`}
+              >
+                {option}
+              </button>
+            ))}
+            <Link href="/register" className="px-4 py-2 rounded-lg text-sm font-medium text-[#2D6A4F] hover:bg-[#E7E5E4] transition-colors">{t.register}</Link>
+          </div>
         </div>
       </header>
 
