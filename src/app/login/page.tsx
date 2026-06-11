@@ -15,6 +15,7 @@ const translations: Record<Lang, Record<string, string>> = {
     email: "Email",
     password: "Password",
     passwordPlaceholder: "Your password",
+    signInError: "Could not log in. Please check your email and password.",
     submitting: "Logging in...",
     submit: "Log in",
     noAccount: "No account yet?",
@@ -27,6 +28,7 @@ const translations: Record<Lang, Record<string, string>> = {
     email: "E-mail",
     password: "Hasło",
     passwordPlaceholder: "Twoje hasło",
+    signInError: "Nie udało się zalogować. Sprawdź e-mail i hasło.",
     submitting: "Logowanie...",
     submit: "Zaloguj się",
     noAccount: "Nie masz jeszcze konta?",
@@ -39,6 +41,7 @@ const translations: Record<Lang, Record<string, string>> = {
     email: "E-mail",
     password: "Пароль",
     passwordPlaceholder: "Ваш пароль",
+    signInError: "Не вдалося увійти. Перевірте e-mail і пароль.",
     submitting: "Вхід...",
     submit: "Увійти",
     noAccount: "Ще не маєте акаунта?",
@@ -72,7 +75,7 @@ export default function LoginPage() {
     setIsSubmitting(false);
 
     if (signInError) {
-      setError(signInError.message);
+      setError(t.signInError);
       return;
     }
 

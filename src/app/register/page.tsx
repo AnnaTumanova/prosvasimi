@@ -20,6 +20,7 @@ const translations: Record<Lang, Record<string, string>> = {
     confirmPasswordPlaceholder: "Repeat password",
     passwordLengthError: "Password must be at least 6 characters.",
     passwordMatchError: "Passwords do not match.",
+    signUpError: "Could not create your account. Please check your details and try again.",
     confirmationMessage: "Account created. Please check your email to confirm your account, then log in.",
     submitting: "Creating account...",
     submit: "Create account",
@@ -37,6 +38,7 @@ const translations: Record<Lang, Record<string, string>> = {
     confirmPasswordPlaceholder: "Powtórz hasło",
     passwordLengthError: "Hasło musi mieć co najmniej 6 znaków.",
     passwordMatchError: "Hasła nie są takie same.",
+    signUpError: "Nie udało się utworzyć konta. Sprawdź dane i spróbuj ponownie.",
     confirmationMessage: "Konto zostało utworzone. Sprawdź e-mail, aby potwierdzić konto, a następnie się zaloguj.",
     submitting: "Tworzenie konta...",
     submit: "Utwórz konto",
@@ -54,6 +56,7 @@ const translations: Record<Lang, Record<string, string>> = {
     confirmPasswordPlaceholder: "Повторіть пароль",
     passwordLengthError: "Пароль має містити щонайменше 6 символів.",
     passwordMatchError: "Паролі не збігаються.",
+    signUpError: "Не вдалося створити акаунт. Перевірте дані та спробуйте ще раз.",
     confirmationMessage: "Акаунт створено. Перевірте e-mail, щоб підтвердити акаунт, а потім увійдіть.",
     submitting: "Створення акаунта...",
     submit: "Створити акаунт",
@@ -105,7 +108,7 @@ export default function RegisterPage() {
     setIsSubmitting(false);
 
     if (signUpError) {
-      setError(signUpError.message);
+      setError(t.signUpError);
       return;
     }
 
