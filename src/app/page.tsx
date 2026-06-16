@@ -319,35 +319,44 @@ export default function Page() {
 
   return (
     <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#2D6A4F] focus:text-white focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
+
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E7E5E4]">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Image 
-              src="/images/logo.png" 
-              alt="Prosvasimi" 
-              width={36} 
+          <Link href="/" className="flex items-center gap-2.5 group" aria-label="Prosvasimi home">
+            <Image
+              src="/images/logo.png"
+              alt="Prosvasimi logo"
+              width={36}
               height={36}
               className="transition-transform group-hover:scale-105"
             />
             <span className="font-semibold text-lg tracking-tight text-[#1B4332]">Prosvasimi</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navOffer}</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
-            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
-            <Link href="/register" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">Register</Link>
+          <nav className="hidden md:flex items-center gap-2 text-sm font-medium" aria-label="Main navigation">
+            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">{t.navOffer}</Link>
+            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">{t.navArticles}</Link>
+            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">{t.navJobs}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">{t.navQuiz}</Link>
+            <Link href="/register" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">Register</Link>
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group">
+            <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group" aria-label="Language selection">
               {(["en", "pl", "ua"] as Lang[]).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
+                  aria-pressed={lang === l}
+                  className={`px-3 py-1.5 rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2 ${
                     lang === l
                       ? "bg-white text-[#1B4332] shadow-sm"
                       : "text-[#2D6A4F] hover:text-[#1B4332]"
@@ -367,7 +376,7 @@ export default function Page() {
         </div>
       </header>
 
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
         <section className="bg-white border-b border-[#E7E5E4]">
           <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 lg:py-36">
