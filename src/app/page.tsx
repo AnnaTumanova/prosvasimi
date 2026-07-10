@@ -14,6 +14,7 @@ const ICON_PATHS = {
   shield: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.286z",
   user: "M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z",
   building: "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
+  heart: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z",
 } as const;
 
 function Icon({ path, className = "w-6 h-6" }: { path: string; className?: string }) {
@@ -132,6 +133,12 @@ export default function Page() {
       forEmp2: "Flexible scheduling across time zones",
       forEmp3: "Clear reporting on engagement and outcomes",
       forEmp4: "Partnership options for NGOs and community organizations",
+      accessTitle: "Accessibility & Disability Support",
+      accessDesc: "Prosvasimi is a registered foundation. We provide free career coaching, professional activation, and support for people with disabilities, chronic illnesses, and neurodivergent individuals — funded by grants and donations, not by the people we help.",
+      access1: "Free coaching and career support, funded by grants and donations",
+      access2: "Built for people with disabilities, chronic illness, and neurodivergence",
+      access3: "Tell us what you need when you book — disclosure is always optional",
+      accessCta: "Ask About Free Support",
       howTitle: "How It Works",
       how1Title: "Book a discovery call",
       how1Desc: "A free 20-minute call to understand your goals and see if we're a fit.",
@@ -202,6 +209,12 @@ export default function Page() {
       forEmp2: "Elastyczny harmonogram w różnych strefach czasowych",
       forEmp3: "Przejrzyste raportowanie zaangażowania i efektów",
       forEmp4: "Opcje partnerstwa dla organizacji pozarządowych i społeczności",
+      accessTitle: "Dostępność i wsparcie dla osób z niepełnosprawnościami",
+      accessDesc: "Prosvasimi jest zarejestrowaną fundacją. Zapewniamy bezpłatny coaching kariery, aktywizację zawodową i wsparcie dla osób z niepełnosprawnościami, chorobami przewlekłymi i neuroróżnorodnych — finansowane z grantów i darowizn, a nie przez osoby, którym pomagamy.",
+      access1: "Bezpłatny coaching i wsparcie kariery, finansowane z grantów i darowizn",
+      access2: "Stworzone dla osób z niepełnosprawnościami, chorobami przewlekłymi i neuroróżnorodnych",
+      access3: "Powiedz nam, czego potrzebujesz podczas rezerwacji — ujawnienie jest zawsze opcjonalne",
+      accessCta: "Zapytaj o bezpłatne wsparcie",
       howTitle: "Jak to działa",
       how1Title: "Umów rozmowę wstępną",
       how1Desc: "Bezpłatna 20-minutowa rozmowa, by poznać Twoje cele i sprawdzić dopasowanie.",
@@ -272,6 +285,12 @@ export default function Page() {
       forEmp2: "Гнучкий розклад у різних часових поясах",
       forEmp3: "Прозора звітність щодо залученості та результатів",
       forEmp4: "Партнерські умови для НГО та спільнот",
+      accessTitle: "Доступність та підтримка людей з інвалідністю",
+      accessDesc: "Prosvasimi — зареєстрований фонд. Ми надаємо безкоштовний кар'єрний коучинг, професійну активізацію та підтримку людям з інвалідністю, хронічними захворюваннями та нейровідмінністю — фінансовану за рахунок грантів і пожертв, а не коштом людей, яким ми допомагаємо.",
+      access1: "Безкоштовний коучинг та кар'єрна підтримка, фінансована грантами та пожертвами",
+      access2: "Створено для людей з інвалідністю, хронічними захворюваннями та нейровідмінністю",
+      access3: "Скажіть нам, що вам потрібно під час бронювання — розкриття інформації завжди добровільне",
+      accessCta: "Запитати про безкоштовну підтримку",
       howTitle: "Як це працює",
       how1Title: "Забронюйте вступну розмову",
       how1Desc: "Безкоштовна 20-хвилинна розмова, щоб зрозуміти ваші цілі та перевірити відповідність.",
@@ -520,6 +539,37 @@ export default function Page() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Accessibility & Disability Support */}
+        <section id="accessibility" className="py-20 md:py-28 bg-white border-t border-[#D9D9DC]">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="rounded-2xl border-2 border-[#D9D9DC] bg-[#FFFFFF] p-8 md:p-12 flex flex-col md:flex-row gap-8 md:items-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#0F7A52] text-white flex-shrink-0">
+                <Icon path={ICON_PATHS.heart} className="w-8 h-8" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-2xl md:text-3xl font-black tracking-tighter text-[#0B2818]">{t.accessTitle}</h2>
+                <p className="mt-4 text-[#3F3C3A] leading-relaxed max-w-3xl">{t.accessDesc}</p>
+                <ul className="mt-6 grid sm:grid-cols-3 gap-4">
+                  {[t.access1, t.access2, t.access3].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-[#0B2818]">
+                      <svg className="w-4 h-4 text-[#0F7A52] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#waitlist"
+                  className="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-[#0F7A52] text-[#0F7A52] font-bold hover:bg-[#0F7A52] hover:text-white transition-colors"
+                >
+                  {t.accessCta}
+                </a>
               </div>
             </div>
           </div>
