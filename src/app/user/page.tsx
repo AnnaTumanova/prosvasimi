@@ -9,6 +9,9 @@ import { detectBrowserLanguage, type Lang } from "@/lib/language";
 
 type FormStatus = "idle" | "submitting" | "success";
 
+const MAX_PICTURE_SIZE = 3 * 1024 * 1024;
+const ALLOWED_PICTURE_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+
 type UserProfile = {
   name: string;
   email: string;
@@ -38,10 +41,11 @@ const initialProfile: UserProfile = {
 const translations = {
   en: {
     navOffer: "What We Offer", navArticles: "Articles", navJobs: "Jobs", navQuiz: "Quiz", account: "Account", login: "Log in", register: "Register",
-    authRequiredError: "Please create an account or log in before submitting your profile.", emailError: "Please enter a valid email address.", submitError: "Could not submit your profile. Please try again later.",
+    authRequiredError: "Please create an account or log in before submitting your profile.", emailError: "Please enter a valid email address.", submitError: "Could not submit your profile. Please try again later.", pictureTypeError: "Please upload a JPG, PNG, or WebP image.", pictureSizeError: "Photo must be under 3 MB.",
     badge: "Candidate profile", title: "Register your profile and tell us about your experience.", subtitle: "Share your skills, work preferences, support needs, and optionally upload your CV so Prosvasimi can better match you with accessible opportunities.", authTitle: "Create an account before submitting your profile.", authSubtitle: "This lets you log in later with your email and password.",
     successTitle: "Your profile was submitted", successText: "Thank you. We will review your information and contact you when suitable opportunities are available.", anotherProfile: "Register another profile",
     details: "Your details", fullName: "Full name", email: "Email", phone: "Phone", location: "Location", locationPlaceholder: "Warsaw / Remote",
+    pictureUpload: "Profile photo", uploadPicture: "Upload your photo", pictureHint: "JPG, PNG or WebP up to 3 MB. Optional.", changePhoto: "Change photo",
     experienceQuestions: "Experience questions", experienceLevel: "Experience level", selectLevel: "Select level", entry: "Entry level", junior: "Junior", mid: "Mid-level", senior: "Senior", careerChange: "Career change",
     preferredField: "Preferred field", preferredFieldPlaceholder: "Customer support, IT, design...", workPreference: "Work preference", selectPreference: "Select preference", remote: "Remote", hybrid: "Hybrid", onsite: "On-site", flexible: "Flexible",
     skills: "Key skills and previous experience", skillsPlaceholder: "Tell us about your skills, tools, projects, studies, volunteering, or previous jobs.", accommodations: "Accessibility needs or accommodations", accommodationsPlaceholder: "Optional. Share only what you feel comfortable sharing.", goals: "Career goals", goalsPlaceholder: "What kind of role or support are you looking for?",
@@ -50,10 +54,11 @@ const translations = {
   },
   pl: {
     navOffer: "Co oferujemy", navArticles: "Artykuły", navJobs: "Oferty pracy", navQuiz: "Quiz", account: "Konto", login: "Zaloguj się", register: "Zarejestruj się",
-    authRequiredError: "Utwórz konto lub zaloguj się przed wysłaniem profilu.", emailError: "Podaj poprawny adres e-mail.", submitError: "Nie udało się wysłać profilu. Spróbuj ponownie później.",
+    authRequiredError: "Utwórz konto lub zaloguj się przed wysłaniem profilu.", emailError: "Podaj poprawny adres e-mail.", submitError: "Nie udało się wysłać profilu. Spróbuj ponownie później.", pictureTypeError: "Prześlij zdjęcie w formacie JPG, PNG lub WebP.", pictureSizeError: "Zdjęcie musi mieć mniej niż 3 MB.",
     badge: "Profil kandydata", title: "Zarejestruj swój profil i opowiedz nam o swoim doświadczeniu.", subtitle: "Podziel się umiejętnościami, preferencjami pracy, potrzebami wsparcia i opcjonalnie prześlij CV, aby Prosvasimi mogło lepiej dopasować Cię do dostępnych możliwości.", authTitle: "Utwórz konto przed wysłaniem profilu.", authSubtitle: "Dzięki temu później zalogujesz się swoim e-mailem i hasłem.",
     successTitle: "Twój profil został wysłany", successText: "Dziękujemy. Przejrzymy Twoje informacje i skontaktujemy się, gdy pojawią się odpowiednie możliwości.", anotherProfile: "Zarejestruj kolejny profil",
     details: "Twoje dane", fullName: "Imię i nazwisko", email: "E-mail", phone: "Telefon", location: "Lokalizacja", locationPlaceholder: "Warszawa / Zdalnie",
+    pictureUpload: "Zdjęcie profilowe", uploadPicture: "Prześlij zdjęcie", pictureHint: "JPG, PNG lub WebP do 3 MB. Opcjonalne.", changePhoto: "Zmień zdjęcie",
     experienceQuestions: "Pytania o doświadczenie", experienceLevel: "Poziom doświadczenia", selectLevel: "Wybierz poziom", entry: "Początkujący", junior: "Junior", mid: "Średniozaawansowany", senior: "Senior", careerChange: "Zmiana ścieżki kariery",
     preferredField: "Preferowana dziedzina", preferredFieldPlaceholder: "Obsługa klienta, IT, design...", workPreference: "Preferencje pracy", selectPreference: "Wybierz preferencję", remote: "Zdalnie", hybrid: "Hybrydowo", onsite: "Stacjonarnie", flexible: "Elastycznie",
     skills: "Kluczowe umiejętności i wcześniejsze doświadczenie", skillsPlaceholder: "Opowiedz o swoich umiejętnościach, narzędziach, projektach, edukacji, wolontariacie lub wcześniejszej pracy.", accommodations: "Potrzeby dostępności lub dostosowania", accommodationsPlaceholder: "Opcjonalnie. Udostępnij tylko to, czym chcesz się podzielić.", goals: "Cele zawodowe", goalsPlaceholder: "Jakiej roli lub wsparcia szukasz?",
@@ -62,7 +67,7 @@ const translations = {
   },
   ua: {
     navOffer: "Що ми пропонуємо", navArticles: "Статті", navJobs: "Вакансії", navQuiz: "Тест", account: "Акаунт", login: "Увійти", register: "Зареєструватися",
-    authRequiredError: "Будь ласка, створіть акаунт або увійдіть перед надсиланням профілю.", emailError: "Будь ласка, введіть дійсну адресу e-mail.", submitError: "Не вдалося надіслати профіль. Спробуйте пізніше.",
+    authRequiredError: "Будь ласка, створіть акаунт або увійдіть перед надсиланням профілю.", emailError: "Будь ласка, введіть дійсну адресу e-mail.", submitError: "Не вдалося надіслати профіль. Спробуйте пізніше.", pictureTypeError: "Будь ласка, завантажте фото у форматі JPG, PNG або WebP.", pictureSizeError: "Фото має бути менше 3 МБ.",
     badge: "Профіль кандидата", title: "Зареєструйте свій профіль і розкажіть про свій досвід.", subtitle: "Поділіться навичками, робочими вподобаннями, потребами підтримки та за бажанням завантажте CV, щоб Prosvasimi краще підібрало для вас доступні можливості.", authTitle: "Створіть акаунт перед надсиланням профілю.", authSubtitle: "Так ви зможете пізніше увійти за допомогою e-mail і пароля.",
     successTitle: "Ваш профіль надіслано", successText: "Дякуємо. Ми переглянемо вашу інформацію і зв’яжемося з вами, коли будуть відповідні можливості.", anotherProfile: "Зареєструвати інший профіль",
     details: "Ваші дані", fullName: "Повне ім’я", email: "E-mail", phone: "Телефон", location: "Локація", locationPlaceholder: "Варшава / Віддалено",
@@ -78,6 +83,8 @@ export default function UserPage() {
   const [lang, setLang] = useState<Lang>("en");
   const [profile, setProfile] = useState<UserProfile>(initialProfile);
   const [cv, setCv] = useState<File | null>(null);
+  const [picture, setPicture] = useState<File | null>(null);
+  const [picturePreview, setPicturePreview] = useState<string | null>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
   const [user, setUser] = useState<User | null>(null);
@@ -115,10 +122,22 @@ export default function UserPage() {
       return;
     }
 
+    if (picture) {
+      if (!ALLOWED_PICTURE_TYPES.has(picture.type)) {
+        setError(t.pictureTypeError);
+        return;
+      }
+      if (picture.size > MAX_PICTURE_SIZE) {
+        setError(t.pictureSizeError);
+        return;
+      }
+    }
+
     const formData = new FormData();
     Object.entries(profile).forEach(([key, value]) => formData.append(key, value));
     formData.append("createdAt", new Date().toISOString());
     if (cv) formData.append("cv", cv);
+    if (picture) formData.append("picture", picture);
 
     setStatus("submitting");
 
@@ -137,6 +156,8 @@ export default function UserPage() {
       setStatus("success");
       setProfile(initialProfile);
       setCv(null);
+      setPicture(null);
+      setPicturePreview(null);
     } catch {
       setError(t.submitError);
       setStatus("idle");
@@ -296,6 +317,51 @@ export default function UserPage() {
                       <label className="block sm:col-span-2">
                         <span className="block text-sm font-medium mb-2">{t.goals}</span>
                         <textarea value={profile.goals} onChange={(e) => updateField("goals", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.goalsPlaceholder} />
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.pictureUpload}</h2>
+                    <div className="mt-6 flex items-center gap-6">
+                      <div className="relative flex-shrink-0">
+                        {picturePreview ? (
+                          <img
+                            src={picturePreview}
+                            alt="Profile preview"
+                            className="w-24 h-24 rounded-full object-cover border-2 border-[#2D6A4F]"
+                          />
+                        ) : (
+                          <div className="w-24 h-24 rounded-full bg-[#E7E5E4] flex items-center justify-center text-3xl">
+                            👤
+                          </div>
+                        )}
+                      </div>
+                      <label className="flex-1 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#B7C9BD] bg-[#FAFAF9] px-6 py-8 text-center cursor-pointer hover:border-[#2D6A4F] transition-colors">
+                        <span className="text-3xl">🖼️</span>
+                        <span className="mt-2 font-semibold text-[#1B4332]">
+                          {picture ? t.changePhoto : t.uploadPicture}
+                        </span>
+                        <span className="mt-1 text-sm text-[#2D6A4F]">{t.pictureHint}</span>
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0] ?? null;
+                            setPicture(file);
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onload = (ev) => setPicturePreview(ev.target?.result as string);
+                              reader.readAsDataURL(file);
+                            } else {
+                              setPicturePreview(null);
+                            }
+                          }}
+                          className="sr-only"
+                        />
+                        {picture && (
+                          <span className="mt-3 text-sm font-medium text-[#1B4332]">{t.selected} {picture.name}</span>
+                        )}
                       </label>
                     </div>
                   </div>
