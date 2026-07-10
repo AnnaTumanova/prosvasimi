@@ -4,7 +4,27 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-function SuccessModal({ 
+const ICON_PATHS = {
+  search: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z",
+  trendingUp: "M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22M14.25 9h6.5v6.5",
+  document: "M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z",
+  chat: "M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z",
+  checkCircle: "M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+  bolt: "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z",
+  shield: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.286z",
+  user: "M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z",
+  building: "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
+} as const;
+
+function Icon({ path, className = "w-6 h-6" }: { path: string; className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+      <path strokeLinecap="round" strokeLinejoin="round" d={path} />
+    </svg>
+  );
+}
+
+function SuccessModal({
   isOpen, 
   onClose, 
   title, 
@@ -27,15 +47,15 @@ function SuccessModal({
       aria-labelledby="success-modal-title"
     >
       <div 
-        className="fixed inset-0 bg-[#1B4332]/60 backdrop-blur-sm transition-opacity" 
+        className="fixed inset-0 bg-[#0B2818]/60 backdrop-blur-sm transition-opacity" 
         onClick={onClose}
         aria-hidden="true"
       />
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all">
         <div className="flex flex-col items-center text-center">
-          <div className="h-16 w-16 rounded-full bg-[#40916C]/10 flex items-center justify-center mb-4">
+          <div className="h-16 w-16 rounded-full bg-[#16A97A]/10 flex items-center justify-center mb-4">
             <svg 
-              className="h-8 w-8 text-[#40916C]" 
+              className="h-8 w-8 text-[#16A97A]" 
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor" 
@@ -44,15 +64,15 @@ function SuccessModal({
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 id="success-modal-title" className="text-2xl font-bold text-[#1B4332]">
+          <h2 id="success-modal-title" className="text-2xl font-bold text-[#0B2818]">
             {title}
           </h2>
-          <p className="mt-3 text-[#2D6A4F]">
+          <p className="mt-3 text-[#0F7A52]">
             {message}
           </p>
           <button
             onClick={onClose}
-            className="mt-6 inline-flex justify-center rounded-xl bg-[#2D6A4F] text-white px-6 py-3 font-medium hover:bg-[#1B4332] transition-colors"
+            className="mt-6 inline-flex justify-center rounded-xl bg-[#0F7A52] text-white px-6 py-3 font-bold hover:bg-[#0B2818] transition-colors"
           >
             {buttonText}
           </button>
@@ -315,17 +335,17 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
+    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#2D6A4F] focus:text-white focus:rounded-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0F7A52] focus:text-white focus:rounded-lg"
       >
         Skip to main content
       </a>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E7E5E4]">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group" aria-label="Prosvasimi home">
             <Image
@@ -335,27 +355,27 @@ export default function Page() {
               height={36}
               className="transition-transform group-hover:scale-105"
             />
-            <span className="font-semibold text-lg tracking-tight text-[#1B4332]">Prosvasimi</span>
+            <span className="font-semibold text-lg tracking-tight text-[#0B2818]">Prosvasimi</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-2 text-sm font-medium" aria-label="Main navigation">
-            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">{t.navOffer}</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">{t.navQuiz}</Link>
-            <Link href="/register" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2">Register</Link>
+            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">{t.navOffer}</Link>
+            <Link href="/articles" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">{t.navArticles}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">{t.navQuiz}</Link>
+            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">Register</Link>
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group" aria-label="Language selection">
+            <div className="hidden sm:flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm" role="group" aria-label="Language selection">
               {(["en", "pl", "ua"] as Lang[]).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
                   aria-pressed={lang === l}
-                  className={`px-3 py-1.5 rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:ring-offset-2 ${
+                  className={`px-3 py-1.5 rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2 ${
                     lang === l
-                      ? "bg-white text-[#1B4332] shadow-sm"
-                      : "text-[#2D6A4F] hover:text-[#1B4332]"
+                      ? "bg-white text-[#0B2818] shadow-sm"
+                      : "text-[#0F7A52] hover:text-[#0B2818]"
                   }`}
                 >
                   {l.toUpperCase()}
@@ -364,7 +384,7 @@ export default function Page() {
             </div>
             <a 
               href="#waitlist" 
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2D6A4F] text-white text-sm font-medium hover:bg-[#1B4332] transition-colors"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0F7A52] text-white text-sm font-bold hover:bg-[#0B2818] transition-colors"
             >
               {t.ctaEarly}
             </a>
@@ -374,36 +394,37 @@ export default function Page() {
 
       <main id="main-content">
         {/* Hero Section */}
-        <section className="bg-white border-b border-[#E7E5E4]">
-          <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 lg:py-36">
+        <section className="bg-[#0B2818] relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
+          <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 lg:py-40 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#40916C]/10 text-[#40916C] text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-[#40916C] animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+                <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
                 {t.heroTagline}
               </span>
-              
-              <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-[#1B4332]">
+
+              <h1 className="mt-8 text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.95] text-white">
                 {t.heroTitle}
-                <span className="block text-[#2D6A4F] font-medium text-3xl md:text-4xl lg:text-5xl mt-2">{t.heroSubtitle}</span>
+                <span className="block text-[#16A97A] font-black text-4xl md:text-5xl lg:text-6xl mt-3">{t.heroSubtitle}</span>
               </h1>
-              
-              <p className="mt-8 text-lg text-[#2D6A4F] leading-relaxed max-w-2xl">
+
+              <p className="mt-8 text-xl text-white/70 leading-relaxed max-w-2xl">
                 {t.heroDescription}
               </p>
-              
-              <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                <a 
-                  href="#waitlist" 
-                  className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors"
+
+              <div className="mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <a
+                  href="#waitlist"
+                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl bg-white text-[#0B2818] font-bold text-lg hover:bg-[#16A97A] hover:text-white transition-colors"
                 >
                   {t.heroJoin}
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </a>
                 <a
                   href="#how"
-                  className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl border-2 border-[#E7E5E4] text-[#1B4332] font-medium hover:border-[#2D6A4F] hover:bg-[#FAFAF9] transition-all"
+                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl border-2 border-white/25 text-white font-bold text-lg hover:border-white transition-all"
                 >
                   {t.heroExplore}
                 </a>
@@ -417,15 +438,17 @@ export default function Page() {
           <div className="mx-auto max-w-6xl px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { icon: "🔍", title: t.feature1Title, desc: t.feature1Desc, color: "bg-[#2D6A4F]" },
-                { icon: "🧭", title: t.feature2Title, desc: t.feature2Desc, color: "bg-[#C9705F]" },
-                { icon: "🧩", title: t.feature3Title, desc: t.feature3Desc, color: "bg-[#5B8FB9]" },
-                { icon: "🤝", title: t.feature4Title, desc: t.feature4Desc, color: "bg-[#D4A574]" },
+                { icon: ICON_PATHS.search, title: t.feature1Title, desc: t.feature1Desc, color: "bg-[#0F7A52]" },
+                { icon: ICON_PATHS.trendingUp, title: t.feature2Title, desc: t.feature2Desc, color: "bg-[#0B2818]" },
+                { icon: ICON_PATHS.document, title: t.feature3Title, desc: t.feature3Desc, color: "bg-[#0D5C3E]" },
+                { icon: ICON_PATHS.chat, title: t.feature4Title, desc: t.feature4Desc, color: "bg-[#16A97A]" },
               ].map((feature, i) => (
                 <div key={i} className="group">
-                  <div className={`w-12 h-12 ${feature.color} rounded-xl flex items-center justify-center text-2xl mb-4`}>{feature.icon}</div>
-                  <h3 className="text-lg font-semibold text-[#1B4332]">{feature.title}</h3>
-                  <p className="mt-2 text-[#57534E] leading-relaxed">{feature.desc}</p>
+                  <div className={`w-12 h-12 ${feature.color} rounded-xl flex items-center justify-center mb-4`}>
+                    <Icon path={feature.icon} className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-[#0B2818]">{feature.title}</h3>
+                  <p className="mt-2 text-[#3F3C3A] leading-relaxed">{feature.desc}</p>
                 </div>
               ))}
             </div>
@@ -433,21 +456,21 @@ export default function Page() {
         </section>
 
         {/* Values Section */}
-        <section id="values" className="py-20 md:py-28 bg-white border-y border-[#E7E5E4]">
+        <section id="values" className="py-20 md:py-28 bg-white border-y border-[#D9D9DC]">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16 text-[#1B4332]">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16 text-[#0B2818]">
               {t.valuesTitle}
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { title: t.value1Title, desc: t.value1Desc, icon: "⚖️", color: "border-t-[#2D6A4F]" },
-                { title: t.value2Title, desc: t.value2Desc, icon: "✨", color: "border-t-[#C9705F]" },
-                { title: t.value3Title, desc: t.value3Desc, icon: "🛡️", color: "border-t-[#5B8FB9]" },
+                { title: t.value1Title, desc: t.value1Desc, icon: ICON_PATHS.checkCircle, color: "border-t-[#0F7A52]" },
+                { title: t.value2Title, desc: t.value2Desc, icon: ICON_PATHS.bolt, color: "border-t-[#0B2818]" },
+                { title: t.value3Title, desc: t.value3Desc, icon: ICON_PATHS.shield, color: "border-t-[#0D5C3E]" },
               ].map((value, i) => (
-                <div key={i} className={`bg-[#FAFAF9] rounded-2xl p-8 border border-[#E7E5E4] ${value.color} border-t-4 hover:shadow-lg transition-all`}>
-                  <div className="text-3xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-semibold text-[#1B4332]">{value.title}</h3>
-                  <p className="mt-3 text-[#57534E] leading-relaxed">{value.desc}</p>
+                <div key={i} className={`bg-[#FFFFFF] rounded-2xl p-8 border-2 border-[#D9D9DC] ${value.color} border-t-4 hover:shadow-lg transition-all`}>
+                  <Icon path={value.icon} className="w-8 h-8 text-[#0B2818] mb-4" />
+                  <h3 className="text-xl font-semibold text-[#0B2818]">{value.title}</h3>
+                  <p className="mt-3 text-[#3F3C3A] leading-relaxed">{value.desc}</p>
                 </div>
               ))}
             </div>
@@ -457,21 +480,21 @@ export default function Page() {
         {/* For Whom Section */}
         <section id="for" className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16 text-[#1B4332]">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16 text-[#0B2818]">
               {t.forWhomTitle}
             </h2>
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Candidates */}
-              <div className="bg-white rounded-2xl p-8 md:p-10 border border-[#E7E5E4] border-l-4 border-l-[#5B8FB9]">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#5B8FB9] text-white text-xl mb-6">
-                  👤
+              <div className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC] border-l-4 border-l-[#0D5C3E]">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#0D5C3E] text-white mb-6">
+                  <Icon path={ICON_PATHS.user} className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1B4332]">{t.forCandTitle}</h3>
-                <p className="mt-3 text-[#57534E]">{t.forCandDesc}</p>
+                <h3 className="text-2xl font-bold text-[#0B2818]">{t.forCandTitle}</h3>
+                <p className="mt-3 text-[#3F3C3A]">{t.forCandDesc}</p>
                 <ul className="mt-6 space-y-3">
                   {[t.forCand1, t.forCand2, t.forCand3, t.forCand4].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-[#1B4332]">
-                      <svg className="w-5 h-5 text-[#5B8FB9] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <li key={i} className="flex items-start gap-3 text-[#0B2818]">
+                      <svg className="w-5 h-5 text-[#0D5C3E] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {item}
@@ -481,16 +504,16 @@ export default function Page() {
               </div>
 
               {/* Employers */}
-              <div className="bg-white rounded-2xl p-8 md:p-10 border border-[#E7E5E4] border-l-4 border-l-[#C9705F]">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#C9705F] text-white text-xl mb-6">
-                  🏢
+              <div className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC] border-l-4 border-l-[#0B2818]">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#0B2818] text-white mb-6">
+                  <Icon path={ICON_PATHS.building} className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1B4332]">{t.forEmpTitle}</h3>
-                <p className="mt-3 text-[#57534E]">{t.forEmpDesc}</p>
+                <h3 className="text-2xl font-bold text-[#0B2818]">{t.forEmpTitle}</h3>
+                <p className="mt-3 text-[#3F3C3A]">{t.forEmpDesc}</p>
                 <ul className="mt-6 space-y-3">
                   {[t.forEmp1, t.forEmp2, t.forEmp3, t.forEmp4].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-[#1B4332]">
-                      <svg className="w-5 h-5 text-[#C9705F] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <li key={i} className="flex items-start gap-3 text-[#0B2818]">
+                      <svg className="w-5 h-5 text-[#0B2818] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {item}
@@ -503,9 +526,9 @@ export default function Page() {
         </section>
 
         {/* How It Works */}
-        <section id="how" className="py-20 md:py-28 bg-[#2D6A4F] text-white">
+        <section id="how" className="py-20 md:py-28 bg-[#0F7A52] text-white">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16">
               {t.howTitle}
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -515,7 +538,7 @@ export default function Page() {
                 { n: 3, title: t.how3Title, desc: t.how3Desc },
               ].map((step) => (
                 <div key={step.n} className="relative">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white text-[#1B4332] font-bold text-lg mb-6">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white text-[#0B2818] font-bold text-lg mb-6">
                     {step.n}
                   </div>
                   <h3 className="text-xl font-semibold">{step.title}</h3>
@@ -530,14 +553,14 @@ export default function Page() {
         <section id="waitlist" className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
             <div className="max-w-2xl mx-auto">
-              <div className="bg-white rounded-2xl p-8 md:p-12 border border-[#E7E5E4]">
-                <h2 className="text-3xl font-bold tracking-tight text-[#1B4332]">{t.waitlistTitle}</h2>
-                <p className="mt-4 text-[#2D6A4F]">{t.waitlistDesc}</p>
+              <div className="bg-white rounded-2xl p-8 md:p-12 border-2 border-[#D9D9DC]">
+                <h2 className="text-3xl font-bold tracking-tight text-[#0B2818]">{t.waitlistTitle}</h2>
+                <p className="mt-4 text-[#0F7A52]">{t.waitlistDesc}</p>
 
                 {submitted ? (
-                  <div className="mt-8 rounded-xl bg-[#40916C]/10 text-[#1B4332] p-6 border border-[#40916C]/20">
+                  <div className="mt-8 rounded-xl bg-[#16A97A]/10 text-[#0B2818] p-6 border border-[#16A97A]/20">
                     <div className="flex items-center gap-3">
-                      <svg className="w-6 h-6 text-[#40916C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-6 h-6 text-[#16A97A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="font-medium">
@@ -548,15 +571,15 @@ export default function Page() {
                 ) : (
                   <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-[#1B4332] mb-3">{t.formIam}</label>
+                      <label className="block text-sm font-medium text-[#0B2818] mb-3">{t.formIam}</label>
                       <div className="grid grid-cols-2 gap-3">
                         <button 
                           type="button" 
                           onClick={() => setRole("candidate")} 
                           className={`px-4 py-3 rounded-xl border-2 font-medium transition-all ${
                             role === "candidate" 
-                              ? "bg-[#2D6A4F] text-white border-[#2D6A4F]" 
-                              : "border-[#E7E5E4] text-[#1B4332] hover:border-[#2D6A4F]"
+                              ? "bg-[#0F7A52] text-white border-[#0F7A52]" 
+                              : "border-[#D9D9DC] text-[#0B2818] hover:border-[#0F7A52]"
                           }`}
                         >
                           {t.formCandidate}
@@ -566,8 +589,8 @@ export default function Page() {
                           onClick={() => setRole("employer")} 
                           className={`px-4 py-3 rounded-xl border-2 font-medium transition-all ${
                             role === "employer" 
-                              ? "bg-[#2D6A4F] text-white border-[#2D6A4F]" 
-                              : "border-[#E7E5E4] text-[#1B4332] hover:border-[#2D6A4F]"
+                              ? "bg-[#0F7A52] text-white border-[#0F7A52]" 
+                              : "border-[#D9D9DC] text-[#0B2818] hover:border-[#0F7A52]"
                           }`}
                         >
                           {t.formEmployer}
@@ -577,44 +600,44 @@ export default function Page() {
 
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-[#1B4332] mb-2">{t.formName}</label>
+                        <label htmlFor="name" className="block text-sm font-medium text-[#0B2818] mb-2">{t.formName}</label>
                         <input 
                           id="name" 
                           name="name" 
                           value={name} 
                           onChange={(e) => setName(e.target.value)} 
-                          className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" 
+                          className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" 
                           placeholder="Anna"
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-[#1B4332] mb-2">{t.formEmail}</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-[#0B2818] mb-2">{t.formEmail}</label>
                         <input 
                           id="email" 
                           name="email" 
                           type="email"
                           value={email} 
                           onChange={(e) => setEmail(e.target.value)} 
-                          className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" 
+                          className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" 
                           placeholder="you@domain.com"
                           required
                         />
                       </div>
                     </div>
 
-                    {err && <p className="text-sm text-[#FF7A59]">{err}</p>}
+                    {err && <p className="text-sm text-[#DC2626]">{err}</p>}
 
                     <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                       <button 
                         type="submit" 
-                        className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors"
+                        className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#0F7A52] text-white font-bold hover:bg-[#0B2818] transition-colors"
                       >
                         {t.joinBtn}
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </button>
-                      <p className="text-sm text-[#2D6A4F]">{t.joinNote}</p>
+                      <p className="text-sm text-[#0F7A52]">{t.joinNote}</p>
                     </div>
                   </form>
                 )}
@@ -624,9 +647,9 @@ export default function Page() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 md:py-28 bg-white border-t border-[#E7E5E4]">
+        <section id="faq" className="py-20 md:py-28 bg-white border-t border-[#D9D9DC]">
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-16 text-[#1B4332]">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16 text-[#0B2818]">
               {t.faqTitle}
             </h2>
             <div className="space-y-6">
@@ -635,9 +658,9 @@ export default function Page() {
                 { q: t.faq2Q, a: t.faq2A },
                 { q: t.faq3Q, a: t.faq3A },
               ].map((faq, i) => (
-                <div key={i} className="bg-[#FAFAF9] rounded-2xl p-6 border border-[#E7E5E4]">
-                  <h3 className="text-lg font-semibold text-[#1B4332]">{faq.q}</h3>
-                  <p className="mt-3 text-[#2D6A4F] leading-relaxed">{faq.a}</p>
+                <div key={i} className="bg-[#FFFFFF] rounded-2xl p-6 border-2 border-[#D9D9DC]">
+                  <h3 className="text-lg font-semibold text-[#0B2818]">{faq.q}</h3>
+                  <p className="mt-3 text-[#0F7A52] leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -646,7 +669,7 @@ export default function Page() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#E7E5E4] bg-white py-12">
+      <footer className="border-t border-[#D9D9DC] bg-white py-12">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2.5">
@@ -656,17 +679,17 @@ export default function Page() {
                 width={28} 
                 height={28}
               />
-              <span className="font-medium text-[#1B4332]">Prosvasimi</span>
+              <span className="font-medium text-[#0B2818]">Prosvasimi</span>
             </div>
-            <nav className="flex items-center gap-6 text-sm text-[#2D6A4F]">
-              <a href="#values" className="hover:text-[#1B4332] transition-colors">{t.valuesTitle}</a>
-              <a href="#for" className="hover:text-[#1B4332] transition-colors">{t.forWhomTitle}</a>
-              <Link href="/offer" className="hover:text-[#1B4332] transition-colors">{t.navOffer}</Link>
-              <Link href="/articles" className="hover:text-[#1B4332] transition-colors">{t.navArticles}</Link>
-              <Link href="/quiz" className="hover:text-[#1B4332] transition-colors">{t.navQuiz}</Link>
-              <Link href="/register" className="hover:text-[#1B4332] transition-colors">Register</Link>
+            <nav className="flex items-center gap-6 text-sm text-[#0F7A52]">
+              <a href="#values" className="hover:text-[#0B2818] transition-colors">{t.valuesTitle}</a>
+              <a href="#for" className="hover:text-[#0B2818] transition-colors">{t.forWhomTitle}</a>
+              <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
+              <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
+              <Link href="/quiz" className="hover:text-[#0B2818] transition-colors">{t.navQuiz}</Link>
+              <Link href="/register" className="hover:text-[#0B2818] transition-colors">Register</Link>
             </nav>
-            <p className="text-sm text-[#2D6A4F]">© {new Date().getFullYear()} Prosvasimi</p>
+            <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>
           </div>
         </div>
       </footer>

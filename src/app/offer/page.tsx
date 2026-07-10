@@ -22,7 +22,7 @@ const workshops = {
         "Interview preparation with AI role-play",
       ],
       number: "01",
-      color: "bg-[#2D6A4F]",
+      color: "bg-[#0F7A52]",
       accent: "green",
     },
     {
@@ -39,7 +39,7 @@ const workshops = {
         "Staying current with industry trends using AI curation",
       ],
       number: "02",
-      color: "bg-[#C9705F]",
+      color: "bg-[#0B2818]",
       accent: "coral",
     },
     {
@@ -56,7 +56,7 @@ const workshops = {
         "Building a personal pitch with AI assistance",
       ],
       number: "03",
-      color: "bg-[#5B8FB9]",
+      color: "bg-[#0D5C3E]",
       accent: "blue",
     },
   ],
@@ -75,7 +75,7 @@ const workshops = {
         "Przygotowanie do rozmów z AI role-play",
       ],
       number: "01",
-      color: "bg-[#2D6A4F]",
+      color: "bg-[#0F7A52]",
       accent: "green",
     },
     {
@@ -92,7 +92,7 @@ const workshops = {
         "Śledzenie trendów branżowych z kuratorowaniem AI",
       ],
       number: "02",
-      color: "bg-[#C9705F]",
+      color: "bg-[#0B2818]",
       accent: "coral",
     },
     {
@@ -109,7 +109,7 @@ const workshops = {
         "Budowanie osobistego pitchu z pomocą AI",
       ],
       number: "03",
-      color: "bg-[#5B8FB9]",
+      color: "bg-[#0D5C3E]",
       accent: "blue",
     },
   ],
@@ -128,7 +128,7 @@ const workshops = {
         "Підготовка до співбесід з AI-рольовою грою",
       ],
       number: "01",
-      color: "bg-[#2D6A4F]",
+      color: "bg-[#0F7A52]",
       accent: "green",
     },
     {
@@ -145,7 +145,7 @@ const workshops = {
         "Відстеження галузевих трендів з AI-курацією",
       ],
       number: "02",
-      color: "bg-[#C9705F]",
+      color: "bg-[#0B2818]",
       accent: "coral",
     },
     {
@@ -162,7 +162,7 @@ const workshops = {
         "Створення особистого пітчу за допомогою AI",
       ],
       number: "03",
-      color: "bg-[#5B8FB9]",
+      color: "bg-[#0D5C3E]",
       accent: "blue",
     },
   ],
@@ -183,6 +183,7 @@ const translations = {
     navArticles: "Articles",
     navQuiz: "Quiz",
     navOffer: "What We Offer",
+    navRegister: "Register",
     modalTitle: "Register Your Interest",
     modalSubtitle: "Be the first to know when this workshop launches",
     formName: "Your Name",
@@ -210,6 +211,7 @@ const translations = {
     navArticles: "Artykuły",
     navQuiz: "Quiz",
     navOffer: "Co oferujemy",
+    navRegister: "Zarejestruj się",
     modalTitle: "Zgłoś zainteresowanie",
     modalSubtitle: "Bądź pierwszy, gdy warsztat wystartuje",
     formName: "Twoje imię",
@@ -237,6 +239,7 @@ const translations = {
     navArticles: "Статті",
     navQuiz: "Тест",
     navOffer: "Що ми пропонуємо",
+    navRegister: "Зареєструватися",
     modalTitle: "Зареєструвати інтерес",
     modalSubtitle: "Дізнайтеся першими, коли воркшоп стартує",
     formName: "Ваше ім'я",
@@ -320,9 +323,9 @@ export default function OfferPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
+    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E7E5E4]">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group">
             <Image 
@@ -332,25 +335,26 @@ export default function OfferPage() {
               height={36}
               className="transition-transform group-hover:scale-105"
             />
-            <span className="font-semibold text-lg tracking-tight text-[#1B4332]">Prosvasimi</span>
+            <span className="font-semibold text-lg tracking-tight text-[#0B2818]">Prosvasimi</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-            <Link href="/offer" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg hover:bg-[#1B4332] transition-colors">{t.navOffer}</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
+            <Link href="/offer" className="px-4 py-2 text-white bg-[#0F7A52] rounded-lg hover:bg-[#0B2818] transition-colors">{t.navOffer}</Link>
+            <Link href="/articles" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navArticles}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navQuiz}</Link>
+            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navRegister}</Link>
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group">
+            <div className="hidden sm:flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm" role="group">
               {(["en", "pl", "ua"] as Lang[]).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
                   className={`px-3 py-1.5 rounded-md transition-all ${
                     lang === l
-                      ? "bg-white text-[#1B4332] shadow-sm"
-                      : "text-[#2D6A4F] hover:text-[#1B4332]"
+                      ? "bg-white text-[#0B2818] shadow-sm"
+                      : "text-[#0F7A52] hover:text-[#0B2818]"
                   }`}
                 >
                   {l.toUpperCase()}
@@ -363,26 +367,27 @@ export default function OfferPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-white border-b border-[#E7E5E4]">
-          <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 lg:py-36">
+        <section className="bg-[#0B2818] relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
+          <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 lg:py-40 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#40916C]/10 text-[#40916C] text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-[#40916C] animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+                <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
                 {t.comingSoon}
               </span>
-              
-              <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-[#1B4332]">
+
+              <h1 className="mt-8 text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] text-white">
                 {t.pageTitle}
               </h1>
-              
-              <p className="mt-8 text-lg text-[#2D6A4F] leading-relaxed max-w-2xl">
+
+              <p className="mt-8 text-xl text-white/70 leading-relaxed max-w-2xl">
                 {t.pageSubtitle}
               </p>
-              
+
               <div className="mt-10">
-                <Link 
-                  href="/" 
-                  className="inline-flex items-center gap-2 px-6 py-4 rounded-xl border-2 border-[#E7E5E4] text-[#1B4332] font-medium hover:border-[#2D6A4F] hover:bg-[#FAFAF9] transition-all"
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-2 px-6 py-4 rounded-xl border-2 border-white/25 text-white font-bold hover:border-white transition-all"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -398,10 +403,10 @@ export default function OfferPage() {
         <section className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1B4332]">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-[#0B2818]">
                 {t.workshopsTitle}
               </h2>
-              <p className="mt-4 text-lg text-[#2D6A4F]">
+              <p className="mt-4 text-lg text-[#0F7A52]">
                 {t.workshopsSubtitle}
               </p>
             </div>
@@ -410,7 +415,7 @@ export default function OfferPage() {
               {currentWorkshops.map((workshop, index) => (
                 <article
                   key={workshop.id}
-                  className="group relative bg-white rounded-2xl border border-[#E7E5E4] hover:shadow-lg hover:shadow-[#2D6A4F]/10 transition-all duration-300 overflow-hidden"
+                  className="group relative bg-white rounded-2xl border-2 border-[#D9D9DC] hover:shadow-lg hover:shadow-[#0F7A52]/10 transition-all duration-300 overflow-hidden"
                 >
                   {/* Accent bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1 ${workshop.color}`} />
@@ -422,20 +427,20 @@ export default function OfferPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-[#1B4332] tracking-tight mb-2">
+                    <h3 className="text-xl font-bold text-[#0B2818] tracking-tight mb-2">
                       {workshop.title}
                     </h3>
-                    <p className="text-[#2D6A4F] font-medium text-sm mb-4">{workshop.subtitle}</p>
+                    <p className="text-[#0F7A52] font-medium text-sm mb-4">{workshop.subtitle}</p>
                     
                     {/* Meta */}
                     <div className="flex flex-wrap gap-2 mb-6">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#1B4332] bg-[#FAFAF9] rounded-lg">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#0B2818] bg-[#FFFFFF] rounded-lg">
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {workshop.duration}
                       </span>
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#1B4332] bg-[#FAFAF9] rounded-lg">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#0B2818] bg-[#FFFFFF] rounded-lg">
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -445,26 +450,26 @@ export default function OfferPage() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-[#1B4332]/80 text-sm leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-[#0B2818]/80 text-sm leading-relaxed mb-6 line-clamp-3">
                       {workshop.description}
                     </p>
 
                     {/* Topics */}
                     <div className="mb-8">
-                      <h4 className="text-xs font-semibold text-[#2D6A4F] uppercase tracking-wider mb-3">
+                      <h4 className="text-xs font-semibold text-[#0F7A52] uppercase tracking-wider mb-3">
                         {t.topics}
                       </h4>
                       <ul className="space-y-2">
                         {workshop.topics.slice(0, 3).map((topic, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#40916C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#16A97A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-sm text-[#1B4332]">{topic}</span>
+                            <span className="text-sm text-[#0B2818]">{topic}</span>
                           </li>
                         ))}
                         {workshop.topics.length > 3 && (
-                          <li className="text-xs text-[#2D6A4F] pl-6">+{workshop.topics.length - 3} more</li>
+                          <li className="text-xs text-[#0F7A52] pl-6">+{workshop.topics.length - 3} more</li>
                         )}
                       </ul>
                     </div>
@@ -496,16 +501,16 @@ export default function OfferPage() {
           aria-labelledby="modal-title"
         >
           <div 
-            className="fixed inset-0 bg-[#1B4332]/60 backdrop-blur-sm" 
+            className="fixed inset-0 bg-[#0B2818]/60 backdrop-blur-sm" 
             onClick={closeModal}
             aria-hidden="true"
           />
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
             {/* Modal Header */}
-            <div className="px-8 pt-8 pb-6 border-b border-[#E7E5E4]">
+            <div className="px-8 pt-8 pb-6 border-b border-[#D9D9DC]">
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 p-2 text-[#2D6A4F] hover:text-[#1B4332] hover:bg-[#FAFAF9] rounded-lg transition-colors"
+                className="absolute top-4 right-4 p-2 text-[#0F7A52] hover:text-[#0B2818] hover:bg-[#FFFFFF] rounded-lg transition-colors"
                 aria-label="Close"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -515,20 +520,20 @@ export default function OfferPage() {
 
               {isSuccess ? (
                 <div className="flex flex-col items-center text-center py-4">
-                  <div className="h-14 w-14 rounded-full bg-[#40916C]/10 flex items-center justify-center mb-4">
-                    <svg className="h-7 w-7 text-[#40916C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <div className="h-14 w-14 rounded-full bg-[#16A97A]/10 flex items-center justify-center mb-4">
+                    <svg className="h-7 w-7 text-[#16A97A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-[#1B4332]">{t.formSuccess}</h2>
-                  <p className="mt-2 text-[#2D6A4F]">{t.formSuccessMsg}</p>
+                  <h2 className="text-xl font-semibold text-[#0B2818]">{t.formSuccess}</h2>
+                  <p className="mt-2 text-[#0F7A52]">{t.formSuccessMsg}</p>
                 </div>
               ) : (
                 <>
-                  <h2 id="modal-title" className="text-xl font-semibold text-[#1B4332]">
+                  <h2 id="modal-title" className="text-xl font-semibold text-[#0B2818]">
                     {t.modalTitle}
                   </h2>
-                  <p className="mt-1 text-sm text-[#2D6A4F]">{t.modalSubtitle}</p>
+                  <p className="mt-1 text-sm text-[#0F7A52]">{t.modalSubtitle}</p>
                 </>
               )}
             </div>
@@ -538,7 +543,7 @@ export default function OfferPage() {
               <div className="px-8 py-6">
                 <button
                   onClick={closeModal}
-                  className="w-full py-3 bg-[#2D6A4F] text-white text-sm font-medium rounded-lg hover:bg-[#1B4332] transition-colors"
+                  className="w-full py-3 bg-[#0F7A52] text-white text-sm font-medium rounded-lg hover:bg-[#0B2818] transition-colors"
                 >
                   {t.formClose}
                 </button>
@@ -546,15 +551,15 @@ export default function OfferPage() {
             ) : (
               <div className="px-8 py-6">
                 {selectedWorkshop && (
-                  <div className="mb-6 p-4 bg-[#FAFAF9] rounded-xl border border-[#E7E5E4]">
-                    <p className="text-xs text-[#2D6A4F] uppercase tracking-wider mb-1">{t.sectionLabel}</p>
-                    <p className="text-sm font-medium text-[#1B4332]">{selectedWorkshop.title}</p>
+                  <div className="mb-6 p-4 bg-[#FFFFFF] rounded-xl border-2 border-[#D9D9DC]">
+                    <p className="text-xs text-[#0F7A52] uppercase tracking-wider mb-1">{t.sectionLabel}</p>
+                    <p className="text-sm font-medium text-[#0B2818]">{selectedWorkshop.title}</p>
                   </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label htmlFor="modal-name" className="block text-sm font-medium text-[#1B4332] mb-1.5">
+                    <label htmlFor="modal-name" className="block text-sm font-medium text-[#0B2818] mb-1.5">
                       {t.formName}
                     </label>
                     <input
@@ -562,12 +567,12 @@ export default function OfferPage() {
                       type="text"
                       value={formName}
                       onChange={(e) => setFormName(e.target.value)}
-                      className="w-full px-4 py-3 text-sm border border-[#E7E5E4] rounded-lg focus:border-[#2D6A4F] focus:ring-1 focus:ring-[#2D6A4F] outline-none transition-colors"
+                      className="w-full px-4 py-3 text-sm border-2 border-[#D9D9DC] rounded-lg focus:border-[#0F7A52] focus:ring-1 focus:ring-[#0F7A52] outline-none transition-colors"
                       placeholder="Anna"
                     />
                   </div>
                   <div>
-                    <label htmlFor="modal-email" className="block text-sm font-medium text-[#1B4332] mb-1.5">
+                    <label htmlFor="modal-email" className="block text-sm font-medium text-[#0B2818] mb-1.5">
                       {t.formEmail}
                     </label>
                     <input
@@ -575,22 +580,22 @@ export default function OfferPage() {
                       type="email"
                       value={formEmail}
                       onChange={(e) => setFormEmail(e.target.value)}
-                      className="w-full px-4 py-3 text-sm border border-[#E7E5E4] rounded-lg focus:border-[#2D6A4F] focus:ring-1 focus:ring-[#2D6A4F] outline-none transition-colors"
+                      className="w-full px-4 py-3 text-sm border-2 border-[#D9D9DC] rounded-lg focus:border-[#0F7A52] focus:ring-1 focus:ring-[#0F7A52] outline-none transition-colors"
                       placeholder="you@example.com"
                       required
                     />
                   </div>
 
                   {error && (
-                    <div className="p-3 bg-[#FF7A59]/10 border border-[#FF7A59]/20 rounded-lg">
-                      <p className="text-sm text-[#FF7A59]">{error}</p>
+                    <div className="p-3 bg-[#DC2626]/10 border border-[#DC2626]/20 rounded-lg">
+                      <p className="text-sm text-[#DC2626]">{error}</p>
                     </div>
                   )}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3 bg-[#2D6A4F] text-white text-sm font-medium rounded-lg hover:bg-[#1B4332] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-[#0F7A52] text-white text-sm font-medium rounded-lg hover:bg-[#0B2818] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -612,7 +617,7 @@ export default function OfferPage() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-[#E7E5E4] bg-white py-12">
+      <footer className="border-t border-[#D9D9DC] bg-white py-12">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2.5">
@@ -622,15 +627,16 @@ export default function OfferPage() {
                 width={28} 
                 height={28}
               />
-              <span className="font-medium text-[#1B4332]">Prosvasimi</span>
+              <span className="font-medium text-[#0B2818]">Prosvasimi</span>
             </div>
-            <nav className="flex items-center gap-6 text-sm text-[#2D6A4F]">
-              <Link href="/" className="hover:text-[#1B4332] transition-colors">Home</Link>
-              <Link href="/offer" className="hover:text-[#1B4332] transition-colors">{t.navOffer}</Link>
-              <Link href="/articles" className="hover:text-[#1B4332] transition-colors">{t.navArticles}</Link>
-              <Link href="/quiz" className="hover:text-[#1B4332] transition-colors">{t.navQuiz}</Link>
+            <nav className="flex items-center gap-6 text-sm text-[#0F7A52]">
+              <Link href="/" className="hover:text-[#0B2818] transition-colors">Home</Link>
+              <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
+              <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
+              <Link href="/quiz" className="hover:text-[#0B2818] transition-colors">{t.navQuiz}</Link>
+              <Link href="/register" className="hover:text-[#0B2818] transition-colors">{t.navRegister}</Link>
             </nav>
-            <p className="text-sm text-[#2D6A4F]">© {new Date().getFullYear()} Prosvasimi</p>
+            <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>
           </div>
         </div>
       </footer>

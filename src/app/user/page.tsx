@@ -7,6 +7,21 @@ import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
 import { detectBrowserLanguage, type Lang } from "@/lib/language";
 
+const ICON_PATHS = {
+  check: "M4.5 12.75l6 6 9-13.5",
+  user: "M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z",
+  photo: "M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 20.25h18A2.25 2.25 0 0022.5 18V6A2.25 2.25 0 0020.25 3.75H3.75A2.25 2.25 0 001.5 6v12a2.25 2.25 0 002.25 2.25zm10.5-11.25a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z",
+  document: "M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z",
+} as const;
+
+function Icon({ path, className = "w-6 h-6" }: { path: string; className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+      <path strokeLinecap="round" strokeLinejoin="round" d={path} />
+    </svg>
+  );
+}
+
 type FormStatus = "idle" | "submitting" | "success";
 
 const MAX_PICTURE_SIZE = 3 * 1024 * 1024;
@@ -166,8 +181,8 @@ export default function UserPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E7E5E4]">
+    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group">
             <Image
@@ -177,17 +192,17 @@ export default function UserPage() {
               height={36}
               className="transition-transform group-hover:scale-105"
             />
-            <span className="font-semibold text-lg tracking-tight text-[#1B4332]">Prosvasimi</span>
+            <span className="font-semibold text-lg tracking-tight text-[#0B2818]">Prosvasimi</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navOffer}</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
+            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navOffer}</Link>
+            <Link href="/articles" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navArticles}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navQuiz}</Link>
             {user ? (
-              <Link href="/account" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.account}</Link>
+              <Link href="/account" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.account}</Link>
             ) : (
-              <Link href="/login" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.login}</Link>
+              <Link href="/login" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.login}</Link>
             )}
             <div className="flex items-center gap-1">
               {(["en", "pl", "ua"] as const).map((option) => (
@@ -196,7 +211,7 @@ export default function UserPage() {
                   type="button"
                   onClick={() => setLang(option)}
                   className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase transition-colors ${
-                    lang === option ? "bg-[#2D6A4F] text-white" : "text-[#2D6A4F] hover:bg-[#E7E5E4]"
+                    lang === option ? "bg-[#0F7A52] text-white" : "text-[#0F7A52] hover:bg-[#D9D9DC]"
                   }`}
                 >
                   {option}
@@ -208,25 +223,25 @@ export default function UserPage() {
       </header>
 
       <main>
-        <section className="bg-white border-b border-[#E7E5E4]">
+        <section className="bg-white border-b border-[#D9D9DC]">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#40916C]/10 text-[#40916C] text-sm font-medium">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#16A97A]/10 text-[#16A97A] text-sm font-medium">
                 {t.badge}
               </span>
-              <h1 className="mt-8 text-4xl md:text-5xl font-bold tracking-tight leading-tight text-[#1B4332]">
+              <h1 className="mt-8 text-4xl md:text-5xl font-black tracking-tighter leading-tight text-[#0B2818]">
                 {t.title}
               </h1>
-              <p className="mt-6 text-lg text-[#2D6A4F] leading-relaxed">
+              <p className="mt-6 text-lg text-[#0F7A52] leading-relaxed">
                 {t.subtitle}
               </p>
               {!user && (
-                <div className="mt-8 rounded-2xl border border-[#D4A574]/40 bg-[#D4A574]/10 p-5">
-                  <p className="font-medium text-[#1B4332]">{t.authTitle}</p>
-                  <p className="mt-2 text-sm text-[#2D6A4F]">{t.authSubtitle}</p>
+                <div className="mt-8 rounded-2xl border border-[#16A97A]/40 bg-[#16A97A]/10 p-5">
+                  <p className="font-medium text-[#0B2818]">{t.authTitle}</p>
+                  <p className="mt-2 text-sm text-[#0F7A52]">{t.authSubtitle}</p>
                   <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                    <Link href="/register" className="inline-flex justify-center rounded-xl bg-[#2D6A4F] px-5 py-3 text-white font-medium hover:bg-[#1B4332] transition-colors">{t.register}</Link>
-                    <Link href="/login" className="inline-flex justify-center rounded-xl border-2 border-[#E7E5E4] px-5 py-3 text-[#1B4332] font-medium hover:border-[#2D6A4F] transition-colors">{t.login}</Link>
+                    <Link href="/register" className="inline-flex justify-center rounded-xl bg-[#0F7A52] px-5 py-3 text-white font-bold hover:bg-[#0B2818] transition-colors">{t.register}</Link>
+                    <Link href="/login" className="inline-flex justify-center rounded-xl border-2 border-[#D9D9DC] px-5 py-3 text-[#0B2818] font-medium hover:border-[#0F7A52] transition-colors">{t.login}</Link>
                   </div>
                 </div>
               )}
@@ -234,20 +249,23 @@ export default function UserPage() {
           </div>
         </section>
 
+        {user && (
         <section className="py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-[1fr_380px] gap-8 items-start">
-            <div className="bg-white rounded-2xl p-8 md:p-10 border border-[#E7E5E4]">
+            <div className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC]">
               {status === "success" ? (
-                <div className="rounded-xl bg-[#40916C]/10 text-[#1B4332] p-6 border border-[#40916C]/20">
+                <div className="rounded-xl bg-[#16A97A]/10 text-[#0B2818] p-6 border border-[#16A97A]/20">
                   <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-full bg-[#40916C] text-white flex items-center justify-center flex-shrink-0">✓</div>
+                    <div className="h-10 w-10 rounded-full bg-[#16A97A] text-white flex items-center justify-center flex-shrink-0">
+                      <Icon path={ICON_PATHS.check} className="w-5 h-5" />
+                    </div>
                     <div>
                       <h2 className="text-xl font-semibold">{t.successTitle}</h2>
-                      <p className="mt-2 text-[#2D6A4F]">{t.successText}</p>
+                      <p className="mt-2 text-[#0F7A52]">{t.successText}</p>
                       <button
                         type="button"
                         onClick={() => setStatus("idle")}
-                        className="mt-6 inline-flex justify-center rounded-xl bg-[#2D6A4F] text-white px-5 py-3 font-medium hover:bg-[#1B4332] transition-colors"
+                        className="mt-6 inline-flex justify-center rounded-xl bg-[#0F7A52] text-white px-5 py-3 font-bold hover:bg-[#0B2818] transition-colors"
                       >
                         {t.anotherProfile}
                       </button>
@@ -257,33 +275,33 @@ export default function UserPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div>
-                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.details}</h2>
+                    <h2 className="text-2xl font-bold text-[#0B2818]">{t.details}</h2>
                     <div className="mt-6 grid sm:grid-cols-2 gap-4">
                       <label className="block">
                         <span className="block text-sm font-medium mb-2">{t.fullName}</span>
-                        <input value={profile.name} onChange={(e) => updateField("name", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="Anna Nowak" required />
+                        <input value={profile.name} onChange={(e) => updateField("name", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder="Anna Nowak" required />
                       </label>
                       <label className="block">
                         <span className="block text-sm font-medium mb-2">{t.email}</span>
-                        <input type="email" value={profile.email} onChange={(e) => updateField("email", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="you@domain.com" required />
+                        <input type="email" value={profile.email} onChange={(e) => updateField("email", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder="you@domain.com" required />
                       </label>
                       <label className="block">
                         <span className="block text-sm font-medium mb-2">{t.phone}</span>
-                        <input value={profile.phone} onChange={(e) => updateField("phone", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder="+48 123 456 789" />
+                        <input value={profile.phone} onChange={(e) => updateField("phone", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder="+48 123 456 789" />
                       </label>
                       <label className="block">
                         <span className="block text-sm font-medium mb-2">{t.location}</span>
-                        <input value={profile.location} onChange={(e) => updateField("location", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.locationPlaceholder} />
+                        <input value={profile.location} onChange={(e) => updateField("location", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder={t.locationPlaceholder} />
                       </label>
                     </div>
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.experienceQuestions}</h2>
+                    <h2 className="text-2xl font-bold text-[#0B2818]">{t.experienceQuestions}</h2>
                     <div className="mt-6 grid sm:grid-cols-2 gap-4">
                       <label className="block">
                         <span className="block text-sm font-medium mb-2">{t.experienceLevel}</span>
-                        <select value={profile.experienceLevel} onChange={(e) => updateField("experienceLevel", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors bg-white" required>
+                        <select value={profile.experienceLevel} onChange={(e) => updateField("experienceLevel", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors bg-white" required>
                           <option value="">{t.selectLevel}</option>
                           <option value="entry">{t.entry}</option>
                           <option value="junior">{t.junior}</option>
@@ -294,11 +312,11 @@ export default function UserPage() {
                       </label>
                       <label className="block">
                         <span className="block text-sm font-medium mb-2">{t.preferredField}</span>
-                        <input value={profile.jobField} onChange={(e) => updateField("jobField", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.preferredFieldPlaceholder} required />
+                        <input value={profile.jobField} onChange={(e) => updateField("jobField", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder={t.preferredFieldPlaceholder} required />
                       </label>
                       <label className="block sm:col-span-2">
                         <span className="block text-sm font-medium mb-2">{t.workPreference}</span>
-                        <select value={profile.workPreference} onChange={(e) => updateField("workPreference", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors bg-white" required>
+                        <select value={profile.workPreference} onChange={(e) => updateField("workPreference", e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors bg-white" required>
                           <option value="">{t.selectPreference}</option>
                           <option value="remote">{t.remote}</option>
                           <option value="hybrid">{t.hybrid}</option>
@@ -308,41 +326,41 @@ export default function UserPage() {
                       </label>
                       <label className="block sm:col-span-2">
                         <span className="block text-sm font-medium mb-2">{t.skills}</span>
-                        <textarea value={profile.skills} onChange={(e) => updateField("skills", e.target.value)} className="min-h-32 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.skillsPlaceholder} required />
+                        <textarea value={profile.skills} onChange={(e) => updateField("skills", e.target.value)} className="min-h-32 w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder={t.skillsPlaceholder} required />
                       </label>
                       <label className="block sm:col-span-2">
                         <span className="block text-sm font-medium mb-2">{t.accommodations}</span>
-                        <textarea value={profile.accommodations} onChange={(e) => updateField("accommodations", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.accommodationsPlaceholder} />
+                        <textarea value={profile.accommodations} onChange={(e) => updateField("accommodations", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder={t.accommodationsPlaceholder} />
                       </label>
                       <label className="block sm:col-span-2">
                         <span className="block text-sm font-medium mb-2">{t.goals}</span>
-                        <textarea value={profile.goals} onChange={(e) => updateField("goals", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none transition-colors" placeholder={t.goalsPlaceholder} />
+                        <textarea value={profile.goals} onChange={(e) => updateField("goals", e.target.value)} className="min-h-28 w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" placeholder={t.goalsPlaceholder} />
                       </label>
                     </div>
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.pictureUpload}</h2>
+                    <h2 className="text-2xl font-bold text-[#0B2818]">{t.pictureUpload}</h2>
                     <div className="mt-6 flex items-center gap-6">
                       <div className="relative flex-shrink-0">
                         {picturePreview ? (
                           <img
                             src={picturePreview}
                             alt="Profile preview"
-                            className="w-24 h-24 rounded-full object-cover border-2 border-[#2D6A4F]"
+                            className="w-24 h-24 rounded-full object-cover border-2 border-[#0F7A52]"
                           />
                         ) : (
-                          <div className="w-24 h-24 rounded-full bg-[#E7E5E4] flex items-center justify-center text-3xl">
-                            👤
+                          <div className="w-24 h-24 rounded-full bg-[#D9D9DC] flex items-center justify-center">
+                            <Icon path={ICON_PATHS.user} className="w-10 h-10 text-[#3F3C3A]" />
                           </div>
                         )}
                       </div>
-                      <label className="flex-1 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#B7C9BD] bg-[#FAFAF9] px-6 py-8 text-center cursor-pointer hover:border-[#2D6A4F] transition-colors">
-                        <span className="text-3xl">🖼️</span>
-                        <span className="mt-2 font-semibold text-[#1B4332]">
+                      <label className="flex-1 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#8FA79A] bg-[#FFFFFF] px-6 py-8 text-center cursor-pointer hover:border-[#0F7A52] transition-colors">
+                        <Icon path={ICON_PATHS.photo} className="w-8 h-8 text-[#0F7A52]" />
+                        <span className="mt-2 font-semibold text-[#0B2818]">
                           {picture ? t.changePhoto : t.uploadPicture}
                         </span>
-                        <span className="mt-1 text-sm text-[#2D6A4F]">{t.pictureHint}</span>
+                        <span className="mt-1 text-sm text-[#0F7A52]">{t.pictureHint}</span>
                         <input
                           type="file"
                           accept="image/jpeg,image/png,image/webp"
@@ -360,38 +378,38 @@ export default function UserPage() {
                           className="sr-only"
                         />
                         {picture && (
-                          <span className="mt-3 text-sm font-medium text-[#1B4332]">{t.selected} {picture.name}</span>
+                          <span className="mt-3 text-sm font-medium text-[#0B2818]">{t.selected} {picture.name}</span>
                         )}
                       </label>
                     </div>
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-[#1B4332]">{t.cvUpload}</h2>
-                    <label className="mt-6 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#B7C9BD] bg-[#FAFAF9] px-6 py-10 text-center cursor-pointer hover:border-[#2D6A4F] transition-colors">
-                      <span className="text-4xl">📄</span>
-                      <span className="mt-3 font-semibold text-[#1B4332]">{t.uploadCv}</span>
-                      <span className="mt-1 text-sm text-[#2D6A4F]">{t.cvHint}</span>
+                    <h2 className="text-2xl font-bold text-[#0B2818]">{t.cvUpload}</h2>
+                    <label className="mt-6 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#8FA79A] bg-[#FFFFFF] px-6 py-10 text-center cursor-pointer hover:border-[#0F7A52] transition-colors">
+                      <Icon path={ICON_PATHS.document} className="w-9 h-9 text-[#0F7A52]" />
+                      <span className="mt-3 font-semibold text-[#0B2818]">{t.uploadCv}</span>
+                      <span className="mt-1 text-sm text-[#0F7A52]">{t.cvHint}</span>
                       <input
                         type="file"
                         accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                         onChange={(e) => setCv(e.target.files?.[0] ?? null)}
                         className="sr-only"
                       />
-                      {cv && <span className="mt-4 text-sm font-medium text-[#1B4332]">{t.selected} {cv.name}</span>}
+                      {cv && <span className="mt-4 text-sm font-medium text-[#0B2818]">{t.selected} {cv.name}</span>}
                     </label>
                   </div>
 
-                  {error && <p className="text-sm text-[#FF7A59]">{error}</p>}
+                  {error && <p className="text-sm text-[#DC2626]">{error}</p>}
 
-                  <button type="submit" disabled={status === "submitting"} className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                  <button type="submit" disabled={status === "submitting"} className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#0F7A52] text-white font-bold hover:bg-[#0B2818] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
                     {status === "submitting" ? t.submitting : t.submit}
                   </button>
                 </form>
               )}
             </div>
 
-            <aside className="bg-[#2D6A4F] text-white rounded-2xl p-8 sticky top-24">
+            <aside className="bg-[#0F7A52] text-white rounded-2xl p-8 sticky top-24">
               <h2 className="text-2xl font-bold">{t.nextTitle}</h2>
               <div className="mt-6 space-y-5">
                 <div>
@@ -410,6 +428,7 @@ export default function UserPage() {
             </aside>
           </div>
         </section>
+        )}
       </main>
     </div>
   );

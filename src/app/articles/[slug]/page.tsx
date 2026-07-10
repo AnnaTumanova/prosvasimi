@@ -12,6 +12,7 @@ const translations: Record<Lang, Record<string, string>> = {
     brandTagline: "Career coaching that gets specific",
     navHome: "Home",
     navArticles: "Articles",
+    navRegister: "Register",
     backToArticles: "Back to Articles",
     footerNote: "Career coaching for people navigating a career change.",
   },
@@ -19,6 +20,7 @@ const translations: Record<Lang, Record<string, string>> = {
     brandTagline: "Coaching kariery, który daje konkrety",
     navHome: "Strona główna",
     navArticles: "Artykuły",
+    navRegister: "Zarejestruj się",
     backToArticles: "Powrót do artykułów",
     footerNote: "Coaching kariery dla osób zmieniających ścieżkę zawodową.",
   },
@@ -26,6 +28,7 @@ const translations: Record<Lang, Record<string, string>> = {
     brandTagline: "Кар'єрний коучинг з конкретними результатами",
     navHome: "Головна",
     navArticles: "Статті",
+    navRegister: "Зареєструватися",
     backToArticles: "Назад до статей",
     footerNote: "Кар'єрний коучинг для людей, що змінюють кар'єру.",
   },
@@ -1188,18 +1191,18 @@ export default function ArticlePage() {
 
   if (loading) {
     return (
-      <div className="min-h-dvh bg-[#FAFAF9] flex items-center justify-center">
-        <div className="text-[#2D6A4F]">Loading...</div>
+      <div className="min-h-dvh bg-[#FFFFFF] flex items-center justify-center">
+        <div className="text-[#0F7A52]">Loading...</div>
       </div>
     );
   }
 
   if (!article) {
     return (
-      <div className="min-h-dvh bg-[#FAFAF9] flex items-center justify-center">
+      <div className="min-h-dvh bg-[#FFFFFF] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#1B4332] mb-4">Article not found</h1>
-          <Link href="/articles" className="text-[#2D6A4F] hover:text-[#1B4332] underline">
+          <h1 className="text-2xl font-bold text-[#0B2818] mb-4">Article not found</h1>
+          <Link href="/articles" className="text-[#0F7A52] hover:text-[#0B2818] underline">
             {t.backToArticles}
           </Link>
         </div>
@@ -1210,8 +1213,8 @@ export default function ArticlePage() {
   const image = getImage();
 
   return (
-    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
-      <header className="border-b border-[#E7E5E4] bg-white/95 backdrop-blur-md sticky top-0 z-10">
+    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
+      <header className="border-b border-[#D9D9DC] bg-white/95 backdrop-blur-md sticky top-0 z-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2.5">
             <Image 
@@ -1221,26 +1224,27 @@ export default function ArticlePage() {
               height={36}
             />
             <div className="leading-tight">
-              <div className="font-semibold tracking-tight text-lg text-[#1B4332]">Prosvasimi</div>
-              <div className="text-xs text-[#2D6A4F]">{t.brandTagline}</div>
+              <div className="font-semibold tracking-tight text-lg text-[#0B2818]">Prosvasimi</div>
+              <div className="text-xs text-[#0F7A52]">{t.brandTagline}</div>
             </div>
           </Link>
           <nav className="hidden md:flex items-center gap-2 text-sm">
-            <Link href="/" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navHome}</Link>
-            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
-            <Link href="/articles" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg">{t.navArticles}</Link>
+            <Link href="/" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navHome}</Link>
+            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
+            <Link href="/articles" className="px-4 py-2 text-white bg-[#0F7A52] rounded-lg">{t.navArticles}</Link>
+            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navRegister}</Link>
           </nav>
-          <div className="flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm">
-            <button onClick={() => setLang("en")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>EN</button>
-            <button onClick={() => setLang("pl")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>PL</button>
-            <button onClick={() => setLang("ua")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>UA</button>
+          <div className="flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm">
+            <button onClick={() => setLang("en")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>EN</button>
+            <button onClick={() => setLang("pl")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>PL</button>
+            <button onClick={() => setLang("ua")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>UA</button>
           </div>
         </div>
       </header>
 
       <main className="py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Link href="/articles" className="inline-flex items-center gap-1.5 text-sm text-[#2D6A4F] hover:text-[#1B4332] mb-8 group">
+          <Link href="/articles" className="inline-flex items-center gap-1.5 text-sm text-[#0F7A52] hover:text-[#0B2818] mb-8 group">
             <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -1248,7 +1252,7 @@ export default function ArticlePage() {
           </Link>
 
           <article>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1B4332] mb-8">
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tighter text-[#0B2818] mb-8">
               {getTitle()}
             </h1>
 
@@ -1261,31 +1265,31 @@ export default function ArticlePage() {
             )}
 
             <div className="prose prose-lg max-w-none 
-              prose-headings:text-[#1B4332] 
+              prose-headings:text-[#0B2818] 
               prose-h1:text-3xl prose-h1:font-bold prose-h1:mb-8 prose-h1:mt-0
-              prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-[#E7E5E4]
+              prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-[#D9D9DC]
               prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-4
-              prose-h4:text-lg prose-h4:font-semibold prose-h4:mt-8 prose-h4:mb-4 prose-h4:text-[#2D6A4F]
-              prose-p:text-[#57534E] prose-p:text-base prose-p:leading-7 prose-p:mb-6
-              prose-ul:text-[#57534E] prose-ul:my-6 prose-ul:pl-6
-              prose-ol:text-[#57534E] prose-ol:my-6 prose-ol:pl-6
-              prose-li:text-[#57534E] prose-li:mb-3 prose-li:leading-7
-              prose-strong:text-[#1B4332] prose-strong:font-semibold
-              prose-a:text-[#2D6A4F] prose-a:underline hover:prose-a:text-[#1B4332]
-              prose-blockquote:border-l-4 prose-blockquote:border-[#2D6A4F] prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-[#57534E] prose-blockquote:my-8
+              prose-h4:text-lg prose-h4:font-semibold prose-h4:mt-8 prose-h4:mb-4 prose-h4:text-[#0F7A52]
+              prose-p:text-[#3F3C3A] prose-p:text-base prose-p:leading-7 prose-p:mb-6
+              prose-ul:text-[#3F3C3A] prose-ul:my-6 prose-ul:pl-6
+              prose-ol:text-[#3F3C3A] prose-ol:my-6 prose-ol:pl-6
+              prose-li:text-[#3F3C3A] prose-li:mb-3 prose-li:leading-7
+              prose-strong:text-[#0B2818] prose-strong:font-semibold
+              prose-a:text-[#0F7A52] prose-a:underline hover:prose-a:text-[#0B2818]
+              prose-blockquote:border-l-4 prose-blockquote:border-[#0F7A52] prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-[#3F3C3A] prose-blockquote:my-8
               prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-table:rounded-lg prose-table:overflow-hidden
-              prose-th:bg-[#1B4332] prose-th:text-white prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-sm
-              prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-[#E7E5E4] prose-td:text-sm
-              prose-tr:even:bg-[#FAFAF9]
-              prose-hr:my-10 prose-hr:border-[#E7E5E4]">
+              prose-th:bg-[#0B2818] prose-th:text-white prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-sm
+              prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-[#D9D9DC] prose-td:text-sm
+              prose-tr:even:bg-[#FFFFFF]
+              prose-hr:my-10 prose-hr:border-[#D9D9DC]">
               {getContent()}
             </div>
           </article>
         </div>
       </main>
 
-      <footer className="border-t border-[#E7E5E4] py-10 bg-white mt-auto">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-[#57534E] text-sm">
+      <footer className="border-t border-[#D9D9DC] py-10 bg-white mt-auto">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-[#3F3C3A] text-sm">
           <p>Prosvasimi &copy; {new Date().getFullYear()}</p>
         </div>
       </footer>

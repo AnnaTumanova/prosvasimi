@@ -83,8 +83,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
-      <header className="bg-white border-b border-[#E7E5E4]">
+    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
+      <header className="bg-white border-b border-[#D9D9DC]">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
             <Image src="/images/logo.png" alt="Prosvasimi" width={36} height={36} />
@@ -97,41 +97,41 @@ export default function LoginPage() {
                 type="button"
                 onClick={() => setLang(option)}
                 className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase transition-colors ${
-                  lang === option ? "bg-[#2D6A4F] text-white" : "text-[#2D6A4F] hover:bg-[#E7E5E4]"
+                  lang === option ? "bg-[#0F7A52] text-white" : "text-[#0F7A52] hover:bg-[#D9D9DC]"
                 }`}
               >
                 {option}
               </button>
             ))}
-            <Link href="/register" className="px-4 py-2 rounded-lg text-sm font-medium text-[#2D6A4F] hover:bg-[#E7E5E4] transition-colors">{t.register}</Link>
+            <Link href="/register" className="px-4 py-2 rounded-lg text-sm font-medium text-[#0F7A52] hover:bg-[#D9D9DC] transition-colors">{t.register}</Link>
           </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-md px-6 py-16">
-        <div className="bg-white rounded-2xl p-8 border border-[#E7E5E4] shadow-sm">
-          <h1 className="text-3xl font-bold tracking-tight">{t.title}</h1>
-          <p className="mt-3 text-[#2D6A4F]">{t.subtitle}</p>
+        <div className="bg-white rounded-2xl p-8 border-2 border-[#D9D9DC] shadow-sm">
+          <h1 className="text-4xl font-black tracking-tighter">{t.title}</h1>
+          <p className="mt-3 text-[#0F7A52]">{t.subtitle}</p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <label className="block">
               <span className="block text-sm font-medium mb-2">{t.email}</span>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none" placeholder="you@domain.com" required />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none" placeholder="you@domain.com" required />
             </label>
             <label className="block">
               <span className="block text-sm font-medium mb-2">{t.password}</span>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none" placeholder={t.passwordPlaceholder} required />
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none" placeholder={t.passwordPlaceholder} required />
             </label>
 
-            {error && <p className="text-sm text-[#FF7A59]">{error}</p>}
+            {error && <p className="text-sm text-[#DC2626]">{error}</p>}
 
-            <button type="submit" disabled={isSubmitting} className="w-full inline-flex justify-center px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors disabled:opacity-60">
+            <button type="submit" disabled={isSubmitting} className="w-full inline-flex justify-center px-6 py-4 rounded-xl bg-[#0F7A52] text-white font-bold hover:bg-[#0B2818] transition-colors disabled:opacity-60">
               {isSubmitting ? t.submitting : t.submit}
             </button>
           </form>
 
-          <p className="mt-6 text-sm text-[#2D6A4F]">
-            {t.noAccount} <Link href="/register" className="font-semibold text-[#1B4332] underline">{t.createOne}</Link>
+          <p className="mt-6 text-sm text-[#0F7A52]">
+            {t.noAccount} <Link href="/register" className="font-semibold text-[#0B2818] underline">{t.createOne}</Link>
           </p>
         </div>
       </main>

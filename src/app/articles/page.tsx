@@ -22,6 +22,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Home",
     navArticles: "Articles",
     navQuiz: "Quiz",
+    navRegister: "Register",
     pageTitle: "Articles & Research",
     pageSubtitle: "Data-driven insights on disability employment in Ukraine and Poland",
     footerNote: "Career coaching for people navigating a career change.",
@@ -32,6 +33,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Strona główna",
     navArticles: "Artykuły",
     navQuiz: "Quiz",
+    navRegister: "Zarejestruj się",
     pageTitle: "Artykuły i badania",
     pageSubtitle: "Analiza zatrudnienia osób z niepełnosprawnościami w Ukrainie i Polsce",
     footerNote: "Coaching kariery dla osób zmieniających ścieżkę zawodową.",
@@ -42,6 +44,7 @@ const translations: Record<Lang, Record<string, string>> = {
     navHome: "Головна",
     navArticles: "Статті",
     navQuiz: "Тест",
+    navRegister: "Зареєструватися",
     pageTitle: "Статті та дослідження",
     pageSubtitle: "Аналіз працевлаштування людей з інвалідністю в Україні та Польщі",
     footerNote: "Кар'єрний коучинг для людей, що змінюють кар'єру.",
@@ -485,8 +488,8 @@ export default function ArticlesPage() {
   );
 
   return (
-    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
-      <header className="bg-white/95 backdrop-blur-md border-b border-[#E7E5E4]">
+    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
+      <header className="bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Prosvasimi home">
             <Image 
@@ -496,24 +499,25 @@ export default function ArticlesPage() {
               height={36}
             />
             <div className="leading-tight">
-              <div className="font-semibold tracking-tight text-lg text-[#1B4332]">Prosvasimi</div>
-              <div className="text-xs text-[#2D6A4F]">{t.brandTagline}</div>
+              <div className="font-semibold tracking-tight text-lg text-[#0B2818]">Prosvasimi</div>
+              <div className="text-xs text-[#0F7A52]">{t.brandTagline}</div>
             </div>
           </Link>
           <nav className="hidden md:flex items-center gap-2 text-sm">
-            <Link href="/" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navHome}</Link>
-            <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
-            <Link href="/articles" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
+            <Link href="/" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navHome}</Link>
+            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
+            <Link href="/articles" className="px-4 py-2 text-white bg-[#0F7A52] rounded-lg">{t.navArticles}</Link>
+            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navQuiz}</Link>
+            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navRegister}</Link>
           </nav>
-          <div className="hidden sm:flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm" role="group" aria-label="Language switch">
-            <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>
+          <div className="hidden sm:flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm" role="group" aria-label="Language switch">
+            <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>
               EN
             </button>
-            <button type="button" onClick={() => setLang("pl")} aria-pressed={lang === "pl"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>
+            <button type="button" onClick={() => setLang("pl")} aria-pressed={lang === "pl"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>
               PL
             </button>
-            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>
+            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>
               UA
             </button>
           </div>
@@ -523,8 +527,8 @@ export default function ArticlesPage() {
       <main className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1B4332]">{t.pageTitle}</h1>
-            <p className="mt-4 text-lg text-[#2D6A4F] max-w-2xl mx-auto">{t.pageSubtitle}</p>
+            <h1 className="text-5xl sm:text-6xl font-black tracking-tighter text-[#0B2818]">{t.pageTitle}</h1>
+            <p className="mt-5 text-xl text-[#0F7A52] max-w-2xl mx-auto">{t.pageSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">

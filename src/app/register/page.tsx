@@ -11,7 +11,7 @@ const translations: Record<Lang, Record<string, string>> = {
   en: {
     login: "Log in",
     title: "Create your account",
-    subtitle: "Register with email and password, then complete your candidate profile.",
+    subtitle: "Register with email and password, then complete your client profile.",
     name: "Full name",
     email: "Email",
     password: "Password",
@@ -29,7 +29,7 @@ const translations: Record<Lang, Record<string, string>> = {
   pl: {
     login: "Zaloguj się",
     title: "Utwórz konto",
-    subtitle: "Zarejestruj się adresem e-mail i hasłem, a następnie uzupełnij profil kandydata.",
+    subtitle: "Zarejestruj się adresem e-mail i hasłem, a następnie uzupełnij profil klienta.",
     name: "Imię i nazwisko",
     email: "E-mail",
     password: "Hasło",
@@ -47,7 +47,7 @@ const translations: Record<Lang, Record<string, string>> = {
   ua: {
     login: "Увійти",
     title: "Створіть акаунт",
-    subtitle: "Зареєструйтеся за допомогою e-mail і пароля, а потім заповніть профіль кандидата.",
+    subtitle: "Зареєструйтеся за допомогою e-mail і пароля, а потім заповніть профіль клієнта.",
     name: "Повне ім’я",
     email: "E-mail",
     password: "Пароль",
@@ -114,7 +114,7 @@ export default function RegisterPage() {
     }
 
     if (data.session) {
-      router.push("/user");
+      router.push("/account");
       return;
     }
 
@@ -122,8 +122,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-[#FAFAF9] text-[#1B4332]">
-      <header className="bg-white border-b border-[#E7E5E4]">
+    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
+      <header className="bg-white border-b border-[#D9D9DC]">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
             <Image src="/images/logo.png" alt="Prosvasimi" width={36} height={36} />
@@ -136,50 +136,50 @@ export default function RegisterPage() {
                 type="button"
                 onClick={() => setLang(option)}
                 className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase transition-colors ${
-                  lang === option ? "bg-[#2D6A4F] text-white" : "text-[#2D6A4F] hover:bg-[#E7E5E4]"
+                  lang === option ? "bg-[#0F7A52] text-white" : "text-[#0F7A52] hover:bg-[#D9D9DC]"
                 }`}
               >
                 {option}
               </button>
             ))}
-            <Link href="/login" className="px-4 py-2 rounded-lg text-sm font-medium text-[#2D6A4F] hover:bg-[#E7E5E4] transition-colors">{t.login}</Link>
+            <Link href="/login" className="px-4 py-2 rounded-lg text-sm font-medium text-[#0F7A52] hover:bg-[#D9D9DC] transition-colors">{t.login}</Link>
           </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-md px-6 py-16">
-        <div className="bg-white rounded-2xl p-8 border border-[#E7E5E4] shadow-sm">
-          <h1 className="text-3xl font-bold tracking-tight">{t.title}</h1>
-          <p className="mt-3 text-[#2D6A4F]">{t.subtitle}</p>
+        <div className="bg-white rounded-2xl p-8 border-2 border-[#D9D9DC] shadow-sm">
+          <h1 className="text-4xl font-black tracking-tighter">{t.title}</h1>
+          <p className="mt-3 text-[#0F7A52]">{t.subtitle}</p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <label className="block">
               <span className="block text-sm font-medium mb-2">{t.name}</span>
-              <input value={name} onChange={(e) => setName(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none" placeholder="Anna Nowak" required />
+              <input value={name} onChange={(e) => setName(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none" placeholder="Anna Nowak" required />
             </label>
             <label className="block">
               <span className="block text-sm font-medium mb-2">{t.email}</span>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none" placeholder="you@domain.com" required />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none" placeholder="you@domain.com" required />
             </label>
             <label className="block">
               <span className="block text-sm font-medium mb-2">{t.password}</span>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none" placeholder={t.passwordPlaceholder} required />
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none" placeholder={t.passwordPlaceholder} required />
             </label>
             <label className="block">
               <span className="block text-sm font-medium mb-2">{t.confirmPassword}</span>
-              <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#E7E5E4] focus:border-[#2D6A4F] focus:outline-none" placeholder={t.confirmPasswordPlaceholder} required />
+              <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none" placeholder={t.confirmPasswordPlaceholder} required />
             </label>
 
-            {error && <p className="text-sm text-[#FF7A59]">{error}</p>}
-            {message && <p className="text-sm text-[#2D6A4F]">{message}</p>}
+            {error && <p className="text-sm text-[#DC2626]">{error}</p>}
+            {message && <p className="text-sm text-[#0F7A52]">{message}</p>}
 
-            <button type="submit" disabled={isSubmitting} className="w-full inline-flex justify-center px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors disabled:opacity-60">
+            <button type="submit" disabled={isSubmitting} className="w-full inline-flex justify-center px-6 py-4 rounded-xl bg-[#0F7A52] text-white font-bold hover:bg-[#0B2818] transition-colors disabled:opacity-60">
               {isSubmitting ? t.submitting : t.submit}
             </button>
           </form>
 
-          <p className="mt-6 text-sm text-[#2D6A4F]">
-            {t.already} <Link href="/login" className="font-semibold text-[#1B4332] underline">{t.login}</Link>
+          <p className="mt-6 text-sm text-[#0F7A52]">
+            {t.already} <Link href="/login" className="font-semibold text-[#0B2818] underline">{t.login}</Link>
           </p>
         </div>
       </main>
