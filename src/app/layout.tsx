@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Prosvasimi",
-  description: "Accessible jobs without barriers",
+  description: "Career coaching for people navigating a career change",
 };
 
 export default function RootLayout({

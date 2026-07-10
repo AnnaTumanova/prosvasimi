@@ -43,17 +43,17 @@ const workshops = {
       accent: "coral",
     },
     {
-      id: "ai-accessibility",
-      title: "AI for Workplace Accessibility",
-      subtitle: "Tools That Adapt to You",
-      description: "Explore AI-powered accessibility tools that can transform your work experience. From voice-to-text and screen readers to task automation, learn how to build a personalized toolkit that works with your unique needs.",
+      id: "ai-career-confidence",
+      title: "AI for Career Confidence",
+      subtitle: "Prepare for Interviews and Negotiations",
+      description: "Learn how to use AI to prepare for interviews, practice tough conversations, and negotiate offers with confidence. This workshop turns anxiety-inducing moments into rehearsed, confident conversations.",
       duration: "2.5 hours",
       format: "Online Workshop",
       topics: [
-        "AI-powered assistive technologies overview",
-        "Customizing AI tools for your specific needs",
-        "Automating repetitive tasks to manage energy",
-        "Communicating accommodation needs effectively",
+        "AI-powered mock interviews and feedback",
+        "Scripting and practicing salary negotiation conversations",
+        "Preparing answers for tough interview questions",
+        "Building a personal pitch with AI assistance",
       ],
       number: "03",
       color: "bg-[#5B8FB9]",
@@ -96,17 +96,17 @@ const workshops = {
       accent: "coral",
     },
     {
-      id: "ai-accessibility",
-      title: "AI dla dostępności w pracy",
-      subtitle: "Narzędzia dopasowane do Ciebie",
-      description: "Poznaj narzędzia dostępności oparte na AI, które mogą zmienić Twoje doświadczenie pracy. Od zamiany głosu na tekst po automatyzację zadań — naucz się budować spersonalizowany zestaw narzędzi.",
+      id: "ai-career-confidence",
+      title: "AI dla pewności siebie w karierze",
+      subtitle: "Przygotuj się do rozmów kwalifikacyjnych i negocjacji",
+      description: "Naucz się wykorzystywać AI do przygotowania na rozmowy kwalifikacyjne, ćwiczenia trudnych rozmów i pewnego negocjowania ofert. Ten warsztat zamienia stresujące momenty w przećwiczone, pewne rozmowy.",
       duration: "2,5 godziny",
       format: "Warsztat online",
       topics: [
-        "Przegląd technologii wspomagających opartych na AI",
-        "Dostosowywanie narzędzi AI do Twoich potrzeb",
-        "Automatyzacja powtarzalnych zadań dla zarządzania energią",
-        "Skuteczne komunikowanie potrzeb dostosowań",
+        "Symulowane rozmowy kwalifikacyjne z AI i feedback",
+        "Pisanie i ćwiczenie rozmów o negocjacji wynagrodzenia",
+        "Przygotowanie odpowiedzi na trudne pytania rekrutacyjne",
+        "Budowanie osobistego pitchu z pomocą AI",
       ],
       number: "03",
       color: "bg-[#5B8FB9]",
@@ -149,17 +149,17 @@ const workshops = {
       accent: "coral",
     },
     {
-      id: "ai-accessibility",
-      title: "AI для доступності на роботі",
-      subtitle: "Інструменти, що адаптуються до вас",
-      description: "Досліджуйте AI-інструменти доступності, які можуть трансформувати ваш робочий досвід. Від голосу в текст до автоматизації завдань — навчіться створювати персоналізований набір інструментів для ваших унікальних потреб.",
+      id: "ai-career-confidence",
+      title: "AI для впевненості в кар'єрі",
+      subtitle: "Підготуйтеся до співбесід і переговорів",
+      description: "Навчіться використовувати AI для підготовки до співбесід, відпрацювання складних розмов та впевненого ведення переговорів про пропозиції. Цей воркшоп перетворює тривожні моменти на відрепетирувані, впевнені розмови.",
       duration: "2,5 години",
       format: "Онлайн воркшоп",
       topics: [
-        "Огляд асистивних технологій на базі AI",
-        "Налаштування AI-інструментів під ваші потреби",
-        "Автоматизація повторюваних завдань для управління енергією",
-        "Ефективне комунікування потреб в адаптаціях",
+        "Симульовані співбесіди з AI та зворотний зв'язок",
+        "Написання та відпрацювання розмов про переговори щодо зарплати",
+        "Підготовка відповідей на складні питання співбесіди",
+        "Створення особистого пітчу за допомогою AI",
       ],
       number: "03",
       color: "bg-[#5B8FB9]",
@@ -181,7 +181,6 @@ const translations = {
     comingSoon: "Coming Soon",
     backHome: "Back to Home",
     navArticles: "Articles",
-    navJobs: "Jobs",
     navQuiz: "Quiz",
     navOffer: "What We Offer",
     modalTitle: "Register Your Interest",
@@ -209,7 +208,6 @@ const translations = {
     comingSoon: "Wkrótce",
     backHome: "Powrót do strony głównej",
     navArticles: "Artykuły",
-    navJobs: "Oferty pracy",
     navQuiz: "Quiz",
     navOffer: "Co oferujemy",
     modalTitle: "Zgłoś zainteresowanie",
@@ -237,7 +235,6 @@ const translations = {
     comingSoon: "Незабаром",
     backHome: "Повернутися на головну",
     navArticles: "Статті",
-    navJobs: "Вакансії",
     navQuiz: "Тест",
     navOffer: "Що ми пропонуємо",
     modalTitle: "Зареєструвати інтерес",
@@ -341,7 +338,6 @@ export default function OfferPage() {
           <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
             <Link href="/offer" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg hover:bg-[#1B4332] transition-colors">{t.navOffer}</Link>
             <Link href="/articles" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navArticles}</Link>
-            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
             <Link href="/quiz" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navQuiz}</Link>
           </nav>
 
@@ -632,7 +628,6 @@ export default function OfferPage() {
               <Link href="/" className="hover:text-[#1B4332] transition-colors">Home</Link>
               <Link href="/offer" className="hover:text-[#1B4332] transition-colors">{t.navOffer}</Link>
               <Link href="/articles" className="hover:text-[#1B4332] transition-colors">{t.navArticles}</Link>
-              <Link href="/jobs" className="hover:text-[#1B4332] transition-colors">{t.navJobs}</Link>
               <Link href="/quiz" className="hover:text-[#1B4332] transition-colors">{t.navQuiz}</Link>
             </nav>
             <p className="text-sm text-[#2D6A4F]">© {new Date().getFullYear()} Prosvasimi</p>

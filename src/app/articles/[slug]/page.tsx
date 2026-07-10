@@ -9,28 +9,25 @@ type Lang = "en" | "pl" | "ua";
 
 const translations: Record<Lang, Record<string, string>> = {
   en: {
-    brandTagline: "Accessible jobs without barriers",
+    brandTagline: "Career coaching that gets specific",
     navHome: "Home",
     navArticles: "Articles",
-    navJobs: "Jobs",
     backToArticles: "Back to Articles",
-    footerNote: "Building an accessible job platform.",
+    footerNote: "Career coaching for people navigating a career change.",
   },
   pl: {
-    brandTagline: "Dostępna praca bez barier",
+    brandTagline: "Coaching kariery, który daje konkrety",
     navHome: "Strona główna",
     navArticles: "Artykuły",
-    navJobs: "Oferty pracy",
     backToArticles: "Powrót do artykułów",
-    footerNote: "Budujemy dostępną platformę pracy.",
+    footerNote: "Coaching kariery dla osób zmieniających ścieżkę zawodową.",
   },
   ua: {
-    brandTagline: "Доступна робота без бар'єрів",
+    brandTagline: "Кар'єрний коучинг з конкретними результатами",
     navHome: "Головна",
     navArticles: "Статті",
-    navJobs: "Вакансії",
     backToArticles: "Назад до статей",
-    footerNote: "Будуємо доступну платформу для працевлаштування.",
+    footerNote: "Кар'єрний коучинг для людей, що змінюють кар'єру.",
   },
 };
 
@@ -1232,7 +1229,6 @@ export default function ArticlePage() {
             <Link href="/" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navHome}</Link>
             <Link href="/offer" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
             <Link href="/articles" className="px-4 py-2 text-white bg-[#2D6A4F] rounded-lg">{t.navArticles}</Link>
-            <Link href="/jobs" className="px-4 py-2 text-[#1B4332] hover:bg-[#E7E5E4] rounded-lg transition-colors">{t.navJobs}</Link>
           </nav>
           <div className="flex items-center bg-[#E7E5E4] rounded-lg p-1 text-sm">
             <button onClick={() => setLang("en")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#1B4332] shadow-sm" : "text-[#2D6A4F] hover:text-[#1B4332]"}`}>EN</button>

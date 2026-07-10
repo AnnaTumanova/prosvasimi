@@ -15,8 +15,8 @@ const translations: Record<Lang, Record<string, string>> = {
     signedIn: "Signed in",
     title: "Welcome to your account",
     signedInAs: "You are signed in as",
-    completeProfile: "Complete candidate profile",
-    browseJobs: "Browse jobs",
+    completeProfile: "Complete your client profile",
+    browseJobs: "See what we offer",
   },
   pl: {
     logout: "Wyloguj się",
@@ -24,8 +24,8 @@ const translations: Record<Lang, Record<string, string>> = {
     signedIn: "Zalogowano",
     title: "Witaj na swoim koncie",
     signedInAs: "Jesteś zalogowany jako",
-    completeProfile: "Uzupełnij profil kandydata",
-    browseJobs: "Przeglądaj oferty",
+    completeProfile: "Uzupełnij profil klienta",
+    browseJobs: "Zobacz co oferujemy",
   },
   ua: {
     logout: "Вийти",
@@ -33,8 +33,8 @@ const translations: Record<Lang, Record<string, string>> = {
     signedIn: "Ви увійшли",
     title: "Ласкаво просимо до вашого акаунта",
     signedInAs: "Ви увійшли як",
-    completeProfile: "Заповнити профіль кандидата",
-    browseJobs: "Переглянути вакансії",
+    completeProfile: "Заповнити профіль клієнта",
+    browseJobs: "Переглянути наші пропозиції",
   },
 };
 
@@ -105,7 +105,7 @@ export default function AccountPage() {
               <p className="mt-4 text-[#2D6A4F]">{t.signedInAs} {user.email}.</p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <Link href="/user" className="inline-flex justify-center px-6 py-4 rounded-xl bg-[#2D6A4F] text-white font-medium hover:bg-[#1B4332] transition-colors">{t.completeProfile}</Link>
-                <Link href="/jobs" className="inline-flex justify-center px-6 py-4 rounded-xl border-2 border-[#E7E5E4] text-[#1B4332] font-medium hover:border-[#2D6A4F] transition-colors">{t.browseJobs}</Link>
+                <Link href="/offer" className="inline-flex justify-center px-6 py-4 rounded-xl border-2 border-[#E7E5E4] text-[#1B4332] font-medium hover:border-[#2D6A4F] transition-colors">{t.browseJobs}</Link>
               </div>
             </>
           ) : null}

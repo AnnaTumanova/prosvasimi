@@ -8,7 +8,7 @@ type Lang = "en" | "pl" | "ua";
 
 const translations = {
   en: {
-    nav: { home: "Home", jobs: "Jobs", articles: "Articles", offer: "For Employers", quiz: "Quiz" },
+    nav: { home: "Home", articles: "Articles", offer: "For Employers", quiz: "Quiz" },
     title: "Inclusion Quiz & Calculator",
     subtitle: "Discover how inclusive your company is and calculate the potential impact",
     quizTitle: "How Inclusive Is Your Company?",
@@ -59,7 +59,7 @@ const translations = {
     questions: [
       "Do you have an equality and inclusion policy?",
       "Do managers receive DEI (Diversity, Equity, Inclusion) training?",
-      "Are job postings accessible to people with disabilities?",
+      "Are job postings accessible and free of bias for all candidates?",
       "Is your team diverse (gender, age, experience)?",
       "Is your recruitment process free from bias?",
       "Is your office or product accessible to everyone?",
@@ -70,7 +70,7 @@ const translations = {
     ]
   },
   pl: {
-    nav: { home: "Strona główna", jobs: "Oferty pracy", articles: "Artykuły", offer: "Dla pracodawców", quiz: "Quiz" },
+    nav: { home: "Strona główna", articles: "Artykuły", offer: "Dla pracodawców", quiz: "Quiz" },
     title: "Quiz i Kalkulator Inkluzywności",
     subtitle: "Sprawdź, jak inkluzywna jest Twoja firma i oblicz potencjalny wpływ",
     quizTitle: "Jak bardzo inkluzywna jest Twoja firma?",
@@ -121,7 +121,7 @@ const translations = {
     questions: [
       "Czy posiadasz politykę równości i inkluzywności?",
       "Czy menedżerowie przechodzą szkolenia z zakresu DEI?",
-      "Czy oferty pracy są dostępne dla osób z niepełnosprawnościami?",
+      "Czy oferty pracy są dostępne i wolne od uprzedzeń dla wszystkich kandydatów?",
       "Czy Twój zespół jest różnorodny (płeć, wiek, doświadczenie)?",
       "Czy proces rekrutacji jest wolny od uprzedzeń?",
       "Czy biuro lub produkt są dostępne dla wszystkich?",
@@ -132,7 +132,7 @@ const translations = {
     ]
   },
   ua: {
-    nav: { home: "Головна", jobs: "Вакансії", articles: "Статті", offer: "Для роботодавців", quiz: "Тест" },
+    nav: { home: "Головна", articles: "Статті", offer: "Для роботодавців", quiz: "Тест" },
     title: "Тест та Калькулятор Інклюзивності",
     subtitle: "Дізнайтеся, наскільки інклюзивна ваша компанія, та розрахуйте потенційний вплив",
     quizTitle: "Наскільки інклюзивна ваша компанія?",
@@ -183,7 +183,7 @@ const translations = {
     questions: [
       "Чи маєте ви політику рівності та інклюзивності?",
       "Чи проходять менеджери навчання з DEI (Різноманітність, Рівність, Інклюзія)?",
-      "Чи доступні вакансії для людей з інвалідністю?",
+      "Чи вакансії доступні та вільні від упереджень для всіх кандидатів?",
       "Чи різноманітна ваша команда (стать, вік, досвід)?",
       "Чи вільний ваш процес рекрутингу від упереджень?",
       "Чи доступний ваш офіс або продукт для всіх?",
@@ -295,7 +295,6 @@ export default function QuizPage() {
             </Link>
             <nav className="hidden md:flex items-center gap-8">
               <Link href="/" className="text-sm font-medium text-[#57534E] hover:text-[#1B4332] transition-colors">{t.nav.home}</Link>
-              <Link href="/jobs" className="text-sm font-medium text-[#57534E] hover:text-[#1B4332] transition-colors">{t.nav.jobs}</Link>
               <Link href="/articles" className="text-sm font-medium text-[#57534E] hover:text-[#1B4332] transition-colors">{t.nav.articles}</Link>
               <Link href="/offer" className="text-sm font-medium text-[#57534E] hover:text-[#1B4332] transition-colors">{t.nav.offer}</Link>
               <Link href="/quiz" className="text-sm font-medium text-[#1B4332] border-b-2 border-[#1B4332] pb-1">{t.nav.quiz}</Link>
