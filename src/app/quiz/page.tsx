@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
 
 const ICON_PATHS = {
   clipboardList: "M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M9 4.5h6a2.25 2.25 0 012.25 2.25v.75M9 4.5v.75A2.25 2.25 0 006.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25M6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z",
@@ -306,37 +305,9 @@ export default function QuizPage() {
 
   return (
     <div className="min-h-screen bg-[#FFFFFF] flex flex-col">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#D9D9DC]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <Image src="/images/logo.png" alt="Prosvasimi" width={40} height={40} className="rounded-lg" />
-              <span className="text-xl font-bold text-[#0B2818]">Prosvasimi</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-8">
-              <Link href="/" className="text-sm font-medium text-[#3F3C3A] hover:text-[#0B2818] transition-colors">{t.nav.home}</Link>
-              <Link href="/articles" className="text-sm font-medium text-[#3F3C3A] hover:text-[#0B2818] transition-colors">{t.nav.articles}</Link>
-              <Link href="/offer" className="text-sm font-medium text-[#3F3C3A] hover:text-[#0B2818] transition-colors">{t.nav.offer}</Link>
-              <Link href="/quiz" className="text-sm font-medium text-[#0B2818] border-b-2 border-[#0B2818] pb-1">{t.nav.quiz}</Link>
-              <Link href="/register" className="text-sm font-medium text-[#3F3C3A] hover:text-[#0B2818] transition-colors">{t.nav.register}</Link>
-            </nav>
-            <div className="flex items-center gap-2">
-              {(["en", "pl", "ua"] as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={`px-2 py-1 text-xs font-medium rounded transition-colors ${lang === l ? "bg-[#0B2818] text-white" : "text-[#3F3C3A] hover:bg-[#D9D9DC]"}`}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader lang={lang} setLang={setLang} />
 
-      <main className="flex-1 py-12">
+      <main id="main-content" className="flex-1 py-12">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           {/* Title */}
           <div className="text-center mb-12">

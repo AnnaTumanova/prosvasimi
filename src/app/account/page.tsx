@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
 import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import SiteHeader from "@/components/SiteHeader";
 
 const translations: Record<Lang, Record<string, string>> = {
   en: {
@@ -61,40 +61,11 @@ export default function AccountPage() {
     loadUser();
   }, [router]);
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push("/login");
-  };
-
   return (
     <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
-      <header className="bg-white border-b border-[#D9D9DC]">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image src="/images/logo.png" alt="Prosvasimi" width={36} height={36} />
-            <span className="font-semibold text-lg tracking-tight">Prosvasimi</span>
-          </Link>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
-              {(["en", "pl", "ua"] as const).map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => setLang(option)}
-                  className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase transition-colors ${
-                    lang === option ? "bg-[#0F7A52] text-white" : "text-[#0F7A52] hover:bg-[#D9D9DC]"
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-            <button onClick={handleLogout} className="px-4 py-2 rounded-lg text-sm font-medium text-[#0F7A52] hover:bg-[#D9D9DC] transition-colors">{t.logout}</button>
-          </div>
-        </div>
-      </header>
+      <SiteHeader lang={lang} setLang={setLang} />
 
-      <main className="mx-auto max-w-3xl px-6 py-16">
+      <main id="main-content" className="mx-auto max-w-3xl px-6 py-16">
         <div className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC] shadow-sm">
           {isLoading ? (
             <p className="text-[#0F7A52]">{t.loading}</p>

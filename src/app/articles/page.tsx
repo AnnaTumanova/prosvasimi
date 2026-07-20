@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
 
 interface CMSArticle {
   id: string;
@@ -489,42 +489,9 @@ export default function ArticlesPage() {
 
   return (
     <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
-      <header className="bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Prosvasimi home">
-            <Image 
-              src="/images/logo.png" 
-              alt="Prosvasimi" 
-              width={36} 
-              height={36}
-            />
-            <div className="leading-tight">
-              <div className="font-semibold tracking-tight text-lg text-[#0B2818]">Prosvasimi</div>
-              <div className="text-xs text-[#0F7A52]">{t.brandTagline}</div>
-            </div>
-          </Link>
-          <nav className="hidden md:flex items-center gap-2 text-sm">
-            <Link href="/" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navHome}</Link>
-            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
-            <Link href="/articles" className="px-4 py-2 text-white bg-[#0F7A52] rounded-lg">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navQuiz}</Link>
-            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navRegister}</Link>
-          </nav>
-          <div className="hidden sm:flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm" role="group" aria-label="Language switch">
-            <button type="button" onClick={() => setLang("en")} aria-pressed={lang === "en"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>
-              EN
-            </button>
-            <button type="button" onClick={() => setLang("pl")} aria-pressed={lang === "pl"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>
-              PL
-            </button>
-            <button type="button" onClick={() => setLang("ua")} aria-pressed={lang === "ua"} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>
-              UA
-            </button>
-          </div>
-        </div>
-      </header>
+      <SiteHeader lang={lang} setLang={setLang} />
 
-      <main className="py-12 sm:py-16">
+      <main id="main-content" className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-5xl sm:text-6xl font-black tracking-tighter text-[#0B2818]">{t.pageTitle}</h1>

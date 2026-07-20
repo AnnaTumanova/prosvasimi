@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
 import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import SiteHeader from "@/components/SiteHeader";
 
 const ICON_PATHS = {
   check: "M4.5 12.75l6 6 9-13.5",
@@ -182,47 +182,9 @@ export default function UserPage() {
 
   return (
     <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Image
-              src="/images/logo.png"
-              alt="Prosvasimi"
-              width={36}
-              height={36}
-              className="transition-transform group-hover:scale-105"
-            />
-            <span className="font-semibold text-lg tracking-tight text-[#0B2818]">Prosvasimi</span>
-          </Link>
+      <SiteHeader lang={lang} setLang={setLang} />
 
-          <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navOffer}</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navQuiz}</Link>
-            {user ? (
-              <Link href="/account" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.account}</Link>
-            ) : (
-              <Link href="/login" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.login}</Link>
-            )}
-            <div className="flex items-center gap-1">
-              {(["en", "pl", "ua"] as const).map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => setLang(option)}
-                  className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase transition-colors ${
-                    lang === option ? "bg-[#0F7A52] text-white" : "text-[#0F7A52] hover:bg-[#D9D9DC]"
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <main>
+      <main id="main-content">
         <section className="bg-white border-b border-[#D9D9DC]">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
             <div className="max-w-3xl">

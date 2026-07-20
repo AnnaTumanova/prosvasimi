@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
 
 const ICON_PATHS = {
   search: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z",
@@ -355,61 +356,7 @@ export default function Page() {
 
   return (
     <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
-      {/* Skip to main content link for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0F7A52] focus:text-white focus:rounded-lg"
-      >
-        Skip to main content
-      </a>
-
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group" aria-label="Prosvasimi home">
-            <Image
-              src="/images/logo.png"
-              alt="Prosvasimi logo"
-              width={36}
-              height={36}
-              className="transition-transform group-hover:scale-105"
-            />
-            <span className="font-semibold text-lg tracking-tight text-[#0B2818]">Prosvasimi</span>
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-2 text-sm font-medium" aria-label="Main navigation">
-            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">{t.navOffer}</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">{t.navQuiz}</Link>
-            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2">Register</Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm" role="group" aria-label="Language selection">
-              {(["en", "pl", "ua"] as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  aria-pressed={lang === l}
-                  className={`px-3 py-1.5 rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2 ${
-                    lang === l
-                      ? "bg-white text-[#0B2818] shadow-sm"
-                      : "text-[#0F7A52] hover:text-[#0B2818]"
-                  }`}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
-            <a 
-              href="#waitlist" 
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0F7A52] text-white text-sm font-bold hover:bg-[#0B2818] transition-colors"
-            >
-              {t.ctaEarly}
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader lang={lang} setLang={setLang} />
 
       <main id="main-content">
         {/* Hero Section */}

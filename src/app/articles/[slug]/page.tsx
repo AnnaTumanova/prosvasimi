@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useParams } from "next/navigation";
+import SiteHeader from "@/components/SiteHeader";
 
 type Lang = "en" | "pl" | "ua";
 
@@ -1214,35 +1214,9 @@ export default function ArticlePage() {
 
   return (
     <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
-      <header className="border-b border-[#D9D9DC] bg-white/95 backdrop-blur-md sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image 
-              src="/images/logo.png" 
-              alt="Prosvasimi" 
-              width={36} 
-              height={36}
-            />
-            <div className="leading-tight">
-              <div className="font-semibold tracking-tight text-lg text-[#0B2818]">Prosvasimi</div>
-              <div className="text-xs text-[#0F7A52]">{t.brandTagline}</div>
-            </div>
-          </Link>
-          <nav className="hidden md:flex items-center gap-2 text-sm">
-            <Link href="/" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navHome}</Link>
-            <Link href="/offer" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{lang === "en" ? "What We Offer" : lang === "ua" ? "Що ми пропонуємо" : "Co oferujemy"}</Link>
-            <Link href="/articles" className="px-4 py-2 text-white bg-[#0F7A52] rounded-lg">{t.navArticles}</Link>
-            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navRegister}</Link>
-          </nav>
-          <div className="flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm">
-            <button onClick={() => setLang("en")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "en" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>EN</button>
-            <button onClick={() => setLang("pl")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "pl" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>PL</button>
-            <button onClick={() => setLang("ua")} className={`px-3 py-1.5 rounded-md transition-all ${lang === "ua" ? "bg-white text-[#0B2818] shadow-sm" : "text-[#0F7A52] hover:text-[#0B2818]"}`}>UA</button>
-          </div>
-        </div>
-      </header>
+      <SiteHeader lang={lang} setLang={setLang} />
 
-      <main className="py-12 sm:py-16">
+      <main id="main-content" className="py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <Link href="/articles" className="inline-flex items-center gap-1.5 text-sm text-[#0F7A52] hover:text-[#0B2818] mb-8 group">
             <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
 
 type Lang = "en" | "pl" | "ua";
 
@@ -324,48 +325,9 @@ export default function OfferPage() {
 
   return (
     <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D9D9DC]">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Image 
-              src="/images/logo.png" 
-              alt="Prosvasimi" 
-              width={36} 
-              height={36}
-              className="transition-transform group-hover:scale-105"
-            />
-            <span className="font-semibold text-lg tracking-tight text-[#0B2818]">Prosvasimi</span>
-          </Link>
+      <SiteHeader lang={lang} setLang={setLang} />
 
-          <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-            <Link href="/offer" className="px-4 py-2 text-white bg-[#0F7A52] rounded-lg hover:bg-[#0B2818] transition-colors">{t.navOffer}</Link>
-            <Link href="/articles" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navArticles}</Link>
-            <Link href="/quiz" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navQuiz}</Link>
-            <Link href="/register" className="px-4 py-2 text-[#0B2818] hover:bg-[#D9D9DC] rounded-lg transition-colors">{t.navRegister}</Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center bg-[#D9D9DC] rounded-lg p-1 text-sm" role="group">
-              {(["en", "pl", "ua"] as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
-                    lang === l
-                      ? "bg-white text-[#0B2818] shadow-sm"
-                      : "text-[#0F7A52] hover:text-[#0B2818]"
-                  }`}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
         <section className="bg-[#0B2818] relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
