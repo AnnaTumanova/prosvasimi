@@ -11,6 +11,7 @@ import type { Lang } from "@/lib/language";
 type NavLabels = {
   home: string;
   offer: string;
+  plan: string;
   articles: string;
   quiz: string;
   account: string;
@@ -24,6 +25,7 @@ const labels: Record<Lang, NavLabels> = {
   en: {
     home: "Home",
     offer: "What We Offer",
+    plan: "Development Plan",
     articles: "Articles",
     quiz: "Quiz",
     account: "Account",
@@ -35,6 +37,7 @@ const labels: Record<Lang, NavLabels> = {
   pl: {
     home: "Strona główna",
     offer: "Co oferujemy",
+    plan: "Plan rozwoju",
     articles: "Artykuły",
     quiz: "Quiz",
     account: "Konto",
@@ -46,6 +49,7 @@ const labels: Record<Lang, NavLabels> = {
   ua: {
     home: "Головна",
     offer: "Що ми пропонуємо",
+    plan: "План розвитку",
     articles: "Статті",
     quiz: "Тест",
     account: "Акаунт",
@@ -59,6 +63,7 @@ const labels: Record<Lang, NavLabels> = {
 const NAV_ITEMS: { href: string; key: keyof NavLabels }[] = [
   { href: "/", key: "home" },
   { href: "/offer", key: "offer" },
+  { href: "/development-plan", key: "plan" },
   { href: "/articles", key: "articles" },
   { href: "/quiz", key: "quiz" },
 ];
