@@ -58,7 +58,7 @@ const translations = {
     navOffer: "What We Offer", navArticles: "Articles", navQuiz: "Quiz", account: "Account", login: "Log in", register: "Register",
     authRequiredError: "Please create an account or log in before submitting your profile.", emailError: "Please enter a valid email address.", submitError: "Could not submit your profile. Please try again later.", pictureTypeError: "Please upload a JPG, PNG, or WebP image.", pictureSizeError: "Photo must be under 3 MB.",
     badge: "Client intake", title: "Tell us about yourself so we can prepare for your first session.", subtitle: "Share your background, work preferences, and career goals, and optionally upload your CV so we can tailor your coaching to you.", authTitle: "Create an account before submitting your profile.", authSubtitle: "This lets you log in later with your email and password.",
-    successTitle: "Your profile was submitted", successText: "Thank you. We will review your information and reach out to schedule your first session.", anotherProfile: "Register another profile",
+    successTitle: "Your profile was saved", successText: "Thank you. We will review your information and reach out to schedule your first session. You can update your profile anytime.", anotherProfile: "Edit profile", saveChanges: "Save changes", currentCv: "Current CV:", loadingProfile: "Loading your profile...",
     details: "Your details", fullName: "Full name", email: "Email", phone: "Phone", location: "Location", locationPlaceholder: "Warsaw / Remote",
     pictureUpload: "Profile photo", uploadPicture: "Upload your photo", pictureHint: "JPG, PNG or WebP up to 3 MB. Optional.", changePhoto: "Change photo",
     experienceQuestions: "Experience questions", experienceLevel: "Experience level", selectLevel: "Select level", entry: "Entry level", junior: "Junior", mid: "Mid-level", senior: "Senior", careerChange: "Career change",
@@ -71,7 +71,7 @@ const translations = {
     navOffer: "Co oferujemy", navArticles: "Artykuły", navQuiz: "Quiz", account: "Konto", login: "Zaloguj się", register: "Zarejestruj się",
     authRequiredError: "Utwórz konto lub zaloguj się przed wysłaniem profilu.", emailError: "Podaj poprawny adres e-mail.", submitError: "Nie udało się wysłać profilu. Spróbuj ponownie później.", pictureTypeError: "Prześlij zdjęcie w formacie JPG, PNG lub WebP.", pictureSizeError: "Zdjęcie musi mieć mniej niż 3 MB.",
     badge: "Wprowadzenie klienta", title: "Opowiedz nam o sobie, byśmy mogli przygotować się na Twoją pierwszą sesję.", subtitle: "Podziel się swoim doświadczeniem, preferencjami pracy i celami zawodowymi, i opcjonalnie prześlij CV, abyśmy mogli dopasować coaching do Ciebie.", authTitle: "Utwórz konto przed wysłaniem profilu.", authSubtitle: "Dzięki temu później zalogujesz się swoim e-mailem i hasłem.",
-    successTitle: "Twój profil został wysłany", successText: "Dziękujemy. Przejrzymy Twoje informacje i skontaktujemy się, aby umówić Twoją pierwszą sesję.", anotherProfile: "Zarejestruj kolejny profil",
+    successTitle: "Twój profil został zapisany", successText: "Dziękujemy. Przejrzymy Twoje informacje i skontaktujemy się, aby umówić Twoją pierwszą sesję. Profil możesz zaktualizować w każdej chwili.", anotherProfile: "Edytuj profil", saveChanges: "Zapisz zmiany", currentCv: "Obecne CV:", loadingProfile: "Ładowanie profilu...",
     details: "Twoje dane", fullName: "Imię i nazwisko", email: "E-mail", phone: "Telefon", location: "Lokalizacja", locationPlaceholder: "Warszawa / Zdalnie",
     pictureUpload: "Zdjęcie profilowe", uploadPicture: "Prześlij zdjęcie", pictureHint: "JPG, PNG lub WebP do 3 MB. Opcjonalne.", changePhoto: "Zmień zdjęcie",
     experienceQuestions: "Pytania o doświadczenie", experienceLevel: "Poziom doświadczenia", selectLevel: "Wybierz poziom", entry: "Początkujący", junior: "Junior", mid: "Średniozaawansowany", senior: "Senior", careerChange: "Zmiana ścieżki kariery",
@@ -84,7 +84,7 @@ const translations = {
     navOffer: "Що ми пропонуємо", navArticles: "Статті", navQuiz: "Тест", account: "Акаунт", login: "Увійти", register: "Зареєструватися",
     authRequiredError: "Будь ласка, створіть акаунт або увійдіть перед надсиланням профілю.", emailError: "Будь ласка, введіть дійсну адресу e-mail.", submitError: "Не вдалося надіслати профіль. Спробуйте пізніше.", pictureTypeError: "Будь ласка, завантажте фото у форматі JPG, PNG або WebP.", pictureSizeError: "Фото має бути менше 3 МБ.",
     badge: "Знайомство з клієнтом", title: "Розкажіть про себе, щоб ми могли підготуватися до вашої першої сесії.", subtitle: "Поділіться досвідом, робочими вподобаннями та кар'єрними цілями і за бажанням завантажте CV, щоб ми могли підлаштувати коучинг під вас.", authTitle: "Створіть акаунт перед надсиланням профілю.", authSubtitle: "Так ви зможете пізніше увійти за допомогою e-mail і пароля.",
-    successTitle: "Ваш профіль надіслано", successText: "Дякуємо. Ми переглянемо вашу інформацію і зв'яжемося з вами, щоб призначити першу сесію.", anotherProfile: "Зареєструвати інший профіль",
+    successTitle: "Ваш профіль збережено", successText: "Дякуємо. Ми переглянемо вашу інформацію і зв'яжемося з вами, щоб призначити першу сесію. Ви можете оновити профіль будь-коли.", anotherProfile: "Редагувати профіль", saveChanges: "Зберегти зміни", currentCv: "Поточне CV:", loadingProfile: "Завантаження профілю...",
     details: "Ваші дані", fullName: "Повне ім’я", email: "E-mail", phone: "Телефон", location: "Локація", locationPlaceholder: "Варшава / Віддалено",
     pictureUpload: "Фото профілю", uploadPicture: "Завантажте фото", pictureHint: "JPG, PNG або WebP до 3 МБ. Необов'язково.", changePhoto: "Змінити фото",
     experienceQuestions: "Питання про досвід", experienceLevel: "Рівень досвіду", selectLevel: "Оберіть рівень", entry: "Початковий рівень", junior: "Junior", mid: "Середній рівень", senior: "Senior", careerChange: "Зміна кар’єри",
@@ -104,20 +104,51 @@ export default function UserPage() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
   const [user, setUser] = useState<User | null>(null);
+  const [hasProfile, setHasProfile] = useState(false);
+  const [existingCvName, setExistingCvName] = useState<string | null>(null);
+  const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const t = translations[lang];
 
   useEffect(() => {
     setLang(detectBrowserLanguage());
 
-    const loadUser = async () => {
+    const loadProfile = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
-      if (data.user?.email) {
-        updateField("email", data.user.email);
+
+      if (!data.user) {
+        setIsLoadingProfile(false);
+        return;
+      }
+
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        const res = await fetch("/api/user-register", {
+          headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+        });
+
+        if (res.ok) {
+          const json = await res.json();
+          if (json.profile) {
+            const { cvFileName, ...saved } = json.profile as UserProfile & { cvFileName: string | null };
+            setProfile((current) => ({
+              ...current,
+              ...saved,
+              email: saved.email || data.user?.email || "",
+            }));
+            setExistingCvName(cvFileName ?? null);
+            setHasProfile(true);
+          } else if (data.user.email) {
+            setProfile((current) => ({ ...current, email: data.user?.email ?? "" }));
+          }
+        }
+      } finally {
+        setIsLoadingProfile(false);
       }
     };
 
-    loadUser();
+    loadProfile();
   }, []);
 
   const updateField = (field: keyof UserProfile, value: string) => {
@@ -170,7 +201,8 @@ export default function UserPage() {
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
       setStatus("success");
-      setProfile(initialProfile);
+      setHasProfile(true);
+      if (cv) setExistingCvName(cv.name);
       setCv(null);
       setPicture(null);
       setPicturePreview(null);
@@ -234,6 +266,8 @@ export default function UserPage() {
                     </div>
                   </div>
                 </div>
+              ) : isLoadingProfile ? (
+                <p className="text-[#0F7A52]">{t.loadingProfile}</p>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div>
@@ -359,13 +393,16 @@ export default function UserPage() {
                         className="sr-only"
                       />
                       {cv && <span className="mt-4 text-sm font-medium text-[#0B2818]">{t.selected} {cv.name}</span>}
+                      {!cv && existingCvName && (
+                        <span className="mt-4 text-sm font-medium text-[#0B2818]">{t.currentCv} {existingCvName}</span>
+                      )}
                     </label>
                   </div>
 
                   {error && <p className="text-sm text-[#DC2626]">{error}</p>}
 
                   <button type="submit" disabled={status === "submitting"} className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#0F7A52] text-white font-bold hover:bg-[#0B2818] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
-                    {status === "submitting" ? t.submitting : t.submit}
+                    {status === "submitting" ? t.submitting : hasProfile ? t.saveChanges : t.submit}
                   </button>
                 </form>
               )}

@@ -20,6 +20,17 @@ create table if not exists public.candidate_profiles (
   ip text not null default ''
 );
 
+-- Ensure a single profile per user so profiles can be updated in place (upsert).
+do $$
+begin
+  if not exists (
+    select 1 from pg_constraint where conname = 'candidate_profiles_user_id_key'
+  ) then
+    alter table public.candidate_profiles
+      add constraint candidate_profiles_user_id_key unique (user_id);
+  end if;
+end $$;
+
 alter table public.candidate_profiles enable row level security;
 
 create policy "Service role can manage candidate profiles"
