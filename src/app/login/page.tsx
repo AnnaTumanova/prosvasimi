@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 import { detectBrowserLanguage, type Lang } from "@/lib/language";
 import SiteHeader from "@/components/SiteHeader";
 
@@ -75,7 +75,8 @@ export default function LoginPage() {
     setIsSubmitting(false);
 
     if (signInError) {
-      setError(t.signInError);
+      console.error("[login] Supabase signIn error:", signInError);
+      setError(`${t.signInError} (${signInError.message})`);
       return;
     }
 
@@ -90,6 +91,12 @@ export default function LoginPage() {
         <div className="bg-white rounded-2xl p-8 border-2 border-[#D9D9DC] shadow-sm">
           <h1 className="text-4xl font-black tracking-tighter">{t.title}</h1>
           <p className="mt-3 text-[#0F7A52]">{t.subtitle}</p>
+
+          {!isSupabaseConfigured && (
+            <div className="mt-4 rounded-xl border-2 border-[#DC2626] bg-red-50 p-4 text-sm text-[#DC2626]">
+              <strong>Supabase not configured.</strong> Add <code>NEXT_PUBLIC_SUPABASE_URL</code> and <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to <code>.env.local</code>, then restart the dev server.
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <label className="block">
