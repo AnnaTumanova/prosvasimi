@@ -27,12 +27,11 @@ function Icon({ path, className = "w-6 h-6" }: { path: string; className?: strin
 
 const translations = {
   en: {
-    navOffer: "What We Offer", navArticles: "Articles", navQuiz: "Quiz", navRegister: "Register",
+    navOffer: "What We Offer", navArticles: "Articles", navRegister: "Register",
     badge: "Product",
     title: "Your Self-Development Plan",
     subtitle: "A personalized roadmap built on your skills that shows exactly how to upgrade to your next career step.",
     ctaPrimary: "Build my plan",
-    ctaSecondary: "Take the skills quiz",
     introTitle: "What it is",
     introText: "The Self-Development Plan turns a vague ambition into a clear, step-by-step path. We map the skills you already have, compare them to the role you want next, and give you an ordered set of actions to close the gap — with milestones, resources, and check-ins so progress never stalls.",
     howTitle: "How it works",
@@ -62,12 +61,11 @@ const translations = {
     footerHome: "Home",
   },
   pl: {
-    navOffer: "Co oferujemy", navArticles: "Artykuły", navQuiz: "Quiz", navRegister: "Zarejestruj się",
+    navOffer: "Co oferujemy", navArticles: "Artykuły", navRegister: "Zarejestruj się",
     badge: "Produkt",
     title: "Twój plan rozwoju",
     subtitle: "Spersonalizowana mapa oparta na Twoich umiejętnościach, która pokazuje dokładnie, jak awansować na kolejny etap kariery.",
     ctaPrimary: "Stwórz mój plan",
-    ctaSecondary: "Rozwiąż quiz umiejętności",
     introTitle: "Co to jest",
     introText: "Plan rozwoju zamienia niejasne ambicje w klarowną ścieżkę krok po kroku. Mapujemy umiejętności, które już masz, porównujemy je z rolą, której pragniesz, i dajemy uporządkowany zestaw działań, by wypełnić lukę — z kamieniami milowymi, zasobami i przeglądami, aby postęp nigdy nie ustawał.",
     howTitle: "Jak to działa",
@@ -97,12 +95,11 @@ const translations = {
     footerHome: "Strona główna",
   },
   ua: {
-    navOffer: "Що ми пропонуємо", navArticles: "Статті", navQuiz: "Тест", navRegister: "Зареєструватися",
+    navOffer: "Що ми пропонуємо", navArticles: "Статті", navRegister: "Зареєструватися",
     badge: "Продукт",
     title: "Ваш план розвитку",
     subtitle: "Персональна карта, побудована на ваших навичках, яка показує, як саме перейти на наступний кар'єрний щабель.",
     ctaPrimary: "Створити план",
-    ctaSecondary: "Пройти тест навичок",
     introTitle: "Що це",
     introText: "План розвитку перетворює нечітку амбіцію на зрозумілий покроковий шлях. Ми складаємо карту навичок, які ви вже маєте, порівнюємо їх із бажаною роллю та даємо впорядкований набір дій, щоб закрити прогалину — з віхами, ресурсами та переглядами, щоб прогрес ніколи не зупинявся.",
     howTitle: "Як це працює",
@@ -186,12 +183,6 @@ export default function DevelopmentPlanPage() {
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                </Link>
-                <Link
-                  href="/quiz"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-white/25 text-white font-bold hover:border-white transition-all"
-                >
-                  {t.ctaSecondary}
                 </Link>
               </div>
             </div>
@@ -296,7 +287,6 @@ export default function DevelopmentPlanPage() {
               <Link href="/" className="hover:text-[#0B2818] transition-colors">{t.footerHome}</Link>
               <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
               <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
-              <Link href="/quiz" className="hover:text-[#0B2818] transition-colors">{t.navQuiz}</Link>
               <Link href="/register" className="hover:text-[#0B2818] transition-colors">{t.navRegister}</Link>
             </nav>
             <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>

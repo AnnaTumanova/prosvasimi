@@ -182,7 +182,6 @@ const translations = {
     comingSoon: "Coming Soon",
     backHome: "Back to Home",
     navArticles: "Articles",
-    navQuiz: "Quiz",
     navOffer: "What We Offer",
     navRegister: "Register",
     modalTitle: "Register Your Interest",
@@ -210,7 +209,6 @@ const translations = {
     comingSoon: "Wkrótce",
     backHome: "Powrót do strony głównej",
     navArticles: "Artykuły",
-    navQuiz: "Quiz",
     navOffer: "Co oferujemy",
     navRegister: "Zarejestruj się",
     modalTitle: "Zgłoś zainteresowanie",
@@ -238,7 +236,6 @@ const translations = {
     comingSoon: "Незабаром",
     backHome: "Повернутися на головну",
     navArticles: "Статті",
-    navQuiz: "Тест",
     navOffer: "Що ми пропонуємо",
     navRegister: "Зареєструватися",
     modalTitle: "Зареєструвати інтерес",
@@ -595,7 +592,6 @@ export default function OfferPage() {
               <Link href="/" className="hover:text-[#0B2818] transition-colors">Home</Link>
               <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
               <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
-              <Link href="/quiz" className="hover:text-[#0B2818] transition-colors">{t.navQuiz}</Link>
               <Link href="/register" className="hover:text-[#0B2818] transition-colors">{t.navRegister}</Link>
             </nav>
             <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>

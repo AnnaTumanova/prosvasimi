@@ -99,7 +99,6 @@ export default function Page() {
       navOffer: "What We Offer",
       navAiPlatform: "AI Platform",
       navArticles: "Articles",
-      navQuiz: "Quiz",
       ctaEarly: "Get Early Access",
       heroTagline: "Career coaching that gets specific",
       heroTitle: "Find your next career, with confidence.",
@@ -180,7 +179,6 @@ export default function Page() {
       navOffer: "Co oferujemy",
       navAiPlatform: "Platforma AI",
       navArticles: "Artykuły",
-      navQuiz: "Quiz",
       ctaEarly: "Wczesny dostęp",
       heroTagline: "Coaching kariery, który daje konkrety",
       heroTitle: "Znajdź swoją następną karierę, z pewnością siebie.",
@@ -261,7 +259,6 @@ export default function Page() {
       navOffer: "Що ми пропонуємо",
       navAiPlatform: "AI-платформа",
       navArticles: "Статті",
-      navQuiz: "Тест",
       ctaEarly: "Ранній доступ",
       heroTagline: "Кар'єрний коучинг з конкретними результатами",
       heroTitle: "Знайдіть свою наступну кар'єру впевнено.",
@@ -725,7 +722,6 @@ export default function Page() {
               <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
               <Link href="/ai-platform" className="hover:text-[#0B2818] transition-colors">{t.navAiPlatform}</Link>
               <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
-              <Link href="/quiz" className="hover:text-[#0B2818] transition-colors">{t.navQuiz}</Link>
               <Link href="/register" className="hover:text-[#0B2818] transition-colors">Register</Link>
             </nav>
             <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>

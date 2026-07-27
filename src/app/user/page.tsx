@@ -55,7 +55,7 @@ const initialProfile: UserProfile = {
 
 const translations = {
   en: {
-    navOffer: "What We Offer", navArticles: "Articles", navQuiz: "Quiz", account: "Account", login: "Log in", register: "Register",
+    navOffer: "What We Offer", navArticles: "Articles", account: "Account", login: "Log in", register: "Register",
     authRequiredError: "Please create an account or log in before submitting your profile.", emailError: "Please enter a valid email address.", submitError: "Could not submit your profile. Please try again later.", pictureTypeError: "Please upload a JPG, PNG, or WebP image.", pictureSizeError: "Photo must be under 3 MB.",
     badge: "Client intake", title: "Tell us about yourself so we can prepare for your first session.", subtitle: "Share your background, work preferences, and career goals, and optionally upload your CV so we can tailor your coaching to you.", authTitle: "Create an account before submitting your profile.", authSubtitle: "This lets you log in later with your email and password.",
     successTitle: "Your profile was saved", successText: "Thank you. We will review your information and reach out to schedule your first session. You can update your profile anytime.", anotherProfile: "Edit profile", saveChanges: "Save changes", currentCv: "Current CV:", loadingProfile: "Loading your profile...",
@@ -68,7 +68,7 @@ const translations = {
     nextTitle: "What happens next?", step1: "1. Profile review", step1Text: "We review your background and goals.", step2: "2. Tailoring", step2Text: "We tailor your coaching sessions to your goals and experience.", step3: "3. Contact", step3Text: "We reach out to schedule your first coaching session.",
   },
   pl: {
-    navOffer: "Co oferujemy", navArticles: "Artykuły", navQuiz: "Quiz", account: "Konto", login: "Zaloguj się", register: "Zarejestruj się",
+    navOffer: "Co oferujemy", navArticles: "Artykuły", account: "Konto", login: "Zaloguj się", register: "Zarejestruj się",
     authRequiredError: "Utwórz konto lub zaloguj się przed wysłaniem profilu.", emailError: "Podaj poprawny adres e-mail.", submitError: "Nie udało się wysłać profilu. Spróbuj ponownie później.", pictureTypeError: "Prześlij zdjęcie w formacie JPG, PNG lub WebP.", pictureSizeError: "Zdjęcie musi mieć mniej niż 3 MB.",
     badge: "Wprowadzenie klienta", title: "Opowiedz nam o sobie, byśmy mogli przygotować się na Twoją pierwszą sesję.", subtitle: "Podziel się swoim doświadczeniem, preferencjami pracy i celami zawodowymi, i opcjonalnie prześlij CV, abyśmy mogli dopasować coaching do Ciebie.", authTitle: "Utwórz konto przed wysłaniem profilu.", authSubtitle: "Dzięki temu później zalogujesz się swoim e-mailem i hasłem.",
     successTitle: "Twój profil został zapisany", successText: "Dziękujemy. Przejrzymy Twoje informacje i skontaktujemy się, aby umówić Twoją pierwszą sesję. Profil możesz zaktualizować w każdej chwili.", anotherProfile: "Edytuj profil", saveChanges: "Zapisz zmiany", currentCv: "Obecne CV:", loadingProfile: "Ładowanie profilu...",
@@ -81,7 +81,7 @@ const translations = {
     nextTitle: "Co dalej?", step1: "1. Przegląd profilu", step1Text: "Analizujemy Twoje doświadczenie i cele.", step2: "2. Dopasowanie", step2Text: "Dopasowujemy sesje coachingowe do Twoich celów i doświadczenia.", step3: "3. Kontakt", step3Text: "Skontaktujemy się, aby umówić Twoją pierwszą sesję coachingową.",
   },
   ua: {
-    navOffer: "Що ми пропонуємо", navArticles: "Статті", navQuiz: "Тест", account: "Акаунт", login: "Увійти", register: "Зареєструватися",
+    navOffer: "Що ми пропонуємо", navArticles: "Статті", account: "Акаунт", login: "Увійти", register: "Зареєструватися",
     authRequiredError: "Будь ласка, створіть акаунт або увійдіть перед надсиланням профілю.", emailError: "Будь ласка, введіть дійсну адресу e-mail.", submitError: "Не вдалося надіслати профіль. Спробуйте пізніше.", pictureTypeError: "Будь ласка, завантажте фото у форматі JPG, PNG або WebP.", pictureSizeError: "Фото має бути менше 3 МБ.",
     badge: "Знайомство з клієнтом", title: "Розкажіть про себе, щоб ми могли підготуватися до вашої першої сесії.", subtitle: "Поділіться досвідом, робочими вподобаннями та кар'єрними цілями і за бажанням завантажте CV, щоб ми могли підлаштувати коучинг під вас.", authTitle: "Створіть акаунт перед надсиланням профілю.", authSubtitle: "Так ви зможете пізніше увійти за допомогою e-mail і пароля.",
     successTitle: "Ваш профіль збережено", successText: "Дякуємо. Ми переглянемо вашу інформацію і зв'яжемося з вами, щоб призначити першу сесію. Ви можете оновити профіль будь-коли.", anotherProfile: "Редагувати профіль", saveChanges: "Зберегти зміни", currentCv: "Поточне CV:", loadingProfile: "Завантаження профілю...",

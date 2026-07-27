@@ -28,7 +28,7 @@ function Icon({ path, className = "w-6 h-6" }: { path: string; className?: strin
 
 const translations = {
   en: {
-    footerHome: "Home", navOffer: "What We Offer", navPlan: "Development Plan", navArticles: "Articles", navQuiz: "Quiz", navRegister: "Register",
+    footerHome: "Home", navOffer: "What We Offer", navPlan: "Development Plan", navArticles: "Articles", navRegister: "Register",
     badge: "In Development",
     title: "The AI Career Platform We're Building",
     subtitle: "An AI-powered platform that reads your CV and skills, shows you which career paths fit, and helps you close the gap — for individuals, and for the organizations that employ them.",
@@ -55,7 +55,7 @@ const translations = {
     finalCta: "Join the Waitlist",
   },
   pl: {
-    footerHome: "Strona główna", navOffer: "Co oferujemy", navPlan: "Plan rozwoju", navArticles: "Artykuły", navQuiz: "Quiz", navRegister: "Zarejestruj się",
+    footerHome: "Strona główna", navOffer: "Co oferujemy", navPlan: "Plan rozwoju", navArticles: "Artykuły", navRegister: "Zarejestruj się",
     badge: "W budowie",
     title: "Platforma AI dla kariery, którą budujemy",
     subtitle: "Platforma oparta na AI, która analizuje Twoje CV i umiejętności, pokazuje pasujące ścieżki kariery i pomaga zamknąć lukę — dla osób indywidualnych i dla organizacji, które je zatrudniają.",
@@ -82,7 +82,7 @@ const translations = {
     finalCta: "Dołącz do listy",
   },
   ua: {
-    footerHome: "Головна", navOffer: "Що ми пропонуємо", navPlan: "План розвитку", navArticles: "Статті", navQuiz: "Тест", navRegister: "Зареєструватися",
+    footerHome: "Головна", navOffer: "Що ми пропонуємо", navPlan: "План розвитку", navArticles: "Статті", navRegister: "Зареєструватися",
     badge: "У розробці",
     title: "AI-платформа для кар'єри, яку ми будуємо",
     subtitle: "Платформа на основі AI, яка аналізує ваше резюме та навички, показує, які кар'єрні шляхи підходять, і допомагає закрити прогалину — для окремих людей та для організацій, що їх наймають.",
@@ -274,7 +274,6 @@ export default function AiPlatformPage() {
               <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
               <Link href="/development-plan" className="hover:text-[#0B2818] transition-colors">{t.navPlan}</Link>
               <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
-              <Link href="/quiz" className="hover:text-[#0B2818] transition-colors">{t.navQuiz}</Link>
               <Link href="/register" className="hover:text-[#0B2818] transition-colors">{t.navRegister}</Link>
             </nav>
             <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>
