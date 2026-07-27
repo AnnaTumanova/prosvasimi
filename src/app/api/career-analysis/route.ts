@@ -157,12 +157,29 @@ export async function POST(req: Request) {
       const filePath = `${basePath}/${Date.now()}.${extension}`;
       const cvBuffer = await cv.arrayBuffer();
 
-      const { error: uploadError } = await supabase.storage
-        .from(CV_BUCKET)
-        .upload(filePath, cvBuffer, {
+      let uploadError = (
+        await supabase.storage.from(CV_BUCKET).upload(filePath, cvBuffer, {
           contentType: cv.type || "application/octet-stream",
           upsert: false,
-        });
+        })
+      ).error;
+
+      if (uploadError && uploadError.message.toLowerCase().includes("bucket not found")) {
+        const { error: createBucketError } = await supabase.storage.createBucket(CV_BUCKET, { public: false });
+        if (createBucketError) {
+          console.error("career analysis create bucket error:", createBucketError);
+          return NextResponse.json(
+            { error: `Could not create CV bucket: ${createBucketError.message}` },
+            { status: 500 }
+          );
+        }
+        uploadError = (
+          await supabase.storage.from(CV_BUCKET).upload(filePath, cvBuffer, {
+            contentType: cv.type || "application/octet-stream",
+            upsert: false,
+          })
+        ).error;
+      }
 
       if (uploadError) {
         console.error("career analysis CV upload error:", uploadError);

@@ -39,3 +39,8 @@ create policy "Users can read their own career analyses"
   on public.career_analyses
   for select
   using (auth.uid() = user_id or auth.jwt() ->> 'email' = email);
+
+-- Ensure the CV storage bucket exists for career analysis uploads.
+insert into storage.buckets (id, name, public)
+values ('candidate-cvs', 'candidate-cvs', false)
+on conflict (id) do nothing;
