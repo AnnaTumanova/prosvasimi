@@ -97,6 +97,7 @@ export default function Page() {
   const translations: Record<Lang, Record<string, string>> = {
     en: {
       navOffer: "What We Offer",
+      navAiPlatform: "AI Platform",
       navArticles: "Articles",
       navQuiz: "Quiz",
       ctaEarly: "Get Early Access",
@@ -140,6 +141,10 @@ export default function Page() {
       access2: "Built for people with disabilities, chronic illness, and neurodivergence",
       access3: "Tell us what you need when you book — disclosure is always optional",
       accessCta: "Ask About Free Support",
+      aiTeaserBadge: "In Development",
+      aiTeaserTitle: "We're also building an AI career platform",
+      aiTeaserDesc: "An AI-powered platform that reads your CV and skills, matches you to career paths, and helps close the gap — for individuals and for the organizations that employ them. Not live yet, but you can see what's coming and join the waitlist.",
+      aiTeaserCta: "Preview the AI Platform",
       howTitle: "How It Works",
       how1Title: "Book a discovery call",
       how1Desc: "A free 20-minute call to understand your goals and see if we're a fit.",
@@ -173,6 +178,7 @@ export default function Page() {
     },
     pl: {
       navOffer: "Co oferujemy",
+      navAiPlatform: "Platforma AI",
       navArticles: "Artykuły",
       navQuiz: "Quiz",
       ctaEarly: "Wczesny dostęp",
@@ -216,6 +222,10 @@ export default function Page() {
       access2: "Stworzone dla osób z niepełnosprawnościami, chorobami przewlekłymi i neuroróżnorodnych",
       access3: "Powiedz nam, czego potrzebujesz podczas rezerwacji — ujawnienie jest zawsze opcjonalne",
       accessCta: "Zapytaj o bezpłatne wsparcie",
+      aiTeaserBadge: "W budowie",
+      aiTeaserTitle: "Budujemy też platformę AI dla kariery",
+      aiTeaserDesc: "Platforma oparta na AI, która analizuje Twoje CV i umiejętności, dopasowuje ścieżki kariery i pomaga zamknąć lukę — dla osób indywidualnych i dla organizacji, które je zatrudniają. Jeszcze nie działa, ale możesz zobaczyć, co się szykuje, i dołączyć do listy oczekujących.",
+      aiTeaserCta: "Zobacz platformę AI",
       howTitle: "Jak to działa",
       how1Title: "Umów rozmowę wstępną",
       how1Desc: "Bezpłatna 20-minutowa rozmowa, by poznać Twoje cele i sprawdzić dopasowanie.",
@@ -249,6 +259,7 @@ export default function Page() {
     },
     ua: {
       navOffer: "Що ми пропонуємо",
+      navAiPlatform: "AI-платформа",
       navArticles: "Статті",
       navQuiz: "Тест",
       ctaEarly: "Ранній доступ",
@@ -292,6 +303,10 @@ export default function Page() {
       access2: "Створено для людей з інвалідністю, хронічними захворюваннями та нейровідмінністю",
       access3: "Скажіть нам, що вам потрібно під час бронювання — розкриття інформації завжди добровільне",
       accessCta: "Запитати про безкоштовну підтримку",
+      aiTeaserBadge: "У розробці",
+      aiTeaserTitle: "Ми також будуємо AI-платформу для кар'єри",
+      aiTeaserDesc: "Платформа на основі AI, яка аналізує ваше резюме та навички, підбирає кар'єрні шляхи та допомагає закрити прогалину — для окремих людей і для організацій, що їх наймають. Ще не запущена, але ви можете переглянути, що готується, і приєднатися до списку очікування.",
+      aiTeaserCta: "Переглянути AI-платформу",
       howTitle: "Як це працює",
       how1Title: "Забронюйте вступну розмову",
       how1Desc: "Безкоштовна 20-хвилинна розмова, щоб зрозуміти ваші цілі та перевірити відповідність.",
@@ -522,6 +537,32 @@ export default function Page() {
           </div>
         </section>
 
+        {/* AI Platform Teaser */}
+        <section className="py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="rounded-2xl border-2 border-[#D9D9DC] bg-[#0B2818] p-8 md:p-12 flex flex-col md:flex-row gap-8 md:items-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
+              <div className="flex-1 relative">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+                  <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
+                  {t.aiTeaserBadge}
+                </span>
+                <h2 className="mt-6 text-2xl md:text-3xl font-black tracking-tighter text-white">{t.aiTeaserTitle}</h2>
+                <p className="mt-4 text-white/70 leading-relaxed max-w-2xl">{t.aiTeaserDesc}</p>
+                <Link
+                  href="/ai-platform"
+                  className="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#16A97A] text-white font-bold hover:bg-white hover:text-[#0B2818] transition-colors"
+                >
+                  {t.aiTeaserCta}
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* How It Works */}
         <section id="how" className="py-20 md:py-28 bg-[#0F7A52] text-white">
           <div className="mx-auto max-w-6xl px-6">
@@ -682,6 +723,7 @@ export default function Page() {
               <a href="#values" className="hover:text-[#0B2818] transition-colors">{t.valuesTitle}</a>
               <a href="#for" className="hover:text-[#0B2818] transition-colors">{t.forWhomTitle}</a>
               <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
+              <Link href="/ai-platform" className="hover:text-[#0B2818] transition-colors">{t.navAiPlatform}</Link>
               <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
               <Link href="/quiz" className="hover:text-[#0B2818] transition-colors">{t.navQuiz}</Link>
               <Link href="/register" className="hover:text-[#0B2818] transition-colors">Register</Link>

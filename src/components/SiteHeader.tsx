@@ -12,6 +12,7 @@ type NavLabels = {
   home: string;
   offer: string;
   plan: string;
+  aiPlatform: string;
   articles: string;
   quiz: string;
   account: string;
@@ -26,6 +27,7 @@ const labels: Record<Lang, NavLabels> = {
     home: "Home",
     offer: "What We Offer",
     plan: "Development Plan",
+    aiPlatform: "AI Platform",
     articles: "Articles",
     quiz: "Quiz",
     account: "Account",
@@ -38,6 +40,7 @@ const labels: Record<Lang, NavLabels> = {
     home: "Strona główna",
     offer: "Co oferujemy",
     plan: "Plan rozwoju",
+    aiPlatform: "Platforma AI",
     articles: "Artykuły",
     quiz: "Quiz",
     account: "Konto",
@@ -50,6 +53,7 @@ const labels: Record<Lang, NavLabels> = {
     home: "Головна",
     offer: "Що ми пропонуємо",
     plan: "План розвитку",
+    aiPlatform: "AI-платформа",
     articles: "Статті",
     quiz: "Тест",
     account: "Акаунт",
@@ -64,6 +68,7 @@ const NAV_ITEMS: { href: string; key: keyof NavLabels }[] = [
   { href: "/", key: "home" },
   { href: "/offer", key: "offer" },
   { href: "/development-plan", key: "plan" },
+  { href: "/ai-platform", key: "aiPlatform" },
   { href: "/articles", key: "articles" },
   { href: "/quiz", key: "quiz" },
 ];
