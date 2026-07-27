@@ -173,6 +173,7 @@ export async function POST(req: Request) {
         });
 
       if (uploadError) {
+        console.error("career analysis CV upload error:", uploadError);
         return NextResponse.json({ error: "Could not upload CV" }, { status: 500 });
       }
 
@@ -209,8 +210,15 @@ export async function POST(req: Request) {
     const { error: insertError } = await supabase.from("career_analyses").insert(payload);
 
     if (insertError) {
+      console.error("career analysis insert error:", insertError);
       if (cvPath) {
         await supabase.storage.from(CV_BUCKET).remove([cvPath]);
+      }
+      if (insertError.code === "42P01") {
+        return NextResponse.json(
+          { error: "The career_analyses table is missing. Please run supabase/career_analyses.sql in your Supabase SQL Editor." },
+          { status: 500 }
+        );
       }
       return NextResponse.json({ error: "Could not save analysis" }, { status: 500 });
     }
