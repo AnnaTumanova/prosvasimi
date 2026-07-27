@@ -20,28 +20,34 @@ function Icon({ path, className = "w-6 h-6" }: { path: string; className?: strin
 
 type FormStatus = "idle" | "submitting" | "success";
 
-type FormData = {
-  name: string;
-  email: string;
-  location: string;
-  experienceLevel: string;
-  jobField: string;
-  workPreference: string;
-  skills: string;
-  goals: string;
-  resumeText: string;
+type PreferenceFields = {
+  energizers: string;
+  talents: string;
+  environment: string;
+  learning: string;
+  motivation: string;
+  support: string;
 };
 
-const initialForm: FormData = {
+type CareerFormData = {
+  name: string;
+  email: string;
+  resumeText: string;
+  preferences: PreferenceFields;
+};
+
+const initialForm: CareerFormData = {
   name: "",
   email: "",
-  location: "",
-  experienceLevel: "",
-  jobField: "",
-  workPreference: "",
-  skills: "",
-  goals: "",
   resumeText: "",
+  preferences: {
+    energizers: "",
+    talents: "",
+    environment: "",
+    learning: "",
+    motivation: "",
+    support: "",
+  },
 };
 
 const ALLOWED_CV_TYPES = new Set([
@@ -53,36 +59,23 @@ const ALLOWED_CV_TYPES = new Set([
 const translations = {
   en: {
     title: "Career Analysis",
-    subtitle: "Upload your resume and answer a few questions. We'll prepare a personal career suggestion for you.",
+    subtitle: "Upload your CV and share what drives you. We'll analyze your resume and personality to suggest career paths.",
     note: "You do not need an account to submit. To view your analysis, log in or register with the same email.",
     name: "Full name",
     email: "Email address",
-    location: "Location",
-    experienceLevel: "Experience level",
-    selectLevel: "Select level",
-    entry: "Entry level",
-    junior: "Junior",
-    mid: "Mid-level",
-    senior: "Senior",
-    careerChange: "Career change",
-    jobField: "Target job field",
-    jobFieldPlaceholder: "e.g. Customer support, IT, design...",
-    workPreference: "Work preference",
-    selectPreference: "Select preference",
-    remote: "Remote",
-    hybrid: "Hybrid",
-    onsite: "On-site",
-    flexible: "Flexible",
-    skills: "Key skills and experience",
-    skillsPlaceholder: "Tell us about your skills, tools, projects, studies, volunteering, or previous jobs.",
-    goals: "Career goals",
-    goalsPlaceholder: "What kind of change or support are you looking for?",
-    resumeText: "Resume text (optional but recommended for AI analysis)",
-    resumeTextPlaceholder: "Paste your resume text here so we can analyze it. You can still upload a file below.",
+    resumeText: "Paste your resume text here for AI analysis",
+    resumeTextPlaceholder: "Copy and paste the text from your CV or resume...",
     cvUpload: "Or upload your CV",
     cvHint: "PDF, DOC or DOCX up to 5 MB.",
     selected: "Selected:",
     uploadCv: "Choose file",
+    prefEnergizers: "What tasks make you lose track of time?",
+    prefTalents: "What are your strongest natural talents or strengths?",
+    prefEnvironment: "What kind of work environment helps you do your best?",
+    prefLearning: "How do you prefer to learn new things?",
+    prefMotivation: "What motivates you to do your best work?",
+    prefSupport: "What support or accommodations help you thrive?",
+    prefPlaceholder: "Share as much or as little as you like...",
     submit: "Get my career analysis",
     submitting: "Analyzing...",
     emailError: "Please enter a valid email address.",
@@ -97,36 +90,23 @@ const translations = {
   },
   pl: {
     title: "Analiza kariery",
-    subtitle: "Prześlij CV i odpowiedz na kilka pytań. Przygotujemy dla Ciebie spersonalizowaną sugestię kariery.",
+    subtitle: "Prześlij CV i opisz, co Cię napędza. Przeanalizujemy Twoje CV oraz osobowość, by zaproponować ścieżki kariery.",
     note: "Nie potrzebujesz konta, aby przesłać dane. Aby zobaczyć analizę, zaloguj się lub zarejestruj za pomocą tego samego e-maila.",
     name: "Imię i nazwisko",
     email: "Adres e-mail",
-    location: "Lokalizacja",
-    experienceLevel: "Poziom doświadczenia",
-    selectLevel: "Wybierz poziom",
-    entry: "Początkujący",
-    junior: "Junior",
-    mid: "Średniozaawansowany",
-    senior: "Senior",
-    careerChange: "Zmiana ścieżki kariery",
-    jobField: "Docelowa dziedzina",
-    jobFieldPlaceholder: "np. obsługa klienta, IT, design...",
-    workPreference: "Preferencje pracy",
-    selectPreference: "Wybierz preferencję",
-    remote: "Zdalnie",
-    hybrid: "Hybrydowo",
-    onsite: "Stacjonarnie",
-    flexible: "Elastycznie",
-    skills: "Kluczowe umiejętności i doświadczenie",
-    skillsPlaceholder: "Opowiedz o swoich umiejętnościach, narzędziach, projektach, edukacji, wolontariacie lub wcześniejszej pracy.",
-    goals: "Cele zawodowe",
-    goalsPlaceholder: "Jakiej zmiany lub wsparcia szukasz?",
-    resumeText: "Tekst CV (opcjonalnie, ale zalecane do analizy AI)",
-    resumeTextPlaceholder: "Wklej tekst swojego CV, abyśmy mogli go przeanalizować. Możesz też przesłać plik poniżej.",
+    resumeText: "Wklej tutaj tekst swojego CV do analizy AI",
+    resumeTextPlaceholder: "Skopiuj i wklej tekst ze swojego CV...",
     cvUpload: "Lub prześlij CV",
     cvHint: "PDF, DOC lub DOCX do 5 MB.",
     selected: "Wybrano:",
     uploadCv: "Wybierz plik",
+    prefEnergizers: "Jakie zadania sprawiają, że tracisz poczucie czasu?",
+    prefTalents: "Jakie są Twoje najmocniejsze naturalne talenty lub mocne strony?",
+    prefEnvironment: "Jakie środowisko pracy pomaga Ci dawać z siebie najwięcej?",
+    prefLearning: "W jaki sposób najlepiej uczysz się nowych rzeczy?",
+    prefMotivation: "Co motywuje Cię do dawania z siebie wszystkiego w pracy?",
+    prefSupport: "Jakie wsparcie lub ułatwienia pomagają Ci się rozwijać?",
+    prefPlaceholder: "Podziel się tym, czym chcesz...",
     submit: "Otrzymaj analizę kariery",
     submitting: "Analizowanie...",
     emailError: "Podaj poprawny adres e-mail.",
@@ -141,36 +121,23 @@ const translations = {
   },
   ua: {
     title: "Аналіз кар'єри",
-    subtitle: "Завантажте резюме та дайте відповіді на кілька запитань. Ми підготуємо для вас персональну пропозицію щодо кар'єри.",
+    subtitle: "Завантажте CV та розкажіть, що вас мотивує. Ми проаналізуємо ваше резюме та особистість, щоб запропонувати кар'єрні шляхи.",
     note: "Для надсилання даних не потрібен обліковий запис. Щоб переглянути аналіз, увійдіть або зареєструйтеся за тією ж електронною поштою.",
     name: "Повне ім'я",
     email: "Електронна пошта",
-    location: "Локація",
-    experienceLevel: "Рівень досвіду",
-    selectLevel: "Оберіть рівень",
-    entry: "Початковий рівень",
-    junior: "Junior",
-    mid: "Середній рівень",
-    senior: "Senior",
-    careerChange: "Зміна кар'єри",
-    jobField: "Бажана сфера",
-    jobFieldPlaceholder: "напр. підтримка клієнтів, IT, дизайн...",
-    workPreference: "Формат роботи",
-    selectPreference: "Оберіть формат",
-    remote: "Віддалено",
-    hybrid: "Гібридно",
-    onsite: "В офісі",
-    flexible: "Гнучко",
-    skills: "Ключові навички та досвід",
-    skillsPlaceholder: "Розкажіть про навички, інструменти, проєкти, навчання, волонтерство або попередню роботу.",
-    goals: "Кар'єрні цілі",
-    goalsPlaceholder: "Якої зміни чи підтримки ви шукаєте?",
-    resumeText: "Текст резюме (необов'язково, але рекомендовано для AI-аналізу)",
-    resumeTextPlaceholder: "Вставте текст свого резюме, щоб ми могли його проаналізувати. Також можна завантажити файл нижче.",
+    resumeText: "Вставте текст свого резюме сюди для AI-аналізу",
+    resumeTextPlaceholder: "Скопіюйте та вставте текст із свого CV...",
     cvUpload: "Або завантажте CV",
     cvHint: "PDF, DOC або DOCX до 5 МБ.",
     selected: "Вибрано:",
     uploadCv: "Оберіть файл",
+    prefEnergizers: "Які завдання змушують вас втрачати відчуття часу?",
+    prefTalents: "Які ваші найсильніші природні таланти чи сильні сторони?",
+    prefEnvironment: "Яке робоче середовище допомагає вам працювати найкраще?",
+    prefLearning: "Як ви найкраще засвоюєте нове?",
+    prefMotivation: "Що мотивує вас викладатися на роботі?",
+    prefSupport: "Яка підтримка чи адаптація допомагає вам розвиватися?",
+    prefPlaceholder: "Поділіться тим, чим хочете...",
     submit: "Отримати аналіз кар'єри",
     submitting: "Аналіз...",
     emailError: "Будь ласка, введіть дійсну адресу e-mail.",
@@ -187,7 +154,7 @@ const translations = {
 
 export default function CareerAnalysisPage() {
   const [lang, setLang] = useState<Lang>("en");
-  const [form, setForm] = useState<FormData>(initialForm);
+  const [form, setForm] = useState<CareerFormData>(initialForm);
   const [cv, setCv] = useState<File | null>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
@@ -198,9 +165,13 @@ export default function CareerAnalysisPage() {
     setLang(detectBrowserLanguage());
   }, []);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function handlePrefChange(key: keyof PreferenceFields, value: string) {
+    setForm((prev) => ({ ...prev, preferences: { ...prev.preferences, [key]: value } }));
   }
 
   function handleCvChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -239,16 +210,20 @@ export default function CareerAnalysisPage() {
 
     setStatus("submitting");
 
+    const preferenceString = [
+      `${t.prefEnergizers}\n${form.preferences.energizers}`,
+      `${t.prefTalents}\n${form.preferences.talents}`,
+      `${t.prefEnvironment}\n${form.preferences.environment}`,
+      `${t.prefLearning}\n${form.preferences.learning}`,
+      `${t.prefMotivation}\n${form.preferences.motivation}`,
+      `${t.prefSupport}\n${form.preferences.support}`,
+    ].join("\n\n");
+
     const data = new FormData();
     data.set("name", form.name);
     data.set("email", form.email);
-    data.set("location", form.location);
-    data.set("experienceLevel", form.experienceLevel);
-    data.set("jobField", form.jobField);
-    data.set("workPreference", form.workPreference);
-    data.set("skills", form.skills);
-    data.set("goals", form.goals);
     data.set("resumeText", form.resumeText);
+    data.set("preferences", preferenceString);
     if (cv) data.set("cv", cv);
 
     try {
@@ -323,51 +298,6 @@ export default function CareerAnalysisPage() {
           </div>
 
           <div>
-            <label htmlFor="location" className="block text-sm font-medium text-[#0B2818]">{t.location}</label>
-            <input id="location" name="location" value={form.location} onChange={handleChange} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="experienceLevel" className="block text-sm font-medium text-[#0B2818]">{t.experienceLevel}</label>
-              <select id="experienceLevel" name="experienceLevel" value={form.experienceLevel} onChange={handleChange} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none bg-white">
-                <option value="">{t.selectLevel}</option>
-                <option value="entry">{t.entry}</option>
-                <option value="junior">{t.junior}</option>
-                <option value="mid">{t.mid}</option>
-                <option value="senior">{t.senior}</option>
-                <option value="career-change">{t.careerChange}</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="workPreference" className="block text-sm font-medium text-[#0B2818]">{t.workPreference}</label>
-              <select id="workPreference" name="workPreference" value={form.workPreference} onChange={handleChange} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none bg-white">
-                <option value="">{t.selectPreference}</option>
-                <option value="remote">{t.remote}</option>
-                <option value="hybrid">{t.hybrid}</option>
-                <option value="onsite">{t.onsite}</option>
-                <option value="flexible">{t.flexible}</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="jobField" className="block text-sm font-medium text-[#0B2818]">{t.jobField}</label>
-            <input id="jobField" name="jobField" value={form.jobField} onChange={handleChange} placeholder={t.jobFieldPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
-          </div>
-
-          <div>
-            <label htmlFor="skills" className="block text-sm font-medium text-[#0B2818]">{t.skills}</label>
-            <textarea id="skills" name="skills" rows={4} value={form.skills} onChange={handleChange} placeholder={t.skillsPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
-          </div>
-
-          <div>
-            <label htmlFor="goals" className="block text-sm font-medium text-[#0B2818]">{t.goals}</label>
-            <textarea id="goals" name="goals" rows={4} value={form.goals} onChange={handleChange} placeholder={t.goalsPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
-          </div>
-
-          <div>
             <label htmlFor="resumeText" className="block text-sm font-medium text-[#0B2818]">{t.resumeText}</label>
             <textarea id="resumeText" name="resumeText" rows={6} value={form.resumeText} onChange={handleChange} placeholder={t.resumeTextPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
           </div>
@@ -381,6 +311,40 @@ export default function CareerAnalysisPage() {
               <input type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={handleCvChange} className="sr-only" />
             </label>
             {cv && <p className="mt-2 text-sm text-[#0F7A52]">{t.selected} {cv.name}</p>}
+          </div>
+
+          <div className="pt-4 border-t border-[#D9D9DC]">
+            <h2 className="text-lg font-bold text-[#0B2818]">Your preferences & talents</h2>
+          </div>
+
+          <div>
+            <label htmlFor="energizers" className="block text-sm font-medium text-[#0B2818]">{t.prefEnergizers}</label>
+            <textarea id="energizers" rows={3} value={form.preferences.energizers} onChange={(e) => handlePrefChange("energizers", e.target.value)} placeholder={t.prefPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
+          </div>
+
+          <div>
+            <label htmlFor="talents" className="block text-sm font-medium text-[#0B2818]">{t.prefTalents}</label>
+            <textarea id="talents" rows={3} value={form.preferences.talents} onChange={(e) => handlePrefChange("talents", e.target.value)} placeholder={t.prefPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
+          </div>
+
+          <div>
+            <label htmlFor="environment" className="block text-sm font-medium text-[#0B2818]">{t.prefEnvironment}</label>
+            <textarea id="environment" rows={3} value={form.preferences.environment} onChange={(e) => handlePrefChange("environment", e.target.value)} placeholder={t.prefPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
+          </div>
+
+          <div>
+            <label htmlFor="learning" className="block text-sm font-medium text-[#0B2818]">{t.prefLearning}</label>
+            <textarea id="learning" rows={3} value={form.preferences.learning} onChange={(e) => handlePrefChange("learning", e.target.value)} placeholder={t.prefPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
+          </div>
+
+          <div>
+            <label htmlFor="motivation" className="block text-sm font-medium text-[#0B2818]">{t.prefMotivation}</label>
+            <textarea id="motivation" rows={3} value={form.preferences.motivation} onChange={(e) => handlePrefChange("motivation", e.target.value)} placeholder={t.prefPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
+          </div>
+
+          <div>
+            <label htmlFor="support" className="block text-sm font-medium text-[#0B2818]">{t.prefSupport}</label>
+            <textarea id="support" rows={3} value={form.preferences.support} onChange={(e) => handlePrefChange("support", e.target.value)} placeholder={t.prefPlaceholder} className="mt-2 w-full rounded-xl border-2 border-[#D9D9DC] px-4 py-3 focus:border-[#0F7A52] focus:outline-none" />
           </div>
 
           {error && <p className="rounded-xl bg-red-50 text-red-700 px-4 py-3 text-sm">{error}</p>}

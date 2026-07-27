@@ -18,11 +18,13 @@ create table if not exists public.career_analyses (
   cv_file_size integer,
   analysis_text text,
   analysis_status text not null default 'pending',
+  preferences text not null default '',
   user_agent text not null default '',
   ip text not null default ''
 );
 
 create index if not exists career_analyses_email_idx on public.career_analyses (email);
+alter table public.career_analyses add column if not exists preferences text not null default '';
 create index if not exists career_analyses_user_id_idx on public.career_analyses (user_id);
 
 alter table public.career_analyses enable row level security;

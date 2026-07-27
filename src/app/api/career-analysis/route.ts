@@ -54,26 +54,23 @@ function buildAnalysisPrompt(fields: Record<string, string>) {
 1. A brief career profile summary (2-3 sentences).
 2. 3-5 concrete, actionable next steps the person can take.
 3. A short note on what skills or roles might be a good fit right now.
+4. If a resume is provided, infer the target job field, key skills, and career goals from it; do not ask the user for them.
 
-Information:
-- Name: ${fields.name || "Not provided"}
-- Location: ${fields.location || "Not provided"}
-- Experience level: ${fields.experienceLevel || "Not provided"}
-- Target job field: ${fields.jobField || "Not provided"}
-- Work preference: ${fields.workPreference || "Not provided"}
-- Key skills: ${fields.skills || "Not provided"}
-- Career goals: ${fields.goals || "Not provided"}
-- Resume text: ${fields.resumeText || "[CV uploaded for review — no pasted text provided]"}`;
+Resume text:
+${fields.resumeText || "[CV uploaded for review — no pasted text provided]"}
+
+Psychological preferences and talents:
+${fields.preferences || "Not provided"}`;
 }
 
-function fallbackAnalysis(fields: Record<string, string>) {
-  return `Thank you for sharing your background.\n\nWe have received your details and uploaded CV. A coach will review your profile and reach out with personalized guidance. In the meantime, consider these general next steps:\n1. Reflect on your top 3 transferable skills and how they apply to ${fields.jobField || "your target field"}.\n2. Research entry points and common roles at your experience level (${fields.experienceLevel || "current level"}).\n3. Prepare a short "career story" that connects your skills to your goals (${fields.goals || "your career goals"}).\n4. Look for networking groups or communities aligned with ${fields.workPreference || "your preferred work arrangement"}.\n5. If you need accommodations, list the ones that help you do your best work and be ready to discuss them with employers.`;
+function fallbackAnalysis() {
+  return `Thank you for sharing your background.\n\nWe have received your CV and preferences. A coach will review them and reach out with personalized guidance. In the meantime, consider these general next steps:\n1. Reflect on the tasks that energize you and how they connect to a role.\n2. Look for roles that match your natural talents and preferred work style.\n3. Prepare a short career story that highlights your strengths and goals.\n4. Research communities or employers that value your working style.\n5. List any accommodations or supports that help you do your best work and be ready to discuss them.`;
 }
 
 async function generateAnalysis(fields: Record<string, string>) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    return { text: fallbackAnalysis(fields), status: "manual" };
+    return { text: fallbackAnalysis(), status: "manual" };
   }
 
   try {
@@ -112,7 +109,7 @@ async function generateAnalysis(fields: Record<string, string>) {
 
     return { text, status: "completed" };
   } catch {
-    return { text: fallbackAnalysis(fields), status: "manual" };
+    return { text: fallbackAnalysis(), status: "manual" };
   }
 }
 
@@ -131,13 +128,8 @@ export async function POST(req: Request) {
     }
 
     const name = String(formData.get("name") ?? "");
-    const location = String(formData.get("location") ?? "");
-    const experienceLevel = String(formData.get("experienceLevel") ?? "");
-    const jobField = String(formData.get("jobField") ?? "");
-    const workPreference = String(formData.get("workPreference") ?? "");
-    const skills = String(formData.get("skills") ?? "");
-    const goals = String(formData.get("goals") ?? "");
     const resumeText = String(formData.get("resumeText") ?? "");
+    const preferences = String(formData.get("preferences") ?? "");
     const cv = formData.get("cv");
 
     const hasInput = resumeText.trim().length > 0 || (cv instanceof File && cv.size > 0);
@@ -174,7 +166,10 @@ export async function POST(req: Request) {
 
       if (uploadError) {
         console.error("career analysis CV upload error:", uploadError);
-        return NextResponse.json({ error: "Could not upload CV" }, { status: 500 });
+        return NextResponse.json(
+          { error: `Could not upload CV: ${uploadError.message}` },
+          { status: 500 }
+        );
       }
 
       cvPath = filePath;
@@ -183,20 +178,15 @@ export async function POST(req: Request) {
       cvFileSize = cv.size;
     }
 
-    const fields = { name, location, experienceLevel, jobField, workPreference, skills, goals, resumeText };
+    const fields = { resumeText, preferences };
     const { text: analysisText, status: analysisStatus } = await generateAnalysis(fields);
 
     const payload: Record<string, unknown> = {
       guest_token: guestToken,
       email,
       name,
-      location,
-      experience_level: experienceLevel,
-      job_field: jobField,
-      work_preference: workPreference,
-      skills,
-      goals,
       resume_text: resumeText,
+      preferences,
       cv_path: cvPath,
       cv_file_name: cvFileName,
       cv_file_type: cvFileType,
@@ -250,7 +240,7 @@ export async function GET(req: Request) {
     const { data, error } = await supabase
       .from("career_analyses")
       .select(
-        "id, guest_token, email, name, location, experience_level, job_field, work_preference, skills, goals, resume_text, cv_file_name, analysis_text, analysis_status"
+        "id, guest_token, email, name, resume_text, preferences, cv_file_name, analysis_text, analysis_status"
       )
       .eq("guest_token", token)
       .maybeSingle();
@@ -271,7 +261,7 @@ export async function GET(req: Request) {
   const { data, error } = await authSupabase
     .from("career_analyses")
     .select(
-      "id, guest_token, email, name, location, experience_level, job_field, work_preference, skills, goals, resume_text, cv_file_name, analysis_text, analysis_status"
+      "id, guest_token, email, name, resume_text, preferences, cv_file_name, analysis_text, analysis_status"
     )
     .or(`email.eq.${userEmail},user_id.eq.${user.id}`)
     .order("created_at", { ascending: false })

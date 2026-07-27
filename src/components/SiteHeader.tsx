@@ -14,6 +14,7 @@ type NavLabels = {
   plan: string;
   aiPlatform: string;
   articles: string;
+  career: string;
   account: string;
   login: string;
   register: string;
@@ -28,6 +29,7 @@ const labels: Record<Lang, NavLabels> = {
     plan: "Development Plan",
     aiPlatform: "AI Platform",
     articles: "Articles",
+    career: "Career Analysis",
     account: "Account",
     login: "Log in",
     register: "Register",
@@ -40,6 +42,7 @@ const labels: Record<Lang, NavLabels> = {
     plan: "Plan rozwoju",
     aiPlatform: "Platforma AI",
     articles: "Artykuły",
+    career: "Analiza kariery",
     account: "Konto",
     login: "Zaloguj się",
     register: "Zarejestruj się",
@@ -52,6 +55,7 @@ const labels: Record<Lang, NavLabels> = {
     plan: "План розвитку",
     aiPlatform: "AI-платформа",
     articles: "Статті",
+    career: "Аналіз кар'єри",
     account: "Акаунт",
     login: "Увійти",
     register: "Зареєструватися",
@@ -66,6 +70,7 @@ const NAV_ITEMS: { href: string; key: keyof NavLabels }[] = [
   { href: "/development-plan", key: "plan" },
   { href: "/ai-platform", key: "aiPlatform" },
   { href: "/articles", key: "articles" },
+  { href: "/career-analysis", key: "career" },
 ];
 
 export default function SiteHeader({
