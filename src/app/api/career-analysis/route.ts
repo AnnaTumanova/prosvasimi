@@ -50,7 +50,8 @@ function sanitizeEmail(email: string) {
 }
 
 function buildAnalysisPrompt(fields: Record<string, string>) {
-  return `You are a supportive career coach for people with disabilities and neurodivergent individuals. Review the information below and provide:
+  return `You are a supportive career coach for people with disabilities and neurodivergent individuals. Review the information below and provide a response as plain text only: no Markdown formatting, no # headings, no **bold**, and no - or * bullet points. Use plain paragraphs and numbered lists in the form 1. ..., 2. ..., etc.
+
 1. A brief career profile summary (2-3 sentences).
 2. 3-5 concrete, actionable next steps the person can take.
 3. A short note on what skills or roles might be a good fit right now.
@@ -65,6 +66,14 @@ ${fields.preferences || "Not provided"}`;
 
 function fallbackAnalysis() {
   return `Thank you for sharing your background.\n\nWe have received your CV and preferences. A coach will review them and reach out with personalized guidance. In the meantime, consider these general next steps:\n1. Reflect on the tasks that energize you and how they connect to a role.\n2. Look for roles that match your natural talents and preferred work style.\n3. Prepare a short career story that highlights your strengths and goals.\n4. Research communities or employers that value your working style.\n5. List any accommodations or supports that help you do your best work and be ready to discuss them.`;
+}
+
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*|__/g, "")
+    .replace(/[*_]([^\n]*?)[*_]/g, "$1")
+    .replace(/^#{1,6}\s*/gim, "")
+    .replace(/^[-*+]\s+/gim, "");
 }
 
 async function generateAnalysis(fields: Record<string, string>) {
@@ -86,7 +95,7 @@ async function generateAnalysis(fields: Record<string, string>) {
           {
             role: "system",
             content:
-              "You are a concise, supportive career coach for people with disabilities and neurodivergent individuals. Be encouraging and practical.",
+              "You are a concise, supportive career coach for people with disabilities and neurodivergent individuals. Be encouraging and practical. Return plain text only, with no Markdown formatting, headings, bold markers, or bullet characters. Use paragraphs and numbered lists like 1. ... 2. ...",
           },
           { role: "user", content: buildAnalysisPrompt(fields) },
         ],
@@ -101,13 +110,13 @@ async function generateAnalysis(fields: Record<string, string>) {
     const data = (await response.json()) as {
       choices?: { message?: { content?: string } }[];
     };
-    const text = data.choices?.[0]?.message?.content?.trim();
+    const raw = data.choices?.[0]?.message?.content?.trim();
 
-    if (!text) {
+    if (!raw) {
       throw new Error("Empty analysis from OpenAI");
     }
 
-    return { text, status: "completed" };
+    return { text: stripMarkdown(raw), status: "completed" };
   } catch {
     return { text: fallbackAnalysis(), status: "manual" };
   }
