@@ -227,7 +227,13 @@ export async function POST(req: Request) {
           { status: 500 }
         );
       }
-      return NextResponse.json({ error: "Could not save analysis" }, { status: 500 });
+      if (insertError.code === "42703") {
+        return NextResponse.json(
+          { error: `Column missing: ${insertError.message}. Please run supabase/career_analyses.sql in your Supabase SQL Editor.` },
+          { status: 500 }
+        );
+      }
+      return NextResponse.json({ error: `Could not save analysis: ${insertError.message}` }, { status: 500 });
     }
 
     return NextResponse.json(
