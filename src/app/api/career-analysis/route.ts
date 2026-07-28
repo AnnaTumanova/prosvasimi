@@ -221,7 +221,10 @@ export async function POST(req: Request) {
       if (cvPath) {
         await supabase.storage.from(CV_BUCKET).remove([cvPath]);
       }
-      if (insertError.code === "42P01") {
+      const missingTable = insertError.code === "42P01" ||
+        insertError.message?.toLowerCase().includes("could not find the table 'public.career_analyses'");
+
+      if (missingTable) {
         return NextResponse.json(
           { error: "The career_analyses table is missing. Please run supabase/career_analyses.sql in your Supabase SQL Editor." },
           { status: 500 }

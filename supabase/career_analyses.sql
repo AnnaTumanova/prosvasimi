@@ -44,3 +44,6 @@ create policy "Users can read their own career analyses"
 insert into storage.buckets (id, name, public)
 values ('candidate-cvs', 'candidate-cvs', false)
 on conflict (id) do nothing;
+
+-- Refresh the PostgREST schema cache so the table is visible to the API immediately.
+notify pgrst, 'reload schema';
