@@ -9,12 +9,10 @@ import { supabase } from "@/lib/supabaseClient";
 import type { Lang } from "@/lib/language";
 
 type NavLabels = {
-  home: string;
-  offer: string;
-  plan: string;
-  aiPlatform: string;
-  articles: string;
-  career: string;
+  about: string;
+  products: string;
+  cooperation: string;
+  contact: string;
   account: string;
   login: string;
   register: string;
@@ -24,12 +22,10 @@ type NavLabels = {
 
 const labels: Record<Lang, NavLabels> = {
   en: {
-    home: "Home",
-    offer: "What We Offer",
-    plan: "Development Plan",
-    aiPlatform: "AI Platform",
-    articles: "Articles",
-    career: "Career Analysis",
+    about: "About Us",
+    products: "Our Products",
+    cooperation: "Cooperation",
+    contact: "Contact",
     account: "Account",
     login: "Log in",
     register: "Register",
@@ -37,12 +33,10 @@ const labels: Record<Lang, NavLabels> = {
     skip: "Skip to main content",
   },
   pl: {
-    home: "Strona główna",
-    offer: "Co oferujemy",
-    plan: "Plan rozwoju",
-    aiPlatform: "Platforma AI",
-    articles: "Artykuły",
-    career: "Analiza kariery",
+    about: "O nas",
+    products: "Nasze produkty",
+    cooperation: "Współpraca",
+    contact: "Kontakt",
     account: "Konto",
     login: "Zaloguj się",
     register: "Zarejestruj się",
@@ -50,12 +44,10 @@ const labels: Record<Lang, NavLabels> = {
     skip: "Przejdź do treści",
   },
   ua: {
-    home: "Головна",
-    offer: "Що ми пропонуємо",
-    plan: "План розвитку",
-    aiPlatform: "AI-платформа",
-    articles: "Статті",
-    career: "Аналіз кар'єри",
+    about: "Про нас",
+    products: "Наші продукти",
+    cooperation: "Співпраця",
+    contact: "Контакти",
     account: "Акаунт",
     login: "Увійти",
     register: "Зареєструватися",
@@ -65,12 +57,10 @@ const labels: Record<Lang, NavLabels> = {
 };
 
 const NAV_ITEMS: { href: string; key: keyof NavLabels }[] = [
-  { href: "/", key: "home" },
-  { href: "/offer", key: "offer" },
-  { href: "/development-plan", key: "plan" },
-  { href: "/ai-platform", key: "aiPlatform" },
-  { href: "/articles", key: "articles" },
-  { href: "/career-analysis", key: "career" },
+  { href: "/about", key: "about" },
+  { href: "/products", key: "products" },
+  { href: "/cooperation", key: "cooperation" },
+  { href: "/contact", key: "contact" },
 ];
 
 export default function SiteHeader({

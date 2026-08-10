@@ -2,20 +2,17 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const ICON_PATHS = {
   search: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z",
   trendingUp: "M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22M14.25 9h6.5v6.5",
   document: "M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z",
   chat: "M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z",
-  checkCircle: "M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-  bolt: "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z",
-  shield: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.286z",
-  user: "M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z",
   building: "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
   heart: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z",
+  arrowRight: "M13 7l5 5m0 0l-5 5m5-5H6",
 } as const;
 
 function Icon({ path, className = "w-6 h-6" }: { path: string; className?: string }) {
@@ -96,9 +93,6 @@ export default function Page() {
 
   const translations: Record<Lang, Record<string, string>> = {
     en: {
-      navOffer: "What We Offer",
-      navAiPlatform: "AI Platform",
-      navArticles: "Articles",
       ctaEarly: "Get Early Access",
       heroTagline: "Career coaching that gets specific",
       heroTitle: "Find your next career, with confidence.",
@@ -114,36 +108,16 @@ export default function Page() {
       feature3Desc: "Practical, hands-on rewrites to present your experience clearly to employers.",
       feature4Title: "Ongoing Support",
       feature4Desc: "Check-ins between sessions so your momentum doesn't stall.",
-      valuesTitle: "Our Values",
-      value1Title: "Practical Results",
-      value1Desc: "We focus on concrete next steps and written plans, not vague advice.",
-      value2Title: "Simplicity",
-      value2Desc: "Clear language, simple flows, focused on real outcomes.",
-      value3Title: "Trust",
-      value3Desc: "Transparent pricing, experienced coaches, respectful communication.",
-      forWhomTitle: "Who We Work With",
-      forCandTitle: "For Career Changers",
-      forCandDesc: "Get a clear, personalized plan for your next move from a coach who listens first.",
-      forCand1: "One-on-one coaching tailored to your situation",
-      forCand2: "Written action plan after every clarity session",
-      forCand3: "CV and LinkedIn profile review",
-      forCand4: "Milestone check-ins between sessions",
-      forEmpTitle: "For Organizations",
-      forEmpDesc: "Bring structured career coaching to your team, community, or partner network.",
-      forEmp1: "Group workshops and coaching packages",
-      forEmp2: "Flexible scheduling across time zones",
-      forEmp3: "Clear reporting on engagement and outcomes",
-      forEmp4: "Partnership options for NGOs and community organizations",
-      accessTitle: "Accessibility & Disability Support",
-      accessDesc: "Prosvasimi is a registered foundation. We provide free career coaching, professional activation, and support for people with disabilities, chronic illnesses, and neurodivergent individuals — funded by grants and donations, not by the people we help.",
-      access1: "Free coaching and career support, funded by grants and donations",
-      access2: "Built for people with disabilities, chronic illness, and neurodivergence",
-      access3: "Tell us what you need when you book — disclosure is always optional",
-      accessCta: "Ask About Free Support",
-      aiTeaserBadge: "In Development",
-      aiTeaserTitle: "We're also building an AI career platform",
-      aiTeaserDesc: "An AI-powered platform that reads your CV and skills, matches you to career paths, and helps close the gap — for individuals and for the organizations that employ them. Not live yet, but you can see what's coming and join the waitlist.",
-      aiTeaserCta: "Preview the AI Platform",
+      exploreTitle: "Explore Prosvasimi",
+      exploreAboutTitle: "About Us",
+      exploreAboutDesc: "Our mission, values, and disability-support work as a registered foundation.",
+      exploreProductsTitle: "Our Products",
+      exploreProductsDesc: "Workshops and our AI-powered resume analyser.",
+      exploreCooperationTitle: "Cooperation",
+      exploreCooperationDesc: "Partner with us as an organization, NGO, or community network.",
+      exploreContactTitle: "Contact",
+      exploreContactDesc: "Get in touch with a question or partnership idea.",
+      exploreCta: "Learn more",
       howTitle: "How It Works",
       how1Title: "Book a discovery call",
       how1Desc: "A free 20-minute call to understand your goals and see if we're a fit.",
@@ -174,20 +148,8 @@ export default function Page() {
       successModalTitle: "You're on the list!",
       successModalMessage: "Thank you for joining the Prosvasimi waitlist. We'll notify you when we open in your region.",
       successModalButton: "Got it",
-      legalTitle: "Registration Details",
-      legalName: "Name",
-      legalRegister: "Register",
-      legalRegisterValue: "Register of Associations (KRS)",
-      legalKrs: "KRS Number",
-      legalNip: "NIP",
-      legalRegon: "REGON",
-      legalForm: "Legal Form",
-      legalFormValue: "Foundation",
     },
     pl: {
-      navOffer: "Co oferujemy",
-      navAiPlatform: "Platforma AI",
-      navArticles: "Artykuły",
       ctaEarly: "Wczesny dostęp",
       heroTagline: "Coaching kariery, który daje konkrety",
       heroTitle: "Znajdź swoją następną karierę, z pewnością siebie.",
@@ -203,36 +165,16 @@ export default function Page() {
       feature3Desc: "Praktyczne przeredagowanie, by jasno przedstawić Twoje doświadczenie pracodawcom.",
       feature4Title: "Stałe wsparcie",
       feature4Desc: "Kontakt między sesjami, żeby nie stracić tempa.",
-      valuesTitle: "Nasze wartości",
-      value1Title: "Konkretne rezultaty",
-      value1Desc: "Skupiamy się na konkretnych krokach i pisemnych planach, nie na ogólnikach.",
-      value2Title: "Prostota",
-      value2Desc: "Jasny język, proste ścieżki, koncentracja na efektach.",
-      value3Title: "Zaufanie",
-      value3Desc: "Przejrzyste ceny, doświadczeni coachowie, szacunek w komunikacji.",
-      forWhomTitle: "Dla kogo pracujemy",
-      forCandTitle: "Dla zmieniających karierę",
-      forCandDesc: "Uzyskaj jasny, spersonalizowany plan na kolejny krok od coacha, który najpierw słucha.",
-      forCand1: "Indywidualny coaching dopasowany do Twojej sytuacji",
-      forCand2: "Pisemny plan działania po każdej sesji klarowności",
-      forCand3: "Przegląd CV i profilu LinkedIn",
-      forCand4: "Kontakt kontrolny między sesjami",
-      forEmpTitle: "Dla organizacji",
-      forEmpDesc: "Wprowadź ustrukturyzowany coaching kariery do swojego zespołu, społeczności lub sieci partnerskiej.",
-      forEmp1: "Warsztaty grupowe i pakiety coachingowe",
-      forEmp2: "Elastyczny harmonogram w różnych strefach czasowych",
-      forEmp3: "Przejrzyste raportowanie zaangażowania i efektów",
-      forEmp4: "Opcje partnerstwa dla organizacji pozarządowych i społeczności",
-      accessTitle: "Dostępność i wsparcie dla osób z niepełnosprawnościami",
-      accessDesc: "Prosvasimi jest zarejestrowaną fundacją. Zapewniamy bezpłatny coaching kariery, aktywizację zawodową i wsparcie dla osób z niepełnosprawnościami, chorobami przewlekłymi i neuroróżnorodnych — finansowane z grantów i darowizn, a nie przez osoby, którym pomagamy.",
-      access1: "Bezpłatny coaching i wsparcie kariery, finansowane z grantów i darowizn",
-      access2: "Stworzone dla osób z niepełnosprawnościami, chorobami przewlekłymi i neuroróżnorodnych",
-      access3: "Powiedz nam, czego potrzebujesz podczas rezerwacji — ujawnienie jest zawsze opcjonalne",
-      accessCta: "Zapytaj o bezpłatne wsparcie",
-      aiTeaserBadge: "W budowie",
-      aiTeaserTitle: "Budujemy też platformę AI dla kariery",
-      aiTeaserDesc: "Platforma oparta na AI, która analizuje Twoje CV i umiejętności, dopasowuje ścieżki kariery i pomaga zamknąć lukę — dla osób indywidualnych i dla organizacji, które je zatrudniają. Jeszcze nie działa, ale możesz zobaczyć, co się szykuje, i dołączyć do listy oczekujących.",
-      aiTeaserCta: "Zobacz platformę AI",
+      exploreTitle: "Poznaj Prosvasimi",
+      exploreAboutTitle: "O nas",
+      exploreAboutDesc: "Nasza misja, wartości i wsparcie dla osób z niepełnosprawnościami jako zarejestrowanej fundacji.",
+      exploreProductsTitle: "Nasze produkty",
+      exploreProductsDesc: "Warsztaty i nasz analizator CV oparty na AI.",
+      exploreCooperationTitle: "Współpraca",
+      exploreCooperationDesc: "Współpracuj z nami jako organizacja, NGO lub sieć społeczności.",
+      exploreContactTitle: "Kontakt",
+      exploreContactDesc: "Skontaktuj się z nami w sprawie pytania lub pomysłu na współpracę.",
+      exploreCta: "Dowiedz się więcej",
       howTitle: "Jak to działa",
       how1Title: "Umów rozmowę wstępną",
       how1Desc: "Bezpłatna 20-minutowa rozmowa, by poznać Twoje cele i sprawdzić dopasowanie.",
@@ -263,20 +205,8 @@ export default function Page() {
       successModalTitle: "Jesteś na liście!",
       successModalMessage: "Dziękujemy za dołączenie do listy oczekujących Prosvasimi.",
       successModalButton: "Rozumiem",
-      legalTitle: "Dane rejestrowe",
-      legalName: "Nazwa",
-      legalRegister: "Rejestr",
-      legalRegisterValue: "Rejestr Stowarzyszeń (KRS)",
-      legalKrs: "Numer KRS",
-      legalNip: "NIP",
-      legalRegon: "REGON",
-      legalForm: "Forma prawna",
-      legalFormValue: "FUNDACJA",
     },
     ua: {
-      navOffer: "Що ми пропонуємо",
-      navAiPlatform: "AI-платформа",
-      navArticles: "Статті",
       ctaEarly: "Ранній доступ",
       heroTagline: "Кар'єрний коучинг з конкретними результатами",
       heroTitle: "Знайдіть свою наступну кар'єру впевнено.",
@@ -292,36 +222,16 @@ export default function Page() {
       feature3Desc: "Практичне редагування, щоб чітко представити ваш досвід роботодавцям.",
       feature4Title: "Постійна підтримка",
       feature4Desc: "Контакт між сесіями, щоб не втратити темп.",
-      valuesTitle: "Наші цінності",
-      value1Title: "Конкретні результати",
-      value1Desc: "Ми фокусуємось на конкретних кроках і письмових планах, а не на загальних порадах.",
-      value2Title: "Простота",
-      value2Desc: "Зрозуміла мова, прості процеси, фокус на реальних результатах.",
-      value3Title: "Довіра",
-      value3Desc: "Прозорі ціни, досвідчені коучі, шанобливе спілкування.",
-      forWhomTitle: "З ким ми працюємо",
-      forCandTitle: "Для тих, хто змінює кар'єру",
-      forCandDesc: "Отримайте чіткий персоналізований план наступного кроку від коуча, який спершу слухає.",
-      forCand1: "Індивідуальний коучинг, адаптований до вашої ситуації",
-      forCand2: "Письмовий план дій після кожної сесії ясності",
-      forCand3: "Перегляд резюме та профілю LinkedIn",
-      forCand4: "Контрольні точки між сесіями",
-      forEmpTitle: "Для організацій",
-      forEmpDesc: "Впровадьте структурований кар'єрний коучинг у своїй команді, спільноті чи партнерській мережі.",
-      forEmp1: "Групові воркшопи та коучингові пакети",
-      forEmp2: "Гнучкий розклад у різних часових поясах",
-      forEmp3: "Прозора звітність щодо залученості та результатів",
-      forEmp4: "Партнерські умови для НГО та спільнот",
-      accessTitle: "Доступність та підтримка людей з інвалідністю",
-      accessDesc: "Prosvasimi — зареєстрований фонд. Ми надаємо безкоштовний кар'єрний коучинг, професійну активізацію та підтримку людям з інвалідністю, хронічними захворюваннями та нейровідмінністю — фінансовану за рахунок грантів і пожертв, а не коштом людей, яким ми допомагаємо.",
-      access1: "Безкоштовний коучинг та кар'єрна підтримка, фінансована грантами та пожертвами",
-      access2: "Створено для людей з інвалідністю, хронічними захворюваннями та нейровідмінністю",
-      access3: "Скажіть нам, що вам потрібно під час бронювання — розкриття інформації завжди добровільне",
-      accessCta: "Запитати про безкоштовну підтримку",
-      aiTeaserBadge: "У розробці",
-      aiTeaserTitle: "Ми також будуємо AI-платформу для кар'єри",
-      aiTeaserDesc: "Платформа на основі AI, яка аналізує ваше резюме та навички, підбирає кар'єрні шляхи та допомагає закрити прогалину — для окремих людей і для організацій, що їх наймають. Ще не запущена, але ви можете переглянути, що готується, і приєднатися до списку очікування.",
-      aiTeaserCta: "Переглянути AI-платформу",
+      exploreTitle: "Дізнайтеся більше про Prosvasimi",
+      exploreAboutTitle: "Про нас",
+      exploreAboutDesc: "Наша місія, цінності та підтримка людей з інвалідністю як зареєстрованого фонду.",
+      exploreProductsTitle: "Наші продукти",
+      exploreProductsDesc: "Воркшопи та наш аналізатор резюме на основі AI.",
+      exploreCooperationTitle: "Співпраця",
+      exploreCooperationDesc: "Співпрацюйте з нами як організація, НГО чи мережа спільнот.",
+      exploreContactTitle: "Контакти",
+      exploreContactDesc: "Зв'яжіться з нами з питанням чи ідеєю співпраці.",
+      exploreCta: "Дізнатися більше",
       howTitle: "Як це працює",
       how1Title: "Забронюйте вступну розмову",
       how1Desc: "Безкоштовна 20-хвилинна розмова, щоб зрозуміти ваші цілі та перевірити відповідність.",
@@ -352,15 +262,6 @@ export default function Page() {
       successModalTitle: "Ви у списку!",
       successModalMessage: "Дякуємо за приєднання до списку очікування Prosvasimi.",
       successModalButton: "Зрозуміло",
-      legalTitle: "Реєстраційні дані",
-      legalName: "Назва",
-      legalRegister: "Реєстр",
-      legalRegisterValue: "Реєстр об'єднань (KRS)",
-      legalKrs: "Номер KRS",
-      legalNip: "NIP",
-      legalRegon: "REGON",
-      legalForm: "Правова форма",
-      legalFormValue: "ФУНДАЦІЯ",
     },
   };
 
@@ -460,129 +361,35 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Values Section */}
-        <section id="values" className="py-20 md:py-28 bg-white border-y border-[#D9D9DC]">
+        {/* Explore Section */}
+        <section id="explore" className="py-20 md:py-28 bg-white border-y border-[#D9D9DC]">
           <div className="mx-auto max-w-6xl px-6">
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16 text-[#0B2818]">
-              {t.valuesTitle}
+              {t.exploreTitle}
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { title: t.value1Title, desc: t.value1Desc, icon: ICON_PATHS.checkCircle, color: "border-t-[#0F7A52]" },
-                { title: t.value2Title, desc: t.value2Desc, icon: ICON_PATHS.bolt, color: "border-t-[#0B2818]" },
-                { title: t.value3Title, desc: t.value3Desc, icon: ICON_PATHS.shield, color: "border-t-[#0D5C3E]" },
-              ].map((value, i) => (
-                <div key={i} className={`bg-[#FFFFFF] rounded-2xl p-8 border-2 border-[#D9D9DC] ${value.color} border-t-4 hover:shadow-lg transition-all`}>
-                  <Icon path={value.icon} className="w-8 h-8 text-[#0B2818] mb-4" />
-                  <h3 className="text-xl font-semibold text-[#0B2818]">{value.title}</h3>
-                  <p className="mt-3 text-[#3F3C3A] leading-relaxed">{value.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* For Whom Section */}
-        <section id="for" className="py-20 md:py-28">
-          <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16 text-[#0B2818]">
-              {t.forWhomTitle}
-            </h2>
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Candidates */}
-              <div className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC] border-l-4 border-l-[#0D5C3E]">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#0D5C3E] text-white mb-6">
-                  <Icon path={ICON_PATHS.user} className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#0B2818]">{t.forCandTitle}</h3>
-                <p className="mt-3 text-[#3F3C3A]">{t.forCandDesc}</p>
-                <ul className="mt-6 space-y-3">
-                  {[t.forCand1, t.forCand2, t.forCand3, t.forCand4].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-[#0B2818]">
-                      <svg className="w-5 h-5 text-[#0D5C3E] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Employers */}
-              <div className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC] border-l-4 border-l-[#0B2818]">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#0B2818] text-white mb-6">
-                  <Icon path={ICON_PATHS.building} className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#0B2818]">{t.forEmpTitle}</h3>
-                <p className="mt-3 text-[#3F3C3A]">{t.forEmpDesc}</p>
-                <ul className="mt-6 space-y-3">
-                  {[t.forEmp1, t.forEmp2, t.forEmp3, t.forEmp4].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-[#0B2818]">
-                      <svg className="w-5 h-5 text-[#0B2818] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Accessibility & Disability Support */}
-        <section id="accessibility" className="py-20 md:py-28 bg-white border-t border-[#D9D9DC]">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="rounded-2xl border-2 border-[#D9D9DC] bg-[#FFFFFF] p-8 md:p-12 flex flex-col md:flex-row gap-8 md:items-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#0F7A52] text-white flex-shrink-0">
-                <Icon path={ICON_PATHS.heart} className="w-8 h-8" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-2xl md:text-3xl font-black tracking-tighter text-[#0B2818]">{t.accessTitle}</h2>
-                <p className="mt-4 text-[#3F3C3A] leading-relaxed max-w-3xl">{t.accessDesc}</p>
-                <ul className="mt-6 grid sm:grid-cols-3 gap-4">
-                  {[t.access1, t.access2, t.access3].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-[#0B2818]">
-                      <svg className="w-4 h-4 text-[#0F7A52] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#waitlist"
-                  className="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-[#0F7A52] text-[#0F7A52] font-bold hover:bg-[#0F7A52] hover:text-white transition-colors"
-                >
-                  {t.accessCta}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* AI Platform Teaser */}
-        <section className="py-20 md:py-28">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="rounded-2xl border-2 border-[#D9D9DC] bg-[#0B2818] p-8 md:p-12 flex flex-col md:flex-row gap-8 md:items-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
-              <div className="flex-1 relative">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
-                  <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
-                  {t.aiTeaserBadge}
-                </span>
-                <h2 className="mt-6 text-2xl md:text-3xl font-black tracking-tighter text-white">{t.aiTeaserTitle}</h2>
-                <p className="mt-4 text-white/70 leading-relaxed max-w-2xl">{t.aiTeaserDesc}</p>
+                { href: "/about", title: t.exploreAboutTitle, desc: t.exploreAboutDesc, icon: ICON_PATHS.heart, color: "bg-[#0F7A52]" },
+                { href: "/products", title: t.exploreProductsTitle, desc: t.exploreProductsDesc, icon: ICON_PATHS.trendingUp, color: "bg-[#0B2818]" },
+                { href: "/cooperation", title: t.exploreCooperationTitle, desc: t.exploreCooperationDesc, icon: ICON_PATHS.building, color: "bg-[#0D5C3E]" },
+                { href: "/contact", title: t.exploreContactTitle, desc: t.exploreContactDesc, icon: ICON_PATHS.chat, color: "bg-[#16A97A]" },
+              ].map((card) => (
                 <Link
-                  href="/ai-platform"
-                  className="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#16A97A] text-white font-bold hover:bg-white hover:text-[#0B2818] transition-colors"
+                  key={card.href}
+                  href={card.href}
+                  className="group bg-[#FFFFFF] rounded-2xl p-8 border-2 border-[#D9D9DC] hover:border-[#0F7A52] hover:shadow-lg transition-all flex flex-col"
                 >
-                  {t.aiTeaserCta}
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
+                  <div className={`w-12 h-12 ${card.color} rounded-xl flex items-center justify-center mb-4`}>
+                    <Icon path={card.icon} className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-[#0B2818]">{card.title}</h3>
+                  <p className="mt-2 text-[#3F3C3A] leading-relaxed flex-1">{card.desc}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F7A52] group-hover:gap-2.5 transition-all">
+                    {t.exploreCta}
+                    <Icon path={ICON_PATHS.arrowRight} className="w-4 h-4" />
+                  </span>
                 </Link>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -730,61 +537,7 @@ export default function Page() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-[#D9D9DC] bg-white py-12">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2.5">
-              <Image 
-                src="/images/logo.png" 
-                alt="Prosvasimi" 
-                width={28} 
-                height={28}
-              />
-              <span className="font-medium text-[#0B2818]">Prosvasimi</span>
-            </div>
-            <nav className="flex items-center gap-6 text-sm text-[#0F7A52]">
-              <a href="#values" className="hover:text-[#0B2818] transition-colors">{t.valuesTitle}</a>
-              <a href="#for" className="hover:text-[#0B2818] transition-colors">{t.forWhomTitle}</a>
-              <Link href="/offer" className="hover:text-[#0B2818] transition-colors">{t.navOffer}</Link>
-              <Link href="/ai-platform" className="hover:text-[#0B2818] transition-colors">{t.navAiPlatform}</Link>
-              <Link href="/articles" className="hover:text-[#0B2818] transition-colors">{t.navArticles}</Link>
-              <Link href="/register" className="hover:text-[#0B2818] transition-colors">Register</Link>
-            </nav>
-            <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>
-          </div>
-
-          <div className="mt-10 pt-8 border-t border-[#D9D9DC]">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[#0B2818]">{t.legalTitle}</h3>
-            <dl className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-4 text-sm">
-              <div>
-                <dt className="text-[#0F7A52]">{t.legalName}</dt>
-                <dd className="mt-1 font-medium text-[#0B2818]">FUNDACJA PROSVÁSIMI</dd>
-              </div>
-              <div>
-                <dt className="text-[#0F7A52]">{t.legalRegister}</dt>
-                <dd className="mt-1 font-medium text-[#0B2818]">{t.legalRegisterValue}</dd>
-              </div>
-              <div>
-                <dt className="text-[#0F7A52]">{t.legalKrs}</dt>
-                <dd className="mt-1 font-medium text-[#0B2818]">0001231234</dd>
-              </div>
-              <div>
-                <dt className="text-[#0F7A52]">{t.legalNip}</dt>
-                <dd className="mt-1 font-medium text-[#0B2818]">5214158994</dd>
-              </div>
-              <div>
-                <dt className="text-[#0F7A52]">{t.legalRegon}</dt>
-                <dd className="mt-1 font-medium text-[#0B2818]">54433801900000</dd>
-              </div>
-              <div>
-                <dt className="text-[#0F7A52]">{t.legalForm}</dt>
-                <dd className="mt-1 font-medium text-[#0B2818]">{t.legalFormValue}</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter lang={lang} />
 
       <SuccessModal
         isOpen={showSuccessModal}
