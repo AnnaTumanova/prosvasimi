@@ -174,6 +174,15 @@ export default function Page() {
       successModalTitle: "You're on the list!",
       successModalMessage: "Thank you for joining the Prosvasimi waitlist. We'll notify you when we open in your region.",
       successModalButton: "Got it",
+      legalTitle: "Registration Details",
+      legalName: "Name",
+      legalRegister: "Register",
+      legalRegisterValue: "Register of Associations (KRS)",
+      legalKrs: "KRS Number",
+      legalNip: "NIP",
+      legalRegon: "REGON",
+      legalForm: "Legal Form",
+      legalFormValue: "Foundation",
     },
     pl: {
       navOffer: "Co oferujemy",
@@ -254,6 +263,15 @@ export default function Page() {
       successModalTitle: "Jesteś na liście!",
       successModalMessage: "Dziękujemy za dołączenie do listy oczekujących Prosvasimi.",
       successModalButton: "Rozumiem",
+      legalTitle: "Dane rejestrowe",
+      legalName: "Nazwa",
+      legalRegister: "Rejestr",
+      legalRegisterValue: "Rejestr Stowarzyszeń (KRS)",
+      legalKrs: "Numer KRS",
+      legalNip: "NIP",
+      legalRegon: "REGON",
+      legalForm: "Forma prawna",
+      legalFormValue: "FUNDACJA",
     },
     ua: {
       navOffer: "Що ми пропонуємо",
@@ -334,6 +352,15 @@ export default function Page() {
       successModalTitle: "Ви у списку!",
       successModalMessage: "Дякуємо за приєднання до списку очікування Prosvasimi.",
       successModalButton: "Зрозуміло",
+      legalTitle: "Реєстраційні дані",
+      legalName: "Назва",
+      legalRegister: "Реєстр",
+      legalRegisterValue: "Реєстр об'єднань (KRS)",
+      legalKrs: "Номер KRS",
+      legalNip: "NIP",
+      legalRegon: "REGON",
+      legalForm: "Правова форма",
+      legalFormValue: "ФУНДАЦІЯ",
     },
   };
 
@@ -725,6 +752,36 @@ export default function Page() {
               <Link href="/register" className="hover:text-[#0B2818] transition-colors">Register</Link>
             </nav>
             <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>
+          </div>
+
+          <div className="mt-10 pt-8 border-t border-[#D9D9DC]">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#0B2818]">{t.legalTitle}</h3>
+            <dl className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-4 text-sm">
+              <div>
+                <dt className="text-[#0F7A52]">{t.legalName}</dt>
+                <dd className="mt-1 font-medium text-[#0B2818]">FUNDACJA PROSVÁSIMI</dd>
+              </div>
+              <div>
+                <dt className="text-[#0F7A52]">{t.legalRegister}</dt>
+                <dd className="mt-1 font-medium text-[#0B2818]">{t.legalRegisterValue}</dd>
+              </div>
+              <div>
+                <dt className="text-[#0F7A52]">{t.legalKrs}</dt>
+                <dd className="mt-1 font-medium text-[#0B2818]">0001231234</dd>
+              </div>
+              <div>
+                <dt className="text-[#0F7A52]">{t.legalNip}</dt>
+                <dd className="mt-1 font-medium text-[#0B2818]">5214158994</dd>
+              </div>
+              <div>
+                <dt className="text-[#0F7A52]">{t.legalRegon}</dt>
+                <dd className="mt-1 font-medium text-[#0B2818]">54433801900000</dd>
+              </div>
+              <div>
+                <dt className="text-[#0F7A52]">{t.legalForm}</dt>
+                <dd className="mt-1 font-medium text-[#0B2818]">{t.legalFormValue}</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </footer>
