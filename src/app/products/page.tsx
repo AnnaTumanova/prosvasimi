@@ -30,12 +30,16 @@ const translations: Record<Lang, Record<string, string>> = {
     workshopsDesc: "Hands-on, live sessions on AI-powered job search, learning with AI, and interview & negotiation confidence.",
     workshopsCta: "Explore Workshops",
     resumeTitle: "Resume Analyser",
-    resumeDesc: "Upload your CV and answer a few questions — we analyze your resume and preferences to suggest career paths.",
+    resumeDesc: "Upload your CV and answer a few questions — we analyze your resume and preferences to suggest 5 job positions you could apply for.",
     resumeCta: "Try the Analyser",
     aiTitle: "AI Career Platform",
     aiDesc: "An AI-powered platform that reads your CV and skills and matches you to career paths. In development.",
     aiCta: "Preview the Platform",
     badgeSoon: "Coming Soon",
+    auditTitle: "Accessibility Audit & PFRON Roadmap",
+    auditDesc: "For employers: an accessibility audit and a concrete roadmap to meet disability-employment quotas, plus ongoing monitoring.",
+    auditCta: "For Employers",
+    badgeEmployers: "For Employers",
   },
   pl: {
     tagline: "Nasze produkty",
@@ -45,12 +49,16 @@ const translations: Record<Lang, Record<string, string>> = {
     workshopsDesc: "Praktyczne sesje na żywo o szukaniu pracy z AI, nauce z AI oraz pewności siebie na rozmowach i negocjacjach.",
     workshopsCta: "Zobacz warsztaty",
     resumeTitle: "Analizator CV",
-    resumeDesc: "Prześlij swoje CV i odpowiedz na kilka pytań — analizujemy Twoje CV i preferencje, by zaproponować ścieżki kariery.",
+    resumeDesc: "Prześlij swoje CV i odpowiedz na kilka pytań — analizujemy Twoje CV i preferencje, by zaproponować 5 stanowisk, na które możesz aplikować.",
     resumeCta: "Wypróbuj analizator",
     aiTitle: "Platforma AI dla kariery",
     aiDesc: "Platforma oparta na AI, która analizuje Twoje CV i umiejętności oraz dopasowuje ścieżki kariery. W budowie.",
     aiCta: "Zobacz platformę",
     badgeSoon: "Wkrótce",
+    auditTitle: "Audyt dostępności i plan działania PFRON",
+    auditDesc: "Dla pracodawców: audyt dostępności i konkretny plan spełnienia wskaźnika zatrudnienia osób z niepełnosprawnościami wraz z bieżącym monitoringiem.",
+    auditCta: "Dla pracodawców",
+    badgeEmployers: "Dla pracodawców",
   },
   ua: {
     tagline: "Наші продукти",
@@ -60,12 +68,16 @@ const translations: Record<Lang, Record<string, string>> = {
     workshopsDesc: "Практичні живі сесії про пошук роботи з AI, навчання з AI та впевненість на співбесідах і переговорах.",
     workshopsCta: "Переглянути воркшопи",
     resumeTitle: "Аналізатор резюме",
-    resumeDesc: "Завантажте резюме та дайте відповіді на кілька запитань — ми аналізуємо резюме та ваші вподобання, щоб запропонувати кар'єрні шляхи.",
+    resumeDesc: "Завантажте резюме та дайте відповіді на кілька запитань — ми аналізуємо резюме та ваші вподобання, щоб запропонувати 5 вакансій, на які ви можете подати заявку.",
     resumeCta: "Спробувати аналізатор",
     aiTitle: "AI-платформа для кар'єри",
     aiDesc: "Платформа на основі AI, яка аналізує ваше резюме та навички й підбирає кар'єрні шляхи. У розробці.",
     aiCta: "Переглянути платформу",
     badgeSoon: "Незабаром",
+    auditTitle: "Аудит доступності та PFRON-роадмап",
+    auditDesc: "Для роботодавців: аудит доступності та конкретний план виконання квоти працевлаштування людей з інвалідністю разом із постійним моніторингом.",
+    auditCta: "Для роботодавців",
+    badgeEmployers: "Для роботодавців",
   },
 };
 
@@ -77,6 +89,7 @@ export default function ProductsPage() {
     { href: "/offer", title: t.workshopsTitle, desc: t.workshopsDesc, cta: t.workshopsCta, icon: ICON_PATHS.document, color: "bg-[#0F7A52]" },
     { href: "/career-analysis", title: t.resumeTitle, desc: t.resumeDesc, cta: t.resumeCta, icon: ICON_PATHS.search, color: "bg-[#0B2818]" },
     { href: "/ai-platform", title: t.aiTitle, desc: t.aiDesc, cta: t.aiCta, icon: ICON_PATHS.sparkle, color: "bg-[#0D5C3E]", badge: t.badgeSoon },
+    { href: "/cooperation", title: t.auditTitle, desc: t.auditDesc, cta: t.auditCta, icon: ICON_PATHS.document, color: "bg-[#C97A5B]", badge: t.badgeEmployers },
   ];
 
   return (
@@ -106,7 +119,7 @@ export default function ProductsPage() {
         {/* Products Grid */}
         <section className="py-20 md:py-28 bg-white">
           <div className="mx-auto max-w-6xl px-6">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {products.map((product) => (
                 <div
                   key={product.href}

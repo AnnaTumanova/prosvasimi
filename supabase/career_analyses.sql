@@ -25,6 +25,7 @@ create table if not exists public.career_analyses (
 
 create index if not exists career_analyses_email_idx on public.career_analyses (email);
 alter table public.career_analyses add column if not exists preferences text not null default '';
+alter table public.career_analyses add column if not exists job_suggestions jsonb not null default '[]'::jsonb;
 create index if not exists career_analyses_user_id_idx on public.career_analyses (user_id);
 
 alter table public.career_analyses enable row level security;

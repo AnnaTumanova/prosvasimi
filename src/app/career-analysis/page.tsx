@@ -59,7 +59,7 @@ const ALLOWED_CV_TYPES = new Set([
 const translations = {
   en: {
     title: "Career Analysis",
-    subtitle: "Upload your CV and share what drives you. We'll analyze your resume and personality to suggest career paths.",
+    subtitle: "Upload your CV and share what drives you. We'll analyze your resume and personality to suggest career paths and 5 job positions you could apply for.",
     note: "You do not need an account to submit. To view your analysis, log in or register with the same email.",
     name: "Full name",
     email: "Email address",
@@ -90,7 +90,7 @@ const translations = {
   },
   pl: {
     title: "Analiza kariery",
-    subtitle: "Prześlij CV i opisz, co Cię napędza. Przeanalizujemy Twoje CV oraz osobowość, by zaproponować ścieżki kariery.",
+    subtitle: "Prześlij CV i opisz, co Cię napędza. Przeanalizujemy Twoje CV oraz osobowość, by zaproponować ścieżki kariery i 5 stanowisk, na które możesz aplikować.",
     note: "Nie potrzebujesz konta, aby przesłać dane. Aby zobaczyć analizę, zaloguj się lub zarejestruj za pomocą tego samego e-maila.",
     name: "Imię i nazwisko",
     email: "Adres e-mail",
@@ -121,7 +121,7 @@ const translations = {
   },
   ua: {
     title: "Аналіз кар'єри",
-    subtitle: "Завантажте CV та розкажіть, що вас мотивує. Ми проаналізуємо ваше резюме та особистість, щоб запропонувати кар'єрні шляхи.",
+    subtitle: "Завантажте CV та розкажіть, що вас мотивує. Ми проаналізуємо ваше резюме та особистість, щоб запропонувати кар'єрні шляхи та 5 вакансій, на які ви можете подати заявку.",
     note: "Для надсилання даних не потрібен обліковий запис. Щоб переглянути аналіз, увійдіть або зареєструйтеся за тією ж електронною поштою.",
     name: "Повне ім'я",
     email: "Електронна пошта",

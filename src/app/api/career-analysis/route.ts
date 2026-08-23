@@ -68,6 +68,75 @@ function fallbackAnalysis() {
   return `Thank you for sharing your background.\n\nWe have received your CV and preferences. A coach will review them and reach out with personalized guidance. In the meantime, consider these general next steps:\n1. Reflect on the tasks that energize you and how they connect to a role.\n2. Look for roles that match your natural talents and preferred work style.\n3. Prepare a short career story that highlights your strengths and goals.\n4. Research communities or employers that value your working style.\n5. List any accommodations or supports that help you do your best work and be ready to discuss them.`;
 }
 
+type JobSuggestion = { title: string; reason: string };
+
+function buildJobSuggestionsPrompt(fields: Record<string, string>) {
+  return `Based on the resume and preferences below, suggest exactly 5 specific job positions this person could realistically apply for right now. Each must be a concrete, real-world job title (not a vague category), matched to their experience, skills, and stated preferences or talents.
+
+Respond with strict JSON only, no prose, no Markdown, in exactly this shape:
+{"suggestions":[{"title":"...","reason":"..."}]}
+
+The "reason" must be one short sentence (max 25 words) explaining why this role fits, referencing something specific from the resume or preferences.
+
+Resume text:
+${fields.resumeText || "[CV uploaded for review — no pasted text provided]"}
+
+Psychological preferences and talents:
+${fields.preferences || "Not provided"}`;
+}
+
+async function generateJobSuggestions(fields: Record<string, string>): Promise<JobSuggestion[]> {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) return [];
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are a career coach that recommends specific, realistic job titles for people with disabilities and neurodivergent individuals. Always respond with strict JSON only, matching the requested shape exactly.",
+          },
+          { role: "user", content: buildJobSuggestionsPrompt(fields) },
+        ],
+        temperature: 0.6,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenAI returned ${response.status}`);
+    }
+
+    const data = (await response.json()) as {
+      choices?: { message?: { content?: string } }[];
+    };
+    const raw = data.choices?.[0]?.message?.content?.trim();
+    if (!raw) throw new Error("Empty job suggestions from OpenAI");
+
+    const parsed = JSON.parse(raw) as { suggestions?: unknown };
+    const list = Array.isArray(parsed.suggestions) ? parsed.suggestions : [];
+
+    return list
+      .filter((item): item is Record<string, unknown> => typeof item === "object" && item !== null)
+      .map((item) => ({
+        title: String(item.title ?? "").trim(),
+        reason: String(item.reason ?? "").trim(),
+      }))
+      .filter((item) => item.title.length > 0)
+      .slice(0, 5);
+  } catch {
+    return [];
+  }
+}
+
 function stripMarkdown(text: string): string {
   return text
     .replace(/\*\*|__/g, "")
@@ -205,7 +274,10 @@ export async function POST(req: Request) {
     }
 
     const fields = { resumeText, preferences };
-    const { text: analysisText, status: analysisStatus } = await generateAnalysis(fields);
+    const [{ text: analysisText, status: analysisStatus }, jobSuggestions] = await Promise.all([
+      generateAnalysis(fields),
+      generateJobSuggestions(fields),
+    ]);
 
     const payload: Record<string, unknown> = {
       guest_token: guestToken,
@@ -219,6 +291,7 @@ export async function POST(req: Request) {
       cv_file_size: cvFileSize,
       analysis_text: analysisText,
       analysis_status: analysisStatus,
+      job_suggestions: jobSuggestions,
       user_agent: req.headers.get("user-agent") ?? "",
       ip: req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for") || "",
     };
@@ -275,7 +348,7 @@ export async function GET(req: Request) {
     const { data, error } = await supabase
       .from("career_analyses")
       .select(
-        "id, guest_token, email, name, resume_text, preferences, cv_file_name, analysis_text, analysis_status"
+        "id, guest_token, email, name, resume_text, preferences, cv_file_name, analysis_text, analysis_status, job_suggestions"
       )
       .eq("guest_token", token)
       .maybeSingle();
@@ -296,7 +369,7 @@ export async function GET(req: Request) {
   const { data, error } = await authSupabase
     .from("career_analyses")
     .select(
-      "id, guest_token, email, name, resume_text, preferences, cv_file_name, analysis_text, analysis_status"
+      "id, guest_token, email, name, resume_text, preferences, cv_file_name, analysis_text, analysis_status, job_suggestions"
     )
     .or(`email.eq.${userEmail},user_id.eq.${user.id}`)
     .order("created_at", { ascending: false })
