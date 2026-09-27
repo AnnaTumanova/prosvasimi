@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 
 const ICON_PATHS = {
   checkCircle: "M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
@@ -78,7 +79,7 @@ const translations: Record<Lang, Record<string, string>> = {
 };
 
 export default function AboutPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const t = translations[lang];
 
   return (
@@ -91,7 +92,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#0F7A52] text-xs font-bold uppercase tracking-widest">
                 <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
                 {t.tagline}
               </span>

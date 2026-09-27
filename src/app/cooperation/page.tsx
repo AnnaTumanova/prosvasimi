@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 
 const ICON_PATHS = {
   building: "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
@@ -143,7 +144,7 @@ const translations: Record<Lang, Record<string, string>> = {
 };
 
 export default function CooperationPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const t = translations[lang];
 
   const activities = [
@@ -163,7 +164,7 @@ export default function CooperationPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#0F7A52] text-xs font-bold uppercase tracking-widest">
                 <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
                 {t.tagline}
               </span>
@@ -241,7 +242,7 @@ export default function CooperationPage() {
                 <div className="mt-4 flex items-baseline gap-2">
                   <span className="text-4xl font-black tracking-tighter text-white">{t.retainerPlanPrice}</span>
                 </div>
-                <p className="mt-1 text-sm font-medium text-[#16A97A] uppercase tracking-wide">{t.retainerPlanUnit}</p>
+                <p className="mt-1 text-sm font-medium text-[#0F7A52] uppercase tracking-wide">{t.retainerPlanUnit}</p>
                 <p className="mt-5 text-white/70 leading-relaxed">{t.retainerPlanDesc}</p>
               </div>
             </div>

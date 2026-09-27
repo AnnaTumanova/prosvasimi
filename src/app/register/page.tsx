@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
-import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 import SiteHeader from "@/components/SiteHeader";
 
 const translations: Record<Lang, Record<string, string>> = {
@@ -66,7 +67,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,10 +76,6 @@ export default function RegisterPage() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const t = translations[lang];
-
-  useEffect(() => {
-    setLang(detectBrowserLanguage());
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

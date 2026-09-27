@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
-import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 import SiteHeader from "@/components/SiteHeader";
 
 const ICON_PATHS = {
@@ -96,7 +97,7 @@ const translations = {
 } satisfies Record<Lang, Record<string, string>>;
 
 export default function UserPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const [profile, setProfile] = useState<UserProfile>(initialProfile);
   const [cv, setCv] = useState<File | null>(null);
   const [picture, setPicture] = useState<File | null>(null);
@@ -110,8 +111,6 @@ export default function UserPage() {
   const t = translations[lang];
 
   useEffect(() => {
-    setLang(detectBrowserLanguage());
-
     const loadProfile = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
@@ -220,7 +219,7 @@ export default function UserPage() {
         <section className="bg-white border-b border-[#D9D9DC]">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#16A97A]/10 text-[#16A97A] text-sm font-medium">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#16A97A]/10 text-[#0F7A52] text-sm font-medium">
                 {t.badge}
               </span>
               <h1 className="mt-8 text-4xl md:text-5xl font-black tracking-tighter leading-tight text-[#0B2818]">

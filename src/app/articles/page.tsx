@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 
 interface CMSArticle {
   id: string;
@@ -13,8 +15,6 @@ interface CMSArticle {
   contentUa: string;
   contentPl: string;
 }
-
-type Lang = "en" | "pl" | "ua";
 
 const translations: Record<Lang, Record<string, string>> = {
   en: {
@@ -92,7 +92,7 @@ function ArticleCard({
 }
 
 export default function ArticlesPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const [cmsArticles, setCmsArticles] = useState<CMSArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const t = translations[lang];

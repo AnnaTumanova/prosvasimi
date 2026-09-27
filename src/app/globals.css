@@ -23,4 +23,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+/* Visible keyboard-focus outline as a fallback wherever a component doesn't
+   already define its own focus ring. */
+:focus-visible {
+  outline: 3px solid #0f7a52;
+  outline-offset: 2px;
+}
+
+/* Respect the user's OS-level request to reduce motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

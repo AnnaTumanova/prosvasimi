@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SiteHeader from "@/components/SiteHeader";
-
-type Lang = "en" | "pl" | "ua";
+import { useLang } from "@/lib/LanguageContext";
 
 const workshops = {
   en: [
@@ -259,7 +258,7 @@ interface SelectedWorkshop {
 }
 
 export default function OfferPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedWorkshop, setSelectedWorkshop] = useState<SelectedWorkshop | null>(null);
   const [formName, setFormName] = useState("");
@@ -330,7 +329,7 @@ export default function OfferPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 lg:py-40 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#0F7A52] text-xs font-bold uppercase tracking-widest">
                 <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
                 {t.comingSoon}
               </span>

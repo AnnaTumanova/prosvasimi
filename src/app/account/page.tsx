@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
-import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 import SiteHeader from "@/components/SiteHeader";
 
 const translations: Record<Lang, Record<string, string>> = {
@@ -60,7 +61,7 @@ type JobSuggestion = { title: string; reason: string };
 
 export default function AccountPage() {
   const router = useRouter();
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [analysis, setAnalysis] = useState<string | null>(null);
@@ -69,8 +70,6 @@ export default function AccountPage() {
   const t = translations[lang];
 
   useEffect(() => {
-    setLang(detectBrowserLanguage());
-
     const loadUser = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
@@ -123,7 +122,7 @@ export default function AccountPage() {
             <p className="text-[#0F7A52]">{t.loading}</p>
           ) : user ? (
             <>
-              <span className="inline-flex px-4 py-2 rounded-lg bg-[#16A97A]/10 text-[#16A97A] text-sm font-medium">{t.signedIn}</span>
+              <span className="inline-flex px-4 py-2 rounded-lg bg-[#16A97A]/10 text-[#0F7A52] text-sm font-medium">{t.signedIn}</span>
               <h1 className="mt-6 text-4xl md:text-5xl font-black tracking-tighter">{t.title}</h1>
               <p className="mt-4 text-[#0F7A52]">{t.signedInAs} {user.email}.</p>
 

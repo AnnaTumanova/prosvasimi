@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 import SiteHeader from "@/components/SiteHeader";
 
 const ICON_PATHS = {
@@ -131,12 +132,8 @@ const translations = {
 } satisfies Record<Lang, Record<string, string>>;
 
 export default function DevelopmentPlanPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const t = translations[lang];
-
-  useEffect(() => {
-    setLang(detectBrowserLanguage());
-  }, []);
 
   const steps = [
     { n: 1, title: t.how1Title, desc: t.how1Desc, icon: ICON_PATHS.search },
@@ -164,7 +161,7 @@ export default function DevelopmentPlanPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#0F7A52] text-xs font-bold uppercase tracking-widest">
                 <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
                 {t.badge}
               </span>
@@ -209,7 +206,7 @@ export default function DevelopmentPlanPage() {
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#0F7A52] text-white mb-6">
                     <Icon path={step.icon} className="w-6 h-6" />
                   </div>
-                  <span className="text-sm font-bold text-[#16A97A]">{String(step.n).padStart(2, "0")}</span>
+                  <span className="text-sm font-bold text-[#0F7A52]">{String(step.n).padStart(2, "0")}</span>
                   <h3 className="mt-1 text-xl font-semibold text-[#0B2818]">{step.title}</h3>
                   <p className="mt-2 text-[#3F3C3A] leading-relaxed">{step.desc}</p>
                 </div>

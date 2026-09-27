@@ -127,8 +127,8 @@ export default function SiteHeader({
                   aria-pressed={lang === l}
                   className={`px-3 py-1.5 rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-[#0F7A52] focus:ring-offset-2 ${
                     lang === l
-                      ? "bg-white text-[#0B2818] shadow-sm"
-                      : "text-[#0F7A52] hover:text-[#0B2818]"
+                      ? "bg-white text-[#0B2818] font-semibold shadow-sm"
+                      : "text-[#0B2818] hover:bg-white/60"
                   }`}
                 >
                   {l.toUpperCase()}

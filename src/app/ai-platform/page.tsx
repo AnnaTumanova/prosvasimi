@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 import SiteHeader from "@/components/SiteHeader";
 
 const ICON_PATHS = {
@@ -111,12 +112,8 @@ const translations = {
 } satisfies Record<Lang, Record<string, string>>;
 
 export default function AiPlatformPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const t = translations[lang];
-
-  useEffect(() => {
-    setLang(detectBrowserLanguage());
-  }, []);
 
   const individualFeatures = [
     { title: t.ind1Title, desc: t.ind1Desc, icon: ICON_PATHS.document },
@@ -144,7 +141,7 @@ export default function AiPlatformPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#16A97A] text-xs font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#0F7A52] text-xs font-bold uppercase tracking-widest">
                 <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
                 {t.badge}
               </span>

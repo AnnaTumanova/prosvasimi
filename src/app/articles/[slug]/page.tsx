@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
-
-type Lang = "en" | "pl" | "ua";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 
 const translations: Record<Lang, Record<string, string>> = {
   en: {
@@ -1102,31 +1102,13 @@ const hardcodedArticles: Record<string, { titleEn: string; titleUa: string; titl
   },
 };
 
-// Detect browser language and map to supported languages
-function getBrowserLanguage(): Lang {
-  if (typeof window === 'undefined') return 'en';
-  
-  const browserLang = navigator.language || (navigator as any).userLanguage || 'en';
-  const langCode = browserLang.toLowerCase().split('-')[0];
-  
-  if (langCode === 'pl') return 'pl';
-  if (langCode === 'uk' || langCode === 'ua') return 'ua';
-  return 'en';
-}
-
 export default function ArticlePage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const [article, setArticle] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const params = useParams();
   const slug = params.slug as string;
   const t = translations[lang];
-
-  // Set language based on browser settings on mount
-  useEffect(() => {
-    const detectedLang = getBrowserLanguage();
-    setLang(detectedLang);
-  }, []);
 
   // Try to find hardcoded article first
   const hardcodedArticle = hardcodedArticles[slug];

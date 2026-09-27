@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { detectBrowserLanguage, type Lang } from "@/lib/language";
+import type { Lang } from "@/lib/language";
+import { useLang } from "@/lib/LanguageContext";
 import SiteHeader from "@/components/SiteHeader";
 
 const ICON_PATHS = {
@@ -153,17 +154,13 @@ const translations = {
 } satisfies Record<Lang, Record<string, string>>;
 
 export default function CareerAnalysisPage() {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useLang();
   const [form, setForm] = useState<CareerFormData>(initialForm);
   const [cv, setCv] = useState<File | null>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
   const [submittedEmail, setSubmittedEmail] = useState("");
   const t = translations[lang];
-
-  useEffect(() => {
-    setLang(detectBrowserLanguage());
-  }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
