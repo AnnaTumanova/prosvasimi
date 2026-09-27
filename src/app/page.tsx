@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -15,6 +15,7 @@ const ICON_PATHS = {
   building: "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
   heart: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z",
   arrowRight: "M13 7l5 5m0 0l-5 5m5-5H6",
+  plus: "M12 4.5v15m7.5-7.5h-15",
 } as const;
 
 function Icon({ path, className = "w-6 h-6" }: { path: string; className?: string }) {
@@ -27,13 +28,12 @@ function Icon({ path, className = "w-6 h-6" }: { path: string; className?: strin
 
 export default function Page() {
   const [lang, setLang] = useLang();
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const translations: Record<Lang, Record<string, string>> = {
     en: {
-      ctaEarly: "Get Started",
       heroTagline: "For job seekers · For employers",
       heroTitle: "Accessible Employment & Inclusive Hiring for People with Disabilities",
-      heroSubtitle: "Prosvasimi",
       heroDescription: "Connecting motivated talent with barrier-free workplaces and empowering companies to build inclusive hiring pipelines.",
       heroJoin: "I'm Looking for a Job",
       heroExplore: "I'm Hiring / Partnering",
@@ -73,10 +73,8 @@ export default function Page() {
       faq4A: "We run a 1–3 role pilot where we source, screen, and support candidates through onboarding while coaching your HR team on inclusive recruitment.",
     },
     pl: {
-      ctaEarly: "Zacznij teraz",
       heroTagline: "Dla kandydatów · Dla pracodawców",
       heroTitle: "Dostępna praca i inkluzywne zatrudnianie dla osób z niepełnosprawnościami",
-      heroSubtitle: "Prosvasimi",
       heroDescription: "Łączymy zmotywowanych kandydatów z barierodajnymi miejscami pracy i wspieramy firmy w budowie inkluzywnych procesów rekrutacyjnych.",
       heroJoin: "Szukam pracy",
       heroExplore: "Rekrutuję / Chcę współpracować",
@@ -116,10 +114,8 @@ export default function Page() {
       faq4A: "Prowadzimy pilotaż obejmujący 1–3 role, podczas któgo pozyskujemy, weryfikujemy i wspieramy kandydatów, szkoląc zespół HR w inkluzywnej rekrutacji.",
     },
     ua: {
-      ctaEarly: "Почати",
       heroTagline: "Для шукачів · Для роботодавців",
       heroTitle: "Доступна зайнятість та інклюзивне наймання для людей з інвалідністю",
-      heroSubtitle: "Prosvasimi",
       heroDescription: "Поєднуємо мотивованих талантів зі workplaces без бар'єрів та допомагаємо компаніям будувати інклюзивні рекрутингові процеси.",
       heroJoin: "Шукаю роботу",
       heroExplore: "Наймаю / Хочу співпрацювати",
@@ -162,42 +158,76 @@ export default function Page() {
 
   const t = translations[lang];
 
+  const features = [
+    { icon: ICON_PATHS.search, title: t.feature1Title, desc: t.feature1Desc },
+    { icon: ICON_PATHS.trendingUp, title: t.feature2Title, desc: t.feature2Desc },
+    { icon: ICON_PATHS.document, title: t.feature3Title, desc: t.feature3Desc },
+    { icon: ICON_PATHS.chat, title: t.feature4Title, desc: t.feature4Desc },
+  ];
+
+  const exploreCards = [
+    { href: "/about", title: t.exploreAboutTitle, desc: t.exploreAboutDesc, icon: ICON_PATHS.heart },
+    { href: "/products", title: t.exploreProductsTitle, desc: t.exploreProductsDesc, icon: ICON_PATHS.trendingUp },
+    { href: "/cooperation", title: t.exploreCooperationTitle, desc: t.exploreCooperationDesc, icon: ICON_PATHS.building },
+    { href: "/contact", title: t.exploreContactTitle, desc: t.exploreContactDesc, icon: ICON_PATHS.chat },
+  ];
+
+  const steps = [
+    { n: 1, title: t.how1Title, desc: t.how1Desc },
+    { n: 2, title: t.how2Title, desc: t.how2Desc },
+    { n: 3, title: t.how3Title, desc: t.how3Desc },
+  ];
+
+  const faqs = [
+    { q: t.faq1Q, a: t.faq1A },
+    { q: t.faq2Q, a: t.faq2A },
+    { q: t.faq3Q, a: t.faq3A },
+    { q: t.faq4Q, a: t.faq4A },
+  ];
+
   return (
-    <div className="min-h-dvh bg-[#FFFFFF] text-[#0B2818]">
+    <div className="min-h-dvh bg-white text-[#0B2818]">
       <SiteHeader lang={lang} setLang={setLang} />
 
       <main id="main-content">
         {/* Hero Section */}
-        <section className="bg-[#0B2818] relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A52]/20 via-transparent to-transparent" aria-hidden="true" />
-          <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 lg:py-40 relative">
+        <section className="relative overflow-hidden bg-[#0B2818]">
+          <div
+            className="pointer-events-none absolute -top-40 -left-24 w-[34rem] h-[34rem] rounded-full bg-[#16A97A]/25 blur-[120px]"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute top-10 -right-32 w-[28rem] h-[28rem] rounded-full bg-[#0F7A52]/30 blur-[110px]"
+            aria-hidden="true"
+          />
+          <div className="mx-auto max-w-6xl px-6 py-28 md:py-36 lg:py-44 relative">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#16A97A]/40 bg-[#16A97A]/10 text-[#0F7A52] text-xs font-bold uppercase tracking-widest">
-                <span className="w-2 h-2 rounded-full bg-[#16A97A] animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-white/85 text-xs font-medium tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3DDC97]" />
                 {t.heroTagline}
               </span>
 
-              <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.05] text-white">
+              <h1 className="mt-8 text-[2.25rem] sm:text-4xl md:text-5xl lg:text-[3.75rem] font-semibold tracking-tight leading-[1.15] sm:leading-[1.08] text-white break-words">
                 {t.heroTitle}
               </h1>
 
-              <p className="mt-8 text-xl text-white/80 leading-relaxed max-w-2xl">
+              <p className="mt-6 text-lg md:text-xl text-white/65 leading-relaxed max-w-2xl">
                 {t.heroDescription}
               </p>
 
-              <div className="mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link
                   href="/apply"
-                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl bg-[#16A97A] text-white font-bold text-lg hover:bg-[#0F7A52] transition-colors"
+                  className="inline-flex justify-center items-center gap-2 px-7 py-4 rounded-full bg-[#16A97A] text-white font-semibold hover:bg-[#12946a] transition-colors shadow-[0_8px_30px_rgba(22,169,122,0.35)]"
                 >
                   {t.heroJoin}
                 </Link>
                 <Link
                   href="/hiring"
-                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl bg-white text-[#0B2818] font-bold text-lg hover:bg-[#16A97A] hover:text-white transition-colors"
+                  className="inline-flex justify-center items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-semibold hover:bg-white/10 transition-colors"
                 >
                   {t.heroExplore}
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
@@ -207,21 +237,16 @@ export default function Page() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 md:py-28">
+        <section className="py-24 md:py-32">
           <div className="mx-auto max-w-6xl px-6">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { icon: ICON_PATHS.search, title: t.feature1Title, desc: t.feature1Desc, color: "bg-[#0F7A52]" },
-                { icon: ICON_PATHS.trendingUp, title: t.feature2Title, desc: t.feature2Desc, color: "bg-[#0B2818]" },
-                { icon: ICON_PATHS.document, title: t.feature3Title, desc: t.feature3Desc, color: "bg-[#0D5C3E]" },
-                { icon: ICON_PATHS.chat, title: t.feature4Title, desc: t.feature4Desc, color: "bg-[#16A97A]" },
-              ].map((feature, i) => (
-                <div key={i} className="group">
-                  <div className={`w-12 h-12 ${feature.color} rounded-xl flex items-center justify-center mb-4`}>
-                    <Icon path={feature.icon} className="w-6 h-6 text-white" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
+              {features.map((feature, i) => (
+                <div key={i}>
+                  <div className="w-11 h-11 rounded-xl bg-[#0F7A52]/10 flex items-center justify-center mb-5">
+                    <Icon path={feature.icon} className="w-5 h-5 text-[#0F7A52]" />
                   </div>
-                  <h3 className="text-lg font-semibold text-[#0B2818]">{feature.title}</h3>
-                  <p className="mt-2 text-[#3F3C3A] leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-base font-semibold text-[#0B2818]">{feature.title}</h3>
+                  <p className="mt-2 text-[15px] text-[#3F3C3A] leading-relaxed">{feature.desc}</p>
                 </div>
               ))}
             </div>
@@ -229,31 +254,26 @@ export default function Page() {
         </section>
 
         {/* Explore Section */}
-        <section id="explore" className="py-20 md:py-28 bg-white border-y border-[#D9D9DC]">
+        <section id="explore" className="py-24 md:py-32 bg-[#FAFAF9]">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16 text-[#0B2818]">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center mb-16 text-[#0B2818]">
               {t.exploreTitle}
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { href: "/about", title: t.exploreAboutTitle, desc: t.exploreAboutDesc, icon: ICON_PATHS.heart, color: "bg-[#0F7A52]" },
-                { href: "/products", title: t.exploreProductsTitle, desc: t.exploreProductsDesc, icon: ICON_PATHS.trendingUp, color: "bg-[#0B2818]" },
-                { href: "/cooperation", title: t.exploreCooperationTitle, desc: t.exploreCooperationDesc, icon: ICON_PATHS.building, color: "bg-[#0D5C3E]" },
-                { href: "/contact", title: t.exploreContactTitle, desc: t.exploreContactDesc, icon: ICON_PATHS.chat, color: "bg-[#16A97A]" },
-              ].map((card) => (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {exploreCards.map((card) => (
                 <Link
                   key={card.href}
                   href={card.href}
-                  className="group bg-[#FFFFFF] rounded-2xl p-8 border-2 border-[#D9D9DC] hover:border-[#0F7A52] hover:shadow-lg transition-all flex flex-col"
+                  className="group bg-white rounded-2xl p-7 border border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(11,40,24,0.10)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
-                  <div className={`w-12 h-12 ${card.color} rounded-xl flex items-center justify-center mb-4`}>
-                    <Icon path={card.icon} className="w-6 h-6 text-white" />
+                  <div className="w-11 h-11 rounded-xl bg-[#0F7A52]/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-[#0F7A52]">
+                    <Icon path={card.icon} className="w-5 h-5 text-[#0F7A52] transition-colors group-hover:text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-[#0B2818]">{card.title}</h3>
-                  <p className="mt-2 text-[#3F3C3A] leading-relaxed flex-1">{card.desc}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F7A52] group-hover:gap-2.5 transition-all">
+                  <h3 className="text-base font-semibold text-[#0B2818]">{card.title}</h3>
+                  <p className="mt-2 text-sm text-[#3F3C3A] leading-relaxed flex-1">{card.desc}</p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F7A52]">
                     {t.exploreCta}
-                    <Icon path={ICON_PATHS.arrowRight} className="w-4 h-4" />
+                    <Icon path={ICON_PATHS.arrowRight} className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </Link>
               ))}
@@ -262,23 +282,23 @@ export default function Page() {
         </section>
 
         {/* How It Works */}
-        <section id="how" className="py-20 md:py-28 bg-[#0F7A52] text-white">
-          <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16">
+        <section id="how" className="relative overflow-hidden py-24 md:py-32 bg-[#0B2818] text-white">
+          <div
+            className="pointer-events-none absolute bottom-0 left-1/3 w-[30rem] h-[30rem] rounded-full bg-[#0F7A52]/25 blur-[120px]"
+            aria-hidden="true"
+          />
+          <div className="mx-auto max-w-6xl px-6 relative">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center mb-16">
               {t.howTitle}
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { n: 1, title: t.how1Title, desc: t.how1Desc },
-                { n: 2, title: t.how2Title, desc: t.how2Desc },
-                { n: 3, title: t.how3Title, desc: t.how3Desc },
-              ].map((step) => (
+            <div className="grid md:grid-cols-3 gap-10">
+              {steps.map((step) => (
                 <div key={step.n} className="relative">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white text-[#0B2818] font-bold text-lg mb-6">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/15 bg-white/5 text-sm font-semibold mb-6">
                     {step.n}
                   </div>
-                  <h3 className="text-xl font-semibold">{step.title}</h3>
-                  <p className="mt-3 text-white/70 leading-relaxed">{step.desc}</p>
+                  <h3 className="text-lg font-semibold">{step.title}</h3>
+                  <p className="mt-2.5 text-white/60 text-[15px] leading-relaxed">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -286,23 +306,41 @@ export default function Page() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 md:py-28 bg-white border-t border-[#D9D9DC]">
+        <section id="faq" className="py-24 md:py-32 bg-white">
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-center mb-16 text-[#0B2818]">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center mb-14 text-[#0B2818]">
               {t.faqTitle}
             </h2>
-            <div className="space-y-6">
-              {[
-                { q: t.faq1Q, a: t.faq1A },
-                { q: t.faq2Q, a: t.faq2A },
-                { q: t.faq3Q, a: t.faq3A },
-                { q: t.faq4Q, a: t.faq4A },
-              ].map((faq, i) => (
-                <div key={i} className="bg-[#FFFFFF] rounded-2xl p-6 border-2 border-[#D9D9DC]">
-                  <h3 className="text-lg font-semibold text-[#0B2818]">{faq.q}</h3>
-                  <p className="mt-3 text-[#0F7A52] leading-relaxed">{faq.a}</p>
-                </div>
-              ))}
+            <div className="border-y border-black/[0.07] divide-y divide-black/[0.07]">
+              {faqs.map((faq, i) => {
+                const isOpen = openFaq === i;
+                return (
+                  <div key={i}>
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : i)}
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-panel-${i}`}
+                      className="w-full flex items-center justify-between gap-6 py-6 text-left focus:outline-none"
+                    >
+                      <span className="text-base md:text-lg font-medium text-[#0B2818]">{faq.q}</span>
+                      <Icon
+                        path={ICON_PATHS.plus}
+                        className={`w-5 h-5 flex-shrink-0 text-[#0F7A52] transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                      />
+                    </button>
+                    <div
+                      id={`faq-panel-${i}`}
+                      role="region"
+                      className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="pb-6 text-[#3F3C3A] leading-relaxed max-w-2xl">{faq.a}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
