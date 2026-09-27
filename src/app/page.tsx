@@ -84,22 +84,19 @@ function SuccessModal({
 export default function Page() {
   type Lang = "en" | "pl" | "ua";
   const [lang, setLang] = useState<Lang>("en");
-  const [role, setRole] = useState<"candidate" | "employer">("candidate");
-  const [email, setEmail] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [formData, setFormData] = useState<Record<string, string | string[]>>({});
   const [err, setErr] = useState<string>("");
   const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
 
   const translations: Record<Lang, Record<string, string>> = {
     en: {
-      ctaEarly: "Get Early Access",
-      heroTagline: "Career coaching that gets specific",
-      heroTitle: "Find your next career, with confidence.",
+      ctaEarly: "Get Started",
+      heroTagline: "For job seekers · For employers",
+      heroTitle: "Accessible Employment & Inclusive Hiring for People with Disabilities",
       heroSubtitle: "Prosvasimi",
-      heroDescription: "Career coaching for people navigating a career change — clarity sessions, structured pivot programs, and practical tools like CV and LinkedIn reviews to help you move forward.",
-      heroJoin: "Join the Waitlist",
-      heroExplore: "See How It Works",
+      heroDescription: "Connecting motivated talent with barrier-free workplaces and empowering companies to build inclusive hiring pipelines.",
+      heroJoin: "I'm Looking for a Job",
+      heroExplore: "I'm Hiring / Partnering",
       feature1Title: "Career Clarity",
       feature1Desc: "A focused session to map your options and leave with a written action plan.",
       feature2Title: "Structured Coaching",
@@ -112,7 +109,7 @@ export default function Page() {
       exploreAboutTitle: "About Us",
       exploreAboutDesc: "Our mission, values, and disability-support work as a registered foundation.",
       exploreProductsTitle: "Our Products",
-      exploreProductsDesc: "Workshops and our AI-powered resume analyser.",
+      exploreProductsDesc: "Workshops and hands-on inclusion support for candidates and employers.",
       exploreCooperationTitle: "For Employers",
       exploreCooperationDesc: "Meet your disability-employment quota with a real hiring pipeline — plus partnership options for NGOs.",
       exploreContactTitle: "Contact",
@@ -125,38 +122,48 @@ export default function Page() {
       how2Desc: "Pick a single Career Clarity Session or the full Career Pivot Package.",
       how3Title: "Move forward with a plan",
       how3Desc: "Leave with a concrete action plan and ongoing support if you need it.",
-      waitlistTitle: "Get Early Access",
-      waitlistDesc: "Be first to book a session with Prosvasimi. We'll notify you when we open in your region.",
-      formIam: "I am a",
-      formCandidate: "Individual",
-      formEmployer: "Organization",
-      formName: "Name",
-      formEmail: "Email",
       formErrEmail: "Please enter a valid email address.",
-      joinBtn: "Join Waitlist",
-      joinNote: "By joining, you agree to be contacted about pilots. No spam.",
-      statusThanks: "Thanks! You're on the list as an",
-      roleCandidate: "individual",
-      roleEmployer: "organization",
+      candidateTitle: "Get CV Review & Match with Open Roles",
+      candidateIntro: "Submit your CV for a personalized manual review by our inclusion experts within 48 hours.",
+      candidateName: "Full Name",
+      candidateEmail: "Email",
+      candidatePhone: "Phone / Telegram handle",
+      candidateRole: "Target Role / Core Skills",
+      candidateCV: "CV / Resume file",
+      candidateNeeds: "Specific accessibility needs / workplace accommodations",
+      candidateCta: "Get CV Review & Match with Open Roles",
+      employerTitle: "Apply for Pilot Partnership",
+      employerIntro: "Start building an inclusive hiring pipeline with Prosvasimi.",
+      employerCompany: "Company Name",
+      employerContact: "Contact Person",
+      employerEmail: "Work Email",
+      employerOpenRoles: "Current hiring needs (number of open roles, remote vs on-site)",
+      employerServices: "Interest area",
+      employerServicePilot: "Inclusive Hiring Pilot (1–3 open roles)",
+      employerServiceAudit: "Job Description & Career Page Accessibility Mini-Audit",
+      employerServiceWorkshop: "Inclusive Recruitment Workshop for HR/Talent Acquisition",
+      employerCta: "Apply for Pilot Partnership",
       faqTitle: "Frequently Asked Questions",
-      faq1Q: "What is a Career Clarity Session?",
-      faq1A: "A single, focused 75-minute session where we map your options and leave you with a written action plan.",
-      faq2Q: "Do I need to already know what career I want next?",
-      faq2A: "No. Clarifying that is exactly what the first session is for — we start from where you are.",
-      faq3Q: "How is this different from generic career advice?",
-      faq3A: "Every session is one-on-one and ends with a concrete, written plan tailored to your situation, not general tips.",
-      successModalTitle: "You're on the list!",
-      successModalMessage: "Thank you for joining the Prosvasimi waitlist. We'll notify you when we open in your region.",
+      faq1Q: "Is this free for job seekers?",
+      faq1A: "Yes. CV reviews, matching, and our first-stage support are completely free for candidates.",
+      faq2Q: "How does Prosvasimi vet workplace accessibility?",
+      faq2A: "We evaluate employer readiness, job descriptions, and workplace accommodation practices before recommending roles to candidates.",
+      faq3Q: "What types of accommodations do you support?",
+      faq3A: "We support remote and flexible work, assistive technology, adjusted interviews, and other disability-related workplace adjustments.",
+      faq4Q: "How do pilot programs work for companies?",
+      faq4A: "We run a 1–3 role pilot where we source, screen, and support candidates through onboarding while coaching your HR team on inclusive recruitment.",
+      successModalTitle: "Application received",
+      successModalMessage: "Thank you. Our team will review your submission and follow up within 48 hours.",
       successModalButton: "Got it",
     },
     pl: {
-      ctaEarly: "Wczesny dostęp",
-      heroTagline: "Coaching kariery, który daje konkrety",
-      heroTitle: "Znajdź swoją następną karierę, z pewnością siebie.",
+      ctaEarly: "Zacznij teraz",
+      heroTagline: "Dla kandydatów · Dla pracodawców",
+      heroTitle: "Dostępna praca i inkluzywne zatrudnianie dla osób z niepełnosprawnościami",
       heroSubtitle: "Prosvasimi",
-      heroDescription: "Coaching kariery dla osób zmieniających ścieżkę zawodową — sesje klarowności, ustrukturyzowane programy zmiany kariery oraz praktyczne wsparcie, takie jak przegląd CV i LinkedIn.",
-      heroJoin: "Dołącz do listy",
-      heroExplore: "Zobacz jak to działa",
+      heroDescription: "Łączymy zmotywowanych kandydatów z barierodajnymi miejscami pracy i wspieramy firmy w budowie inkluzywnych procesów rekrutacyjnych.",
+      heroJoin: "Szukam pracy",
+      heroExplore: "Rekrutuję / Chcę współpracować",
       feature1Title: "Klarowność kariery",
       feature1Desc: "Skoncentrowana sesja, po której wychodzisz z pisemnym planem działania.",
       feature2Title: "Ustrukturyzowany coaching",
@@ -169,7 +176,7 @@ export default function Page() {
       exploreAboutTitle: "O nas",
       exploreAboutDesc: "Nasza misja, wartości i wsparcie dla osób z niepełnosprawnościami jako zarejestrowanej fundacji.",
       exploreProductsTitle: "Nasze produkty",
-      exploreProductsDesc: "Warsztaty i nasz analizator CV oparty na AI.",
+      exploreProductsDesc: "Warsztaty i praktyczne wsparcie inkluzyjne dla kandydatów i pracodawców.",
       exploreCooperationTitle: "Dla pracodawców",
       exploreCooperationDesc: "Spełnij wskaźnik zatrudnienia osób z niepełnosprawnościami dzięki realnej rekrutacji — oraz opcje partnerstwa dla NGO.",
       exploreContactTitle: "Kontakt",
@@ -182,38 +189,48 @@ export default function Page() {
       how2Desc: "Wybierz pojedynczą Sesję Klarowności Kariery lub pełny Pakiet Zmiany Kariery.",
       how3Title: "Ruszaj naprzód z planem",
       how3Desc: "Wychodzisz z konkretnym planem działania i, jeśli potrzebujesz, dalszym wsparciem.",
-      waitlistTitle: "Wczesny dostęp",
-      waitlistDesc: "Bądź wśród pierwszych, którzy zarezerwują sesję z Prosvasimi. Powiadomimy Cię, gdy ruszymy w Twoim regionie.",
-      formIam: "Jestem",
-      formCandidate: "Osobą prywatną",
-      formEmployer: "Organizacją",
-      formName: "Imię",
-      formEmail: "E-mail",
       formErrEmail: "Podaj poprawny adres e-mail.",
-      joinBtn: "Dołącz do listy",
-      joinNote: "Dołączając, wyrażasz zgodę na kontakt w sprawie pilotaży. Bez spamu.",
-      statusThanks: "Dziękujemy! Jesteś na liście jako",
-      roleCandidate: "osoba prywatna",
-      roleEmployer: "organizacja",
+      candidateTitle: "Przegląd CV i dopasowanie do ofert",
+      candidateIntro: "Prześlij swoje CV, aby otrzymać spersonalizowany przegląd od naszych ekspertów inkluzji w ciągu 48 godzin.",
+      candidateName: "Imię i nazwisko",
+      candidateEmail: "E-mail",
+      candidatePhone: "Telefon / Telegram",
+      candidateRole: "Docelowa rola / kluczowe umiejętności",
+      candidateCV: "Plik CV",
+      candidateNeeds: "Potrzeby dostępności / wymagane udogodnienia w pracy",
+      candidateCta: "Prześlij CV i uzyskaj dopasowanie",
+      employerTitle: "Aplikuj o współpracę pilotażową",
+      employerIntro: "Zacznij budować inkluzywny proces rekrutacyjny z Prosvasimi.",
+      employerCompany: "Nazwa firmy",
+      employerContact: "Osoba do kontaktu",
+      employerEmail: "Służbowy e-mail",
+      employerOpenRoles: "Aktualne potrzeby rekrutacyjne (liczba ról, zdalnie/stacjonarnie)",
+      employerServices: "Obszar zainteresowania",
+      employerServicePilot: "Inkluzywny pilot rekrutacyjny (1–3 role)",
+      employerServiceAudit: "Mini-audyt dostępności ogłoszeń i strony kariery",
+      employerServiceWorkshop: "Warsztat inkluzywnej rekrutacji dla HR",
+      employerCta: "Aplikuj o współpracę pilotażową",
       faqTitle: "Najczęstsze pytania",
-      faq1Q: "Czym jest Sesja Klarowności Kariery?",
-      faq1A: "Pojedyncza, skoncentrowana 75-minutowa sesja, po której otrzymujesz pisemny plan działania.",
-      faq2Q: "Czy muszę już wiedzieć, jaką karierę chcę dalej rozwijać?",
-      faq2A: "Nie. Wyjaśnienie tego to właśnie cel pierwszej sesji — zaczynamy od miejsca, w którym jesteś.",
-      faq3Q: "Czym różni się to od ogólnych porad kariery?",
-      faq3A: "Każda sesja jest indywidualna i kończy się konkretnym, pisemnym planem dopasowanym do Twojej sytuacji, a nie ogólnymi wskazówkami.",
-      successModalTitle: "Jesteś na liście!",
-      successModalMessage: "Dziękujemy za dołączenie do listy oczekujących Prosvasimi.",
+      faq1Q: "Czy usługa jest bezpłatna dla osób poszukujących pracy?",
+      faq1A: "Tak. Przegląd CV, dopasowanie i pierwszy etap wsparcia są dla kandydatów całkowicie bezpłatne.",
+      faq2Q: "Jak Prosvasimi weryfikuje dostępność miejsca pracy?",
+      faq2A: "Oceniamy gotowość pracodawcy, opisy stanowisk i praktyki dotyczące udogodnień, zanim zarekomendujemy rolę kandydatowi.",
+      faq3Q: "Jakie udogodnienia wspieracie?",
+      faq3A: "Wspieramy pracę zdalną i elastyczną, technologie asystujące, dostosowane rozmowy kwalifikacyjne i inne korekty związane z niepełnosprawnością.",
+      faq4Q: "Jak działają programy pilotażowe dla firm?",
+      faq4A: "Prowadzimy pilotaż obejmujący 1–3 role, podczas któgo pozyskujemy, weryfikujemy i wspieramy kandydatów, szkoląc zespół HR w inkluzywnej rekrutacji.",
+      successModalTitle: "Aplikacja została przyjęta",
+      successModalMessage: "Dziękujemy. Nasz zespół przeanalizuje Twoje zgłoszenie i skontaktuje się w ciągu 48 godzin.",
       successModalButton: "Rozumiem",
     },
     ua: {
-      ctaEarly: "Ранній доступ",
-      heroTagline: "Кар'єрний коучинг з конкретними результатами",
-      heroTitle: "Знайдіть свою наступну кар'єру впевнено.",
+      ctaEarly: "Почати",
+      heroTagline: "Для шукачів · Для роботодавців",
+      heroTitle: "Доступна зайнятість та інклюзивне наймання для людей з інвалідністю",
       heroSubtitle: "Prosvasimi",
-      heroDescription: "Кар'єрний коучинг для людей, що змінюють кар'єру — сесії ясності, структуровані програми переходу та практична підтримка, як-от перегляд резюме та LinkedIn.",
-      heroJoin: "Приєднатися до списку",
-      heroExplore: "Дізнатися, як це працює",
+      heroDescription: "Поєднуємо мотивованих талантів зі workplaces без бар'єрів та допомагаємо компаніям будувати інклюзивні рекрутингові процеси.",
+      heroJoin: "Шукаю роботу",
+      heroExplore: "Наймаю / Хочу співпрацювати",
       feature1Title: "Кар'єрна ясність",
       feature1Desc: "Сфокусована сесія, після якої ви отримуєте письмовий план дій.",
       feature2Title: "Структурований коучинг",
@@ -226,7 +243,7 @@ export default function Page() {
       exploreAboutTitle: "Про нас",
       exploreAboutDesc: "Наша місія, цінності та підтримка людей з інвалідністю як зареєстрованого фонду.",
       exploreProductsTitle: "Наші продукти",
-      exploreProductsDesc: "Воркшопи та наш аналізатор резюме на основі AI.",
+      exploreProductsDesc: "Воркшопи та практична інклюзивна підтримка для кандидатів і роботодавців.",
       exploreCooperationTitle: "Для роботодавців",
       exploreCooperationDesc: "Виконайте квоту працевлаштування людей з інвалідністю через реальний найм — а також партнерство для НГО.",
       exploreContactTitle: "Контакти",
@@ -239,57 +256,96 @@ export default function Page() {
       how2Desc: "Оберіть окрему Сесію Кар'єрної Ясності або повний Пакет Кар'єрного Переходу.",
       how3Title: "Рухайтесь вперед із планом",
       how3Desc: "Ви отримуєте конкретний план дій і, за потреби, постійну підтримку.",
-      waitlistTitle: "Ранній доступ",
-      waitlistDesc: "Будьте першими, хто забронює сесію з Prosvasimi. Ми повідомимо вас, коли запустимося у вашому регіоні.",
-      formIam: "Я",
-      formCandidate: "Приватна особа",
-      formEmployer: "Організація",
-      formName: "Ім'я",
-      formEmail: "Електронна пошта",
       formErrEmail: "Будь ласка, введіть дійсну адресу електронної пошти.",
-      joinBtn: "Приєднатися",
-      joinNote: "Приєднуючись, ви погоджуєтесь на контакт щодо пілотних проектів. Без спаму.",
-      statusThanks: "Дякуємо! Ви у списку як",
-      roleCandidate: "приватна особа",
-      roleEmployer: "організація",
+      candidateTitle: "Огляд резюме та підбір вакансій",
+      candidateIntro: "Надішліть своє резюме, щоб отримати персоналізований огляд від наших експертів з інклюзії протягом 48 годин.",
+      candidateName: "Повне ім'я",
+      candidateEmail: "Електронна пошта",
+      candidatePhone: "Телефон / Telegram",
+      candidateRole: "Цільова роль / ключові навички",
+      candidateCV: "Файл резюме",
+      candidateNeeds: "Особливі потреби доступності / коригування на робочому місці",
+      candidateCta: "Надіслати резюме та отримати підбір",
+      employerTitle: "Подати заявку на пілотне партнерство",
+      employerIntro: "Почніть будувати інклюзивний рекрутинговий процес із Prosvasimi.",
+      employerCompany: "Назва компанії",
+      employerContact: "Контактна особа",
+      employerEmail: "Робоча електронна пошта",
+      employerOpenRoles: "Поточні потреби в наймі (кількість вакансій, віддалено/в офісі)",
+      employerServices: "Сфера інтересу",
+      employerServicePilot: "Пілот з інклюзивного найму (1–3 вакансії)",
+      employerServiceAudit: "Міні-аудит доступності вакансій та сторінки кар'єри",
+      employerServiceWorkshop: "Воркшоп інклюзивного рекрутингу для HR",
+      employerCta: "Подати заявку на пілотне партнерство",
       faqTitle: "Питання та відповіді",
-      faq1Q: "Що таке Сесія Кар'єрної Ясності?",
-      faq1A: "Окрема, сфокусована 75-хвилинна сесія, після якої ви отримуєте письмовий план дій.",
-      faq2Q: "Чи потрібно вже знати, яку кар'єру я хочу далі?",
-      faq2A: "Ні. З'ясування цього — саме мета першої сесії. Ми починаємо з того місця, де ви є.",
-      faq3Q: "Чим це відрізняється від загальних кар'єрних порад?",
-      faq3A: "Кожна сесія індивідуальна і завершується конкретним письмовим планом під вашу ситуацію, а не загальними порадами.",
-      successModalTitle: "Ви у списку!",
-      successModalMessage: "Дякуємо за приєднання до списку очікування Prosvasimi.",
+      faq1Q: "Чи це безкоштовно для шукачів роботи?",
+      faq1A: "Так. Огляд резюме, підбір та перший етап підтримки для кандидатів повністю безкоштовні.",
+      faq2Q: "Як Prosvasimi перевіряє доступність робочого місця?",
+      faq2A: "Ми оцінюємо готовність роботодавця, описи вакансій та практики адаптації робочого місця, перш ніж рекомендувати роль кандидату.",
+      faq3Q: "Які коригування робочого місця ви підтримуєте?",
+      faq3A: "Ми підтримуємо віддалену та гнучку роботу, допоміжні технології, адаптовані співбесіди та інші коригування, пов'язані з інвалідністю.",
+      faq4Q: "Як працюють пілотні програми для компаній?",
+      faq4A: "Ми проводимо пілот на 1–3 вакансії, під час якого знаходимо, перевіряємо та підтримуємо кандидатів, навчаючи вашу HR-команду інклюзивному рекрутингу.",
+      successModalTitle: "Заявку отримано",
+      successModalMessage: "Дякуємо. Наша команда розгляне вашу заявку та зв'яжеться протягом 48 годин.",
       successModalButton: "Зрозуміло",
     },
   };
 
   const t = translations[lang];
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData((prev) => ({ ...prev, [e.target.name]: file.name }));
+    }
+  }
+
+  function handleCheckbox(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value, checked } = e.target;
+    const current = (formData[name] as string[] | undefined) ?? [];
+    const next = checked ? [...current, value] : current.filter((v) => v !== value);
+    setFormData((prev) => ({ ...prev, [name]: next }));
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>, type: "candidate" | "employer") {
     e.preventDefault();
     setErr("");
+    const email = (formData[`${type}-email`] as string | undefined) ?? "";
     if (!email || !/^([^\s@])+@([^\s@]+)\.[^\s@]+$/.test(email)) {
       setErr(t.formErrEmail);
       return;
     }
+
+    const payload: Record<string, unknown> = { type, email, lang, submittedAt: new Date().toISOString() };
+    if (type === "candidate") {
+      payload.name = formData["candidate-name"];
+      payload.phone = formData["candidate-phone"];
+      payload.roleSkills = formData["candidate-role"];
+      payload.cvFileName = formData["candidate-cv"];
+      payload.accessibility = formData["candidate-needs"];
+    } else {
+      payload.company = formData["employer-company"];
+      payload.contact = formData["employer-contact"];
+      payload.openRoles = formData["employer-roles"];
+      payload.remote = formData["employer-remote"];
+      payload.needs = formData["employer-needs"];
+    }
+
     try {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          role,
-          lang,
-          createdAt: new Date().toISOString(),
-        }),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      setSubmitted(true);
       setShowSuccessModal(true);
-    } catch (e) {
+      setFormData({});
+    } catch {
       setErr("Could not submit. Please try again later.");
     }
   }
@@ -309,30 +365,29 @@ export default function Page() {
                 {t.heroTagline}
               </span>
 
-              <h1 className="mt-8 text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.95] text-white">
+              <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.05] text-white">
                 {t.heroTitle}
-                <span className="block text-[#16A97A] font-black text-4xl md:text-5xl lg:text-6xl mt-3">{t.heroSubtitle}</span>
               </h1>
 
-              <p className="mt-8 text-xl text-white/70 leading-relaxed max-w-2xl">
+              <p className="mt-8 text-xl text-white/80 leading-relaxed max-w-2xl">
                 {t.heroDescription}
               </p>
 
               <div className="mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <a
-                  href="#waitlist"
-                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl bg-white text-[#0B2818] font-bold text-lg hover:bg-[#16A97A] hover:text-white transition-colors"
+                  href="#candidate-form"
+                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl bg-[#16A97A] text-white font-bold text-lg hover:bg-[#0F7A52] transition-colors"
                 >
                   {t.heroJoin}
+                </a>
+                <a
+                  href="#employer-form"
+                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl bg-white text-[#0B2818] font-bold text-lg hover:bg-[#16A97A] hover:text-white transition-colors"
+                >
+                  {t.heroExplore}
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
-                <a
-                  href="#how"
-                  className="inline-flex justify-center items-center gap-2 px-8 py-5 rounded-xl border-2 border-white/25 text-white font-bold text-lg hover:border-white transition-all"
-                >
-                  {t.heroExplore}
                 </a>
               </div>
             </div>
@@ -418,99 +473,241 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Waitlist Section */}
-        <section id="waitlist" className="py-20 md:py-28">
+        {/* Intake Forms */}
+        <section className="py-20 md:py-28 bg-[#F4F4F5]">
           <div className="mx-auto max-w-6xl px-6">
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-white rounded-2xl p-8 md:p-12 border-2 border-[#D9D9DC]">
-                <h2 className="text-3xl font-bold tracking-tight text-[#0B2818]">{t.waitlistTitle}</h2>
-                <p className="mt-4 text-[#0F7A52]">{t.waitlistDesc}</p>
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              {/* Candidate Form */}
+              <section id="candidate-form" className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC] shadow-sm">
+                <h2 className="text-2xl font-bold tracking-tight text-[#0B2818]">{t.candidateTitle}</h2>
+                <p className="mt-3 text-[#0F7A52]">{t.candidateIntro}</p>
 
-                {submitted ? (
-                  <div className="mt-8 rounded-xl bg-[#16A97A]/10 text-[#0B2818] p-6 border border-[#16A97A]/20">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-6 h-6 text-[#16A97A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="font-medium">
-                        {t.statusThanks} <span className="font-bold">{role === "candidate" ? t.roleCandidate : t.roleEmployer}</span>.
-                      </span>
+                <form onSubmit={(e) => handleSubmit(e, "candidate")} className="mt-8 space-y-5">
+                  <div>
+                    <label htmlFor="candidate-name" className="block text-sm font-medium text-[#0B2818] mb-2">
+                      {t.candidateName}
+                    </label>
+                    <input
+                      id="candidate-name"
+                      name="candidate-name"
+                      type="text"
+                      value={(formData["candidate-name"] as string) || ""}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                      placeholder="Anna"
+                    />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="candidate-email" className="block text-sm font-medium text-[#0B2818] mb-2">
+                        {t.candidateEmail}
+                      </label>
+                      <input
+                        id="candidate-email"
+                        name="candidate-email"
+                        type="email"
+                        value={(formData["candidate-email"] as string) || ""}
+                        onChange={handleChange}
+                        required
+                        aria-required="true"
+                        className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                        placeholder="you@domain.com"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="candidate-phone" className="block text-sm font-medium text-[#0B2818] mb-2">
+                        {t.candidatePhone}
+                      </label>
+                      <input
+                        id="candidate-phone"
+                        name="candidate-phone"
+                        type="text"
+                        value={(formData["candidate-phone"] as string) || ""}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                        placeholder="+48 123 456 789"
+                      />
                     </div>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+
+                  <div>
+                    <label htmlFor="candidate-role" className="block text-sm font-medium text-[#0B2818] mb-2">
+                      {t.candidateRole}
+                    </label>
+                    <input
+                      id="candidate-role"
+                      name="candidate-role"
+                      type="text"
+                      value={(formData["candidate-role"] as string) || ""}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                      placeholder="Project manager, administration, customer support..."
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="candidate-cv" className="block text-sm font-medium text-[#0B2818] mb-2">
+                      {t.candidateCV}
+                    </label>
+                    <input
+                      id="candidate-cv"
+                      name="candidate-cv"
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleFile}
+                      className="w-full text-sm text-[#3F3C3A] file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-[#16A97A]/10 file:text-[#0F7A52] file:font-semibold"
+                    />
+                    {(formData["candidate-cv"] as string) && (
+                      <p className="mt-2 text-sm text-[#0F7A52]">Selected: {formData["candidate-cv"] as string}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="candidate-needs" className="block text-sm font-medium text-[#0B2818] mb-2">
+                      {t.candidateNeeds}
+                    </label>
+                    <textarea
+                      id="candidate-needs"
+                      name="candidate-needs"
+                      value={(formData["candidate-needs"] as string) || ""}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                      placeholder="Remote work, screen-reader friendly materials, adjusted interview..."
+                    />
+                  </div>
+
+                  {err && <p className="text-sm text-[#DC2626]">{err}</p>}
+
+                  <button
+                    type="submit"
+                    className="inline-flex justify-center items-center gap-2 w-full px-6 py-4 rounded-xl bg-[#0F7A52] text-white font-bold hover:bg-[#0B2818] transition-colors"
+                  >
+                    {t.candidateCta}
+                  </button>
+                </form>
+              </section>
+
+              {/* Employer Form */}
+              <section id="employer-form" className="bg-white rounded-2xl p-8 md:p-10 border-2 border-[#D9D9DC] shadow-sm">
+                <h2 className="text-2xl font-bold tracking-tight text-[#0B2818]">{t.employerTitle}</h2>
+                <p className="mt-3 text-[#0F7A52]">{t.employerIntro}</p>
+
+                <form onSubmit={(e) => handleSubmit(e, "employer")} className="mt-8 space-y-5">
+                  <div>
+                    <label htmlFor="employer-company" className="block text-sm font-medium text-[#0B2818] mb-2">
+                      {t.employerCompany}
+                    </label>
+                    <input
+                      id="employer-company"
+                      name="employer-company"
+                      type="text"
+                      value={(formData["employer-company"] as string) || ""}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-[#0B2818] mb-3">{t.formIam}</label>
-                      <div className="grid grid-cols-2 gap-3">
-                        <button 
-                          type="button" 
-                          onClick={() => setRole("candidate")} 
-                          className={`px-4 py-3 rounded-xl border-2 font-medium transition-all ${
-                            role === "candidate" 
-                              ? "bg-[#0F7A52] text-white border-[#0F7A52]" 
-                              : "border-[#D9D9DC] text-[#0B2818] hover:border-[#0F7A52]"
-                          }`}
-                        >
-                          {t.formCandidate}
-                        </button>
-                        <button 
-                          type="button" 
-                          onClick={() => setRole("employer")} 
-                          className={`px-4 py-3 rounded-xl border-2 font-medium transition-all ${
-                            role === "employer" 
-                              ? "bg-[#0F7A52] text-white border-[#0F7A52]" 
-                              : "border-[#D9D9DC] text-[#0B2818] hover:border-[#0F7A52]"
-                          }`}
-                        >
-                          {t.formEmployer}
-                        </button>
-                      </div>
+                      <label htmlFor="employer-contact" className="block text-sm font-medium text-[#0B2818] mb-2">
+                        {t.employerContact}
+                      </label>
+                      <input
+                        id="employer-contact"
+                        name="employer-contact"
+                        type="text"
+                        value={(formData["employer-contact"] as string) || ""}
+                        onChange={handleChange}
+                        required
+                        aria-required="true"
+                        className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                      />
                     </div>
+                    <div>
+                      <label htmlFor="employer-email" className="block text-sm font-medium text-[#0B2818] mb-2">
+                        {t.employerEmail}
+                      </label>
+                      <input
+                        id="employer-email"
+                        name="employer-email"
+                        type="email"
+                        value={(formData["employer-email"] as string) || ""}
+                        onChange={handleChange}
+                        required
+                        aria-required="true"
+                        className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                        placeholder="hr@company.com"
+                      />
+                    </div>
+                  </div>
 
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-[#0B2818] mb-2">{t.formName}</label>
-                        <input 
-                          id="name" 
-                          name="name" 
-                          value={name} 
-                          onChange={(e) => setName(e.target.value)} 
-                          className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" 
-                          placeholder="Anna"
+                  <div>
+                    <label htmlFor="employer-roles" className="block text-sm font-medium text-[#0B2818] mb-2">
+                      {t.employerOpenRoles}
+                    </label>
+                    <input
+                      id="employer-roles"
+                      name="employer-roles"
+                      type="text"
+                      value={(formData["employer-roles"] as string) || ""}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                      placeholder="2 open customer support roles, remote-first"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="employer-remote" className="block text-sm font-medium text-[#0B2818] mb-2">
+                      Work setup
+                    </label>
+                    <input
+                      id="employer-remote"
+                      name="employer-remote"
+                      type="text"
+                      value={(formData["employer-remote"] as string) || ""}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors"
+                      placeholder="Remote / on-site / hybrid"
+                    />
+                  </div>
+
+                  <fieldset className="space-y-3">
+                    <legend className="block text-sm font-medium text-[#0B2818]">{t.employerServices}</legend>
+                    {[
+                      { value: "pilot", label: t.employerServicePilot },
+                      { value: "audit", label: t.employerServiceAudit },
+                      { value: "workshop", label: t.employerServiceWorkshop },
+                    ].map((option) => (
+                      <label key={option.value} className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="employer-needs"
+                          value={option.value}
+                          checked={((formData["employer-needs"] as string[] | undefined) ?? []).includes(option.value)}
+                          onChange={handleCheckbox}
+                          className="mt-1 w-5 h-5 text-[#0F7A52] border-2 border-[#D9D9DC] rounded focus:ring-[#0F7A52]"
                         />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-[#0B2818] mb-2">{t.formEmail}</label>
-                        <input 
-                          id="email" 
-                          name="email" 
-                          type="email"
-                          value={email} 
-                          onChange={(e) => setEmail(e.target.value)} 
-                          className="w-full px-4 py-3 rounded-xl border-2 border-[#D9D9DC] focus:border-[#0F7A52] focus:outline-none transition-colors" 
-                          placeholder="you@domain.com"
-                          required
-                        />
-                      </div>
-                    </div>
+                        <span className="text-[#3F3C3A] text-sm leading-snug">{option.label}</span>
+                      </label>
+                    ))}
+                  </fieldset>
 
-                    {err && <p className="text-sm text-[#DC2626]">{err}</p>}
+                  {err && <p className="text-sm text-[#DC2626]">{err}</p>}
 
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                      <button 
-                        type="submit" 
-                        className="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl bg-[#0F7A52] text-white font-bold hover:bg-[#0B2818] transition-colors"
-                      >
-                        {t.joinBtn}
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </button>
-                      <p className="text-sm text-[#0F7A52]">{t.joinNote}</p>
-                    </div>
-                  </form>
-                )}
-              </div>
+                  <button
+                    type="submit"
+                    className="inline-flex justify-center items-center gap-2 w-full px-6 py-4 rounded-xl bg-[#0B2818] text-white font-bold hover:bg-[#0F7A52] transition-colors"
+                  >
+                    {t.employerCta}
+                  </button>
+                </form>
+              </section>
             </div>
           </div>
         </section>
@@ -526,6 +723,7 @@ export default function Page() {
                 { q: t.faq1Q, a: t.faq1A },
                 { q: t.faq2Q, a: t.faq2A },
                 { q: t.faq3Q, a: t.faq3A },
+                { q: t.faq4Q, a: t.faq4A },
               ].map((faq, i) => (
                 <div key={i} className="bg-[#FFFFFF] rounded-2xl p-6 border-2 border-[#D9D9DC]">
                   <h3 className="text-lg font-semibold text-[#0B2818]">{faq.q}</h3>

@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-import type { User } from "@supabase/supabase-js";
-import { supabase } from "@/lib/supabaseClient";
+import { usePathname } from "next/navigation";
 import type { Lang } from "@/lib/language";
 
 type NavLabels = {
@@ -71,31 +69,7 @@ export default function SiteHeader({
   setLang: (lang: Lang) => void;
 }) {
   const pathname = usePathname();
-  const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
   const t = labels[lang];
-
-  useEffect(() => {
-    let mounted = true;
-
-    supabase.auth.getUser().then(({ data }) => {
-      if (mounted) setUser(data.user);
-    });
-
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => {
-      mounted = false;
-      listener.subscription.unsubscribe();
-    };
-  }, []);
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push("/login");
-  };
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -162,41 +136,6 @@ export default function SiteHeader({
               ))}
             </div>
 
-            {user ? (
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/account"
-                  aria-current={isActive("/account") ? "page" : undefined}
-                  className="hidden sm:inline-flex px-4 py-2 rounded-lg text-sm font-medium text-[#0B2818] hover:bg-[#D9D9DC] transition-colors"
-                >
-                  {t.account}
-                </Link>
-                <button
-                  type="button"
-                  onClick={handleLogout}
-                  className="inline-flex px-4 py-2 rounded-lg text-sm font-medium text-[#0F7A52] hover:bg-[#D9D9DC] transition-colors"
-                >
-                  {t.logout}
-                </button>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/login"
-                  aria-current={isActive("/login") ? "page" : undefined}
-                  className="hidden sm:inline-flex px-4 py-2 rounded-lg text-sm font-medium text-[#0B2818] hover:bg-[#D9D9DC] transition-colors"
-                >
-                  {t.login}
-                </Link>
-                <Link
-                  href="/register"
-                  aria-current={isActive("/register") ? "page" : undefined}
-                  className="inline-flex px-4 py-2 rounded-lg bg-[#0F7A52] text-white text-sm font-bold hover:bg-[#0B2818] transition-colors"
-                >
-                  {t.register}
-                </Link>
-              </div>
-            )}
           </div>
         </div>
       </header>

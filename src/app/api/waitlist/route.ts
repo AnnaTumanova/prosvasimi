@@ -8,13 +8,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Server not configured" }, { status: 500 });
     }
 
-    const { name, email, role, lang, createdAt } = (await req.json()) as {
-      name?: string;
-      email?: string;
-      role?: "candidate" | "employer" | string;
-      lang?: string;
-      createdAt?: string;
-    };
+    const body = (await req.json()) as Record<string, unknown>;
+    const { email, lang, type } = body as { email?: string; lang?: string; type?: string };
 
     // Basic validation
     if (!email || !/^([^\s@])+@([^\s@]+)\.[^\s@]+$/.test(email)) {
@@ -22,11 +17,10 @@ export async function POST(req: Request) {
     }
 
     const payload = {
-      name: name ?? "",
-      email,
-      role: role === "employer" ? "employer" : "candidate",
-      lang: lang === "pl" ? "pl" : "en",
-      createdAt: createdAt ?? new Date().toISOString(),
+      ...body,
+      type: type ?? "candidate",
+      lang: lang === "pl" ? "pl" : lang === "ua" ? "ua" : "en",
+      createdAt: new Date().toISOString(),
       userAgent: req.headers.get("user-agent") ?? "",
       ip: req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for") || "",
     };
@@ -52,6 +46,7 @@ export async function POST(req: Request) {
       },
     });
   } catch (err) {
+    console.error("waitlist forward error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
