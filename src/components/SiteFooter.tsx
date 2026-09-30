@@ -3,9 +3,9 @@ import Image from "next/image";
 import type { Lang } from "@/lib/language";
 
 type FooterLabels = {
-  about: string;
-  products: string;
-  cooperation: string;
+  aiEvaluation: string;
+  forCompanies: string;
+  ourMission: string;
   contact: string;
   legalTitle: string;
   legalName: string;
@@ -20,9 +20,9 @@ type FooterLabels = {
 
 const labels: Record<Lang, FooterLabels> = {
   en: {
-    about: "About Us",
-    products: "Our Products",
-    cooperation: "Cooperation",
+    aiEvaluation: "AI Evaluation",
+    forCompanies: "For Companies",
+    ourMission: "Our Mission",
     contact: "Contact",
     legalTitle: "Registration Details",
     legalName: "Name",
@@ -35,9 +35,9 @@ const labels: Record<Lang, FooterLabels> = {
     legalFormValue: "Foundation",
   },
   pl: {
-    about: "O nas",
-    products: "Nasze produkty",
-    cooperation: "Współpraca",
+    aiEvaluation: "AI Evaluation",
+    forCompanies: "Dla firm",
+    ourMission: "Nasza misja",
     contact: "Kontakt",
     legalTitle: "Dane rejestrowe",
     legalName: "Nazwa",
@@ -50,9 +50,9 @@ const labels: Record<Lang, FooterLabels> = {
     legalFormValue: "FUNDACJA",
   },
   ua: {
-    about: "Про нас",
-    products: "Наші продукти",
-    cooperation: "Співпраця",
+    aiEvaluation: "AI Evaluation",
+    forCompanies: "Для компаній",
+    ourMission: "Наша місія",
     contact: "Контакти",
     legalTitle: "Реєстраційні дані",
     legalName: "Назва",
@@ -78,9 +78,9 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
             <span className="font-medium text-[#0B2818]">Prosvasimi</span>
           </Link>
           <nav className="flex items-center gap-6 text-sm text-[#0F7A52]">
-            <Link href="/about" className="hover:text-[#0B2818] transition-colors">{t.about}</Link>
-            <Link href="/products" className="hover:text-[#0B2818] transition-colors">{t.products}</Link>
-            <Link href="/cooperation" className="hover:text-[#0B2818] transition-colors">{t.cooperation}</Link>
+            <Link href="/ai-evaluation" className="hover:text-[#0B2818] transition-colors">{t.aiEvaluation}</Link>
+            <Link href="/ai-evaluation#for-companies" className="hover:text-[#0B2818] transition-colors">{t.forCompanies}</Link>
+            <Link href="/about" className="hover:text-[#0B2818] transition-colors">{t.ourMission}</Link>
             <Link href="/contact" className="hover:text-[#0B2818] transition-colors">{t.contact}</Link>
           </nav>
           <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>
