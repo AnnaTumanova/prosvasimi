@@ -3,11 +3,21 @@ import Image from "next/image";
 import type { Lang } from "@/lib/language";
 
 type FooterLabels = {
+  tagline: string;
+  colStudio: string;
+  colAcademy: string;
+  colOrg: string;
+  services: string;
+  forBusinesses: string;
   aiEvaluation: string;
-  forCompanies: string;
-  ourMission: string;
+  caseStudies: string;
+  academy: string;
+  careers: string;
+  partner: string;
+  about: string;
   contact: string;
   legalTitle: string;
+  legalNote: string;
   legalName: string;
   legalRegister: string;
   legalRegisterValue: string;
@@ -20,11 +30,21 @@ type FooterLabels = {
 
 const labels: Record<Lang, FooterLabels> = {
   en: {
+    tagline: "Making AI practical. Making technology inclusive.",
+    colStudio: "Inclusive AI Studio",
+    colAcademy: "Academy & Careers",
+    colOrg: "Prosvasimi",
+    services: "AI Services",
+    forBusinesses: "For Businesses",
     aiEvaluation: "AI Evaluation",
-    forCompanies: "For Companies",
-    ourMission: "Our Mission",
+    caseStudies: "Case Studies",
+    academy: "AI Academy",
+    careers: "Careers",
+    partner: "Become a partner",
+    about: "About",
     contact: "Contact",
     legalTitle: "Registration Details",
+    legalNote: "Inclusive AI Studio and Inclusive AI Academy are programmes of Fundacja Prosvásimi.",
     legalName: "Name",
     legalRegister: "Register",
     legalRegisterValue: "Register of Associations (KRS)",
@@ -35,11 +55,21 @@ const labels: Record<Lang, FooterLabels> = {
     legalFormValue: "Foundation",
   },
   pl: {
-    aiEvaluation: "AI Evaluation",
-    forCompanies: "Dla firm",
-    ourMission: "Nasza misja",
+    tagline: "AI w praktyce. Technologia bez barier.",
+    colStudio: "Inclusive AI Studio",
+    colAcademy: "Akademia i kariera",
+    colOrg: "Prosvasimi",
+    services: "Usługi AI",
+    forBusinesses: "Dla firm",
+    aiEvaluation: "Ewaluacja AI",
+    caseStudies: "Case studies",
+    academy: "Akademia AI",
+    careers: "Kariera",
+    partner: "Zostań partnerem",
+    about: "O nas",
     contact: "Kontakt",
     legalTitle: "Dane rejestrowe",
+    legalNote: "Inclusive AI Studio i Inclusive AI Academy to programy Fundacji Prosvásimi.",
     legalName: "Nazwa",
     legalRegister: "Rejestr",
     legalRegisterValue: "Rejestr Stowarzyszeń (KRS)",
@@ -50,11 +80,21 @@ const labels: Record<Lang, FooterLabels> = {
     legalFormValue: "FUNDACJA",
   },
   ua: {
-    aiEvaluation: "AI Evaluation",
-    forCompanies: "Для компаній",
-    ourMission: "Наша місія",
+    tagline: "Практичний AI. Інклюзивні технології.",
+    colStudio: "Inclusive AI Studio",
+    colAcademy: "Академія і кар'єра",
+    colOrg: "Prosvasimi",
+    services: "AI-послуги",
+    forBusinesses: "Для бізнесу",
+    aiEvaluation: "Оцінювання AI",
+    caseStudies: "Кейси",
+    academy: "AI Академія",
+    careers: "Кар'єра",
+    partner: "Стати партнером",
+    about: "Про нас",
     contact: "Контакти",
     legalTitle: "Реєстраційні дані",
+    legalNote: "Inclusive AI Studio та Inclusive AI Academy — програми Fundacja Prosvásimi.",
     legalName: "Назва",
     legalRegister: "Реєстр",
     legalRegisterValue: "Реєстр об'єднань (KRS)",
@@ -66,28 +106,68 @@ const labels: Record<Lang, FooterLabels> = {
   },
 };
 
+const linkClass = "text-[#3F3C3A] hover:text-[#0F7A52] transition-colors";
+
 export default function SiteFooter({ lang }: { lang: Lang }) {
   const t = labels[lang];
 
+  const columns = [
+    {
+      title: t.colStudio,
+      links: [
+        { href: "/services", label: t.services },
+        { href: "/for-businesses", label: t.forBusinesses },
+        { href: "/ai-evaluation", label: t.aiEvaluation },
+        { href: "/case-studies", label: t.caseStudies },
+      ],
+    },
+    {
+      title: t.colAcademy,
+      links: [
+        { href: "/academy", label: t.academy },
+        { href: "/careers", label: t.careers },
+        { href: "/contact#partnership", label: t.partner },
+      ],
+    },
+    {
+      title: t.colOrg,
+      links: [
+        { href: "/about", label: t.about },
+        { href: "/contact", label: t.contact },
+      ],
+    },
+  ];
+
   return (
-    <footer className="border-t border-[#D9D9DC] bg-white py-12">
+    <footer className="border-t border-[#D9D9DC] bg-white py-14">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image src="/images/logo.png" alt="Prosvasimi" width={28} height={28} />
-            <span className="font-medium text-[#0B2818]">Prosvasimi</span>
-          </Link>
-          <nav className="flex items-center gap-6 text-sm text-[#0F7A52]">
-            <Link href="/ai-evaluation" className="hover:text-[#0B2818] transition-colors">{t.aiEvaluation}</Link>
-            <Link href="/ai-evaluation#for-companies" className="hover:text-[#0B2818] transition-colors">{t.forCompanies}</Link>
-            <Link href="/about" className="hover:text-[#0B2818] transition-colors">{t.ourMission}</Link>
-            <Link href="/contact" className="hover:text-[#0B2818] transition-colors">{t.contact}</Link>
-          </nav>
-          <p className="text-sm text-[#0F7A52]">© {new Date().getFullYear()} Prosvasimi</p>
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <Image src="/images/logo.png" alt="" width={28} height={28} />
+              <span className="font-semibold text-[#0B2818]">Prosvasimi</span>
+            </Link>
+            <p className="mt-4 text-sm text-[#3F3C3A] max-w-xs">{t.tagline}</p>
+          </div>
+          {columns.map((col) => (
+            <nav key={col.title} aria-label={col.title}>
+              <h2 className="text-xs font-bold uppercase tracking-widest text-[#0B2818]">{col.title}</h2>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className={linkClass}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
 
-        <div className="mt-10 pt-8 border-t border-[#D9D9DC]">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-[#0B2818]">{t.legalTitle}</h3>
+        <div className="mt-12 pt-8 border-t border-[#D9D9DC]">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-[#0B2818]">{t.legalTitle}</h2>
+          <p className="mt-2 text-sm text-[#3F3C3A]">{t.legalNote}</p>
           <dl className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-4 text-sm">
             <div>
               <dt className="text-[#0F7A52]">{t.legalName}</dt>
@@ -114,6 +194,7 @@ export default function SiteFooter({ lang }: { lang: Lang }) {
               <dd className="mt-1 font-medium text-[#0B2818]">{t.legalFormValue}</dd>
             </div>
           </dl>
+          <p className="mt-8 text-sm text-[#3F3C3A]">© {new Date().getFullYear()} Fundacja Prosvásimi</p>
         </div>
       </div>
     </footer>
